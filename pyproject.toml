@@ -109,11 +109,12 @@ skip_glob = ["docs/_build/*", ".venv/*"]
 
 [tool.ruff]
 line-length = 88
-target-version = "py38"
+target-version = "py310"
 exclude = [
     ".git",
     ".venv",
     "docs/_build",
+    "status"
 ]
 
 [tool.ruff.lint]
