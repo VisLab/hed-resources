@@ -54,6 +54,7 @@ quality = [
     "linkchecker>=10.0.0",
     "codespell>=2.0.0",
     "ruff>=0.0.284",
+    "black>=23.0.0",
     "pre-commit>=3.0.0",
 ]
 dev = [
@@ -69,6 +70,7 @@ dev = [
     "linkchecker>=10.0.0",
     "codespell>=2.0.0",
     "ruff>=0.0.284",
+    "black>=23.0.0",
     "pre-commit>=3.0.0",
 ]
 

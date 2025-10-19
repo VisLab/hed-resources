@@ -100,9 +100,7 @@ html_theme_options = {
 }
 
 # Force the sidebar to use toctree titles instead of page titles
-html_sidebars = {
-    "**": ["navbar-logo", "search-field", "sbt-sidebar-nav.html"]
-}
+html_sidebars = {"**": ["navbar-logo", "search-field", "sbt-sidebar-nav.html"]}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
