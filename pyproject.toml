@@ -42,13 +42,13 @@ dependencies = []
 
 [project.optional-dependencies]
 docs = [
-    "sphinx>=8.2.0",
+    "sphinx>=7.1.0,<8.2.0",
     "sphinx-book-theme>=1.1.4",
-    "myst-parser>=4.0.0",
+    "myst-parser>=3.0.0",
     "sphinx-design>=0.6.1",
     "sphinx-copybutton>=0.5.2",
     "linkify-it-py>=2.0.3",
-    "sphinxcontrib-bibtex>=2.7.0",
+    "sphinxcontrib-bibtex>=2.6.0",
 ]
 quality = [
     "linkchecker>=10.0.0",
@@ -58,13 +58,13 @@ quality = [
 ]
 dev = [
     # Documentation dependencies (from docs group)
-    "sphinx>=8.2.0",
+    "sphinx>=7.1.0",
     "sphinx-book-theme>=1.1.4",
-    "myst-parser>=4.0.0",
+    "myst-parser>=3.0.0",
     "sphinx-design>=0.6.1",
     "sphinx-copybutton>=0.5.2",
     "linkify-it-py>=2.0.3",
-    "sphinxcontrib-bibtex>=2.7.0",
+    "sphinxcontrib-bibtex>=2.6.0",
     # Quality/dev dependencies (from quality group)
     "linkchecker>=10.0.0",
     "codespell>=2.0.0",
@@ -83,8 +83,8 @@ Changelog = "https://github.com/hed-standard/hed-resources/blob/main/CHANGELOG.m
 
 # Tool configurations
 [tool.codespell]
-skip = "*.git,*.json,*.xml,*.html,*.js,*.css,*.pdf,*.png,*.jpg,*.svg"
-ignore-words-list = "nd,te,hed"
+skip = "datasets,.git,*.pdf,*.svg,deprecated,*.xml,*.mediawiki,*.omn,*.json,*.html,*.js,*.css,*.png,*.jpg,.venv/*,docs/_build/*,docs/source/_static/*,dist/*"
+ignore-words-list = "covert,hed,recuse"
 check-filenames = true
 check-hidden = true
 
