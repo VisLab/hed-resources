@@ -80,7 +80,11 @@ exclude_patterns = ["_build", "_templates", "Thumbs.db", ".DS_Store"]
 
 # -- Options for HTML output -------------------------------------------------
 
+# Syntax highlighting style for light mode
 pygments_style = "sphinx"
+# Syntax highlighting style for dark mode
+pygments_dark_style = "monokai"
+
 html_theme = "sphinx_book_theme"
 html_title = "HED Resources"
 

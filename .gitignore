@@ -63,6 +63,7 @@ var/
 *.egg
 *.ruff_cache/
 status/
+.github/copilot-instructions.md
 
 # Installer logs
 pip-log.txt
