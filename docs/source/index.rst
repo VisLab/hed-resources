@@ -115,7 +115,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
-   UnderstandingHedVersions.md
+   HedAnnotationSemanics.md
    HedAnnotationInNWB.md
    HedValidationGuide.md
    HedSearchGuide.md
@@ -144,6 +144,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    :hidden:
    :caption: Other resources:
 
+   UnderstandingHedVersions.md
    DocumentationSummary.md
    HedGovernance.md
 
