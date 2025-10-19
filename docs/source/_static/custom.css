@@ -1,0 +1,80 @@
+/* Custom styles for HED Resources documentation using sphinx-book-theme */
+
+/* Ensure proper spacing for content */
+.bd-main .bd-content {
+    padding: 1rem;
+}
+
+/* Improve readability of admonitions */
+.admonition {
+    margin: 1.5rem 0;
+    padding: 1rem;
+}
+
+/* Style for code blocks */
+pre {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+/* Improve table styling */
+table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+table th,
+table td {
+    border: 1px solid #dee2e6;
+    padding: 0.5rem;
+}
+
+table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* Custom styling for navigation links */
+.bd-sidebar-primary .bd-toc a {
+    color: #333;
+    text-decoration: none;
+}
+
+.bd-sidebar-primary .bd-toc a:hover {
+    color: #0d6efd;
+}
+
+/* Ensure proper spacing in the main content area */
+.bd-article-container {
+    max-width: none;
+}
+
+/* Style for inline code */
+code {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.25rem;
+    font-size: 0.875em;
+}
+
+/* Improve spacing around headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+/* Custom styling for the HED documentation */
+.hed-tag {
+    font-family: 'Courier New', monospace;
+    background-color: #e3f2fd;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+}

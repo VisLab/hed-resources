@@ -1,0 +1,17 @@
+# HED Resources Documentation Dependencies
+# This file is maintained for backwards compatibility
+# For the full project configuration, see pyproject.toml
+
+# Install this project with documentation dependencies
+-e .[docs,quality]
+
+# Alternative: Install dependencies directly (legacy approach)
+# sphinx>=5.0.0
+# sphinx-rtd-theme>=1.0.0  
+# myst-parser>=1.0.0
+# sphinx-design>=0.4.0
+# sphinx-copybutton>=0.5.0
+# linkify-it-py>=2.0.0
+# sphinxcontrib-bibtex>=2.5.0
+# linkchecker>=10.0.0
+# codespell>=2.0.0
