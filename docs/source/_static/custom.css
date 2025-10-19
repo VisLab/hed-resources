@@ -11,7 +11,7 @@
     padding: 1rem;
 }
 
-/* Style for code blocks */
+/* Style for code blocks - Light mode */
 pre {
     background-color: #f8f9fa;
     border: 1px solid #e9ecef;
@@ -20,7 +20,23 @@ pre {
     margin: 1rem 0;
 }
 
-/* Improve table styling */
+/* Style for code blocks - Dark mode */
+html[data-theme="dark"] pre {
+    background-color: #1e1e1e;
+    border: 1px solid #3e3e3e;
+    color: #d4d4d4;
+}
+
+/* Ensure syntax highlighting is visible in dark mode */
+html[data-theme="dark"] .highlight {
+    background-color: #1e1e1e;
+}
+
+html[data-theme="dark"] .highlight pre {
+    background-color: #1e1e1e;
+}
+
+/* Improve table styling - Light mode */
 table {
     border-collapse: collapse;
     margin: 1rem 0;
@@ -35,6 +51,16 @@ table td {
 table th {
     background-color: #f8f9fa;
     font-weight: 600;
+}
+
+/* Table styling - Dark mode */
+html[data-theme="dark"] table th,
+html[data-theme="dark"] table td {
+    border: 1px solid #3e3e3e;
+}
+
+html[data-theme="dark"] table th {
+    background-color: #2e2e2e;
 }
 
 /* Custom styling for navigation links */
@@ -52,13 +78,20 @@ table th {
     max-width: none;
 }
 
-/* Style for inline code */
+/* Style for inline code - Light mode */
 code {
     background-color: #f8f9fa;
     border: 1px solid #e9ecef;
     border-radius: 0.25rem;
     padding: 0.125rem 0.25rem;
     font-size: 0.875em;
+}
+
+/* Style for inline code - Dark mode */
+html[data-theme="dark"] code {
+    background-color: #2e2e2e;
+    border: 1px solid #3e3e3e;
+    color: #d4d4d4;
 }
 
 /* Improve spacing around headings */
@@ -77,4 +110,10 @@ h1 {
     background-color: #e3f2fd;
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
+}
+
+/* HED tag styling - Dark mode */
+html[data-theme="dark"] .hed-tag {
+    background-color: #1a4d7a;
+    color: #d4d4d4;
 }
