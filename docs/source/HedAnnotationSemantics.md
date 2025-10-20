@@ -73,6 +73,7 @@ Green, Triangle, Target, Center-of, Visual-presentation, Sensory-event, Computer
 ## Semantic grouping rules
 
 Parentheses in HED annotations are not decorative—they carry semantic meaning. Tags within a group are semantically bound and work together to describe one thing. Tags outside the group describe different aspects or entities.
+Since HED annotations are unordered, parentheses are key for this binding.
 
 ### Rule 1: Group object properties together
 
@@ -113,7 +114,7 @@ Green, Triangle, Large
 **Problem:** Three properties that may or may not apply to the same object.
 ````
 
-### Rule 2: Use nested grouping for agent-action-object
+### Rule 2: Nest agent-action-object
 
 Agent-action-object relationships require nested grouping to show who did what to what.
 
@@ -170,8 +171,16 @@ When multiple columns or sources contribute properties of the same entity, curly
       "visual": "Experimental-stimulus, Sensory-event, Visual-presentation"
     }
   },
-  "color": {"HED": {"red": "Red"}},
-  "shape": {"HED": {"circle": "Circle"}}
+  "color": {
+    "HED": {
+      "red": "Red"
+    }
+  },
+  "shape": {
+    "HED": {
+      "circle": "Circle"
+    }
+  }
 }
 ```
 
@@ -185,7 +194,7 @@ When multiple columns or sources contribute properties of the same entity, curly
 Experimental-stimulus, Sensory-event, Visual-presentation, Red, Circle
 ```
 
-**Problem:** Red and Circle are separate top-level tags. Cannot definitively determine they describe the same object.
+**Problem:** `Red` and `Circle` are separate top-level tags. Cannot definitively determine they describe the same object.
 
 ---
 
@@ -199,8 +208,16 @@ Experimental-stimulus, Sensory-event, Visual-presentation, Red, Circle
       "visual": "Experimental-stimulus, Sensory-event, Visual-presentation, ({color}, {shape})"
     }
   },
-  "color": {"HED": {"red": "Red"}},
-  "shape": {"HED": {"circle": "Circle"}}
+  "color": {
+    "HED": {
+      "red": "Red"
+    }
+  },
+  "shape": {
+    "HED": {
+      "circle": "Circle"
+    }
+  }
 }
 ```
 
@@ -212,81 +229,73 @@ Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
 **Why it works:** The curly braces `{color}` and `{shape}` are replaced by their annotations within the grouping parentheses, ensuring they are grouped as properties of the same object.
 ````
 
-### Rule 4: Group Event-type and Task-event-role appropriately
+### Rule 4: Group Event and Task-event-role
 
-Event classification tags (Event-type and Task-event-role) should typically be at the top level or grouped together, but NOT grouped with stimulus properties.
+Event classification tags (`Event` and `Task-event-role`) should typically be at the top level or grouped together.
 
-````{admonition} **Pattern:** Placing Event-type and Task-event-role tags
+````{admonition} **Pattern:** Placing Event and Task-event-role tags
 
-**Pattern 1: Top-level placement (recommended)**
+**Pattern 1: Top-level placement**
 ```
-Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
+Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle), (Green, Triangle)
 ```
-**Meaning:** Event is both a sensory event and an experimental stimulus.
+**Meaning:** The event is both a sensory event and an experimental stimulus.
+
+A single top-level `Event` tag is assumed to represent an event that
+includes all of the rest of the tags in the annotation.
+The `Task-event-role` (in this case `Experimental-stimulus`)
+and the sensory-modality (in this case `Visual-presentation`) also
+apply since there is only one `Event` tag in the annotation.
+This is the most common method of annotating events.
 
 ---
 
 **Pattern 2: Grouped together (when entire annotation forms one concept)**
 ```
-(Experimental-stimulus, Sensory-event, (Visual-presentation, (Red, Circle)))
+(Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle))
 ```
-**Meaning:** All aspects describe one unified event.
+**Meaning:** All aspects describe one unified event. If at the
+top level, the outer parentheses are typically omitted as in Pattern 1.
 
 ---
 
 **Pattern 3: Multiple events with different roles**
 ```
-(Cue, Sensory-event, (Auditory-presentation, Tone)), 
-(Experimental-stimulus, Sensory-event, (Visual-presentation, (Red, Circle)))
+(Sensory-event, Cue, Auditory-presentation, Tone), 
+(Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle))
 ```
 **Meaning:** Two distinct events - an auditory cue and a visual experimental stimulus.
 
 ---
 
-**NOT RECOMMENDED:**
+
+**Pattern 4: Single event with multiple modalities**
 ```
-Sensory-event, Visual-presentation, (Red, Circle, Experimental-stimulus)
+Sensory-event, Feedback, (Auditory-presentation, Buzz), (Visual-presentation, (Red, Circle))
 ```
-**Problem:** `Experimental-stimulus` is grouped with stimulus properties, suggesting it's a property of the circle rather than a classification of the event itself.
+**Meaning:** A single feedback event which consists of simultaneous
+presentation of a red circle and a buzz.
+
 ````
 
-### Rule 5: Group sensory modality with presented content
+### Rule 5: Sensory-events should have a sensory-modality.
 
-If the event is a `Sensory-event`, the `Sensory-modality` tag (e.g., `Visual-presentation` or `Auditory-presentation`) SHOULD be associated with the content being presented.
+If the event is a `Sensory-event`, a `Sensory-modality` tag (e.g., `Visual-presentation` or `Auditory-presentation`) SHOULD be be able to be associated unambiguously with what is being presented.
 
-````{admonition} **Example:** Sensory modality grouping
+The examples in Rule 4 illustrate the different cases.
+In Example 1 (top-level-placement), there is only one `Sensory-event` and
+one `Visual-presentation`:
 
-**Example 1: Modality grouped with content (preferred)**
 ```
-Experimental-stimulus, Sensory-event, (Visual-presentation, (Red, Circle))
+Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle), (Green, Triangle)
 ```
-**Meaning:** "An experimental stimulus sensory event consisting of a visual presentation of a red circle"
+so the assumption is that the event, which is an experimental stimulus consists of a visual
+presentation of a red circle and a green triangle. 
 
----
+In an event using multiple sensory modalities, what is being presented should be grouped
+with its corresponding modality as in Rule 4 Example 4.
 
-**Example 2: Single modality at top level (acceptable)**
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
-```
-**Meaning:** "An experimental stimulus that is a visual sensory event presenting a red circle"
 
----
-
-**Example 3: Multi-modal feedback**
-```
-Feedback, Sensory-event, 
-(Visual-presentation, (Green, Cross)), 
-(Auditory-presentation, (Tone, Frequency/1000 Hz))
-```
-**Meaning:** "Feedback sensory event with visual presentation of a green cross and auditory presentation of a 1000 Hz tone"
-
-**Structure:**
-- `Feedback` - Task-event-role (top level)
-- `Sensory-event` - Event-type (top level)
-- `(Visual-presentation, (Green, Cross))` - First modality grouped with its content
-- `(Auditory-presentation, (Tone, Frequency/1000 Hz))` - Second modality grouped with its content
-
-**Why this structure:** Each modality is explicitly paired with what is presented in that modality, making the annotation unambiguous.
 ````
 
 ### Rule 6: Use directional pattern for relationships
@@ -323,10 +332,10 @@ Tags from the `Relation/` subtree express directional relationships and require 
 **Interpretation:** "A red circle is to-left-of a green square"
 
 **Structure:**
-- A = (Red, Circle) - the source object
-- Relation = To-left-of - the spatial relationship
-- C = (Green, Square) - the target object
-- Read as: Red Circle → To-left-of → Green Square
+- A = `(Red, Circle)` - the source object
+- Relation = `To-left-of` - the spatial relationship
+- C = `(Green, Square)` - the target object
+- Read as: Red circle → To-left-of → Green square
 
 ---
 
@@ -337,9 +346,9 @@ Tags from the `Relation/` subtree express directional relationships and require 
 **Interpretation:** "A white cross is at the center-of the computer screen"
 
 **Structure:**
-- A = (White, Cross) - the positioned object
-- Relation = Center-of - the spatial relationship
-- C = Computer-screen - the reference location
+- A = `(White, Cross)` - the positioned object
+- Relation = `Center-of` - the spatial relationship
+- C = `Computer-screen` - the reference location
 
 ---
 
@@ -375,49 +384,90 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 ### Rule 7: Keep independent concepts separate
 
 Tags that describe independent aspects or unrelated concepts should NOT be grouped together.
+Don't group tags with no semantic relationship.
 
-````{admonition} Separating independent concepts
+````{admonition} Examples of incorrect grouping
 
-**Keep separate: Event classifications**
-
-Event-type, Task-event-role, and Sensory-modality tags are high-level classifications that should NOT be grouped at the same level with stimulus properties.
-
-**Incorrect:**
-```
-(Experimental-stimulus, Sensory-event, Visual-presentation, Red, Circle)
-```
-
-**Correct:**
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
-```
-
----
-
-**Keep separate: Unrelated concepts**
-
-Never group tags with no semantic relationship.
-
-**Examples of incorrect grouping:**
 - `(Red, Press)` - Color and action are unrelated
 - `(Triangle, Mouse-button)` - Stimulus shape and response device are unrelated
 - `(Green, Response-time)` - Color and temporal measure are unrelated
 ````
 
-## Event classification: Event-type and Task-event-role
+### Rule 8: Reserved tags have special syntax
 
-Every event annotation should include BOTH an Event-type tag (what kind of event) and a Task-event-role tag (the event's role in the task from the participant's perspective).
+The reserved tags have special grouping rules and usage patterns as shown in the following table:
 
-### Understanding Event-type vs. Task-event-role
+```{list-table}
+:header-rows: 1
+:widths: 20 40 40
 
+* - Tag
+  - Example
+  - Rules
+* - `Definition`
+  - `(Definition/Red-triangle, (Sensory-event, Visual-presentation, (Red, Triangle)))`
+  - * Allows users to name frequently used strings
+    * Can only be defined in sidecars or externally
+    * Defining tags are in inner group
+* - `Def`
+  - `Def/Red-triangle`
+  - * Must correspond to definition
+    * Used to anchor `Onset`, `Inset`, `Offset`
+    * Cannot appear in definitions
+* - `Def-expand`
+  - `(Def-expand/Red-triangle, (Red, Triangle))`
+  - * Must correspond to definition
+    * Used to anchor `Onset`, `Inset`, `Offset`
+    * Cannot appear in definitions
+    * DO NOT USE -- Tools use during processing
+* - `Onset`
+  - `(Def/Red-triangle, Onset)
+  - * Marks the start of an unfolding event
+    * Must have a definition anchor
+    * Can include an internal tag group
+    * Must be in a top-level tag group
+    * Event ends when an `Offset` or `Onset` with same definition name is encountered
+* - `Offset`
+  - `(Def/Red-triangle, Offset)
+  - * Marks the end of an unfolding event
+    * Must have a definition anchor
+    * Must be in a top-level tag group
+    * An earlier `Onset` group of same name must have occurred
+* - `Inset`
+  - `(Def/Red-triangle, (Luminance-contrast/0.5), Inset)
+  - * Marks an interesting point during the unfolding of an event process.
+    * Must have a definition anchor
+    * Can include an internal tag group
+    * Must be in a top-level tag group
+    * Must be between an `Onset` and the ending time of that event process
+* - `Duration`
+  - `(Duration/2 s, (Sensory-event, Auditory-presentation, Feedback Buzz))`
+  -  * Must be in a top-level tag group
+     * Inner tag group defines the event process that starts at that point
+     * If used with `Delay`, the event process start is delayed by indicated amount
+* - `Delay`
+  - `(Delay/0.5 ms, (Sensory-event, Auditory-presentation, Feedback Buzz))`
+  - * Must be a top-level tag group
+    * Delays the start of the event by the indicated amount
+* - `Event-context`
+  - `(Event-context, (...), (...))`
+  - * Should only be created by tools
+    * Must be a top-level tag group
+    * Keeps track of ungoing events at intermediate time points
+```
+
+## Event classification: Event and Task-event-role
+
+Every event annotation should include BOTH an `Event` tag (what kind of event) and a `Task-event-role` tag (the event's role in the task from the participant's perspective).
 The distinction between these two classification systems is fundamental:
 
-- **Event-type tags** (from `Event/`): Classify the NATURE of what happened
+- **Event tags** (from `Event/`): Classify the NATURE of what happened
   - `Sensory-event` - Something presented to senses
   - `Agent-action` - An agent performs an action
   - `Data-feature` - Computed or observed feature
   - `Experiment-control` - Structural/control change
   - `Experiment-structure` - Experiment organization marker
+  - `Experiment-procedure` - Questionnaire or other measurement
   - `Measurement-event` - Measurement taken
 
 - **Task-event-role tags** (from `Task-event-role/`): Classify the event's ROLE in the experimental task
@@ -433,11 +483,11 @@ The distinction between these two classification systems is fundamental:
 
 ### Why both are needed
 
-````{admonition} **Example:** Event-type alone is insufficient
+````{admonition} **Example:** Event alone is insufficient
 
-**Annotation with only Event-type:**
+**Annotation with only Event:**
 ```
-Sensory-event, Auditory-presentation, (Tone, 440 Hz)
+Sensory-event, Auditory-presentation, (Tone, Frequency/440 Hz)
 ```
 
 **Problems:**
@@ -452,7 +502,7 @@ We know WHAT happened (auditory sensory event) but not its ROLE in the task.
 
 **Complete annotation with Task-event-role:**
 ```
-Experimental-stimulus, Sensory-event, Auditory-presentation, (Tone, 440 Hz)
+Sensory-event, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/440 Hz)
 ```
 **Now clear:** "An auditory tone that is the experimental stimulus the participant should respond to"
 
@@ -460,14 +510,14 @@ Experimental-stimulus, Sensory-event, Auditory-presentation, (Tone, 440 Hz)
 
 **Alternative role (same event, different meaning):**
 ```
-Warning, Sensory-event, Auditory-presentation, (Tone, 440 Hz)
+Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 ```
 **Now clear:** "An auditory tone that serves as a warning signal"
 ````
 
-### Selecting the right Event-type
+### Selecting the right Event tag
 
-````{admonition} **Decision guide:** Choosing Event-type tags
+````{admonition} **Decision guide:** Choosing Event tags
 
 **Question: What is the primary nature of what happened?**
 
@@ -491,6 +541,11 @@ Warning, Sensory-event, Auditory-presentation, (Tone, 440 Hz)
 - Control system takes action
 - Examples: "Block starts", "Difficulty increases", "Recording begins"
 
+**Use `Experiment-procedure` when:**
+- Experiment paused to administer something
+- Involves the participant, recording may or may not continue
+- Examples: "Questionnaire administered", "Mouth swab taken"
+
 **Use `Experiment-structure` when:**
 - Organizational boundary or marker
 - Trial, block, or condition markers
@@ -510,7 +565,7 @@ Warning, Sensory-event, Auditory-presentation, (Tone, 440 Hz)
 
 **Use `Experimental-stimulus` when:**
 - Primary stimulus participant must detect, identify, or respond to
-- The "target" of attention in the experimental paradigm
+- The "target" or non-target in an attention experiment
 - Example: Oddball target, image in recognition task
 
 **Use `Cue` when:**
@@ -536,11 +591,11 @@ Warning, Sensory-event, Auditory-presentation, (Tone, 440 Hz)
 **Use `Warning` when:**
 - Alert or warning signal
 - Indicates error condition or important alert
-- Example: "Too slow!" message, error tone
+- Example: "Too slow!" message when participant is expected to maintain a response rate
 
 **Use `Incidental` when:**
 - Present in environment but not task-relevant
-- Distractor or irrelevant stimulus
+- Air
 - Example: Standard stimulus in oddball (not target), background noise
 
 **Use `Task-activity` when:**
@@ -554,196 +609,81 @@ Warning, Sensory-event, Auditory-presentation, (Tone, 440 Hz)
 - Example: Stimulus failed to display, unexpected loud noise
 ````
 
+### Task-action-type and task-stimulus-role
+
+For participant responses, the event should be further modified
+by tags from the `Task-action-type/` subtree. These tags
+indicate properties such as correctness of the response with respect to a task
+
+Sensory-events that are experimental stimuli should be further modified by tags
+from the `Task-stimulus-role/` subtree (e.g., `Distractor`, `Novel`, etc.).
+These tags are often related to the psychological effect being elicited by
+the stimulus.
+
 ### Complete event annotation examples
 
 ````{admonition} **Examples:** Combining Event-type and Task-event-role
 
 **Example 1: Target stimulus in oddball task**
 ```
-Experimental-stimulus, Sensory-event, Auditory-presentation, 
-(Tone, 1000 Hz), (Intended-effect, Target)
+Sensory-event, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/1000 Hz, Target)
 ```
 
 ---
 
 **Example 2: Standard (non-target) stimulus**
 ```
-Incidental, Sensory-event, Auditory-presentation, 
-(Tone, 500 Hz), (Intended-effect, Standard)
+Sensory-event, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/500 Hz, Non-target)
 ```
 
 ---
 
 **Example 3: Participant button press**
 ```
-Participant-response, Agent-action, 
-((Experiment-participant), (Press, (Index-finger, Mouse-button))), 
-Response-time/350 ms
+Agent-action, Participant-response, Correct-action, (Experiment-participant, (Press, (Left, Mouse-button)))
 ```
 
 ---
 
 **Example 4: Feedback on correct response**
 ```
-Feedback, Sensory-event, Visual-presentation, 
-(Green, Checkmark), (Intended-effect, Positive)
+Sensory-event,  Visual-presentation, (Feedback, Positive, (Green, Circle))
 ```
 
 ---
 
 **Example 5: Fixation cue**
 ```
-Cue, Sensory-event, Visual-presentation, 
-(White, Cross), (Intended-effect, Fixation-point)
+Sensory-event, Visual-presentation, (Cue, Label/Fixation-point, (White, Cross))
 ```
 
 ---
 
 **Example 6: Task instructions**
 ```
-Instructional, Sensory-event, Visual-presentation, 
-(Text, Label/Press-left-for-red)
+Sensory-event, Visual-presentation, (Instructional, (Text, Label/Press-left-for-red))
 ```
 
 ---
 
 **Example 7: Environmental noise**
 ```
-Mishap, Sensory-event, Auditory-presentation, 
-(Environmental-sound, Label/Construction-noise)
+Sensory-event, Auditory-presentation, (Mishap, (Environmental-sound, Label/Construction-noise))
 ```
 
 ---
 
 **Example 8: Computed artifact**
 ```
-Incidental, Data-feature, (Eye-blink, Def/AutoDetected)
+Data-feature, (Incidental, (Eye-blink, Def/AutoDetected))
 ```
 ````
 
-## Simultaneous events and presentations
+These examples show a single event and the items may or may not be grouped with additional
+task role tags as long as the interpretation is unambiguous.
 
-When multiple stimuli or events occur at the same time, the choice of whether to annotate them as a single event or multiple separate events depends on their relationship and functional roles.
 
-### Single sensory event: Same modality, same location
-
-When multiple stimuli appear simultaneously within the same modality and presented at the same location, they are typically annotated as a single sensory event with multiple stimulus descriptions.
-
-````{admonition} **Example:** Multiple objects in same visual presentation
-
-**Scenario:** A red square (target) and a green triangle (distractor) both appear on screen at the same time.
-
-**Annotation (Single Sensory Event):**
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, 
-((Red, Square), (Intended-effect, Target)), 
-((Green, Triangle), (Intended-effect, Distractor))
-```
-
-**Interpretation:** "An experimental stimulus sensory event with visual presentation of two objects: a red square intended as a target and a green triangle intended as a distractor"
-
-**Why Single Event:**
-- Same modality (visual)
-- Same presentation mechanism (screen display)
-- Perceived as a unified visual scene
-- Natural to consider as one presentation
-- Both have the same Task-event-role (Experimental-stimulus)
-````
-
-### Ambiguous case: Different modalities, related content
-
-When stimuli occur simultaneously across different modalities but convey related information, either a single event or separate events may be appropriate.
-
-````{admonition} **Example:** Cross-modal feedback (thumbs down + buzz)
-
-**Scenario:** Participant receives feedback consisting of a thumbs-down image on screen simultaneously with an auditory buzz.
-
-**Option A: Single Multi-Modal Sensory Event**
-```
-Feedback, Sensory-event, 
-(Visual-presentation, (Label/Thumbs-down, Image)), 
-(Auditory-presentation, Buzz), 
-(Intended-effect, Negative)
-```
-
-**Interpretation:** "A single feedback sensory event consisting of both visual (thumbs-down image) and auditory (buzz) components, intended as negative feedback"
-
-**Rationale:**
-- Functionally a single feedback event
-- Components are coordinated (same purpose)
-- Occur at exactly the same time by design
-- Perceived as unified feedback
-
----
-
-**Option B: Two Separate Sensory Events**
-
-Event 1:
-```
-Feedback, Sensory-event, Visual-presentation, 
-(Thumbs-down, Image), (Intended-effect, Negative)
-```
-
-Event 2:
-```
-Feedback, Sensory-event, Auditory-presentation, 
-Buzz, (Intended-effect, Negative)
-```
-
-**Interpretation:** "Two simultaneous sensory events: one visual (thumbs-down) and one auditory (buzz), both providing negative feedback"
-
-**Rationale:**
-- Different modalities can be considered separate events
-- Each component could occur independently
-- Clearer for analysis focusing on single modalities
-- More explicit about dual presentation
-
----
-
-**Both are correct!** Choose based on your analysis needs:
-- Use single event if treating feedback as unified
-- Use separate events if analyzing modalities independently
-````
-
-### Separate events: Different sources or independent stimuli
-
-When stimuli occur simultaneously but originate from different sources or are clearly independent, they should be annotated as separate events.
-
-````{admonition} **Example:** Independent simultaneous events
-
-**Scenario:** During an experiment, at the exact same moment:
-- The experimental stimulus (a blue circle) appears on screen
-- The air conditioning system makes a noise
-- A notification appears on the recording computer
-
-**Annotation (three separate events):**
-
-Event 1 (Experimental):
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, (Blue, Circle)
-```
-
-Event 2 (Environmental):
-```
-Mishap, Sensory-event, Auditory-presentation, 
-(Environmental-sound, Label/HVAC-noise)
-```
-
-Event 3 (Recording system):
-```
-Experiment-control, Label/Status-update
-```
-
-**Why Separate:**
-- Different sources (experiment, environment, recording system)
-- Independent causation (not coordinated)
-- Different functional roles (stimulus vs. noise vs. recording event)
-- Would never be considered a unified presentation
-
-**Key Principle:** If events would occur independently and are not functionally related, annotate separately even if temporally coincident.
-````
-
-### Decision guidelines for simultaneous events
+## Decision guidelines for simultaneous events
 
 ````{admonition} **Guidelines:** When to use single vs. multiple events
 
@@ -790,8 +730,16 @@ Timeline files have timestamps (`onset` column) indicating when things happen. E
       "visual": "Experimental-stimulus, Sensory-event, Visual-presentation, ({color}, {shape})"
     }
   },
-  "color": {"HED": {"red": "Red"}},
-  "shape": {"HED": {"circle": "Circle"}}
+  "color": {
+    "HED": {
+      "red": "Red"
+    }
+  },
+  "shape": {
+    "HED": {
+      "circle": "Circle"
+    }
+  }
 }
 ```
 
@@ -823,7 +771,9 @@ Descriptor files (e.g., `participants.tsv`, `samples.tsv`) describe properties o
 **Sidecar:**
 ```json
 {
-  "age": {"HED": "Age/# years"},
+  "age": {
+    "HED": "Age/# years"
+  },
   "hand": {
     "HED": {
       "right": "Right-handed",
@@ -863,182 +813,34 @@ Temporal scope tags (`Onset`, `Offset`, `Inset`) are ONLY for timeline files and
 {
   "event_type": {
     "HED": {
-      "fixation": "Cue, Sensory-event, Visual-presentation, (Onset, (Cross, White), (Intended-effect, Fixation-point))"
+      "fixation": "Sensory-event, Visual-presentation, Cue, (Def/Fixation-point, ({Cross-size}), Onset)"
     }
+  },
+  "cross_size": {
+    "HED": "Size/# cm"
   }
 }
 ```
 
 **Event:**
-| onset | duration | event_type |
-|-------|----------|------------|
-| 0.5   | 1.5      | fixation   |
+| onset | duration | event_type | cross_size |
+|-------|----------|------------| ---------- |
+| 0.5   | 1.5      | fixation   | 3          |
 
 **Assembled Result:**
 ```
-Cue, Sensory-event, Visual-presentation, 
-(Onset, (Cross, White), (Intended-effect, Fixation-point))
+Sensory-event, Visual-presentation, Cue, (Def/Fixation-point, (Size/3 cm) Onset)
 ```
-
-**Why use Onset:**
+This indicates that a fixation cross was displayed starting at 0
+**Why use `Onset`:**
 - Event has duration (duration column = 1.5)
 - The grouped content under Onset continues for the duration
 - Temporal scope is explicit
 - Everything within the Onset group persists for 1.5 seconds
+- The inner group containing the `({cross_size})` allows each occurrence of the Fixation-point to be specialized.
+
 ````
 
-## Common mistakes and how to avoid them
-
-Understanding common mistakes helps you avoid them in your own annotations.
-
-### Mistake 1: Ungrouped stimulus properties
-
-````{admonition} **Mistake:** Properties not grouped
-:class: error
-
-**Wrong:**
-```
-Sensory-event, Visual-presentation, Red, Circle
-```
-
-**Why it's wrong:**
-- Red and Circle are separate top-level tags
-- Ambiguous: could mean "something red AND something circular" (two things)
-
-**Correct:**
-```
-Sensory-event, Visual-presentation, (Red, Circle)
-```
-
-**Why it's correct:**
-- Red and Circle grouped = single object
-- Unambiguous: describes one red circular object
-````
-
-### Mistake 2: Over-grouping unrelated concepts
-
-````{admonition} **Mistake:** Grouping event classifications with properties
-:class: error
-
-**Wrong:**
-```
-(Experimental-stimulus, Sensory-event, Visual-presentation, Red, Circle)
-```
-
-**Why it's wrong:**
-- Event classifications grouped with stimulus properties
-- Suggests Experimental-stimulus is a property of the circle
-
-**Correct:**
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
-```
-
-**Why it's correct:**
-- Event classifications at top level
-- Stimulus properties grouped separately
-- Clear semantic structure
-````
-
-### Mistake 3: Missing Event-type in timeline files
-
-````{admonition} **Mistake:** No Event-type tag in events.tsv
-:class: error
-
-**Wrong:**
-
-**Sidecar:**
-```json
-{
-  "color": {"HED": {"red": "Red"}},
-  "shape": {"HED": {"circle": "Circle"}}
-}
-```
-
-**Result:**
-```
-Red, Circle
-```
-
-**Why it's wrong:**
-- Timeline file requires Event-type tag
-- Missing Task-event-role
-- Doesn't indicate what KIND of event occurred
-
-**Correct:**
-
-**Sidecar:**
-```json
-{
-  "event_type": {
-    "HED": {
-      "visual": "Experimental-stimulus, Sensory-event, Visual-presentation, ({color}, {shape})"
-    }
-  },
-  "color": {"HED": {"red": "Red"}},
-  "shape": {"HED": {"circle": "Circle"}}
-}
-```
-
-**Result:**
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
-```
-````
-
-### Mistake 4: Flat agent-action structure
-
-````{admonition} **Mistake:** Not grouping agent-action-object
-:class: error
-
-**Wrong:**
-```
-Agent-action, Experiment-participant, Press, Keyboard-key
-```
-
-**Why it's wrong:**
-- No grouping indicates WHO did WHAT
-- Ambiguous relationships
-
-**Correct:**
-```
-Agent-action, ((Experiment-participant), (Press, Keyboard-key))
-```
-
-**Why it's correct:**
-- Nested grouping shows agent-action-object relationship
-- Clear who (participant) did what (press key)
-````
-
-### Mistake 5: Inconsistent grouping across trials
-
-````{admonition} **Mistake:** Different grouping for same concept
-:class: error
-
-**Wrong:**
-
-Trial 1: `Sensory-event, Visual-presentation, (Red, Circle)`
-
-Trial 2: `Sensory-event, Visual-presentation, Red, Square`
-
-Trial 3: `Sensory-event, (Visual-presentation, Green), Triangle`
-
-**Why it's wrong:**
-- Inconsistent structure makes analysis difficult
-- Trial 2: properties not grouped
-- Trial 3: modality incorrectly grouped with color
-
-**Correct:**
-
-All trials:
-- `Sensory-event, Visual-presentation, (Red, Circle)`
-- `Sensory-event, Visual-presentation, (Red, Square)`
-- `Sensory-event, Visual-presentation, (Green, Triangle)`
-
-**Why it's correct:**
-- Consistent structure across all trials
-- Predictable pattern for analysis
-````
 
 ## Progressive complexity examples
 
@@ -1071,8 +873,8 @@ Sensory-event, Visual-presentation, (Red, Circle)
 
 **Annotation:**
 ```
-Experimental-stimulus, Sensory-event, Visual-presentation, 
-(Red, Circle), (Intended-effect, Target)
+Sensory-event, Experimental-stimulus, Visual-presentation, 
+(Red, Circle, Target)
 ```
 
 **Components:**
@@ -1080,7 +882,7 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 - Event type: `Sensory-event`
 - Modality: `Visual-presentation`
 - Stimulus: `(Red, Circle)`
-- Task context: `(Intended-effect, Target)`
+- Task context: `Target`
 
 **English:** "An experimental stimulus sensory event presenting a red circle intended as a target"
 ````
@@ -1089,12 +891,12 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 
 ````{admonition} **Example 3:** Adding location
 
-**Scenario:** A red circle target appears on the left
+**Scenario:** A red circle target appears on the left of the computer screen
 
 **Annotation:**
 ```
-Experimental-stimulus, Sensory-event, Visual-presentation, 
-(Red, Circle), (Intended-effect, Target), Left-side-of
+Sensory-event, Experimental-stimulus, Visual-presentation, 
+((Red, Circle, Target), (Left-side-of, Computer-screen))
 ```
 
 **Components:**
@@ -1102,10 +904,10 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 - Event type: `Sensory-event`
 - Modality: `Visual-presentation`
 - Stimulus: `(Red, Circle)`
-- Task context: `(Intended-effect, Target)`
-- Location: `Left-side-of`
+- Task context: `Target`
+- Location: `(Left-side-of, Computer-screen)`
 
-**English:** "An experimental stimulus sensory event presenting a red circle target on the left"
+**English:** "An experimental stimulus sensory event presenting a red circle target on the left side of the computer screen"
 ````
 
 ### Level 4: With duration
@@ -1116,98 +918,22 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 
 **Annotation:**
 ```
-Experimental-stimulus, Sensory-event, Visual-presentation, 
-(Onset, (Red, Circle), (Intended-effect, Target), Left-side-of)
+(Duration/2 s, (Experimental-stimulus, Sensory-event, Visual-presentation, 
+((Red, Circle, Target), (Left-side-of, Computer-screen))))
 ```
 
 **Components:**
 - Task-event-role: `Experimental-stimulus`
 - Event type: `Sensory-event`
 - Modality: `Visual-presentation`
-- Temporal scope: `Onset` (has duration)
-- Content: Red circle target on left (persists for duration)
+- Temporal scope: `Duration/2 s` (has duration)
+- Content: Red circle target on left of computer screen (persists for duration)
 
-**English:** "An experimental stimulus sensory event begins, presenting a red circle target on the left, which continues for the event duration"
+**English:** "An experimental stimulus sensory event consisting of the presentation of a red circle target on the left
+of the computer screen is displayed for 2 secondsw"
 ````
 
-### Level 5: With response
 
-````{admonition} **Example 5:** Adding participant response
-
-**Scenario:** Participant presses spacebar in response to the target
-
-**Stimulus Annotation (onset=1.0, duration=2.0):**
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, 
-(Onset, (Red, Circle), (Intended-effect, Target), Left-side-of)
-```
-
-**Response Annotation (onset=1.35):**
-```
-Participant-response, Agent-action, 
-((Experiment-participant), (Press, Keyboard-key)), 
-Response-time/350 ms
-```
-
-**Components of response:**
-- Task-event-role: `Participant-response`
-- Event type: `Agent-action`
-- Actor: `Experiment-participant`
-- Action-object: Press keyboard-key
-- Measurement: `Response-time/350 ms` (1.35 - 1.0 = 0.35 seconds)
-
-**English:** "The experiment participant presses a keyboard key; response time is 350 ms"
-````
-
-### Level 6: Complete trial with definitions
-
-````{admonition} **Example 6:** Full trial using definitions
-
-**Definitions (defined earlier in dataset):**
-```
-(Definition/FixationCross, (Cross, White), (Intended-effect, Fixation-point))
-(Definition/TargetStimulus, (Red, Circle), (Intended-effect, Target))
-(Definition/KeypressResponse, (Press, Keyboard-key))
-(Definition/CorrectFeedback, (Green, Checkmark), (Intended-effect, Positive))
-```
-
-**Trial Start (onset=0.0):**
-```
-Experiment-structure, Task-trial, Label/Trial17
-```
-
-**Fixation (onset=0.5, duration=1.0):**
-```
-Cue, Sensory-event, Visual-presentation, (Onset, Def/FixationCross)
-```
-
-**Target Stimulus (onset=1.5, duration=2.0):**
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, 
-(Onset, Def/TargetStimulus), Left-side-of
-```
-
-**Response (onset=1.85):**
-```
-Participant-response, Agent-action, 
-((Experiment-participant), Def/KeypressResponse), 
-Response-time/350 ms
-```
-
-**Feedback (onset=3.5, duration=0.5):**
-```
-Feedback, Sensory-event, Visual-presentation, (Onset, Def/CorrectFeedback)
-```
-
-**English narrative:** "Trial 17 begins. At 0.5s, a white fixation cross appears for 1 second. At 1.5s, a red circle target appears on the left for 2 seconds. At 1.85s (350ms after target onset), the participant presses a keyboard key. At 3.5s, green checkmark feedback appears for 0.5s."
-
-**Benefits:**
-- Definitions reduce redundancy
-- Consistent stimulus descriptions across trials
-- Easy to modify definitions in one place
-- Clear temporal sequence
-- Complete trial annotation
-````
 
 ## Best practices checklist
 
@@ -1237,8 +963,7 @@ Use this checklist before finalizing your annotations:
 
 **✓ Assembly**
 - [ ] Curly braces used for complex grouping
-- [ ] `#` placeholder for numeric values
-- [ ] No redundant parentheses around curly braces
+- [ ] `#` placeholder for numeric values -- units allowed
 - [ ] Column references match actual column names
 
 **✓ Relationships**
@@ -1250,12 +975,12 @@ Use this checklist before finalizing your annotations:
 - [ ] Repeated patterns defined once with Definition/DefName
 - [ ] Each Definition name is unique
 - [ ] Def/DefName used to reference definitions
-- [ ] Definitions defined before first use
+- [ ] Definitions defined in sidecars or externally
 
 **✓ Validation**
 - [ ] All tags exist in HED schema
-- [ ] No intermediate nodes without children
 - [ ] Required children specified
+- [ ] Extensions have parent tag in the HED schema
 - [ ] Units provided where needed
 
 **✓ Semantics**
@@ -1276,7 +1001,7 @@ Creating semantically correct HED annotations requires understanding:
 
 1. **The reversibility principle** - Your annotations should translate back to coherent English
 2. **Semantic grouping rules** - Parentheses bind tags that describe the same entity
-3. **Event classification** - Every event needs both Event-type and Task-event-role
+3. **Event classification** - Every event should have both Event-type and Task-event-role
 4. **File type semantics** - Timeline vs. descriptor files have different requirements
 5. **Relationship patterns** - Agent-action-object and directional relationships need specific structures
 6. **Assembly control** - Use curly braces to control how multi-column annotations are assembled
@@ -1289,3 +1014,10 @@ For additional information, see:
 - [**BIDS Annotation Quickstart**](./BidsAnnotationQuickstart.md) - BIDS integration
 - [**HED Schemas**](./HedSchemas.md) - Understanding the HED vocabulary
 - [**HED Validation Guide**](./HedValidationGuide.md) - Validating your annotations
+
+Available tools:
+- [**HED online tools**](https://hedtools.org/hed) - Fairly complete set of tools for a single tsv and json file.
+- [**HED browser-based validation**](https://www.hedtags.org/hed-javascript) - validate an entire BIDS dataset -- all local, no installation
+- [**HED extension for NWB**](https://github.com/hed-standard/ndx-hed) - incorporates HED into Neurodata Without Borders datasets.
+- [**HED python tools**](https://github.com/hed-standard/hed-python) - comprehensive set of tools for HED in Python.
+- [**HED matlab tools**](https://github.com/hed-standard/hed-matlab) - HED interface in MATLAB
