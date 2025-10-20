@@ -296,8 +296,6 @@ In an event using multiple sensory modalities, what is being presented should be
 with its corresponding modality as in Rule 4 Example 4.
 
 
-````
-
 ### Rule 6: Use directional pattern for relationships
 
 Tags from the `Relation/` subtree express directional relationships and require specific nested grouping.
