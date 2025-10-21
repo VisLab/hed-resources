@@ -2,6 +2,16 @@
 
 # What's new?
 
+**Oct 2o, 2025**: **ndx-hed 0.2.0 for NWB on PyPI**  
+> Complete implementation of HED for NWB.  
+> Validation and support for NWB events.  
+> See [v0.2.0 release notes](https://github.com/hed-standard/ndx-hed/releases/tag/0.2.0).  
+
+**Oct 2, 2025**: **HEDTools 0.7.0 on PyPI**  
+> Logging for scripts.  
+> Major improvements to infrastructure.  
+> See [v0.7.0 release notes](https://github.com/hed-standard/hed-python/releases/tag/0.7.0).  
+
 **Aug 22, 2025**: **SCORE paper published**  
 > Hierarchical Event Descriptor library schema for EEG data annotation  
 > Hermes, D., Pal Attia, T., Beniczky, S. et al. 
@@ -9,7 +19,7 @@
 > [https://doi.org/10.1038/s41597-025-05791-2](https://doi.org/10.1038/s41597-025-05791-2).  
 
 **Aug 07, 2025**: **HEDTools 0.6.0 on PyPI**  
-> new quality evaluations.  
+> New quality evaluations.  
 > Major improvements to infrastructure.  
 > See [v0.6.0 release notes](https://github.com/hed-standard/hed-python/releases/tag/0.6.0).  
 
