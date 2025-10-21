@@ -60,7 +60,7 @@ All three schemas are loaded as a single schema at runtime.
 
 In BIDS (Brain Imaging Data Structure) datasets, the HED version is
 specified in the `dataset_description.json` file at the top level of the dataset.
-See [**7.5. Library schemas in BIDS**](https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html#library-schemas-in-bids)
+See [**7.5. Library schemas in BIDS**](https://www.hedtags.org/hed-specification/07_Library_schemas.html#library-schemas-in-bids)
 in the HED specification for information about the rules.
 
 In NWB (Neurodata Without Borders) dataset, the HED version is specified

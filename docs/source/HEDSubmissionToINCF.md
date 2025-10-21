@@ -43,7 +43,7 @@ All HED resources are open and freely available, as summarized in Table 1 below.
 
 | Resource | URLs                                                                                                                                                                                                                                                                                                                                                              |
 | :---- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Specification | [doi.org/10.5281/zenodo.7869149](http://doi.org/10.5281/zenodo.7869149) (DOI)<br/>[hed-specification.readthedocs.io/en/latest/](https://hed-specification.readthedocs.io/en/latest/) (HTML)<br/>[github.com/hed-standard/hed-specification/tree/master/docs](https://github.com/hed-standard/hed-specification/tree/master/docs) (src)                                                    |
+| Specification | [doi.org/10.5281/zenodo.7869149](http://doi.org/10.5281/zenodo.7869149) (DOI)<br/>[www.hedtags.org/hed-specification/](https://www.hedtags.org/hed-specification/) (HTML)<br/>[github.com/hed-standard/hed-specification/tree/master/docs](https://github.com/hed-standard/hed-specification/tree/master/docs) (src)                                                    |
 | Homepage | [www.hedtags.org](http://www.hedtags.org) (home)<br/>[github.com/hed-standard/hed-standard.github.io](https://github.com/hed-standard/hed-standard.github.io) (src)                                                                                                                                                                                               |
 | HED schemas (vocabularies) | [www.hedtags.org/display\_hed.html](http://www.hedtags.org/display\_hed.html) (viewer)<br/>[doi.org/10.5281/zenodo.7876037](http://doi.org/10.5281/zenodo.7876037) (standard schema DOI)<br/>[doi.org/10.5281/zenodo.7897596](http://doi.org/10.5281/zenodo.7897596) (score schema DOI)                                                                           |
 | Python codebase | [doi.org/10.5281/zenodo.8056010](http://doi.org/10.5281/zenodo.8056010) (DOI)<br/>[hed-python.readthedocs.io/en/latest](http://hed-python.readthedocs.io/en/latest) (API docs HTML)<br/>[github.com/hed-standard/hed-python](http://github.com/hed-standard/hed-python) (src)<br/>[https://pypi.org/project/hedtools/](https://pypi.org/project/hedtools/) (PyPI) |
@@ -72,7 +72,7 @@ The repositories maintain GitHub issues forums and have corresponding documentat
 The repositories follow these rules for branch naming (with respect to documentation on *readthedocs*):
 
 * [**develop**](https://hed-specification.readthedocs.io/en/develop/index.html) \- development branch with features under discussion.  
-* [**latest**](https://hed-specification.readthedocs.io/en/latest/index.html) \- (main or master) revisions approved by the HED Working Group and tested, but not officially released.  
+* [**latest**](https://www.hedtags.org/hed-specification/index.html) \- (main or master) revisions approved by the HED Working Group and tested, but not officially released.  
 * [**stable**](https://hed-specification.readthedocs.io/en/stable/index.html) \- the latest released form.
 
 Releases for the specification as well as the Python and Javascript tools use the GitHub tagged release mechanism 
@@ -178,7 +178,7 @@ Yes. HED is integrated and interoperable with [BIDS](https://bids.neuroimaging.i
 ost widely used standard for structuring human neuroimaging datasets. The standards are loosely coupled 
 with clear guidance on how to interoperate in both BIDS (via the [Hierarchical Event Descriptors](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) appendix 
 of the [BIDS Specification](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) and in BIDS the BIDS Starter Kit tutorial [Annotating a BIDS dataset](https://bids-standard.github.io/bids-starter-kit/tutorials/annotation.html)) 
-and in HED (via the [HED support of BIDS](https://hed-specification.readthedocs.io/en/latest/06\_Infrastructure\_and\_tools.html\#hed-support-of-bidskit/tutorials/annotation.html) chapter in the [HED specification](https://hed-specification.readthedocs.io/en/latest/index.html) and 
+and in HED (via the [HED support of BIDS](https://www.hedtags.org/hed-specification/06\_Infrastructure\_and\_tools.html\#hed-support-of-bidskit/tutorials/annotation.html) chapter in the [HED specification](https://www.hedtags.org/hed-specification/index.html) and 
 in the [BIDS annotation quickstart](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) on the [HED resources](https://www.hedtags.org/hed-resources/index.html) site.  
  
 By design the validators are loosely coupled with the BIDS validator, which calls the HED validator 
@@ -221,7 +221,7 @@ should it be implemented anyway?**
 As summarized in the following discussion, annotation using HED requires very little expertise. 
 HED schema development requires domain expertise, but no particular technical expertise. 
 HED tool development requires significant technical expertise, but HEDTools provides a core infrastructure 
-upon which users can build their own scripts. Alternatively, the [HED specification](https://hed-specification.readthedocs.io/en/latest/index.html) fully documents 
+upon which users can build their own scripts. Alternatively, the [HED specification](https://www.hedtags.org/hed-specification/index.html) fully documents 
 how HED vocabularies and tools must behave, allowing independent of HED-compatible ecosystems.
 
 **a. Annotation:** The use of HED to annotate datasets can be done without any programming or 
@@ -253,7 +253,7 @@ as well as classes representing the main structural elements of HED to enable th
 
 **2. Does the SBP provide an architectural concept to understand its implementation and relationships to external entities?**  
 
-Yes. The [HED specification](https://hed-specification.readthedocs.io/en/latest/index.html) outlines in detail the rules that HED annotations must follow and 
+Yes. The [HED specification](https://www.hedtags.org/hed-specification/index.html) outlines in detail the rules that HED annotations must follow and 
 how compliant downstream tools must treat HED annotations. Further, the HED specification repository 
 has a fairly complete set of language-independent [valid/invalid test cases](https://github.com/hed-standard/hed-specification/tree/master/tests/json\_tests) specified in JSON. 
 The test cases for each error code named in the specification are contained in a separate file whose 
@@ -368,7 +368,7 @@ world-wide, evidence of international use is highly desirable.*
 **1. Is there evidence of community use beyond the group that developed the SBP?**  
 
 Yes. **First-generation HED** was released in 2010 as part of the development of the 
-[HeadIT](http://headit.ucsd.edu) (Human Electrophysiology, Anatomic Data and Integrated Tools Resource) open repository for 
+HeadIT (Human Electrophysiology, Anatomic Data and Integrated Tools Resource) open repository for 
 EEG at UCSD under Scott Makeig. 
 
 During the next 9 years HED was developed and promoted as part of a multi-institution project 

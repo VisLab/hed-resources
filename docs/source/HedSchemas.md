@@ -25,7 +25,7 @@ the search will return tag strings containing *Square* as well as those
 containing the tags *Rectangle* and *2D-shape*.
 
 Rules for the HED schema vocabulary and for HED-compliant tools can be found in the
-[**HED Specification**](https://hed-specification.readthedocs.io/en/latest/).
+[**HED Specification**](https://www.hedtags.org/hed-specification/).
 
 Additional details about particular schemas can be found in the
 [**HED schemas**](https://hed-schemas.readthedocs.io/en/latest/index.html) documentation page.

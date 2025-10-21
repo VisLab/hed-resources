@@ -169,22 +169,14 @@ as well as summaries of the individual files.
 The remodeling tools are available in the GitHub 
 [**hed-python**](https://github.com/hed-standard/hed-python) repository
 along with other tools for data cleaning and curation.
-Although version 0.1.0 of this repository is available on [**PyPI**](https://pypi.org/)
-as `hedtools`, the version containing the restructuring tools (Version 0.2.0)
-is still under development and has not been officially released.
-However, the code is publicly available on the `develop` branch of the 
-hed-python repository and
-can be directly installed from GitHub using `pip`:
+
 
 ```text
-pip install git+https://github.com/hed-standard/hed-python/@develop
+pip install hedtools
 ```
 
-The web services and online tools supporting remodeling are available
-on the [**HED online tools dev server**](https://hedtools.org/hed/_dev).
-When version 0.2.0 of `hedtools` is officially released on PyPI, restructuring
-will become available on the released [**HED online tools**](https://hedtools.org/hed/).
-A docker version is also under development.
+The released [**HED online tools**](https://hedtools.org/hed/) support remodeling.
+The [**HED online tools dev server**](https://hedtools.org/hed_dev) has experimental features.
 
 The following diagram shows a schematic of the remodeling process.
 
@@ -2169,7 +2161,7 @@ The *summarize_hed_type* operation is designed to extract experimental design ma
 experimental structure.
 This summary operation assumes that the structure in question is suitably 
 annotated with HED (Hierarchical Event Descriptors). 
-The [**HED conditions and design matrices**](https://hed-examples.readthedocs.io/en/latest/HedConditionsAndDesignMatrices.html)
+The [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md)
 explains how this works.
 
 (summarize-hed-type-parameters-anchor)=

@@ -14,9 +14,9 @@ The [**ndx-hed**](https://github.com/hed-standard/ndx-hed) extension consists of
 the NWB [**VectorData**](https://hdmf-common-schema.readthedocs.io/en/stable/format.html#sec-dynamictable) class, 
 allowing HED data to be added as a column to any NWB [**DynamicTable**](https://hdmf-common-schema.readthedocs.io/en/stable/format.html#sec-dynamictable).
 `VectorData` and `DynamicTable` are base classes for many NWB data structures.
-See the [**DynamicTable Tutorial**](https://hdmf.readthedocs.io/en/stable/tutorials/plot_dynamictable_tutorial.html#sphx-glr-tutorials-plot-dynamictable-tutorial-py)
+See the [**DynamicTable Tutorial**](https://nwb-schema.readthedocs.io/en/latest/format_description.html)
 for a basic guide for usage in Python and
-[**DynamicTable Tutorial (MATLAB)**](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/dynamic_tables.html)
+[**DynamicTable Tutorial (MATLAB)**](https://matnwb.readthedocs.io/en/latest/pages/getting_started/file_read/dynamictable.html)
 for introductory usage in MATLAB.
 The `ndx-hed` extension is not currently supported in MATLAB, although support is planned in the future.
 

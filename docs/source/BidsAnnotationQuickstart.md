@@ -477,7 +477,7 @@ name in the `events.tsv` file.
 The **column_value** corresponds to one of the unique values within that column.
 The **description** column is used to fill in the corresponding `Levels` value,
 while the **HED** column is used for the 
-[**HED**](https://hed-specification.readthedocs.io/en/latest/index.html)
+[**HED**](https://www.hedtags.org/hed-specification/)
 tags that make your annotation machine-actionable.
 These tags are from the corresponding `HED` entry in the sidecar.
 

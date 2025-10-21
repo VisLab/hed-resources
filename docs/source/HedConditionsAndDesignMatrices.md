@@ -10,8 +10,8 @@ with a [BIDS](https://bids.neuroimaging.io/)
 The tutorial assumes that you have a basic understanding of HED and
 how HED annotations are used in BIDS.
 Please review [**Annotating a BIDS dataset**](https://bids-standard.github.io/bids-starter-kit/tutorials/annotation.html), 
-the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html), and the
-[**HED annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/HedAnnotationQuickstart.html)
+the [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html), and the
+[**HED annotation quickstart**](https://www.hedtags.org/hed-resources/HedAnnotationQuickstart.html)
 tutorials as needed.
 
 The [**Experimental design concepts**](experimental-design-concepts-anchor)
@@ -64,7 +64,7 @@ for houses and faces.
 | 7.440 |  0.1     | show_face  | male81.png  |   
 ````
 
-As explained in [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html), 
+As explained in [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html), 
 the most commonly used strategy for annotating events in a BIDS dataset is
 to create a single JSON file located in the dataset root containing the annotations
 for the columns. The following shows a minimal example:

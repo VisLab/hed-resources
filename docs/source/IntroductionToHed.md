@@ -25,7 +25,7 @@ HED has undergone several revisions and substantial infrastructure development s
 
 The first version of Hierarchical Event Descriptors was released in 2010
 to support annotation of events for
- [**HeadIt**](https://headit.ucsd.edu/) an open repository of EEG datasets. 
+HeadIT an open repository of EEG datasets. 
 The work was initiated as part of the PhD thesis of Nima Bigdely-Shamlo 
 under the supervision of Scott Makeig and Kenneth Kreutz-delgado.
 HED Generation 1 (HED version < 4.0.0) was organized around a 
@@ -69,7 +69,7 @@ simplification of the user experience.
 6. Encoding of experimental design
 
 ````
-See the [**HED Specification**](https://hed-specification.readthedocs.io/en/latest/)
+See the [**HED Specification**](https://www.hedtags.org/hed-specification/)
 and the [**documentation summary**](DocumentationSummary.md) for additional details.
 
 ## Goals of HED

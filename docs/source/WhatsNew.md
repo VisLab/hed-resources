@@ -150,7 +150,7 @@
 
 **September 20, 2023 16:00 CEST**: **INCF Workshop on HED and BIDS**
 > <em>Event annotation in neuroimaging using HED: from experiment to analysis</em>.  
-> Half-day workshop at [**INCF Assembly 2023**](https://neuroinformatics.incf.org/register).  
+> Half-day workshop at [**INCF Assembly 2023**](https://www.incf.org/blog/incf-neuroinformatics-assembly-2023).  
 > Speakers: Scott Makeig, Dung Truong, Dora Hermes, and Monique Dennisen.
 
 **September 12, 2023**: **New HED preprint on events in context**

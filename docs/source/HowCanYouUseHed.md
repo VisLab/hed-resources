@@ -250,9 +250,9 @@ gives a basic overview of HED's history and goals.
 using HED annotations and suggests best practices for annotation.  
 <p></p>
 
-- See the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html) 
+- See the [**HED specification**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html) 
 for detailed information on the rules for HED.
-Of special interest to HED users are [**Chapter 4: Basic annotation**](https://hed-specification.readthedocs.io/en/latest/04_Basic_annotation.html) and [**Chapter 5: Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html).
+Of special interest to HED users are [**Chapter 4: Basic annotation**](https://www.hedtags.org/hed-specification/04_Basic_annotation.html) and [**Chapter 5: Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html).
 These chapters explain the different types of HED
 annotations and the rules for using them.
 
@@ -329,14 +329,14 @@ See [**Creating definitions**](https://hed-specification.readthedocs.io/en/devel
 
 - **Temporal scope**: annotate event processes that extend over time and provide a context for
 events. Expression of temporal scope is enabled by *Temporal-marker* tags: *Onset*, *Offset*,
-and *Duration* together with the *Definition* tag. See [**Temporal scope**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html#temporal-scope) for the rules and usage.
+and *Duration* together with the *Definition* tag. See [**Temporal scope**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope) for the rules and usage.
 <p></p>
 
 - **Conditions and experimental design**: HED allows users to express annotate experiment
 design, as well as other information such as task, and the experiment's temporal organization.
-See [**HED conditions and design matrices**](https://www.hedtags.org/hed-resources/HedConditionsAndDesignMatrices.html).
+See [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md).
 
-The [**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)
+The [**Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html)
 chapter of the HED specification explains the rules for using these more advanced concepts.
 
 (checking-correctness-anchor)=
@@ -352,7 +352,7 @@ Thus, as you are adding HED annotations, you should frequently revalidate.
 - The [**HED validation guide**](https://www.hedtags.org/hed-resources/HedValidationGuide.html) describes the different types of validators available.
 <p></p>
 
-- The [**HED errors**](https://hed-specification.readthedocs.io/en/latest/Appendix_B.html)
+- The [**HED errors**](https://www.hedtags.org/hed-specification/Appendix_B.html)
 documentation lists the different types of HED errors and their potential causes.
 <p></p>
 

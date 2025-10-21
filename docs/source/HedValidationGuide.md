@@ -33,12 +33,12 @@ Two types of errors can occur: **syntactic** and **semantic**.
 >or values that have the wrong units or type.
 >Semantic errors also include higher-level requirements such as missing definitions
 >or unmatched *Offset* tags when designating the
->[**temporal scope**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html#temporal-scope) of events.
+>[**temporal scope**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope) of events.
 
 Current versions of the validators do not separate these phases and require that the appropriate
 HED schemas are available at the time of validation.
 
-See [**HED validation errors**](https://hed-specification.readthedocs.io/en/latest/Appendix_B.html#b-1-hed-validation-errors)
+See [**HED validation errors**](https:/www.hedtags.org/hed-specification/Appendix_B.html#b-1-hed-validation-errors)
 for a list of the validation errors that are detected by validation tools.
 
 
