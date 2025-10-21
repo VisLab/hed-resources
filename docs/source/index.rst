@@ -6,12 +6,15 @@ HED resources
   :alt: HedLogo
 
 .. sidebar:: **Links**
-
-   * `PDF docs <https://www.hedtags.org/hed-resources/_downloads/>`_
-
-   * `Source code <https://github.com/hed-standard/hed-resources/>`_  
-
    * `HED homepage <https://www.hedtags.org/>`_ 
+
+   * `HED online tools <https://hedtools.org/hed/>`_
+
+   * `HED browser-based tools <https://www.hedtags.org/hed-javascript>`_
+
+   * `HED organization source code <https://github.com/hed-standard/>`_  
+
+   * `HED specification <https://www.hedtags.org/hed-specification>`_ 
 
 What is HED?
 ************
