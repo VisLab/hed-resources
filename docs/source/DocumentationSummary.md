@@ -100,11 +100,11 @@ The following is a summary of the HED-related websites:
 * - HED project homepage
   - [https://www.hedtags.org](https://www.hedtags.org)
 * - HED resources (docs)
-  - [https://www.hed-resources.org](https://www.hed-resources.org)
+  - [https://www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources)
 * - HED Wikipedia Page
   - [https://https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors](https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors)
 * - HED specification
-  - [https://hed-specification.readthedocs.io/en/latest/index.html](https://hed-specification.readthedocs.io/en/latest/index.html)
+  - [https://www.hedtags.org/hed-specification](https://www.hedtags.org/hed-specification)
 * - CTAGGER executable jar
   - [https://github.com/hed-standard/hed-java/raw/master/ctagger.jar](https://github.com/hed-standard/hed-java/raw/master/ctagger.jar)
 * - **Repositories**

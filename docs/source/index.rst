@@ -47,7 +47,7 @@ vocabulary called the `HED standard schema <https://www.hedtags.org/display_hed.
 
 **HED library schemas** for use in individual research subfields as well as the standard
 schema and vocabularies under development are housed in the
-`hed-schemas <https://github.com/hed-schemas>`_.
+`hed-schemas <https://github.com/hed-standard/hed-schemas>`_.
 
 The **HED working group** is an ongoing open-source development organization whose mission is
 to extend and maintain the HED standard and associated tools.

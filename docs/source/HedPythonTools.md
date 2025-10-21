@@ -3,7 +3,7 @@
 The primary codebase for HED support is in Python.
 Source code for the HED Python tools is available in the 
 [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository
-See the [**HED tools API documentation**](https://hed-python.readthedocs.io/en/latest/) for 
+See the [**HED tools API documentation**](https://www.hedtags.org/hed-python/) for 
 detailed information about the HED Tools API.
 
 Many of the most-frequently used tools are available using the
@@ -62,7 +62,7 @@ Ideally, this sidecar will contain all the annotations needed for users to under
 
 See the [**BIDS annotation quickstart**](BidsAnnotationQuickstart.md) for additional information on this strategy 
 and an online version of the tools. 
-The [**Create a JSON template**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#create-a-json-template) tutorial provides a step-by-step tutorial for using the online tool 
+The [**Create a JSON template**](./BidsAnnotationQuickstart.md#create-a-json-template) tutorial provides a step-by-step tutorial for using the online tool 
 that creates a template based on the information in a single `events.tsv` file.
 For most datasets, this is sufficient.
 In contrast, the [**extract_json_template.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/extract_json_template.ipynb)
@@ -140,7 +140,7 @@ The [**sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examp
 If you have a BIDS JSON event sidecar or a sidecar template,
 you may find it more convenient to view and edit the HED annotations in
 spreadsheet rather than working with the JSON file directly as explained in the
-[**Spreadsheet templates**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#spreadsheet-templates-anchor)
+[**Spreadsheet templates**](https://www.hedtags.org/hed-specification/BidsAnnotationQuickstart.html#spreadsheet-templates-anchor)
 tutorial.
 
 The [**sidecar_to_spreadsheet.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb)
@@ -208,7 +208,7 @@ each unique value appears somewhere in dataset event files.
 
 Validating HED annotations as you develop them makes the annotation process easier and
 faster to debug.
-The [**HED validation guide**](https://hed-examples.readthedocs.io/en/latest/HedValidationGuide.html)
+The [**HED validation guide**](https://www.hedtags.org/hed-resources/HedValidationGuide.html)
 discusses various HED validation issues and how to fix them.
 
 The [**validate_bids_dataset.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb)

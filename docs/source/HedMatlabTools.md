@@ -388,14 +388,14 @@ the `Def` tag with that name as a shortcut in annotations. The `Def` tags are us
 tag strings that are frequently used and are required to define event processes.
 However, when assembling annotations to search for tags, you usually want to replace these shortcut `Def`
 tags with the actual HED tags they represent. Thus, the default value of `replaceDefs` is true.
-See [**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)
+See [**Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html)
 for details.
 
 Since no special tags defining extended event processes are used (i.e., `Onset`, `Offset`, `Duration`)
 in the example annotations, the `includeContext` option has no effect in this example.
 If `includeContext` is true (the default) event processes contribute their tags to the
 `Event-context` of time markers that fall in their scope. See
-[**Advanced annotation**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html)
+[**Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html)
 for an explanation of this.
 
 The example annotation does not contain any `Condition-variable` or `Task` tags, so `removeTypesOn` has no effect. 
@@ -448,7 +448,7 @@ Python versions are compatible with which versions of MATLAB.
 **Note:** For your reference, the source for `hedtools` is the 
 [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
 The code is fully open-source with an MIT license.
-The actual API documentation is available [**here**](https://hed-python.readthedocs.io/en/latest/api2.html),
+The actual API documentation is available [**here**](https://www.hedtags.org/hed-python),
 but the tutorials and tool documentation for `hedtools` on 
 [**HED Resources**](https://www.hedtags.org/hed-resources/index.html) site provides more
 examples of use.

@@ -261,7 +261,7 @@ The extract spreadsheet from sidecar tool
 produces a 4-column `.tsv` file that can be edited with tools such as Excel.
 The first row of the extracted spreadsheet contains the 4 column names:
 `column_name`, `column_value`, `description` and `HED`.
-See the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html) 
+See the [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) 
 for a tutorial on how to use the resulting spreadsheet for annotation.
 
 ``````{admonition} Extract a 4-column spreadsheet from a JSON sidecar.
@@ -288,7 +288,7 @@ but it must have the 4 column names: `column_name`, `column_value`, `description
 You have the option of including the contents of each cell in the *description* column
 of the spreadsheet as a *Description/xxx* tag in the corresponding HED annotation.
 
-See the [**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html) 
+See the [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) 
 for a tutorial on how this works in practice.
 
 ``````{admonition} Merge a 4-column spreadsheet with a JSON sidecar.
@@ -312,7 +312,7 @@ The [bids_merge_spreadsheet_into_sidecar.ipynb](https://github.com/hed-standard/
 
 Spreadsheets (either in Excel or tab-separated-value format) are convenient for organizing tags.
 Of particular interest is the 4-column spreadsheet described in the
-[**BIDS annotation quickstart**](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html).
+[**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html).
 However, the online tools support a more general spreadsheet format,
 where any columns can contain HED tags.
 You can also specify prefixed columns --- 

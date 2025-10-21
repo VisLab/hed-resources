@@ -15,13 +15,13 @@ The HED Working Group would be happy to give you technical guidance in getting s
 and working through the process to final release.
 
 More detailed information is available in
-the [**Library schemas**](https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html) chapter of
-the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
+the [**Library schemas**](https://www.hedtags.org/hed-specification/07_Library_schemas.html) chapter of
+the [**HED specification**](https://www.hedtags.org/hed-specification/).
 
 Details about syntax are available in the 
-[**Schema formats**](https://hed-specification.readthedocs.io/en/latest/03_HED_formats.html#schema-formats) section and
-the [**Schema format details**](https://hed-specification.readthedocs.io/en/latest/Appendix_A.html) chapter of the
-[**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
+[**Schema formats**](https://www.hedtags.org/hed-specification/03_HED_formats.html#schema-formats) section and
+the [**Schema format details**](https://www.hedtags.org/hed-specification/Appendix_A.html) chapter of the
+[**HED specification**](https://www.hedtags.org/hed-specification/index.html).
 
 ## Schema design basics
 
@@ -97,7 +97,7 @@ However, the tag names in the schema should follow the following conventions:
 - All letters in a tag name except for the first character are in lower case.  
 - Tags representing multiple words are hyphenated.
 
-The [**Naming conventions**](https://hed-specification.readthedocs.io/en/latest/03_HED_formats.html#naming-conventions) 
+The [**Naming conventions**](https://www.hedtags.org/hed-specification/03_HED_formats.html#naming-conventions) 
 section of the HED specification gives a complete discussion of naming conventions.
 
 ### Design principles for schema
@@ -127,8 +127,8 @@ and this schema guide assumes that you are going to develop a partnered library.
 
 
 For more detailed rules and syntax about partnering
-see the [**Partnered schemas**](https://hed-specification.readthedocs.io/en/latest/07_Library_schemas.html#partnered-schemas)
-section of the [**HED specification**](https://hed-specification.readthedocs.io/en/latest/index.html).
+see the [**Partnered schemas**](https://www.hedtags.org/hed-specification/07_Library_schemas.html#partnered-schemas)
+section of the [**HED specification**](https://www.hedtags.org/hed-specification/).
 
 #### Unpartnered libraries
 
@@ -485,7 +485,7 @@ relevant to developing a library schema. Additional documentation is available o
 > [**HED Resources**](https://www.hed-resources.org)  
 > the main website for HED documentation and tutorials.
 
-> [**HED Specification**](https://hed-specification.readthedocs.io/en/latest/index.html)  
+> [**HED Specification**](https://www.hedtags.org/hed-specification/)  
 > displays the HED specification.
 
 > [**HED Schema Viewer**](http://www.hedtags.org/display_hed.html)  

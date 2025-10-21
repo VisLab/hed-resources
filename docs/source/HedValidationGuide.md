@@ -33,12 +33,12 @@ Two types of errors can occur: **syntactic** and **semantic**.
 >or values that have the wrong units or type.
 >Semantic errors also include higher-level requirements such as missing definitions
 >or unmatched *Offset* tags when designating the
->[**temporal scope**](https://hed-specification.readthedocs.io/en/latest/05_Advanced_annotation.html#temporal-scope) of events.
+>[**temporal scope**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope) of events.
 
 Current versions of the validators do not separate these phases and require that the appropriate
 HED schemas are available at the time of validation.
 
-See [**HED validation errors**](https://hed-specification.readthedocs.io/en/latest/Appendix_B.html#b-1-hed-validation-errors)
+See [**HED validation errors**](https:/www.hedtags.org/hed-specification/Appendix_B.html#b-1-hed-validation-errors)
 for a list of the validation errors that are detected by validation tools.
 
 
@@ -162,7 +162,7 @@ For example, one of the available actions shown on the menu above is
 assembling all the HED tags applicable to each line in the events file.
 
 New features of the tools take a while to propagate to the released version of the online tools.
-Use the [**HED online development server**](https://hedtools.org/hed/_dev) to access the latest versions.
+Use the [**HED online development server**](https://hedtools.org/hed_dev) to access the latest versions.
 
 
 (validation-for-matlab-users-anchor)=
@@ -217,7 +217,7 @@ directly using PIP.
 Several [**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/src/jupyter_notebooks) are available 
 as wrappers for calling various Python HED tools. 
 
-For example, the [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/develop/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) notebook shown in the following example validates an entire BIDS dataset 
+For example, the [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) notebook shown in the following example validates an entire BIDS dataset 
 just give the path to the root directory of the dataset.
 
 `````{admonition} Python code to validate HED in a BIDS dataset.
