@@ -6,6 +6,7 @@ HED resources
   :alt: HedLogo
 
 .. sidebar:: **Links**
+   
    * `HED homepage <https://www.hedtags.org/>`_ 
 
    * `HED online tools <https://hedtools.org/hed/>`_
