@@ -1,4 +1,4 @@
-# HED governance and decision-making
+# HED governance
 
 Table of Contents
 

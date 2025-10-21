@@ -170,3 +170,101 @@ explained in a series of tutorials on this site.
 
 (assembly-and-curly-braces-anchor)=
 ## Assembly and curly braces
+
+When you annotate events in BIDS, HED annotations from multiple columns 
+of the `_events.tsv` file are automatically combined (assembled) 
+to create the final annotation for each event. 
+By default, the annotations are simply concatenated with commas. 
+However, sometimes you need more control over how they are combined — especially when multiple columns describe properties of the same object.
+
+### The problem: Default assembly
+
+Consider an experiment where stimulus color and shape are recorded in separate columns:
+
+**Events file excerpt:**
+| onset | event_type | color | shape  |
+|-------|------------|-------|--------|
+| 2.5   | visual     | red   | circle |
+
+**JSON sidecar (without curly braces):**
+```json
+{
+  "event_type": {
+    "HED": {
+      "visual": "Sensory-event, Visual-presentation"
+    }
+  },
+  "color": {
+    "HED": {
+      "red": "Red",
+      "green": "Green"
+    }
+  },
+  "shape": {
+    "HED": {
+      "circle": "Circle",
+      "square": "Square"
+    }
+  }
+}
+```
+
+**Result:** `Sensory-event, Visual-presentation, Red, Circle`
+
+**Problem:** The `Red` and `Circle` tags are separate, 
+so it's ambiguous whether they describe the same object 
+or two different things. 
+Are we presenting "a red circle" or "something red and also something circular"?
+
+### The solution: Curly braces
+
+Curly braces `{ }` let you control exactly where annotations from other columns are inserted. 
+Use `{column_name}` as a placeholder, and HED will replace it with that column's annotation.
+
+**Sidecar (with curly braces):**
+```json
+{
+  "event_type": {
+    "HED": {
+      "visual": "Sensory-event, Visual-presentation, ({color}, {shape})"
+    }
+  },
+  "color": {
+    "HED": {
+      "red": "Red",
+      "green": "Green"
+    }
+  },
+  "shape": {
+    "HED": {
+      "circle": "Circle",
+      "square": "Square"
+    }
+  }
+}
+```
+
+**Result:** `Sensory-event, Visual-presentation, (Red, Circle)`
+
+**Success!** Now `Red` and `Circle` are grouped together in parentheses, clearly indicating they describe 
+a single object: a red circle.
+
+### How it works
+
+1. HED looks at the `event_type` annotation: `"Sensory-event, Visual-presentation, ({color}, {shape})"`
+2. It finds `{color}` and replaces it with the annotation from the color column: `Red`
+3. It finds `{shape}` and replaces it with the annotation from the shape column: `Circle`
+4. The final result groups them: `Sensory-event, Visual-presentation, (Red, Circle)`
+
+### When to use curly braces
+
+Use curly braces when:
+- Multiple columns describe properties of the same object (color, shape, size)
+- You need to control grouping structure
+- You want to ensure related annotations are grouped together
+
+**Tip:** Curly braces are your tool for creating properly grouped HED annotations when information 
+comes from multiple columns!
+
+For more detailed information about assembly and advanced grouping rules, 
+see [**HED Annotation Semantics**](./HedAnnotationSemantics.md).

@@ -144,8 +144,8 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
    :hidden:
    :caption: Other resources:
 
-   UnderstandingHedVersions.md
    DocumentationSummary.md
+   UnderstandingHedVersions.md
    HedGovernance.md
 
 
