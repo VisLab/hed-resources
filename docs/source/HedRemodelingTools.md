@@ -660,11 +660,11 @@ as the `PARAMS` property of the operation's class definition.
 The use of the JSON schema allows the remodeler to specify and validate requirements on most of an
 operation's parameters using standardized methods.
  
-The [**remodeler_validator**](https://github.com/hed-standard/hed-python/blob/master/hed/tools/remodeling/remodeler_validator.py)
+The [**remodeler_validator**](https://raw.githubusercontent.com/hed-standard/hed-python/main/hed/tools/remodeling/remodeler_validator.py)
 compiles a JSON schema for the remodeler from individual operations and validates
 the remodel file against the compiled JSON schema. The validator should always before executing any remodel operations.
 
-For example, the command line [**run_remodel**](https://raw.githubusercontent.com/hed-standard/hed-python/develop/hed/tools/remodeling/cli/run_remodel.py)
+For example, the command line [**run_remodel**](https://raw.githubusercontent.com/hed-standard/hed-python/main/hed/tools/remodeling/cli/run_remodel.py)
 program calls the validator before executing any operations.
 If there are errors, `run_remodel` reports the errors for all operations and exits.
 This allows users to correct errors in all operations in one pass without any data modification.

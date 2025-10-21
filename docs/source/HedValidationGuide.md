@@ -162,7 +162,7 @@ For example, one of the available actions shown on the menu above is
 assembling all the HED tags applicable to each line in the events file.
 
 New features of the tools take a while to propagate to the released version of the online tools.
-Use the [**HED online development server**](https://hedtools.org/hed/_dev) to access the latest versions.
+Use the [**HED online development server**](https://hedtools.org/hed_dev) to access the latest versions.
 
 
 (validation-for-matlab-users-anchor)=
@@ -217,7 +217,7 @@ directly using PIP.
 Several [**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/src/jupyter_notebooks) are available 
 as wrappers for calling various Python HED tools. 
 
-For example, the [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/develop/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) notebook shown in the following example validates an entire BIDS dataset 
+For example, the [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) notebook shown in the following example validates an entire BIDS dataset 
 just give the path to the root directory of the dataset.
 
 `````{admonition} Python code to validate HED in a BIDS dataset.

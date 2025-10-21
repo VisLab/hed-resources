@@ -177,8 +177,8 @@ OBO (Open Biological and Biomedical Ontologies) Foundry for recognition when thi
 Yes. HED is integrated and interoperable with [BIDS](https://bids.neuroimaging.io/) (**Brain Imaging Data Structure**) the
 ost widely used standard for structuring human neuroimaging datasets. The standards are loosely coupled 
 with clear guidance on how to interoperate in both BIDS (via the [Hierarchical Event Descriptors](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) appendix 
-of the [BIDS Specification](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) and in BIDS the BIDS Starter Kit tutorial [Annotating a BIDS dataset](https://bids-standard.github.io/bids-starter-kit/tutorials/annotation.html)) 
-and in HED (via the [HED support of BIDS](https://www.hedtags.org/hed-specification/06\_Infrastructure\_and\_tools.html\#hed-support-of-bidskit/tutorials/annotation.html) chapter in the [HED specification](https://www.hedtags.org/hed-specification/index.html) and 
+of the [BIDS Specification](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) and in BIDS the BIDS Starter Kit tutorial [Annotating a BIDS dataset](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html)) 
+and in HED (via the [HED support of BIDS](https://www.hedtags.org/hed-specification/06_Infrastructure_and_tools.html#hed-support-of-bids) chapter in the [HED specification](https://www.hedtags.org/hed-specification/index.html) and 
 in the [BIDS annotation quickstart](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) on the [HED resources](https://www.hedtags.org/hed-resources/index.html) site.  
  
 By design the validators are loosely coupled with the BIDS validator, which calls the HED validator 

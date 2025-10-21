@@ -112,7 +112,7 @@ The [**summarize column values**](./HedRemodelingTools.md#summarize-column-value
 operation in the HED [**file remodeling tools**](./HedRemodelingTools.md)
 compiles detailed summaries of the contents of tabular files.
 Use the following remodeling file and your tabular log file as input 
-to the HED online [**event remodeling**](https://hedtools.org/hed/_dev/events) tools
+to the HED online [**event remodeling**](https://hedtools.org/hed_dev/events) tools
 to quickly get an overview of its contents.
 
 ````{admonition} A sample JSON file with the command to get a summary of the column values in a file.
@@ -226,7 +226,7 @@ HED is well-integrated into the BIDS standard.
 gives an overview of how files in a BIDS dataset are organized.
 <p></p>
 
-- The [**Annotating a BIDS dataset**](https://bids-standard.github.io/bids-starter-kit/tutorials/annotation.html) tutorial gives an overview
+- The [**Annotating a BIDS dataset**](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html) tutorial gives an overview
 of how to get the appropriate metadata into a BIDS dataset.
 <p></p>
 
@@ -324,7 +324,7 @@ HED supports a number of advanced annotation concepts which are necessary for a 
 description of the experiment. 
 
 - **HED definitions**: allow users to define complex concepts.
-See [**Creating definitions**](https://hed-specification.readthedocs.io/en/develop/05_Advanced_annotation.html#creating-definitions) and [**Using definitions**](https://hed-specification.readthedocs.io/en/develop/05_Advanced_annotation.html#using-definitions) for an overview and syntax.
+See [**Creating definitions**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#creating-definitions) and [**Using definitions**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#using-definitions) for an overview and syntax.
 <p></p>
 
 - **Temporal scope**: annotate event processes that extend over time and provide a context for
@@ -630,7 +630,7 @@ as described in [**Web tools and rest services**](web-tools-and-rest-services-an
 
 The HED online tools are available at [**https://hedtools.org/hed/**](https://hedtools.org/hed/).
 
-A development version of the online tools is available at [**https://hedtools.org/hed/_dev**](https://hedtools.org/hed/_dev).
+A development version of the online tools is available at [**https://hedtools.org/hed_dev**](https://hedtools.org/hed_dev).
 
 These servers not only provide a GUI interface to the tools that is useful for debugging or for a quick analysis,
 but they also provide REST services for various HED tools as described in
