@@ -4,7 +4,7 @@ HED (Hierarchical Event Descriptors) schemas are standardized tree-structured vo
 neuroimaging and behavioral data. 
 The **HED standard schema** contains a base vocabulary of terms that are common to most experiments,
 while various **HED library schemas** contain discipline specific vocabularies.
-The [**HED schema viewer**](https://www.hedtags.org/display_hed.html) allows users to view the available vocabularies.
+The [**HED schema viewer**](https://www.hedtags.org/hed_schema_browser/) allows users to view the available vocabularies.
 
 Applications that use HED must specify which versions of the HED schemas they are using.
 The definitive HED vocabulary files are available in the

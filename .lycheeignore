@@ -8,9 +8,6 @@ https://www.sciencedirect.com/science/article/pii/S1388245717309069
 ^https?://.*\.incf\.org/
 ^https?://incf\.org/
 
-# HEADIT UCSD (timeouts)
-^https?://.*headit\.ucsd\.edu/
-
 # DOI links that return 403 but work in browsers
 ^https?://doi\.org/10\.1111/epi\.18113
 

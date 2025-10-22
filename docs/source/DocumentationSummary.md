@@ -81,7 +81,7 @@ Development of the HED SCORE library schema for clinical annotation of EEG:
 The HED schema is usually developed in `.mediawiki` format and converted to XML for use by tools.
 However, researchers wishing to tag datasets will find both of these views hard to read. 
 All versions of the standard schema and library schemas including the prerelease versions
-available via the expandable [**HTML viewer**](https://www.hedtags.org/display_hed.html).
+available via the expandable [**HTML viewer**](https://www.hedtags.org/hed_schema_browser/).
 The  `.mediawiki` sources can be viewed on the 
 [**hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository using
 GitHub's default markdown viewer.
