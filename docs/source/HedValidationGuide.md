@@ -38,7 +38,7 @@ Two types of errors can occur: **syntactic** and **semantic**.
 Current versions of the validators do not separate these phases and require that the appropriate
 HED schemas are available at the time of validation.
 
-See [**HED validation errors**](https:/www.hedtags.org/hed-specification/Appendix_B.html#b-1-hed-validation-errors)
+See [**HED validation errors**](https://www.hedtags.org/hed-specification/Appendix_B.html#b-1-hed-validation-errors)
 for a list of the validation errors that are detected by validation tools.
 
 

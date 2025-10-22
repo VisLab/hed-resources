@@ -404,7 +404,7 @@ HED is an integral part of the following repositories:
 * EEGNET (HED third-generation)  
 * Austrian NeuroCloud  (HED third-generation)  
 * CANCTA  (HED second-generation)  
-* HeadIT \[deprecated\] (HED first-generation)
+* HeadIT [deprecated] (HED first-generation)
 
 Since the event-annotation mechanism for [BIDS](https://bids.neuroimaging.io/) (Brain Imaging Data Structure), any BIDS dataset could use HED.  
 In reality, many users who have deposited their data on OpenNeuro (often to meet the requirements of funding agencies) 
