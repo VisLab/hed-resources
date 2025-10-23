@@ -35,17 +35,17 @@
 **Jun 10, 2025**: **HED LANG v 1.1.0 released**  
 > Allows linking of other ontologies to HED tags.  
 > Three supported formats now equivalent.  
-> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/hed_schema_browser/).
+> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/hed-schema-browser/).
 
 **Jun 9, 2025**: **HED SCORE v 2.1.0 released**  
 > Allows linking of other ontologies to HED tags.  
 > Three supported formats now equivalent.  
-> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/hed_schema_browser/).   
+> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/hed-schema-browser/).   
 
 **Jun 1, 2025**: **HED standard schema 8.4.0 released**  
 > Allows linking of other ontologies to HED tags.  
 > Three supported formats now equivalent.  
-> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/hed_schema_browser/).  
+> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/hed-schema-browser/).  
 
 **Mar 8, 2025**: **HED JavaScript validator 4.0.0 released.**  
 > This release now complies with the current HED specification.  
@@ -83,7 +83,7 @@
 
 **Sept 8, 2024**: **HED SCORE 2.0.0 released.**
 > HED SCORE 2.0.0 is a major revision to better align with SCORE standard.  
-> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/hed_schema_browser/).
+> View using: [**SCHEMA VIEWER**](https://www.hedtags.org/hed-schema-browser/).
 
 **August 5, 2024**: **INCF calls for HED community review.**
 > HED is under consideration for endorsement by INCF.  
@@ -220,7 +220,7 @@ data*
 > HED validators will be able to link error messages directly to descriptions in the spec.
 
 **April 3, 2023**: **New versions of HED schema browser available.**
-> You can now use the [**HED Schema Viewer**](https://www.hedtags.org/hed_schema_browser/) to view both standard and
+> You can now use the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) to view both standard and
 > library schemas.
 
 **March 28, 2023**: **Release of HED Javascript validator for BIDS v3.9.0 on npm**

@@ -197,8 +197,8 @@ changed, as tools use these released versions in computation.
 ## 5. Operational guidelines
 
 There are several resources that can help a new user get started
-on the [**HED resources**](https://www.hed-resources.org). The [**HED resources**](https://www.hed-resources.org) website
-contains links to all the HED informational and help materials.
+on the [**HED resources**](https://www.hedtags.org/hed-resources/) site,
+ which contains links to all the HED informational and help materials.
 
 Users are encouraged to post questions, suggestions, and discussion on the appropriate GitHub issues forum
 on the GitHub [**hed-standard**](https://github.com/hed-standard)

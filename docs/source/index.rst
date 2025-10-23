@@ -42,7 +42,7 @@ functional brain imaging (EEG, MEG, fNIRS, fMRI), multimodal (aka MoBI, mobile b
 psychophysiological (ECG, EMG, GSR), or purely behavioral experiments.
 
 **HED annotations** are composed of comma-separated **tags** from a hierarchically-structured
-vocabulary called the `HED standard schema <https://www.hedtags.org/hed_schema_browser/>`_
+vocabulary called the `HED standard schema <https://www.hedtags.org/hed-schema-browser/>`_
 (possibly augmented by terms from one or more specialized **HED library schemas**).
 
 **HED library schemas** for use in individual research subfields as well as the standard

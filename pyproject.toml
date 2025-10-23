@@ -49,6 +49,7 @@ docs = [
     "sphinx-copybutton>=0.5.2",
     "linkify-it-py>=2.0.3",
     "sphinxcontrib-bibtex>=2.6.0",
+    "sphinxcontrib-mermaid>=0.7.1",
 ]
 quality = [
     "linkchecker>=10.0.0",
@@ -66,6 +67,7 @@ dev = [
     "sphinx-copybutton>=0.5.2",
     "linkify-it-py>=2.0.3",
     "sphinxcontrib-bibtex>=2.6.0",
+    "sphinxcontrib-mermaid>=0.7.1",
     # Quality/dev dependencies (from quality group)
     "linkchecker>=10.0.0",
     "codespell>=2.0.0",

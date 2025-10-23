@@ -605,7 +605,7 @@ For example: `-r 8.1.0 sc:score_1.0.0` specifies that vocabulary will be drawn
 from standard HED Version 8.1.0 and from
 HED SCORE library version 1.0.0.
 Annotations containing tags from SCORE should be prefixed with `sc:`.
-Note: both of the schemas can be viewed by the [**HED Schema Viewer**](https://www.hedtags.org/hed_schema_browser/).
+Note: both of the schemas can be viewed by the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/).
 
 Usually, annotators will consolidate HED annotations in a single JSON sidecar file
 located at the top-level of the dataset.
@@ -2139,7 +2139,7 @@ Total events=6
 
 The HED tag *Task-action-type* was specified in the "Agent actions" category,
 *Incorrect-action* and *Correct-action*, which are children of *Task-action-type*
-in the [**HED schema**](https://www.hedtags.org/hed_schema_browser/),
+in the [**HED schema**](https://www.hedtags.org/hed-schema-browser/),
 will appear with counts in the list under this category.
 
 The sample events file had 6 events, including 1 correct action and 2 incorrect actions.
