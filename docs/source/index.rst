@@ -80,26 +80,6 @@ To begin using HED tools to tag, search, and analyze data, browse the
 Visit the `How can you use HED? <./HowCanYouUseHed.md>`_ guide for information about
 how specific types of users can leverage HED.
 
-History and Support
-*******************
-
-**HED (Gen 1, version < 4.0.0)** was first proposed and developed by Nima Bigdely-Shamlo within the HeadIT project
-at the Swartz Center for Computational Neuroscience (SCCN) of the University of California
-San Diego (UCSD) under funding by The Swartz Foundation and by U.S. National Institutes of Health
-(NIH) grants R01-MH084819 (Makeig, Grethe PIs) and R01-NS047293 (Makeig PI).
-
-Further **HED (Gen 2, 4.0.0 <= version < 8.0.0)** development led by Kay Robbins
-of the University of Texas San Antonio was
-funded by The Cognition and Neuroergonomics Collaborative Technology Alliance (CaN CTA) program
-of U.S Army Research Laboratory (ARL) under Cooperative Agreement Number W911NF-10-2-0022.
-
-**HED (Gen 3, version >= 8.0.0)** is now maintained and further developed by the
-HED Working Group led by Kay Robbins and Scott Makeig with Dung Truong, Monique Denissen,
-Dora Hermes Miller, Tal Pal Attia, and Arnaud Delorme, with funding from NIH grant
-`RF1-MH126700 <https://reporter.nih.gov/project-details/10480619>`_.
-
-HED is an open research community effort; others interested are invited to participate and contribute.
-Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to the latest developments.
 
 
 .. toctree::
@@ -150,6 +130,7 @@ Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to
 
    DocumentationSummary.md
    UnderstandingHedVersions.md
+   HedHistory.md
    HedGovernance.md
 
 
