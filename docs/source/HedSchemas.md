@@ -70,7 +70,7 @@ and its partner without prefixes.
 
 All versions of the HED schemas are located in the GitHub
 [**hed-schemas**](https://github.com/hed-standard/hed-schemas)
-and can be best-viewed using the [**HED schema browser**](https://www.hedtags.org/hed_schema_browser/).
+and can be best-viewed using the [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/).
 
 ## Available schemas
 

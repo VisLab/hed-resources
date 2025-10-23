@@ -491,7 +491,7 @@ The schema tools also provide an easy mechanism for converting between
  `.xml` and `.mediawiki` schema formats.
 
 You can view standard schema using the expandable
-[**HED Schema Viewer**](https://www.hedtags.org/hed_schema_browser/).
+[**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/).
 
 #### Validate a HED schema
 

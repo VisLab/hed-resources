@@ -1,7 +1,7 @@
 (introduction-to-hed-anchor)=
 # Introduction to HED
 
-**HED (Hierarchical Event Descriptors)** is a framework for annotating events in time-series data using a structured vocabulary. If you're working with EEG, fMRI, or other neuroimaging data, HED helps you describe *what happened* during your experiment in a way that computers can understand and process.
+**HED (Hierarchical Event Descriptors)** is a framework for annotating events in time-series data using a structured vocabulary. If you're working with EEG, fMRI, or other neuroimaging  or behavioral data, HED helps you describe *what happened* during your experiment in a way that computers can understand and process.
 
 ## Why use HED?
 
@@ -21,7 +21,8 @@
 - **Machine-actionable**: Computers can automatically find and analyze events
 - **Hierarchical structure**: Supports both simple and detailed annotations
 - **Cross-study analysis**: Compare and combine data from different experiments
-- **BIDS integration**: Works seamlessly with Brain Imaging Data Structure
+- **BIDS integration**: Works seamlessly with Brain Imaging Data Structure (BIDS)
+- **NWB integration**: Works seamlessly with Neurodata Without Borders (NWB)
 ````
 
 ## What does HED annotation look like?
@@ -32,7 +33,7 @@ Instead of cryptic event codes, HED lets you describe events in plain, structure
 
 **Traditional event marker:** `stimulus_type: 3`
 
-**HED annotation:** `Sensory-event, Visual-presentation, (Image, Face), Experimental-stimulus`
+**HED annotation:** `Sensory-event, Experimental-stimulus, Visual-presentation, (Image, Face)`
 
 This tells us: A sensory event occurred involving visual presentation of a face image as part of the experimental protocol.
 ````
@@ -109,7 +110,7 @@ Follow these pathways based on your immediate needs:
 
 1. **📖 Learn the concepts** - Read [HED annotation semantics](HedAnnotationSemantics.md) (15 min)
 2. **🎯 Try a simple example** - Follow the [HED annotation quickstart](HedAnnotationQuickstart.md) (30 min)  
-3. **🔍 Explore the vocabulary** - Browse the [HED Schema Viewer](https://www.hedtags.org/hed_schema_browser/) (10 min)
+3. **🔍 Explore the vocabulary** - Browse the [HED Schema Viewer](https://www.hedtags.org/hed-schema-browser/) (10 min)
 4. **✅ Validate your first annotation** - Use [HED online tools](https://www.hedtags.org/hed-validation) (5 min)
 
 **Next steps:** Choose a specific pathway below based on your role.
@@ -168,7 +169,7 @@ Follow these pathways based on your immediate needs:
 
 Validate annotations, explore schemas, and learn HED syntax without installing anything.
 
-**Quick access:** [HED validation](https://www.hedtags.org/hed-validation) • [Schema browser](https://www.hedtags.org/hed_schema_browser/)
+**Quick access:** [HED validation](https://www.hedtags.org/hed-validation) • [Schema browser](https://www.hedtags.org/hed-schema-browser/)
 ```
 
 ```{grid-item-card} 📖 **Core Documentation**  
@@ -212,18 +213,19 @@ Before diving into HED annotation, familiarize yourself with these fundamental c
 The HED schema is a structured vocabulary organized as a hierarchy. Think of it like a taxonomy:
 - **Event** → **Sensory-event** → **Visual-presentation**
 - **Item** → **Object** → **Man-made-object** → **Tool**
+- **Property** → *Sensory-pproperty** → **Visual-presentation**
 
-You can use either short form (`Face`) or long form (`Item/Biological-item/Anatomical-item/Body-part/Head/Face`).
+You generally tag using short form (`Face`), but tools can automatically expand to long form (`Item/Biological-item/Anatomical-item/Body-part/Head/Face`) for tasks such as searching for all body parts.
 ````
 
 ````{dropdown} **Tags and Grouping**  
 :color: info
 
-- **Tags**: Individual terms from the schema (`Sensory-event`, `Red`, `Onset`)
-- **Groups**: Related tags in parentheses `(Visual-presentation, (Face, Red))`
+- **Tags**: Individual terms from the HED schema (`Sensory-event`, `Red`, `Onset`)
+- **Groups**: Related tags in parentheses `(Visual-presentation, (Face, Image))`
 - **Comma separation**: Different aspects of the same event
 
-Example: `Sensory-event, (Visual-presentation, Face), Experimental-stimulus`
+Example: `Sensory-event, Experimental-stimulus, (Visual-presentation, (Face, Image))`
 ````
 
 ````{dropdown} **Annotation Levels**
@@ -239,7 +241,7 @@ Example: `Sensory-event, (Visual-presentation, Face), Experimental-stimulus`
 
 HED provides tools to check your annotations:
 - **Online validator**: Check syntax and schema compliance
-- **Python/MATLAB libraries**: Integrate validation into your workflows
+- **Python/MATLAB libraries**: Integrate validation and analysis into your workflows
 - **BIDS validator**: Automatically checks HED in BIDS datasets
 ````
 
@@ -252,14 +254,14 @@ Let's see HED in action with a simple face recognition experiment:
 
 **Event 1: Face image appears**
 ```
-Sensory-event, Visual-presentation, (Image, Face), 
-Experimental-stimulus, Onset, Condition-variable/Famous-face
+Sensory-event, Experimental-stimulus, (Visual-presentation, (Image, Face)), 
+Condition-variable/Famous-face
 ```
 
 **Event 2: Participant presses button**  
 ```
-Agent-action, Participant-response, (Press, Mouse-button), 
-Experimental-data, Condition-variable/Correct-response
+Agent-action, Participant-response, Correct, (Experiment-participant, (Press, Mouse-button)), 
+Condition-variable/Correct-response
 ```
 
 **What this tells us:**

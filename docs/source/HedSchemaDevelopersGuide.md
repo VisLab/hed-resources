@@ -30,7 +30,7 @@ each of which corresponds to a major term category for the vocabulary.
 
 Before developing a schema,
 you should explore the standard schema and other available schemas using the
-[**HED Schema Viewer**](https://www.hedtags.org/hed_schema_browser/). 
+[**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/). 
 Major categories unfold into multiple levels of subcategories, which allow for fine-grained data-annotation, as illustrated in the excerpt a screenshot of the HED schema browser viewing
 HED standard schema version 8.2.0.
 
@@ -385,7 +385,7 @@ This directory has the following subdirectories:
 You will use the GitHub Pull Request (PR) mechanism to make changes to your `prerelease` subdirectory.
 This directory will contain both the MediaWiki and XML versions of your draft schema.
 The XML version is needed so that you can view your schema via the 
-[**HED Schema Viewer**](https://www.hedtags.org/hed_schema_browser/).
+[**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/).
 
 You will also be asked to create and maintain a documentation page for your schema.
 For example, the *score* library Markdown document is located in
@@ -420,7 +420,7 @@ and other files as described above.
 
 Examples of these files for the standard schema can be found in the standard schema [**prerelease**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease) directory.
 
-Prereleases are all viewable in the [**HED Schema Viewer**](https://www.hedtags.org/hed_schema_browser/) 
+Prereleases are all viewable in the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) 
 
 ### Releasing a schema
 
@@ -452,7 +452,7 @@ Here is a brief summary of the development process.
   - Modify your prerelease `.mediawiki`.
   - Validate the prerelease `.mediawiki` file using the [**HED online tools**](https://hedtools.org/hed/schemas).
   - Convert to the prerelease `.mediawiki` file to `.xml` using the [**HED online tools**](https://hedtools.org/hed/schemas) and replace the existing prerelease `.xml`.
-  - Check the schema using [**HED Schema Viewer**](https://www.hedtags.org/hed_schema_browser/).
+  - Check the schema using [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/).
   - Update your prerelease `CHANGES.md` and `PROPOSED.md` files.
   - Update your schema's `README.md`.
   - Create and/or modify your schema's documentation page.
@@ -488,5 +488,5 @@ relevant to developing a library schema. Additional documentation is available o
 > [**HED Specification**](https://www.hedtags.org/hed-specification/)  
 > displays the HED specification.
 
-> [**HED Schema Viewer**](http://www.hedtags.org/hed_schema_browser/)  
+> [**HED Schema Viewer**](http://www.hedtags.org/hed-schema-browser/)  
 > allows users to explore the schemas that have been uploaded to [**hed-schemas**](https://github.com/hed-standard/hed-schemas).
