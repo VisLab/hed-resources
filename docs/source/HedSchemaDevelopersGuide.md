@@ -482,7 +482,7 @@ relevant to developing a library schema. Additional documentation is available o
 > GitHub repository houses all HED schemas in a form that
 > can be accessed by tools at runtime.
 
-> [**HED Resources**](https://www.hed-resources.org)  
+> [**HED Resources**](https://www.hedtags.org/hed-resources)  
 > the main website for HED documentation and tutorials.
 
 > [**HED Specification**](https://www.hedtags.org/hed-specification/)  
