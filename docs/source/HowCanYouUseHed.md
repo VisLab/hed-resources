@@ -1,129 +1,173 @@
-# How do you use HED?
+# How can you use HED?
 
-HED (Hierarchical Event Descriptors) annotations provide an essential link between
-experimental data and analysis.
-HED annotations can be used to describe what happened while data was acquired,
-participant state, experimental control, task parameters, and experimental conditions.
-HED annotations are most commonly associated with event files, 
-but these annotations can also be applied to other types of tabular data.
+HED (Hierarchical Event Descriptors) serves different needs throughout the research lifecycle. Whether you're collecting data, annotating datasets, or analyzing results, HED provides tools and frameworks to make your work more efficient and your data more valuable.
 
-**This guide organizes HED resources based on how you might use HED:**
+````{admonition} **New to HED?**
+:class: tip
 
-* [**As an experimenter**](as-an-experimenter-anchor)
-* [**As a data annotator**](as-a-data-annotator-anchor)
-* [**As a data analyst**](as-a-data-analyst-anchor)
-* [**As a tool developer**](as-a-tool-developer-anchor)
-* [**As a schema builder**](as-a-schema-builder-anchor)
+If this is your first time learning about HED, start with the [**Introduction to HED**](IntroductionToHed.md) for basic concepts and quick start paths. This guide provides detailed workflows for each research role.
+````
+
+## Research roles and HED workflows
+
+HED serves researchers in different capacities throughout the data lifecycle. Choose your primary role to find relevant tools and guidance:
+
+````{grid} 2
+:gutter: 3
+
+```{grid-item-card} 🧪 **Experimenter**
+:class-header: bg-primary
+:link: #as-an-experimenter-anchor
+:link-type: ref
+
+Planning experiments, collecting data with proper event logging, and preparing data for analysis.
+
+**Key needs:** Event logging best practices, data collection standards, log-to-event conversion
+```
+
+```{grid-item-card} 📝 **Data Annotator**
+:class-header: bg-success
+:link: #as-a-data-annotator-anchor
+:link-type: ref
+
+Adding HED annotations to existing datasets, curating data for sharing, BIDS/NWB integration.
+
+**Key needs:** Annotation tools, validation workflows, standardized formats
+```
+
+```{grid-item-card} 📊 **Data Analyst**
+:class-header: bg-info
+:link: #as-a-data-analyst-anchor
+:link-type: ref
+
+Searching and analyzing HED-annotated data, extracting design matrices, cross-study comparisons.
+
+**Key needs:** Search tools, programming APIs, analysis workflows
+```
+
+```{grid-item-card} 🛠️ **Tool Developer**
+:class-header: bg-warning
+:link: #as-a-tool-developer-anchor
+:link-type: ref
+
+Building software that integrates with HED, creating analysis pipelines, extending HED functionality.
+
+**Key needs:** APIs, schema specifications, integration guidelines
+```
+````
+
+````{grid} 1
+
+```{grid-item-card} 🏗️ **Schema Builder**
+:class-header: bg-secondary
+:link: #as-a-schema-builder-anchor
+:link-type: ref
+
+Developing domain-specific vocabularies, extending the HED schema, creating library schemas.
+
+**Key needs:** Schema development tools, community coordination, validation frameworks
+```
+````
 
 <hr style="border: 3px solid #000080" />
 
 (as-an-experimenter-anchor)=
-## <span style="color: #229955;">As an experimenter</span>
-> <span style="font-size: 1.5em; font-weight: 900; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... doing experiments and acquiring data:</span>
+## 🧪 As an experimenter
 
-The lynch-pin of scientific inquiry is the planning and running of experiments to test 
-hypotheses and study behavior.
-The focus of the discussion here is not explicitly on how an experiment
-should be designed,
-but rather on how data should be recorded and transformed to maximize its downstream usability.
+> **Planning experiments, collecting data, and preparing for analysis**
 
-**Here are some topics of interest to experimenters:**
+You're designing and running experiments to test hypotheses and study behavior. HED helps you capture what actually happened during data collection in a way that maximizes downstream usability and enables powerful analyses.
 
-* [**Planning and running an experiment**](planning-and-running-an-experiment-anchor)
-* [**Post-processing the data**](post-processing-the-data-anchor)
+### Key challenges HED solves for experimenters
 
-The *Actionable event annotation and analysis in fMRI: A practical guide to event handling* preprint,
-which can be found at [**https://osf.io/93km8/**](https://osf.io/93km8/),
-provides concrete guidance and discussion of pitfalls in transforming experimental logs
-into usable event data.
-The site includes sample data to use in running the examples.
+````{grid} 2
+:gutter: 2
 
-(planning-and-running-an-experiment-anchor)=
-### Planning and running an experiment
+```{grid-item-card} ❌ **Without HED**
+:class-header: bg-danger
 
-Most laboratory experiments use neuroimaging equipment and peripheral devices in
-combination with experiment control software to acquire the experimental data.
-This section describes some HED tools that may be of use during the log-to-data extraction process. 
-Key questions are:
+- Event codes (1, 2, 3) lose meaning over time
+- Log files require constant documentation
+- Analysis code breaks when events change
+- Difficult to compare across experiments
+- Data sharing requires extensive explanation
+```
 
-- What should go into an experimental log?
-- How should information about the experimental design and temporal structure be included?
-- How will the log data be synchronized with other data?
+```{grid-item-card} ✅ **With HED**
+:class-header: bg-success
 
-We assume that event information is primarily contained in experimental logs,
-whose log entries contain a timestamp, a code, and possibly other information.
-We assume that this information can be extracted in tabular format.
-The key point here is:
-
-><span style="color:#A00000; font-weight:bold;">Data that isn't recorded is lost forever!</span>
-
-With that caveat in mind, most researchers will run a pilot before the actual
-experiment to detect issues that might reduce the effectiveness or correctness of the experiment.
-HED file remodeling tools can help smooth the transition from acquisition to data,
-both in the pilot and the experiment itself.
-
-#### Event acquisition
-
-In a traditional neuroimaging experiment that is organized by trial, it may be easy to
-focus exclusively on marking the experimental stimuli, but
-the incidental sensory presentations can also be important,
-particularly for analyses that use regression techniques.
-Examples of incidental sensory presentations include cues, instructions, feedback,
-and experimental control events that are visible to the participant.
-
-Participant responses should also be marked in the timeline, even though
-this may require synchronization of presentation with the acquisition of the participant's
-response indicators.
-Downstream analysis may include time-locking to the actual response point to study
-neural correlates of the motor reaction.
-A common approach for including participant's response is to identify the closing of a switch
-on a push-button, marking the end of the participant's response.
-More sophisticated instrumentation might include detection of initiation and termination
-of muscle movement using EMG (electromyography) sensors.
-
-Another issue which should be addressed in the pilot is how experimental control
-information will be embedded in the data.
-Will there be embedded markers for trial or block beginnings?
-How will information about experimental conditions be embedded?
-Often a condition will be counterbalanced within a run and embedding markers that
-identify the current conditions in the log can facilitate the use of tools
-in post-processing and assure that the conditions are correctly marked.
-
-#### Logs to event files
-
-Although the HED tools do not yet directly support any particular experimental presentation/control
-software packages, the HED [**HED remodeling tools**](./HedRemodelingTools.md) can
-be useful in working with logged data.
-
-Assuming that you can put the information from your experimental log into a tabular form such as:
-
-(sample-tabular-log-anchor)=
-````{admonition} A sample log file in tabular form.
-| onset  | code  | description |
-| -------- | ------- | ------------- |
-| 0.3423 | 4332  | Presentation of a fixation cross for 0.25 seconds. |
-| 0.5923 | 4333  | Presentation of a face image for 0.5 seconds. |
-| 1.7000 | 4332  | Presentation of a fixation cross for 0.25 seconds. |
-|  ...   |  ...  | ... |
-
+- Self-documenting event annotations
+- Standardized vocabulary across studies
+- Analysis tools work automatically
+- Easy cross-experiment comparisons
+- Data ready for sharing in BIDS/NWB
+```
 ````
 
-The [**summarize column values**](./HedRemodelingTools.md#summarize-column-values)
-operation in the HED [**file remodeling tools**](./HedRemodelingTools.md)
-compiles detailed summaries of the contents of tabular files.
-Use the following remodeling file and your tabular log file as input 
-to the HED online [**event remodeling**](https://hedtools.org/hed_dev/events) tools
-to quickly get an overview of its contents.
+### Workflow for experimenters
 
-````{admonition} A sample JSON file with the command to get a summary of the column values in a file.
-:class: tip
+````{mermaid}
+graph LR
+    A["📋 Plan Experiment<br/>What to record?"] --> B["🔧 Setup Logging<br/>Event codes & timing"]
+    B --> C["🧪 Run Experiment<br/>Collect data & logs"]
+    C --> D["🔄 Process Logs<br/>Clean & structure"]
+    D --> E["🏷️ HED Annotation<br/>Meaningful descriptions"]
+    E --> F["✅ Validate<br/>Check completeness"]
+    F --> G["📊 Analysis Ready<br/>Share & analyze"]
+    
+    style A fill:#e3f2fd
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+    style E fill:#ccffcc
+    style F fill:#cceeff
+    style G fill:#e6ccff
+````
+
+### Essential topics for experimenters
+
+````{dropdown} **🎯 Planning and running experiments**
+:open:
+
+**Key questions to address:**
+- What events should be logged during data collection?
+- How will experimental design and conditions be recorded?
+- How will logs be synchronized with neuroimaging data?
+- What participant responses need to be captured?
+
+**Critical principle:** <span style="color:#A00000; font-weight:bold;">Data that isn't recorded is lost forever!</span>
+
+**Event logging best practices:**
+- Mark ALL events visible to participants (stimuli, cues, instructions, feedback)
+- Record participant responses with precise timing
+- Include experimental control markers (trial/block boundaries, condition changes)
+- Capture incidental events that might affect neural responses
+- Plan for pilot testing to identify missing events
+
+**Example event types to capture:**
+- **Sensory presentations**: Visual stimuli, auditory cues, tactile feedback
+- **Participant actions**: Button presses, eye movements, verbal responses  
+- **Experimental control**: Trial starts, condition changes, break periods
+- **Environmental events**: Equipment issues, interruptions, calibration
+````
+
+````{dropdown} **🔄 Post-processing and data transformation**
+
+After data collection, raw logs need processing before analysis. HED remodeling tools help transform experimental logs into analysis-ready event files.
+
+**Common transformations needed:**
+1. **Log summarization**: Get overview of collected events
+2. **Code expansion**: Convert numeric codes to meaningful categories  
+3. **Column restructuring**: Create BIDS-compliant event files
+4. **Data validation**: Check for missing or invalid events
+
+**Example workflow using HED remodeling tools:**
 ```json
 [{
    "operation": "summarize_column_values",
-   "description": "Summarize the column values in my log.",
+   "description": "Get overview of log contents",
    "parameters": {
        "summary_name": "Log_summary",
-       "summary_filename": "Log_summary",
        "skip_columns": ["onset"],
        "value_columns": ["description"]
    }
@@ -131,65 +175,68 @@ to quickly get an overview of its contents.
 ```
 ````
 
-(post-processing-the-data-anchor)=
-### Post-processing the event data
+**Resources for experimenters:**
 
-The information that first comes off the experimental logs is usually not directly usable for
-sharing and analysis. A number of HED [**HED remodeling tools**](./HedRemodelingTools.md)
-might be helpful for restructuring your first pass at the event files.
+- **📚 Guide**: [Actionable event annotation and analysis in fMRI](https://osf.io/93km8/) - Practical guidance with sample data
+- **🛠️ Tools**: [HED remodeling tools](./HedRemodelingTools.md) - Transform logs to event files
+- **🌐 Online**: [Event remodeling service](https://hedtools.org/hed_dev/events) - Process files without installation
 
-The [**remap columns**](./HedRemodelingTools.md#remap-columns) transformation is 
-particularly useful during the initial processing of tabular log information
-as exemplified by the following example
+---
 
-````{admonition} A sample JSON remodel to create *duration* and *event_type* columns from *code*.
-:class: tip
+(as-a-data-annotator-anchor)=
+## 📝 As a data annotator
 
-```json
-[{ 
-    "operation": "remap_columns",
-    "description": "Expand the code column.",
-    "parameters": {
-        "source_columns": ["code"],
-        "destination_columns": ["duration", "event_type"],
-        "map_list": [["4332", 0.25, "show_cross"],
-                     ["4333", 0.50, "show_face"]],
-        "ignore_missing": true
-    }
-}]
+> **Organizing data, adding HED annotations, and preparing datasets for sharing**
 
+You're curating datasets for sharing, adding meaningful annotations to event data, and ensuring data meets standards like BIDS or NWB. HED provides tools and workflows to make your data FAIR (Findable, Accessible, Interoperable, Reusable).
+
+### Key challenges HED solves for data annotators
+
+````{grid} 2
+:gutter: 2
+
+```{grid-item-card} ❌ **Without HED**
+:class-header: bg-danger
+
+- Event meanings lost without documentation
+- Each dataset needs custom interpretation
+- Difficult to validate annotation completeness
+- Manual work for every analysis
+- Hard to find similar datasets
+```
+
+```{grid-item-card} ✅ **With HED**
+:class-header: bg-success
+
+- Self-documenting event annotations
+- Standardized vocabulary across datasets
+- Automated validation and quality checks
+- Analysis tools work out of the box
+- Easy cross-dataset search and comparison
 ```
 ````
 
-The result of applying the above transformation to the [**sample tabular log**](sample-tabular-log-anchor)
-file is shown in the following table:
+### Workflow for data annotators
 
-````{admonition} Result of applying remap_columns to the sample tabular log file.
-| onset  | code  | description | duration | event_type |
-| -------- | ------- | ------------- | ------- | ------ |
-| 0.3423 | 4332  | Presentation of a fixation cross for 0.25 seconds. | 0.25  | show_cross |
-| 0.5923 | 4333  | Presentation of a face image for 0.5 seconds. | 0.50  | show_face |
-| 1.7000 | 4332  | Presentation of a fixation cross for 0.25 seconds. | 0.25  | show_cross |
-|  ...   |  ...  | ... | ... | ... |
-
+````{mermaid}
+graph LR
+    A["📁 Raw Dataset<br/>Event codes & logs"] --> B["📋 Assess Events<br/>Understand experiment"]
+    B --> C["🏷️ Add HED Tags<br/>Annotate meanings"]
+    C --> D["✅ Validate<br/>Check completeness"]
+    D --> E["📂 BIDS/NWB Format<br/>Standardize structure"]
+    E --> F["🌐 Share Dataset<br/>Ready for reuse"]
+    
+    C --> G["🛠️ Online Tools<br/>CTagger, validators"]
+    G --> C
+    
+    style A fill:#ffcccc
+    style B fill:#e3f2fd
+    style C fill:#ccffcc
+    style D fill:#cceeff
+    style E fill:#f3e5f5
+    style F fill:#e6ccff
+    style G fill:#fff3e0
 ````
-
-The remapping transformation retains all the columns. At this point you can delete and/or
-reorder columns using other remodeling commands, 
-since BIDS requires that the first two columns in all events files be *onset* and *duration*,
-respectively. The remodeling JSON file can be expanded to include these transformations as well.
-
-<hr style="border: 3px solid #000080;" />
-
-(as-a-data-annotator-anchor)=
-## <span style="color: #229955;">As a data annotator</span>
-> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... organizing data and tagging events:</span>
-
-The move towards open, reproducible science, both in the scientific community and
-by funding agencies, makes data sharing a requirement.
-An added benefit, is that data used by others is likely to garner increased recognition
-and additional citations.
-This section emphasizes the importance of complete and accurate metadata to enable analysis.
 
 **Here are some topics of interest to data annotators:**
 
@@ -349,7 +396,7 @@ Thus, as you are adding HED annotations, you should frequently revalidate.
 (validating-hed-annotations-anchor)=
 #### Validating HED annotations
 
-- The [**HED validation guide**](https://www.hedtags.org/hed-resources/HedValidationGuide.html) describes the different types of validators available.
+- The [**HED validation guide**](./HedValidationGuide.md) describes the different types of validators available.
 <p></p>
 
 - The [**HED errors**](https://www.hedtags.org/hed-specification/Appendix_B.html)

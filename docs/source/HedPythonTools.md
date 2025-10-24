@@ -208,7 +208,7 @@ each unique value appears somewhere in dataset event files.
 
 Validating HED annotations as you develop them makes the annotation process easier and
 faster to debug.
-The [**HED validation guide**](https://www.hedtags.org/hed-resources/HedValidationGuide.html)
+The [**HED validation guide**](./HedValidationGuide.md)
 discusses various HED validation issues and how to fix them.
 
 The [**validate_bids_dataset.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb)
