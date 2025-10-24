@@ -41,30 +41,24 @@ This tells us: A sensory event occurred involving visual presentation of a face 
 ## The HED workflow for researchers
 
 ```{mermaid}
-graph LR
-    A["🔬 Experiment<br/>Design & Run"] --> B["📝 Event Logs<br/>codes: 1,2,3..."]
-    B --> C["🏷️ HED Annotation<br/>Sensory-event, Visual..."]
-    C --> D["✅ Validation<br/>Check syntax & schema"]
-    D --> E["📊 Analysis<br/>Search, filter, extract"]
-    E --> F["🔍 Results<br/>Cross-study insights"]
+flowchart TD
+    A["🔬 Your Experiment"] --> B["❌ Cryptic Event Codes<br/>stimulus_type: 1, 2, 3..."]
+    B --> C["✨ HED Magic<br/>Add meaningful descriptions"]
+    C --> D["✅ Rich Event Annotations<br/>Sensory-event, Visual-presentation, Face"]
+    D --> E["� Powerful Analysis<br/>Find patterns across studies"]
     
-    B -.-> G["🛠️ Remodeling Tools<br/>Clean & restructure"]
-    G --> C
-    
-    C -.-> H["📋 BIDS/NWB<br/>Data sharing format"]
-    H --> E
-    
-    style A fill:#e1f5fe
-    style B fill:#ffcccc
-    style C fill:#ccffcc  
-    style D fill:#cceeff
-    style E fill:#ffffcc
-    style F fill:#e6ccff
-    style G fill:#fff3e0
-    style H fill:#f3e5f5
+    style A fill:#e8f5e8,stroke:#4caf50,stroke-width:3px
+    style B fill:#ffebee,stroke:#f44336,stroke-width:3px
+    style C fill:#fff3e0,stroke:#ff9800,stroke-width:3px
+    style D fill:#e8f5e8,stroke:#4caf50,stroke-width:3px
+    style E fill:#e1f5fe,stroke:#2196f3,stroke-width:3px
 ```
 
-This workflow shows how HED transforms cryptic event codes into meaningful, machine-actionable annotations that enable powerful cross-study analysis.
+**HED transforms meaningless event codes into rich, searchable descriptions that unlock powerful cross-study analysis.**
+
+### What HED gives you:
+- **Before HED**: "Event code 3 occurred" → Meaningless without documentation  
+- **After HED**: "Visual presentation of a face image as experimental stimulus" → Self-explanatory and searchable
 
 ## Who should use HED?
 
