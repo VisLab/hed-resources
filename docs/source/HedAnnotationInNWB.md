@@ -175,9 +175,11 @@ from datetime import datetime
 from dateutil.tz import tzutc
 from pynwb import NWBFile
 
-my_nwb = NWBFile(session_description='a test NWB File',
-                   identifier='TEST123',
-                   session_start_time=datetime(1970, 1, 1, 12, tzinfo=tzutc()))
+my_nwb = NWBFile(
+    session_description='a test NWB File',
+    identifier='TEST123',
+    session_start_time=datetime(1970, 1, 1, 12, tzinfo=tzutc())
+)
 
 ```
 ````
@@ -204,4 +206,5 @@ prior to passing it to the `NWBFile` constructor.
 In addition, the `stimulus` input is a list or tuple of objects that could include `DynamicTable` objects.
 
 The NWB infrastructure provides IO functions to serialize these HED-augmented tables.
+
 
