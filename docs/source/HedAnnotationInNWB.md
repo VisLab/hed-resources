@@ -73,9 +73,9 @@ tags.add_row("Sensory-event, Visual-presentation")
 ```
 ````
 
-After this `add_row` operation, `tags` has 3 elements. Notice that "Sensory-event, Visual-presentation"
+After this `add_row` operation, `tags` has 3 elements. Notice that `"Sensory-event, Visual-presentation"`
 is a single HED string, not two HED strings.
-In contrast, ["Correct-action", "Incorrect-action"] is a list with two HED strings.
+In contrast, `["Correct-action", "Incorrect-action"]` is a list with two HED strings.
 
 ### HED in a table
 
@@ -204,3 +204,4 @@ prior to passing it to the `NWBFile` constructor.
 In addition, the `stimulus` input is a list or tuple of objects that could include `DynamicTable` objects.
 
 The NWB infrastructure provides IO functions to serialize these HED-augmented tables.
+
