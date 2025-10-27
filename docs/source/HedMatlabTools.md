@@ -740,7 +740,7 @@ MATLAB HED web services allow MATLAB programs to request the same services that 
 through the online tools.
 These services are available through the [**https://hedtools.org/hed**](https://hedtools.org/hed) server.
 Alternatively, these services can be accessed through a locally-deployed docker module.
-See the [**hed-web**](https://hed-web.readthedocs.io/en/latest/index.html)
+See the [**hed-web**](https://www.hedtags.org/hed-web)
 GitHub repository documentation for additional information on the docker deployment.
 The MATLAB code to run demos of these services is available on the 
 [**web_services_demo**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos)
