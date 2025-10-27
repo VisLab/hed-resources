@@ -53,7 +53,7 @@ tags = HedTags(hed_version='8.3.0', data=["Correct-action", "Incorrect-action"])
 ````
 
 You must specify the version of the HED vocabulary to be used.
-We recommend that you use the latest version of HED (currently 8.3.0).
+We recommend that you use the latest version of HED (currently 8.4.0).
 A separate HED version is used for each instance of the `HedTags` column,
 so in theory you could use a different version for each column. 
 This is not recommended, as annotations across columns and tables may be combined for analysis.
@@ -206,5 +206,4 @@ prior to passing it to the `NWBFile` constructor.
 In addition, the `stimulus` input is a list or tuple of objects that could include `DynamicTable` objects.
 
 The NWB infrastructure provides IO functions to serialize these HED-augmented tables.
-
 
