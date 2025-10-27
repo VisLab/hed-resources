@@ -42,16 +42,17 @@ This tells us: A sensory event occurred involving visual presentation of a face 
 
 ```{mermaid}
 flowchart TD
-    A["🔬 Your Experiment"] --> B["❌ Cryptic Event Codes<br/>stimulus_type: 1, 2, 3..."]
-    B --> C["✨ HED Magic<br/>Add meaningful descriptions"]
-    C --> D["✅ Rich Event Annotations<br/>Sensory-event, Visual-presentation, Face"]
-    D --> E["� Powerful Analysis<br/>Find patterns across studies"]
+    A["🔬 Your Experiment<br/>Collect neuroimaging data"] 
+    A --> B["❌ Raw Event Codes<br/>stimulus_type: 1, 2, 3...<br/>response_code: A, B, C..."]
+    B --> C["✨ HED Annotation<br/>Add meaningful descriptions<br/>using standardized vocabulary"]
+    C --> D["✅ Rich Event Data<br/>Sensory-event, Visual-presentation,<br/>Face, Experimental-stimulus"]
+    D --> E["🚀 Powerful Analysis<br/>Search across studies<br/>Extract design matrices<br/>Compare experiments"]
     
-    style A fill:#e8f5e8,stroke:#4caf50,stroke-width:3px
-    style B fill:#ffebee,stroke:#f44336,stroke-width:3px
-    style C fill:#fff3e0,stroke:#ff9800,stroke-width:3px
-    style D fill:#e8f5e8,stroke:#4caf50,stroke-width:3px
-    style E fill:#e1f5fe,stroke:#2196f3,stroke-width:3px
+    style A fill:#2e7d32,stroke:#1b5e20,stroke-width:3px,color:#fff
+    style B fill:#d32f2f,stroke:#b71c1c,stroke-width:3px,color:#fff
+    style C fill:#f57c00,stroke:#e65100,stroke-width:3px,color:#fff
+    style D fill:#388e3c,stroke:#1b5e20,stroke-width:3px,color:#fff
+    style E fill:#1976d2,stroke:#0d47a1,stroke-width:3px,color:#fff
 ```
 
 **HED transforms meaningless event codes into rich, searchable descriptions that unlock powerful cross-study analysis.**
@@ -114,10 +115,10 @@ Follow these pathways based on your immediate needs:
 
 **Start here if:** You've never used HED before and want to understand the basics.
 
-1. **📖 Learn the concepts** - Read [HED annotation semantics](HedAnnotationSemantics.md) (15 min)
-2. **🎯 Try a simple example** - Follow the [HED annotation quickstart](HedAnnotationQuickstart.md) (30 min)  
+1. **📖 Learn the concepts** - Read [HED annotation semantics](HedAnnotationSemantics) (15 min)
+2. **🎯 Try a simple example** - Follow the [HED annotation quickstart](HedAnnotationQuickstart) (30 min)  
 3. **🔍 Explore the vocabulary** - Browse the [HED Schema Viewer](https://www.hedtags.org/hed-schema-browser/) (10 min)
-4. **✅ Validate your first annotation** - Use [HED online tools](./HedValidationGuide.md) (5 min)
+3. **✅ Validate your first annotation** - Use [HED online tools](HedOnlineTools) (5 min)
 
 **Next steps:** Choose a specific pathway below based on your role.
 ```
@@ -127,9 +128,9 @@ Follow these pathways based on your immediate needs:
 
 **Start here if:** You have data in BIDS format and want to add HED annotations.
 
-1. **📋 BIDS quickstart** - Follow [BIDS annotation quickstart](BidsAnnotationQuickstart.md) (45 min)
-2. **🛠️ Use online tools** - Try the [BIDS annotation tool](HedOnlineTools.md#hed-annotation-tool) (20 min)
-3. **✅ Validate your dataset** - Use [HED validation guide](./HedValidationGuide.md) (15 min)
+1. **📋 BIDS quickstart** - Follow [BIDS annotation quickstart](BidsAnnotationQuickstart) (45 min)
+2. **🛠️ Use online tools** - Try the [BIDS annotation tools](HedOnlineTools) (20 min)
+3. **✅ Validate your dataset** - Use [HED validation guide](HedValidationGuide) (15 min)
 
 **Need help?** See [BIDS-specific documentation](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html)
 ```
@@ -139,12 +140,12 @@ Follow these pathways based on your immediate needs:
 
 **Start here if:** You want to search or analyze HED-annotated data.
 
-1. **🔍 Learn searching** - Read [HED search guide](HedSearchGuide.md) (30 min)
-2. **🐍 Python tools** - Explore [HED Python tools](HedPythonTools.md) (45 min)
-3. **📊 MATLAB tools** - Try [HED MATLAB tools](HedMatlabTools.md) (45 min)  
-4. **📈 Analysis workflows** - See [conditions and design matrices](HedConditionsAndDesignMatrices.md) (30 min)
+1. **🔍 Learn searching** - Read [HED search guide](HedSearchGuide) (30 min)
+2. **🐍 Python tools** - Explore [HED Python tools](HedPythonTools) (45 min)
+3. **📊 MATLAB tools** - Try [HED MATLAB tools](HedMatlabTools) (45 min)  
+4. **📈 Analysis workflows** - See [conditions and design matrices](HedConditionsAndDesignMatrices) (30 min)
 
-**Advanced:** Learn about [HED remodeling tools](HedRemodelingTools.md) for data transformation.
+**Advanced:** Learn about [HED remodeling tools](HedRemodelingTools) for data transformation.
 ```
 
 ```{tab-item} I'm Developing Tools
@@ -152,14 +153,14 @@ Follow these pathways based on your immediate needs:
 
 **Start here if:** You're building software that needs to work with HED.
 
-1. **📚 Understand the schema** - Read [HED schemas guide](HedSchemas.md) (20 min)
+1. **📚 Understand the schema** - Read [HED schemas guide](HedSchemas) (20 min)
 2. **🔧 Choose your platform:**
-   - [Python API](HedPythonTools.md#hed-python-api) (30 min)
-   - [MATLAB API](HedMatlabTools.md#hed-matlab-api) (30 min)  
-   - [JavaScript tools](HedJavascriptTools.md) (30 min)
-3. **✅ Implement validation** - Use [validation examples](./HedValidationGuide.md#programmatic-validation) (45 min)
+   - [Python API](HedPythonTools#hed-python-api) (30 min)
+   - [MATLAB API](HedMatlabTools#hed-matlab-api) (30 min)  
+   - [JavaScript tools](HedJavascriptTools) (30 min)
+3. **✅ Implement validation** - Use [validation examples](HedValidationGuide) (45 min)
 
-**Advanced:** Consider [contributing to HED schemas](HedSchemaDevelopersGuide.md).
+**Advanced:** Consider [contributing to HED schemas](HedSchemaDevelopersGuide).
 ```
 ````
 
@@ -170,32 +171,32 @@ Follow these pathways based on your immediate needs:
 
 ```{grid-item-card} 🌐 **Online Tools**
 :class-header: bg-primary
-:link: ./HedValidationGuide.md
-:link-type: url
+:link: HedOnlineTools
+:link-type: doc
 
 Validate annotations, explore schemas, and learn HED syntax without installing anything.
 
-**Quick access:** [HED validation](./HedValidationGuide.md) • [Schema browser](https://www.hedtags.org/hed-schema-browser/)
+**Quick access:** [HED validation](HedValidationGuide) • [Schema browser](https://www.hedtags.org/hed-schema-browser/)
 ```
 
 ```{grid-item-card} 📖 **Core Documentation**  
 :class-header: bg-success
-:link: HedAnnotationQuickstart.md
+:link: HedAnnotationQuickstart
 :link-type: doc
 
 Step-by-step guides for learning HED annotation and validation.
 
-**Start with:** [Annotation quickstart](HedAnnotationQuickstart.md) • [BIDS quickstart](BidsAnnotationQuickstart.md)
+**Start with:** [Annotation quickstart](HedAnnotationQuickstart) • [BIDS quickstart](BidsAnnotationQuickstart)
 ```
 
 ```{grid-item-card} 🔧 **Programming Tools**
 :class-header: bg-info  
-:link: HedPythonTools.md
+:link: HedPythonTools
 :link-type: doc
 
 APIs and libraries for working with HED in your analysis pipelines.
 
-**Choose your platform:** [Python](HedPythonTools.md) • [MATLAB](HedMatlabTools.md) • [JavaScript](HedJavascriptTools.md)
+**Choose your platform:** [Python](HedPythonTools) • [MATLAB](HedMatlabTools) • [JavaScript](HedJavascriptTools)
 ```
 
 ```{grid-item-card} 🤝 **Community Support**
@@ -326,8 +327,8 @@ Ready to start? Choose your path based on your immediate needs:
 **Building HED-aware tools?** Get the technical details:
 
 1. **📚 Schema structure** - Read [HED schemas guide](HedSchemas.md) (20 min)
-2. **🔧 APIs and libraries** - Choose [Python](HedPythonTools.md), [MATLAB](HedMatlabTools.md), or [JavaScript](HedJavascriptTools.md) (30 min)
-3. **✅ Validation integration** - See [validation examples](./HedValidationGuide.md#programmatic-validation) (45 min)
+2. **🔧 APIs and libraries** - Choose [Python](HedPythonTools), [MATLAB](HedMatlabTools), or [JavaScript](HedJavascriptTools) (30 min)
+3. **✅ Validation integration** - See [validation examples](HedValidationGuide) (45 min)
 ```
 ````
 
@@ -335,7 +336,7 @@ Ready to start? Choose your path based on your immediate needs:
 
 This introduction covers the basics, but HED serves different needs throughout the research lifecycle. For detailed guidance specific to your role and situation:
 
-**👉 See [How can you use HED?](HowCanYouUseHed.md)** for comprehensive workflows covering:
+**👉 See [How can you use HED?](HowCanYouUseHed)** for comprehensive workflows covering:
 
 - **🧪 Experimenters**: Event logging, data collection, log processing
 - **📝 Data Annotators**: BIDS curation, annotation workflows, quality control  
