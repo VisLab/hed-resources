@@ -73,9 +73,9 @@ tags.add_row("Sensory-event, Visual-presentation")
 ```
 ````
 
-After this `add_row` operation, `tags` has 3 elements. Notice that "Sensory-event, Visual-presentation"
+After this `add_row` operation, `tags` has 3 elements. Notice that `"Sensory-event, Visual-presentation"`
 is a single HED string, not two HED strings.
-In contrast, ["Correct-action", "Incorrect-action"] is a list with two HED strings.
+In contrast, `["Correct-action", "Incorrect-action"]` is a list with two HED strings.
 
 ### HED in a table
 
@@ -175,9 +175,11 @@ from datetime import datetime
 from dateutil.tz import tzutc
 from pynwb import NWBFile
 
-my_nwb = NWBFile(session_description='a test NWB File',
-                   identifier='TEST123',
-                   session_start_time=datetime(1970, 1, 1, 12, tzinfo=tzutc()))
+my_nwb = NWBFile(
+    session_description='a test NWB File',
+    identifier='TEST123',
+    session_start_time=datetime(1970, 1, 1, 12, tzinfo=tzutc())
+)
 
 ```
 ````
