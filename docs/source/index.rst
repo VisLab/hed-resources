@@ -20,6 +20,35 @@ HED resources
 What is HED?
 ************
 
+**HED (Hierarchical Event Descriptors)** is a framework for describing experiment events using a standardized,
+machine-readable vocabulary. HED annotations enable researchers to create **analysis-ready datasets** that are
+easily searchable and shareable across studies.
+
+HED is used across neuroimaging (EEG, MEG, fMRI), physiological (ECG, EMG, GSR), and behavioral experiments
+to create permanent, human- and machine-readable records of what happened during data collection.
+
+HED is integrated into data standards like `BIDS <https://bids.neuroimaging.io/>`_ 
+(Brain Imaging Data Structure) and `NWB <https://www.nwb.org/>`_ (Neurodata Without Borders),
+making it easy to share analysis-ready datasets.
+
+Where to begin?
+***************
+
+**New to HED?** Start with the `Introduction to HED <./IntroductionToHed.md>`_ for core concepts (5 min read).
+
+**Ready to get started?** Use the `How can you use HED? <./HowCanYouUseHed.md>`_ guide to find role-specific 
+workflows and detailed guidance for your use case (experimenters, annotators, analysts, developers, or schema builders).
+
+**Need tools?** Browse the `HED online tools <https://hedtools.org/hed/>`_ for validation, annotation, and analysis,
+or visit the `HED standard organization <https://github.com/hed-standard/>`_ on GitHub.
+
+
+
+.. toctree: 
+
+What is HED?
+************
+
 **HED** (**‘Hierarchical Event Descriptors’**, pronounced either as /hed/ or /H//E//D/)
 is a framework for using a controlled yet extensible vocabulary to systematically describe
 experiment events of all types (perceptual, action, experiment control, task ...).
@@ -88,8 +117,8 @@ how specific types of users can leverage HED.
    :caption: Overview:
 
    IntroductionToHed.md
-   WhatsNew.md
    HowCanYouUseHed.md
+   WhatsNew.md   
 
 
 .. toctree::

@@ -7,14 +7,14 @@ These services do not require a login to use.
 
 The tools are implemented in a Docker module and can be deployed locally 
 provided that Docker is installed. 
-See the [HED Web](https://hed-web.readthedocs.io/en/latest/) documentation
+See the [**HED Web**](https://www.hedtags.org/hed-web) documentation
 about download and deployment information.
 
-* [**Browser-based tools**](browser-based-tools-anchor) - web-based tools for HED.
+* [**Online tools**](online-access-anchor) - web-based tools for HED.
 * [**RESTful services**](hed-restful-services-anchor) - RESTful online HED services.
 
-(browser-based-tools-anchor)=
-## Browser-based access
+(online-access-anchor)=
+## Online access
 
 The HED browser-based tools are organized into the following pages,
 each focused on a particular type of file. 
