@@ -221,7 +221,7 @@ BIDS and NWB are the most widely-used standards for organizing data in neuroscie
 
 [**BIDS**](https://bids.neuroimaging.io/) (Brain Imaging Data Structure)
 is a widely used data organization standard for neuroimaging and behavioral data.
-BIDS focuses on file organization with apppropriate experimental metadata.
+BIDS focuses on file organization with appropriate experimental metadata.
 
 [**NWB**](https://www.nwb.org/) (Neurodata Without Borders)
 is a data standard for neurophysiology, providing specifications for storing
@@ -833,148 +833,47 @@ All repositories welcome contributions and issue reports.
 **Core resources:**
 
 - **Project page**: [**https://www.hedtags.org**](https://www.hedtags.org)
-- **Documentation**: [**https://www.hedtags.org**](https://www.hedtags.org/hed-resources)
+- **Documentation**: [**https://www.hedtags.org/hed-resources**](https://www.hedtags.org/hed-resources)
 - **Annotated datasets**: [**hed-examples repository**](https://github.com/hed-standard/hed-examples)
 - **Schemas**: [**hed-schemas repository**](https://github.com/hed-standard/hed-schemas)
 
-(integrating-with-existing-tools-anchor)=
-
-
-The GitHub repositories and other resources associated with these projects are described in this section.
-The HED project page is [**https://www.hedtags.org**](https://www.hedtags.org).
-The examples are housed in the 
-[**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository.
-
-Contributions are welcome in any area (e.g., code, examples, documentation, ideas, issues).
-Use the **issues** mechanism of the most appropriate HED standard repository to ask questions or to
-describe your ideas and how you would like to contribute.
-Alternatively, you can email hed.maintainers@gmail.com.
-
-(the-hed-code-base-anchor)=
-### The HED code base
-
-The [**HED standard organization**](https://github.com/hed-standard) has several
-code projects and distinct tool bases in Python, MATLAB, and JavaScript.
-All HED efforts are open source.
-
 (the-hed-python-code-base-anchor)=
-#### The HED Python code base
+#### Python tools
 
-The Python HED tools contain the core technology for HED including code for validation, analysis,
-and schema development.
+**Focus**: Core HED technology including validation, analysis, and schema development
 
-**Repository**: [**hed-python**](https://github.com/hed-standard/hed-python)
+**Repository**: [**hed-python**](https://github.com/hed-standard/hed-python) | **Package**: `pip install hedtools`
 
-**Installation:**
-
-Latest stable release from PyPI:
-```bash
-pip install hedtools
-```
-
-Development version from GitHub:
-```bash
-pip install git+https://github.com/hed-standard/hed-python/@develop
-```
-
-**Key capabilities:**
-
-- Complete HED validation with detailed error reporting
-- Schema loading and caching
-- HED search and query execution
-- Event file remodeling and transformation
-- Summary generation (tag summary, design summary, etc.)
-- Schema development and validation tools
-
-**Documentation**: See [**HED Python tools**](./HedPythonTools.md) for API reference and examples.
+**Documentation**: [**HED Python tools**](./HedPythonTools.md)
 
 (the-hed-javascript-code-base-anchor)=
-#### The HED JavaScript code base
+#### JavaScript tools
 
-The JavaScript tools focus on HED validation and are used by the BIDS validator.
+**Focus**: HED validation for web applications and BIDS validator
 
-**Repository**: [**hed-javascript**](https://github.com/hed-standard/hed-javascript)
+**Repository**: [**hed-javascript**](https://github.com/hed-standard/hed-javascript) | **Package**: `npm install hed-validator`
 
-**Installation:**
-
-From npm:
-```bash
-npm install hed-validator
-```
-
-**Key capabilities:**
-
-- HED string validation
-- Schema compliance checking
-- Integration with BIDS validator
-- Browser and Node.js support
-
-**Primary client**: [**BIDS validator**](https://github.com/bids-standard/bids-validator)
-
-**Documentation**: See [**HED JavaScript tools**](./HedJavascriptTools.md) for usage examples.
+**Documentation**: [**HED JavaScript tools**](./HedJavascriptTools.md)
 
 (the-hed-matlab-code-base-anchor)=
-#### The HED MATLAB code base
+#### MATLAB tools
 
-The MATLAB HED tools project focuses primarily on analysis using HED, 
-with extensive support for annotation through the CTagger GUI.
+**Focus**: Analysis and annotation with EEGLAB integration
 
-**Installation through EEGLAB:**
+**Repository**: [**hed-matlab**](https://github.com/hed-standard/hed-matlab) | **Installation**: Via EEGLAB plugin manager
 
-The **HEDTools plugin** is available for installation through [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php). 
-
-The [**EEGLAB plug-in integration**](https://www.hedtags.org/hed-resources/HedMatlabTools.html#eeglab-plug-in-integration) tutorial explains the installation 
-and integration of HED tools in the EEGLAB environment.
-
-**CTagger - HED annotation GUI:**
-
-**CTagger** is a standalone GUI for HED annotation and validation that can be run independently or through EEGLAB.
-
-- **Repository**: [**CTagger**](https://github.com/hed-standard/ctagger)
-- **Integration**: Callable from MATLAB via EEGLAB plug-in
-- **Documentation**: [**CTAGGER GUI tagging tool**](https://www.hedtags.org/hed-resources/CTaggerGuiTaggingTool.html)
-
-**MATLAB integration options:**
-
-[**HED MATLAB Tools**](https://www.hedtags.org/hed-resources/HedMatlabTools.html) explains how to
-use HEDTools in MATLAB using three approaches:
-
-1. MATLAB wrappers for HED Python tools
-2. MATLAB wrappers for HED web services
-3. Direct calls through EEGLAB
-
-**Key capabilities:**
-
-- Event search and epoching based on HED queries
-- Design matrix extraction
-- HED annotation through CTagger GUI
-- Integration with EEGLAB analysis workflows
-
+**Documentation**: [**HED MATLAB tools**](./HedMatlabTools.md) | [**CTagger GUI**](./CTaggerGuiTaggingTool.md)
 
 (web-tools-and-rest-services-anchor)=
-#### Web tools and REST services
+#### Online tools and REST services
 
-The HED online tools provide both a GUI interface and RESTful API endpoints.
+**Focus**: Web-based validation, debugging, and programmatic access
 
-**Online tools:**
-
-- **Production**: [**https://hedtools.org/hed/**](https://hedtools.org/hed/)
-- **Development**: [**https://hedtools.org/hed_dev**](https://hedtools.org/hed_dev)
-
-**Use cases:**
-
-- **GUI interface**: Debugging, quick validation, small-scale operations
-- **REST services**: Programmatic access from any language
-- **MATLAB integration**: Call services from MATLAB without Python dependency
+**Production**: [**hedtools.org/hed**](https://hedtools.org/hed/) | **Development**: [**hedtools.org/hed_dev**](https://hedtools.org/hed_dev)
 
 **Repository**: [**hed-web**](https://github.com/hed-standard/hed-web)
 
-**Calling from code:**
-
-The HED services can be called programmatically from any language that supports HTTP requests.
-MATLAB wrappers are available as described in [**HED MATLAB Tools**](https://www.hedtags.org/hed-resources/HedMatlabTools.html).
-
-See [**HED online tools**](./HedOnlineTools.md) for GUI usage and REST API documentation.
+**Documentation**: [**HED online tools**](./HedOnlineTools.md)
 
 
 (contributing-to-hed-development-anchor)=
