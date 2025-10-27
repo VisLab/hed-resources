@@ -63,7 +63,8 @@ Building software that integrates with HED, creating analysis pipelines, extendi
 :link: #as-a-schema-builder-anchor
 :link-type: ref
 
-Developing domain-specific vocabularies, extending the HED schema, creating library schemas.
+Developing domain-specific vocabularies (HED library schemas) to
+capture domain specific concepts in metadata.
 
 **Key needs:** Schema development tools, community coordination, validation frameworks
 ```
@@ -78,7 +79,7 @@ Developing domain-specific vocabularies, extending the HED schema, creating libr
 
 You're designing and running experiments to test hypotheses and study behavior. HED helps you capture what actually happened during data collection in a way that maximizes downstream usability and enables powerful analyses.
 
-### Key challenges HED solves for experimenters
+### Challenges for experimenters
 
 ````{grid} 2
 :gutter: 2
@@ -86,7 +87,7 @@ You're designing and running experiments to test hypotheses and study behavior. 
 ```{grid-item-card} ❌ **Without HED**
 :class-header: bg-danger
 
-- Event codes (1, 2, 3) lose meaning over time
+- Meaningless event codes (1, 2, 3)
 - Log files require constant documentation
 - Analysis code breaks when events change
 - Difficult to compare across experiments
@@ -98,36 +99,15 @@ You're designing and running experiments to test hypotheses and study behavior. 
 
 - Self-documenting event annotations
 - Standardized vocabulary across studies
-- Analysis tools work automatically
+- HED-enabled analysis works automatically
 - Easy cross-experiment comparisons
 - Data ready for sharing in BIDS/NWB
 ```
 ````
 
-### Workflow for experimenters
-
-````{mermaid}
-graph LR
-    A["📋 Plan Experiment<br/>What to record?"] --> B["🔧 Setup Logging<br/>Event codes & timing"]
-    B --> C["🧪 Run Experiment<br/>Collect data & logs"]
-    C --> D["🔄 Process Logs<br/>Clean & structure"]
-    D --> E["🏷️ HED Annotation<br/>Meaningful descriptions"]
-    E --> F["✅ Validate<br/>Check completeness"]
-    F --> G["📊 Analysis Ready<br/>Share & analyze"]
-    
-    style A fill:#e3f2fd
-    style B fill:#f3e5f5
-    style C fill:#e8f5e8
-    style D fill:#fff3e0
-    style E fill:#ccffcc
-    style F fill:#cceeff
-    style G fill:#e6ccff
-````
-
 ### Essential topics for experimenters
 
 ````{dropdown} **🎯 Planning and running experiments**
-:open:
 
 **Key questions to address:**
 - What events should be logged during data collection?
@@ -190,7 +170,7 @@ After data collection, raw logs need processing before analysis. HED remodeling 
 
 You're curating datasets for sharing, adding meaningful annotations to event data, and ensuring data meets standards like BIDS or NWB. HED provides tools and workflows to make your data FAIR (Findable, Accessible, Interoperable, Reusable).
 
-### Key challenges HED solves for data annotators
+### Challenges for data annotators
 
 ````{grid} 2
 :gutter: 2
@@ -198,10 +178,10 @@ You're curating datasets for sharing, adding meaningful annotations to event dat
 ```{grid-item-card} ❌ **Without HED**
 :class-header: bg-danger
 
-- Event meanings lost without documentation
+- Events meaningless without docs
 - Each dataset needs custom interpretation
-- Difficult to validate annotation completeness
-- Manual work for every analysis
+- Hard to validate metadata completeness
+- Manual coding for every analysis
 - Hard to find similar datasets
 ```
 
@@ -216,34 +196,13 @@ You're curating datasets for sharing, adding meaningful annotations to event dat
 ```
 ````
 
-### Workflow for data annotators
-
-````{mermaid}
-graph LR
-    A["📁 Raw Dataset<br/>Event codes & logs"] --> B["📋 Assess Events<br/>Understand experiment"]
-    B --> C["🏷️ Add HED Tags<br/>Annotate meanings"]
-    C --> D["✅ Validate<br/>Check completeness"]
-    D --> E["📂 BIDS/NWB Format<br/>Standardize structure"]
-    E --> F["🌐 Share Dataset<br/>Ready for reuse"]
-    
-    C --> G["🛠️ Online Tools<br/>CTagger, validators"]
-    G --> C
-    
-    style A fill:#ffcccc
-    style B fill:#e3f2fd
-    style C fill:#ccffcc
-    style D fill:#cceeff
-    style E fill:#f3e5f5
-    style F fill:#e6ccff
-    style G fill:#fff3e0
-````
 
 **Here are some topics of interest to data annotators:**
 
 * [**Standardizing the format**](standardizing-the-format-anchor)
-  * [**Learning about BIDS**](learning-about-bids-anchor)
   * [**Learning about HED**](learning-about-hed-anchor)
-  * [**Integrating HED in BIDS**](integrating-hed-in-bids-anchor)
+  * [**HED and BIDS**](hed-and-bids-anchor)
+  * [**HED and NWB**](hed-and-nwb-anchor)
 * [**Adding HED annotations**](adding-hed-annotations-anchor)
   * [**Viewing available tags**](viewing-available-tags-anchor)
   * [**Basic annotation strategies**](basic-annotation-strategies-anchor)
@@ -257,16 +216,56 @@ graph LR
 
 An important aspect of data-sharing is putting your data into a standardized format
 so that tools can read and manipulate the data without the need for
-special-purpose reformatting code.
+special-purpose reformatting code. 
+BIDS and NWB are the most widely-used standards for organizing data in neuroscience.
 
-[**BIDS**](https://bids.neuroimaging.io/) (Brain Imaging data Structure)
-is a widely used data organization standard for neuroimaging data.
-HED is well-integrated into the BIDS standard.
+[**BIDS**](https://bids.neuroimaging.io/) (Brain Imaging Data Structure)
+is a widely used data organization standard for neuroimaging and behavioral data.
+BIDS focuses on file organization with appropriate experimental metadata.
 
-(learning-about-bids-anchor)=
-#### Learning about BIDS
+[**NWB**](https://www.nwb.org/) (Neurodata Without Borders)
+is a data standard for neurophysiology, providing specifications for storing
+cellular, intracellular, and extracellular physiology data, and more recently
+neuroimaging and behavioral data. A single NWB file holds all of the
+data from an experimental session, synchronized to a common time line.
+
+HED is well-integrated into both the BIDS and NWB standards.
+
+(learning-about-hed-anchor)=
+#### Learning about HED
+
+- The [**Introduction to HED**](https://www.hedtags.org/hed-resources/IntroductionToHed.html)
+gives a basic overview of HED's history and goals and a quickstart introduction.   
+<p></p>
+
+- Use the [**HED schema Browser**](https://www.hedtags.org/hed-schema-browser) to explore the available HED
+standard vocabulary and the field-specific library schema extensions.
+
+- The [**"Capturing the nature of events..."**](https://www.sciencedirect.com/science/article/pii/S1053811921010387) paper works through a practical example of
+using HED annotations and suggests best practices for annotation.  
+<p></p>
+
+- The [**HED anntotation semantics**](HedAnnotationSemantics.md) tutorial presents
+detailed rules for making HED annotations meaningful.
+
+- See also the [**HED specification**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html) 
+for detailed information on the rules for HED.
+Of special interest to HED users are [**Chapter 4: Basic annotation**](https://www.hedtags.org/hed-specification/04_Basic_annotation.html) and [**Chapter 5: Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html).
+These chapters explain the different types of HED
+annotations and the rules for using them.
+
+
+(hed-and-bids-anchor)=
+#### HED and BIDS
+
+[**BIDS (Brain Imaging Data Structure)**](https://bids.neuroimaging.io/) is a widely used 
+data organization standard for neuroimaging and behavioral data. BIDS focuses on file 
+organization with appropriate experimental metadata.
+
+**Learning about BIDS:**
+
 - If you are unfamiliar with BIDS, we recommend the
-[**BIDS Start Kit**](https://bids-standard.github.io/bids-starter-kit/index.html).
+[**BIDS Starter Kit**](https://bids-standard.github.io/bids-starter-kit/index.html).
 <p></p>
 
 - [**Folders and Files**](https://bids-standard.github.io/bids-starter-kit/folders_and_files/folders.html)
@@ -279,33 +278,14 @@ of how to get the appropriate metadata into a BIDS dataset.
 
 - See the [**BIDS specification**](https://bids-specification.readthedocs.io/en/stable/)
 for detailed information on the rules for BIDS.
-Of special interest to HED annotators are the sections on [**Task events**](https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/05-task-events.html)
+Of special interest to HED annotators are the sections on [**Events**](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files/events.html)
 and the [**Hierarchical Event Descriptors**](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html) appendix.
 <p></p>
 
 - There are a variety of tools available to convert to and from BIDS format as summarized
-in [**Software currently supporting BIDS**](https://bids.neuroimaging.io/benefits.html#software-currently-supporting-bids).
+in [**BIDS Tools**](https://bids.neuroimaging.io/tools/index.html).
 
-(learning-about-hed-anchor)=
-#### Learning about HED
-
-- The [**Introduction to HED**](https://www.hedtags.org/hed-resources/IntroductionToHed.html)
-gives a basic overview of HED's history and goals.   
-<p></p>
-
-- The [**"Capturing the nature of events..."**](https://www.sciencedirect.com/science/article/pii/S1053811921010387) paper works through a practical example of
-using HED annotations and suggests best practices for annotation.  
-<p></p>
-
-- See the [**HED specification**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html) 
-for detailed information on the rules for HED.
-Of special interest to HED users are [**Chapter 4: Basic annotation**](https://www.hedtags.org/hed-specification/04_Basic_annotation.html) and [**Chapter 5: Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html).
-These chapters explain the different types of HED
-annotations and the rules for using them.
-
-
-(integrating-hed-in-bids-anchor)=
-#### Integrating HED in BIDS
+**Integrating HED in BIDS:**
 
 There are two strategies for incorporating HED annotations in a BIDS dataset:
 
@@ -327,19 +307,96 @@ a required JSON file that must be placed in the root directory of the dataset.
 See [**HED schema versions**](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html#hed-schema-versions) in the BIDS specification for
 examples.
 
+(hed-and-nwb-anchor)=
+#### HED and NWB
+
+[**NWB (Neurodata Without Borders)**](https://www.nwb.org/) is a data standard for neurophysiology,
+providing specifications for storing cellular, intracellular, and extracellular physiology data,
+along with experimental metadata and behavior. A single NWB file holds all of the
+data from an experimental session, synchronized to a common time line.
+
+**Learning about NWB:**
+
+- The [**PyNWB documentation**](https://pynwb.readthedocs.io/) provides tutorials and API references
+for working with NWB files in Python.
+<p></p>
+
+- The [**ndx-hed extension**](https://www.hedtags.org/ndx-hed/) enables HED integration in NWB files.
+This extension provides data types for storing HED annotations alongside neurophysiology data.
+<p></p>
+
+- The [**HED annotation in NWB guide**](https://www.hedtags.org/hed-resources/HedAnnotationInNWB.html)
+provides detailed information on using HED with NWB, including examples and best practices.
+<p></p>
+
+- See the [**ndx-hed examples**](https://github.com/VisLab/ndx-hed/tree/main/examples) for
+runnable code demonstrating real-world usage patterns and integration techniques.
+
+**Integrating HED in NWB:**
+
+HED annotations in NWB are stored using the **ndx-hed** extension, which provides three main classes:
+
+> **HedLabMetaData**: Required for all HED-annotated NWB files. Specifies the HED schema version and optional lab-specific definitions.
+
+> **HedTags**: Used for row-specific HED annotations in any NWB DynamicTable (e.g., trials, events).
+
+> **HedValueVector**: Used for column-wide HED templates with value placeholders for shared annotation patterns.
+
+**Installation:**
+
+```bash
+pip install -U ndx-hed
+```
+
+**Basic workflow:**
+
+1. Install the ndx-hed extension package
+2. Add HedLabMetaData to your NWB file with the HED schema version
+3. Add HED columns to DynamicTables (trials, events, etc.) using HedTags
+4. Annotate individual rows with HED strings
+
+````{dropdown} **Example: Creating an NWB file with HED annotations**
+
+```python
+from pynwb import NWBFile
+from ndx_hed import HedLabMetaData, HedTags
+from datetime import datetime
+
+# Create NWB file
+nwbfile = NWBFile(
+    session_description="Example session with HED annotations",
+    identifier="example_session_001",
+    session_start_time=datetime.now()
+)
+
+# Add HED schema metadata (required)
+hed_metadata = HedLabMetaData(hed_schema_version="8.4.0")
+nwbfile.add_lab_meta_data(hed_metadata)
+
+# Add HED column to trials table
+nwbfile.add_trial_column(
+    name="HED",
+    col_cls=HedTags,
+    data=[],
+    description="HED annotations for trials"
+)
+
+# Add trials with HED annotations
+nwbfile.add_trial(
+    start_time=0.0,
+    stop_time=1.0,
+    HED="Experimental-trial, (Sensory-event, Visual-presentation)"
+)
+```
+````
+
+The ndx-hed extension supports comprehensive validation to ensure HED annotations conform to schema specifications,
+and provides seamless conversion between BIDS events files and NWB EventsTable format with HED preservation.
+
 (adding-hed-annotations-anchor)=
 ### Adding HED annotations
 This section discusses the strategy for adding annotations in a BIDS dataset using sidecars.
 The discussion assumes that you have a JSON sidecar template file ready to annotate.
-See [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) for a walk-through of this process.
-
-(viewing-available-tags-anchor)=
-#### Viewing available tags
-
-- The HED vocabulary is hierarchically organized as shown
-in the schema as viewed in the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/).
-Library schemas can also be viewed using this viewer.
-<p></p>
 
 (basic-annotation-strategies-anchor)=
 #### Basic annotation strategies
@@ -356,13 +413,17 @@ event. One way to do this is to include a *Description/* tag with a text value
 as part of each annotation. A good description helps to clarify the information
 that you want to convey in the tags.
 <p></p>
+If you have NWB, you can convert an NWB `Events` table to a
+BIDS `_events.tsv` file, generate the template, annotate, and transform back.
+See the [**BIDS to NWB conversion example**](https://github.com/hed-standard/ndx-hed/blob/main/examples/04_bids_conversion.py) to see how that is done.
 
-- [**Viewing available tags**](./HowCanYouUseHed.md#viewing-available-tags)
-gives options for viewing tags to select.
+(viewing-available-tags-anchor)=
+#### Viewing available tags
+
+The HED vocabulary is hierarchically organized as shown
+in the schema as viewed in the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/).
+Library schemas can also be viewed using this viewer.
 <p></p>
-
-- [**CTAGGER**](https://www.hedtags.org/hed-resources/CTaggerGuiTaggingTool.html)
-is a standalone tagging assistant with a user-friendly GUI to ease the tagging process.
 
 (more-advanced-annotations-anchor)=
 #### More advanced annotations
@@ -375,8 +436,15 @@ See [**Creating definitions**](https://www.hedtags.org/hed-specification/05_Adva
 <p></p>
 
 - **Temporal scope**: annotate event processes that extend over time and provide a context for
-events. Expression of temporal scope is enabled by *Temporal-marker* tags: *Onset*, *Offset*,
-and *Duration* together with the *Definition* tag. See [**Temporal scope**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope) for the rules and usage.
+events. Expression of temporal scope is enabled by *Temporal-marker* tags such as
+`Duration` and `Delay`. Temporal scope allows tools to detect everything that is happening 
+at any point in time, not just at the marked events.
+
+For more complex temporal interactions, the `Onset`, `Offset`,
+and `Inset` tags together with the `Definition` tag allow simple HED annotations to
+encode complex, interleaved event processes.
+
+See [**Temporal scope**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope) for the rules and usage.
 <p></p>
 
 - **Conditions and experimental design**: HED allows users to express annotate experiment
@@ -452,105 +520,178 @@ columns of the event files.
 <hr style="border: 3px solid #000080;" />
 
 (as-a-data-analyst-anchor)=
-## <span style="color: #229955;">As a data analyst</span>
-> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... applying HED tools to answer scientific questions:</span>
+## 📊 As a data analyst
+
+> **Using HED-annotated data for scientific discovery and cross-study analysis**
 
 Whether you are analyzing your own data or using shared data produced by others to 
 answer a scientific question, fully understanding the data and its limitations is essential
 for accurate and reproducible analysis.
-This section discusses how HED annotations and tools can be used for effective analysis.
+HED annotations and tools enable powerful analysis workflows that work consistently across different experiments.
+
+### Challenges for data analysts
+
+````{grid} 2
+:gutter: 2
+
+```{grid-item-card} ❌ **Without HED**
+:class-header: bg-danger
+
+- Each dataset requires custom code
+- Event meanings buried in documentation
+- Cannot compare across studies
+- Manual data inspection for every analysis
+- Difficult to validate assumptions
+```
+
+```{grid-item-card} ✅ **With HED**
+:class-header: bg-success
+
+- Standardized search across datasets
+- Self-documenting event structure
+- Automatic design matrix extraction
+- Consistent analysis workflows
+- Built-in data quality summaries
+```
+````
 
 **Here are some topics of interest to data analysts:**
 
 * [**Understanding the data**](understanding-the-data-anchor)
+  * [**Column value summaries**](column-value-summaries-anchor)
+  * [**HED tag summaries**](hed-tag-summaries-anchor)
+  * [**Experimental design summaries**](experimental-design-summaries-anchor)
 * [**Preparing the data**](preparing-the-data-anchor)
+  * [**Data transformation**](data-transformation-anchor)
+  * [**Event file restructuring**](event-file-restructuring-anchor)
 * [**Analyzing the data**](analyzing-the-data-anchor)
-  * [**Factors vectors and selection**](factor-vectors-and-selection-anchor)
+  * [**Factor vectors and selection**](factor-vectors-and-selection-anchor)
+  * [**HED search queries**](hed-search-queries-anchor)
   * [**HED analysis in EEGLAB**](hed-analysis-in-eeglab-anchor)
+  * [**HED support in other tools**](hed-support-in-other-tools-anchor)
 
 
 (understanding-the-data-anchor)=
 ### Understanding the data
 
-Sadly, most currently shared data is under-annotated and may require considerable
-work and possibly contact with the data authors for correct use and interpretation.
+Before running any analysis, you need to understand what events are actually present in your data.
+Most shared datasets have minimal documentation, so HED summary tools help you quickly assess
+data quality and content without manual inspection.
 
-You can get a preliminary sense about what is actually in the data by downloading a
-single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar
-(e.g., a BIDS `_events.json`) and creating HED remodeling tool summaries using the 
-[**HED online tools for debugging**](./HedRemodelingQuickstart.md#online-tools-for-debugging).
-Summaries of particular use for analysts include:
+(column-value-summaries-anchor)=
+#### Column value summaries
 
-- The [**column value summary**](./HedSummaryGuide.md#column-value-summary) compiles a summary of 
-the values in the various columns of the event files in the dataset. This summary does not require any HED information.
-<p></p>
+The [**column value summary**](./HedSummaryGuide.md#column-value-summary) compiles a summary of 
+the values in the various columns of the event files in a dataset.
 
-- The [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary)
+- Does **not** require HED annotations
+- Shows all unique values and their frequencies
+- Helps identify missing or unexpected event codes
+- Useful for detecting data entry errors
+
+You can generate this summary using the 
+[**HED online tools for debugging**](./HedRemodelingQuickstart.md#online-tools-for-debugging)
+by uploading a single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar.
+
+(hed-tag-summaries-anchor)=
+#### HED tag summaries
+
+The [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary)
 creates a summary of the HED tags used to annotate the data.
-<p></p>
 
-- The [**experimental design summary**](./HedSummaryGuide.md#experimental-design-summary)
+- Shows what types of events are present
+- Works across different event coding schemes
+- Enables comparison between datasets
+- Requires HED annotations in the dataset
+
+(experimental-design-summaries-anchor)=
+#### Experimental design summaries
+
+The [**experimental design summary**](./HedSummaryGuide.md#experimental-design-summary)
 gives a summary of the condition variables or other structural tags relating to experimental design, task,
-or temporal layout of the experiment. 
+or temporal layout of the experiment.
 
-While HED tag summary and the experimental design summaries require that the dataset have HED annotations, these summaries do not rely on the experiment-specific
-event-coding used in each experiment and can be used to compare information for different datasets.
+- Extracts experimental conditions automatically
+- Shows task structure and organization
+- Identifies temporal markers (Onset/Offset/Duration)
+- Requires HED annotations with condition variables
 
-The [**HED remodeling quickstart**](./HedRemodelingQuickstart.md) tutorial
+**Additional resources:**
+
+- The [**HED remodeling quickstart**](./HedRemodelingQuickstart.md) tutorial
 gives an overview of the remodeling tools and how to use them.
-More detailed information can be found in [**HED remodeling tools**](./HedRemodelingTools.md).
-
-The [**Online tools for debugging**](./HedRemodelingQuickstart.md#online-tools-for-debugging)
-shows how to use remodeling tools to obtain these summaries without writing any code.
-
-The [**HED conditions and design matrices**](HedConditionsAndDesignMatrices.md) guide explains how
+- More detailed information can be found in [**HED remodeling tools**](./HedRemodelingTools.md).
+- The [**HED conditions and design matrices**](HedConditionsAndDesignMatrices.md) guide explains how
 information structure information is encoded in HED and how to interpret the summaries of this information.
 
 (preparing-the-data-anchor)=
 ### Preparing the data
 
-In deciding on an analysis, you may discover that the information in the event files is not
-organized in a way that would support your analyses. 
+After understanding your data, you may need to transform or reorganize event files to support your analysis goals.
+
+(data-transformation-anchor)=
+#### Data transformation
+
+HED remodeling tools allow you to transform event files without writing custom code:
+
+- **Remap columns**: Reorganize column structure for analysis tools
+- **Factor extraction**: Create binary factor vectors for event selection
+- **Column merging**: Combine information from multiple columns
+- **Value renaming**: Standardize event codes across sessions
+
+(event-file-restructuring-anchor)=
+#### Event file restructuring
+
+Common restructuring tasks include:
+
+- Converting wide-format to long-format event files
+- Extracting condition variables into separate columns
+- Adding computed columns (e.g., reaction times, trial types)
+- Filtering events based on criteria
+
+See the [**HED remodeling tools**](./HedRemodelingTools.md) documentation for detailed examples
+and operation descriptions. 
 
 (analyzing-the-data-anchor)=
 ### Analyzing the data
 
-The power of HED is two-fold -- its flexibility and its generality in specifying criteria.
-Flexibility allows users to specify quite complex criteria without having to write 
-additional code, while generality allows comparison of criteria across different
-experiments.
-
-The factor generation as described in the next section relies on the HED
-[**HED remodeling tools**](HedRemodelingTools.md).
-See [**HED remodeling tools**](HedRemodelingTools.md).
+HED enables powerful, flexible analysis through standardized event selection and design matrix extraction.
+The key advantage is that HED queries work consistently across different experiments using different event codes.
 
 (factor-vectors-and-selection-anchor)=
 #### Factor vectors and selection
 
-The most common analysis application is to select events satisfying a particular criteria,
+The most common analysis application is to select events satisfying particular criteria,
 and compare some measure on signals containing these events with a control.
-Depending on the modality, these might be different.
 
-HED annotations facilitate the selection. This selection can be described in terms
-of factor vectors. A **factor vector** for an event file has the same number of
+HED facilitates this selection through **factor vectors**. A **factor vector** for an event file has the same number of
 rows as the event file (each row corresponding to an event marker).
 Factor vectors contain 1's for rows in which a specified criterion is satisfied
 and 0's otherwise.
 
-- The [**factor column operation**](./HedRemodelingTools.md#factor-column)
-creates factor vectors based on the unique values in specified columns.
-This factor operation does not require any HED information.
+**Types of factor operations:**
+
+- **[factor column operation](./HedRemodelingTools.md#factor-column)**: Creates factor vectors based on the unique values in specified columns. Does **not** require HED annotations.
 <p></p>
 
-- The [**factor HED tags**](./HedRemodelingTools.md#factor-hed-tags)
-creates factor vectors based on a HED tag query. 
+- **[factor HED tags](./HedRemodelingTools.md#factor-hed-tags)**: Creates factor vectors based on a HED tag query. Enables flexible, generalizable event selection.
+<p></p>
+
+- **[factor HED type](./HedRemodelingTools.md#factor-hed-type)**: Creates factors based on HED tags representing structural information such as *Condition-variable*, *Task*, or *Temporal-marker*.
+
+(hed-search-queries-anchor)=
+#### HED search queries
+
+HED search queries allow you to find events based on their semantic properties rather than 
+specific event codes. This enables:
+
+- **Cross-study analysis**: Same query works on different datasets
+- **Flexible criteria**: Complex boolean logic with AND, OR, NOT
+- **Hierarchical matching**: Search at any level of tag hierarchy
+- **Temporal context**: Find events within ongoing processes
+
 The [**HED search guide**](./HedSearchGuide.md) explains the HED query structure and
-available search options.
-<p></p>
-
-- The [**factor HED type**](./HedRemodelingTools.md#factor-hed-type)
-creates factors based on a HED tag representing structural information about the data such as
-*Condition-variable* (for experimental design and experimental conditions) or *Task*.
+available search options in detail.
 
 (hed-analysis-in-eeglab-anchor)=
 #### HED analysis in EEGLAB
@@ -559,257 +700,480 @@ creates factors based on a HED tag representing structural information about the
 MATLAB toolbox for EEG/MEG analysis, supports HED through the
 [**EEGLAB HEDTools plugin**](./HedAndEEGLAB.md).
 
-The *End-to-end processing of EEG with HED and EEGLAB* preprint, which can be found 
-at [**https://osf.io/8brgv/**](https://osf.io/8brgv/),
+**Key capabilities:**
+
+- Event search and epoching based on HED queries
+- Automated design matrix extraction
+- Integration with EEGLAB's analysis pipeline
+- Support for both GUI and scripting workflows
+
+**Getting started with HED in EEGLAB:**
+
+The *End-to-end processing of EEG with HED and EEGLAB* book chapter, which can be found 
+at [**https://doi.org/10.1007/978-1-0716-4260-3_6**](https://doi.org/10.1007/978-1-0716-4260-3_6),
 works through the entire analysis process, including porting the analysis
 to high performance computing platforms.
 The site includes sample data to use in running the examples.
 
+(hed-support-in-other-tools-anchor)=
 #### HED support in other tools
 
-Work is underway to integrate HED support in other analysis packages.
-If you are interested in helping in this effort please email
-hed.maintainers@gmail.com.
+Work is underway to integrate HED support in other analysis packages:
+
+- **FieldTrip**: Search and epoching integration in development
+- **MNE-Python**: Planned support for HED search and summary
+- **NEMAR/EEGNET**: Platform integration for large-scale analysis
+
+If you are interested in helping with HED integration in other tools, 
+please email hed.maintainers@gmail.com.
 
 
 <hr style="border: 3px solid #000080" />
 
 (as-a-tool-developer-anchor)=
-## <span style="color: #229955;">As a tool developer</span>
-> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... helping expand the growing HED tool base:</span>
+## 🛠️ As a tool developer
 
-The power of HED is its ability to capture important details of the experiment design and events in
-a form that is both human-understandable and directly usable in processing programs.
+> **Building software that integrates with HED and expanding the HED ecosystem**
+
 The HED ecosystem relies on tools that read, understand, and incorporate HED as part of analysis.
-This section describes how, as a tool developer, you can contribute to this growing ecosystem
-to support HED for processing and analysis.
+Whether you're adding HED support to existing software or creating new analysis tools,
+HED provides well-documented APIs and validation libraries to make integration straightforward.
 
-**Here are some topics of interest to developers:**
+### Challenges for tool developers
 
-* [**Integrating with existing tools**](integrating-with-existing-tools-anchor)
-* [**The HED code base**](the-hed-code-base-anchor)
+````{grid} 2
+:gutter: 2
+
+```{grid-item-card} ❌ **Without HED**
+:class-header: bg-danger
+
+- Custom event parsing for each dataset
+- Hard-coded event interpretations
+- Difficult to support multiple studies
+- Manual validation of event structure
+- Limited cross-tool compatibility
+```
+
+```{grid-item-card} ✅ **With HED**
+:class-header: bg-success
+
+- Standardized event parsing
+- Semantic event interpretation
+- Works across any HED-annotated dataset
+- Automated validation with clear errors
+- Interoperable with HED ecosystem
+```
+````
+
+**Here are some topics of interest to tool developers:**
+
+* [**Getting started with HED integration**](getting-started-with-integration-anchor)
+  * [**Understanding HED schemas**](understanding-hed-schemas-anchor)
+  * [**Choosing your platform**](choosing-your-platform-anchor)
+* [**Working with HED code bases**](working-with-hed-code-bases-anchor)
   * [**The HED Python code base**](the-hed-python-code-base-anchor)
   * [**The HED JavaScript code base**](the-hed-javascript-code-base-anchor)
   * [**The HED MATLAB code base**](the-hed-matlab-code-base-anchor)
   * [**Web tools and REST services**](web-tools-and-rest-services-anchor)
-* [**Future development plans**](future-development-plans-anchor)
+* [**Contributing to HED development**](contributing-to-hed-development-anchor)
+  * [**Reporting issues and feature requests**](reporting-issues-anchor)
+  * [**Future development plans**](future-development-plans-anchor)
 
 
-(integrating-with-existing-tools-anchor)=
-### Integration with existing tools
+(getting-started-with-integration-anchor)=
+### Getting started with HED integration
 
+Before diving into code, understanding HED's structure and choosing the right platform will save time
+and ensure your integration follows HED best practices.
 
-The GitHub repositories and other resources associated with these projects are described in this section.
-The HED project page is [**https://www.hedtags.org**](https://www.hedtags.org).
-The documentation and examples are housed in the 
-[**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository.
+(understanding-hed-schemas-anchor)=
+#### Understanding HED schemas
 
-Contributions are welcome in any area (e.g., code, examples, documentation, ideas, issues).
-Use the **issues** mechanism of the most appropriate HED standard repository to ask questions or to
-describe your ideas and how you would like to contribute.
-Alternatively, you can email hed.maintainers@gmail.com.
+HED schemas define the vocabulary available for annotations:
 
-(the-hed-code-base-anchor)=
-### The HED code base
+- **HED standard schema**: Contains basic terms common across neuroimaging experiments
+- **HED library schemas**: Domain-specific vocabularies (e.g., SCORE for clinical EEG)
+- **Schema versions**: Schemas evolve with numbered versions (e.g., 8.3.0)
 
-The [**HED standard organization**](https://github.com/hed-standard) has several
-code projects and distinct tool bases in Python, MATLAB, and JavaScript.
-All HED efforts are open source.
+**Key concepts for developers:**
+
+- **Schema loading**: Most HED tools require a schema version (e.g., 8.4.0) in order to operate.
+The most recent versions are cached internally so that a given version of the schema is only loaded once.
+- **Validation**: Use HED validator libraries rather than implementing your own
+- **Short vs long form**: Tags can be written in short form (single tag: e.g., `Face`) or long form 
+(full path to the root of the schema hierarchies: e.g., `Item/Biological-item/Anatomical-item/Body-part/Head/Face`). It is recommend that short form be used in most cases. Tools refer to the applicable schema and
+expand paths when needed.  The long form is needed mostly for search -- searching for `Body-part` should also return more specific annotations such as `Face`.
+
+See [**HED schemas guide**](./HedSchemas.md) for detailed information.
+
+(choosing-your-platform-anchor)=
+#### Choosing your platform
+
+HED provides official tools in three languages:
+
+- **Python**: Most comprehensive, includes validation, analysis, and schema development tools
+- **JavaScript**: Focuses on validation, used by BIDS validator. A completely browser-based validator 
+allows a complete data directory to be validated
+- **MATLAB**: Analysis-focused, integrates with EEGLAB - uses the Python tools underneath.
+
+**Decision guide:**
+
+- **Web applications**: Use JavaScript validator or call REST services
+- **Analysis pipelines**: Use Python for maximum flexibility
+- **MATLAB workflows**: Use HEDTools plugin or MATLAB wrappers
+- **Custom needs**: Consider calling REST services from any language
+
+(working-with-hed-code-bases-anchor)=
+### Working with HED code bases
+
+The [**HED standard organization**](https://github.com/hed-standard) maintains
+open-source code projects in Python, MATLAB, and JavaScript.
+All repositories welcome contributions and issue reports.
+
+**Core resources:**
+
+- **Project page**: [**https://www.hedtags.org**](https://www.hedtags.org)
+- **Documentation**: [**https://www.hedtags.org/hed-resources**](https://www.hedtags.org/hed-resources)
+- **Annotated datasets**: [**hed-examples repository**](https://github.com/hed-standard/hed-examples)
+- **Schemas**: [**hed-schemas repository**](https://github.com/hed-standard/hed-schemas)
 
 (the-hed-python-code-base-anchor)=
-#### The HED python code base
+#### Python tools
 
-The Python HED tools contain the core technology for HED including code for validation, analysis,
-and schema development.
-The code for HEDTools is in the [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository.
+**Focus**: Core HED technology including validation, analysis, and schema development
 
-The latest stable release is available as [**hedtools**](https://pypi.org/project/hedtools/)
-on PyPI and can be installed using the regular `pip` install mechanism.
+**Repository**: [**hed-python**](https://github.com/hed-standard/hed-python) | **Package**: `pip install hedtools`
 
-The `develop` branch of [**hed-python**](https://github.com/hed-standard/hed-python) contains the latest
-versions of the tools and can be installed from GitHub using:
-
-```bash
- pip install git+https://github.com/hed-standard/hed-python/@develop
-```
+**Documentation**: [**HED Python tools**](./HedPythonTools.md)
 
 (the-hed-javascript-code-base-anchor)=
-#### The HED JavaScript code base
+#### JavaScript tools
 
-GitHub repository. The JavaScript tools focus on HED validation and its main client is the 
-[**Bids validator**](https://github.com/bids-standard/bids-validator).
-The code for this project is in the [**hed-javascript**](https://github.com/hed-standard/hed-javascript)
+**Focus**: HED validation for web applications and BIDS validator
 
-The latest stable release is available as the [**hed-validator**](https://www.npmjs.com/package/hed-validator)
-on npm.
+**Repository**: [**hed-javascript**](https://github.com/hed-standard/hed-javascript) | **Package**: `npm install hed-validator`
+
+**Documentation**: [**HED JavaScript tools**](./HedJavascriptTools.md)
 
 (the-hed-matlab-code-base-anchor)=
-#### The HED MATLAB code base
+#### MATLAB tools
 
-The MATLAB HED tools project focuses primarily on analysis using HED, 
-although there is substantial support for annotation as well.
+**Focus**: Analysis and annotation with EEGLAB integration
 
-The **HEDTools plugin** is available for installation through [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php). The[**EEGLAB plug-in integration**](https://www.hedtags.org/hed-resources/HedMatlabTools.html#eeglab-plug-in-integration) tutorial explains the installation 
-and integration of HED tools in the EEGLAB environment.
-Although this toolset focuses on analysis, it also includes extensive tools for importing and annotating
-HED data through the **CTagger** GUI.
-<p></p>
+**Repository**: [**hed-matlab**](https://github.com/hed-standard/hed-matlab) | **Installation**: Via EEGLAB plugin manager
 
-**CTagger** is a GUI for HED annotation and validation. 
-CTagger can be run as a standalone program, but is also integrated and callable from MATLAB via an
-[**EEGLAB plug-in**](https://www.hedtags.org/hed-resources/HedMatlabTools.html#eeglab-plug-in-integration).
-See [**CTAGGER GUI tagging tool**](https://www.hedtags.org/hed-resources/CTaggerGuiTaggingTool.html) tutorial
-for more information on installation and use.
-The project source code is located in the [**CTagger**](https://github.com/hed-standard/ctagger) GitHub repository.
-<p></p>
-
-[*HED MATLAB Tools**](https://www.hedtags.org/hed-resources/HedMatlabTools.html) explains how the 
-users can use the HEDTools in MATLAB using one of three approaches: using MATLAB wrappers for the HED Python tools,
-using MATLAB wrappers for the HED web services, or by calling HED tools through EEGLAB.
-
-The [**HED online services**](https://hedtools.org/hed/) can be called programmatically in MATLAB. The HED services are deployed online through a docker container
-as described in [**Web tools and rest services**](web-tools-and-rest-services-anchor). 
-<p></p>
-
+**Documentation**: [**HED MATLAB tools**](./HedMatlabTools.md) | [**CTagger GUI**](./CTaggerGuiTaggingTool.md)
 
 (web-tools-and-rest-services-anchor)=
-#### Web tools and REST services
+#### Online tools and REST services
 
-The HED online tools are available at [**https://hedtools.org/hed/**](https://hedtools.org/hed/).
+**Focus**: Web-based validation, debugging, and programmatic access
 
-A development version of the online tools is available at [**https://hedtools.org/hed_dev**](https://hedtools.org/hed_dev).
+**Production**: [**hedtools.org/hed**](https://hedtools.org/hed/) | **Development**: [**hedtools.org/hed_dev**](https://hedtools.org/hed_dev)
 
-These servers not only provide a GUI interface to the tools that is useful for debugging or for a quick analysis,
-but they also provide REST services for various HED tools as described in
-[**HED RESTful services**](hed-restful-services-anchor).
+**Repository**: [**hed-web**](https://github.com/hed-standard/hed-web)
 
-The project source code is located in the [**hed-web**](https://github.com/hed-standard/hed-web) GitHub repository.
+**Documentation**: [**HED online tools**](./HedOnlineTools.md)
 
 
+(contributing-to-hed-development-anchor)=
+### Contributing to HED development
+
+The HED project welcomes contributions from the community. Whether you're reporting bugs,
+suggesting features, or contributing code, your input helps improve HED for everyone.
+
+(reporting-issues-anchor)=
+#### Reporting issues and feature requests
+
+**Where to report:**
+
+- **Python tools**: [**hed-python/issues**](https://github.com/hed-standard/hed-python/issues)
+- **JavaScript tools**: [**hed-javascript/issues**](https://github.com/hed-standard/hed-javascript/issues)
+- **MATLAB tools**: [**hed-matlab/issues**](https://github.com/hed-standard/hed-matlab/issues)
+- **Schema issues**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
+- **General questions**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
+
+
+**Contributing code:**
+
+All HED repositories welcome pull requests. See the CONTRIBUTING.md file in each repository
+for specific guidelines.
+
+Alternatively, you can email hed.maintainers@gmail.com with questions or suggestions.
 
 (future-development-plans-anchor)=
 ### Future development plans
 
-We are always looking for people with suggestions or new ideas to join our community.
-In the short term we have the following development goals:
+The HED community is actively working on expanding HED's capabilities and integration.
 
-- Finish integration of search for epoching and its documentation in [**fieldtrip**](https://www.fieldtriptoolbox.org/).
-- Integrate searching, summary, and epoching into [**MNE-Python**](https://mne.tools/stable/index.html).
-- Integrate search and summary into the [**Nemar**](https://nemar.org) and [**EEGNET**](http://eegnet.org/) platforms.
+**Long-term vision:**
 
-Longer term we hope to develop more sophisticated analysis methods based on HED and 
-to better integrate presentation and experimental control software with the annotation process.
+- Develop more sophisticated analysis methods 
+- Leverage AI to reduce the cognitive burden on users
+- Better integrate experimental control software with annotation workflows
+- Capture event relationships for complex automated analysis
+- Expand library schemas for specialized domains
 
-We are also tackling the problem of how to effectively capture event relationships to facilitate
-more complex and sophisticated automated analysis.
+**Get involved:**
+
+If you have ideas or want to contribute to these efforts, please join the discussion
+on [**GitHub Discussions**](https://github.com/hed-standard/hed-python/discussions) or
+email hed.maintainers@gmail.com.
+
+
 
 <hr style="border: 3px solid #000080;" />
 
 (as-a-schema-builder-anchor)=
-## <span style="color: #229955;">As a schema builder</span>
-> <span style="font-size: 1.5em; font-weight: bold; color: #229955; font-family: Roboto Slab,ff-tisa-web-pro,Georgia,Arial,sans-serif;">&nbsp;&nbsp;... extending HED vocabulary in new directions:</span>
+## 🏗️ As a schema builder
 
-HED annotations consist of comma-separated terms drawn from a hierarchically
-structured vocabulary called a HED schema.
-The **HED standard schema** contains basic terms that are common across
-most human neuroimaging, behavioral, and physiological experiments.
+> **Extending HED vocabulary to support specialized domains and applications**
 
-The HED ecosystem also includes **HED library schemas** to expand the HED vocabulary 
-in a scalable manner to support more specialized data.
+HED annotations use terms from a hierarchically structured vocabulary called a HED schema.
+The **HED standard schema** contains basic terms common across most experiments,
+while **HED library schemas** extend the vocabulary for specialized domains like clinical EEG,
+movie annotation, or language studies.
+
+### Challenges for schema builders
+
+````{grid} 2
+:gutter: 2
+
+```{grid-item-card} ❌ **Without structured schema development**
+:class-header: bg-danger
+
+- Inconsistent terminology across studies
+- Duplicate or conflicting terms
+- No validation of vocabulary structure
+- Difficult to share domain vocabularies
+- Hard to maintain backward compatibility
+```
+
+```{grid-item-card} ✅ **With HED schema framework**
+:class-header: bg-success
+
+- Structured, hierarchical vocabulary
+- Automated validation of schema structure
+- Version control and compatibility tracking
+- Community review process
+- Standardized schema attributes and rules
+```
+````
 
 **Here are some topics of interest to schema developers:**
 
-* [**Viewing available schemas**](viewing-available-schemas-anchor)
-* [**Improving an existing schema**](improving-an-existing-schema-anchor)
-* [**Creating a new library schema**](creating-a-new-library-schema-anchor)
-* [**Private vocabularies and extensions**](private-vocabularies-and-extensions-anchor)
+* [**Exploring existing schemas**](exploring-existing-schemas-anchor)
+  * [**Viewing available schemas**](viewing-available-schemas-anchor)
+  * [**Understanding schema structure**](understanding-schema-structure-anchor)
+* [**Contributing to existing schemas**](contributing-to-existing-schemas-anchor)
+  * [**Improving an existing schema**](improving-an-existing-schema-anchor)
+  * [**Schema review process**](schema-review-process-anchor)
+* [**Creating new schemas**](creating-new-schemas-anchor)
+  * [**Creating a new library schema**](creating-a-new-library-schema-anchor)
+  * [**Schema development workflow**](schema-development-workflow-anchor)
+  * [**Private vocabularies and extensions**](private-vocabularies-and-extensions-anchor)
 
-The SCORE library for clinical EEG annotations has been released.
-Other schema libraries are under development include a movie annotation library and
-a language annotation library, but these have not yet reached the stage 
-that they are available for community comment.
+(exploring-existing-schemas-anchor)=
+### Exploring existing schemas
 
-If you are interested in participating in the development of any ongoing library development efforts,
-please email hed.maintainers@gmail.com.
+Before proposing changes or creating a new schema, familiarize yourself with existing HED vocabularies
+to avoid duplication and understand HED's organizational principles.
 
 (viewing-available-schemas-anchor)=
-### Viewing available schemas
+#### Viewing available schemas
 
-The first step in using or improving the HED vocabularies is to explore what
-is there using the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) for the HED standard
-schema.
+**HED standard schema:**
 
-The SCORE library for clinical annotation of EEG
-can be viewed using the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/?schema=score)
-for score.
+The [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) provides an interactive view
+of the HED standard schema, showing:
+
+- Hierarchical tag structure
+- Tag descriptions and attributes
+- Value classes and unit classes
+- Schema version history
+
+**HED library schemas:**
+
+Currently available library schemas include:
+
+- **SCORE**: Clinical EEG annotation vocabulary  
+  [**View SCORE schema**](https://www.hedtags.org/hed-schema-browser/?schema=score)
+
+**Under development:**
+
+- Movie annotation library
+- Language annotation library
+
+These are not yet available for community comment. Email hed.maintainers@gmail.com for information
+about participating in ongoing library development efforts.
+
+(understanding-schema-structure-anchor)=
+#### Understanding schema structure
+
+HED schemas are XML files with structured elements:
+
+- **Tags**: Hierarchically organized terms (e.g., `Event/Sensory-event`)
+- **Attributes**: Properties of tags (e.g., `requireChild`, `unique`, `recommended`)
+- **Value classes**: Allowed value types (e.g., `textClass`, `numericClass`)
+- **Unit classes**: Measurement units and conversions (e.g., `timeUnits`, `angleUnits`)
+
+**Key principles:**
+
+- **Is-a relationship**: Every tag has an "is-a" relationship with its parents
+- **Uniqueness**: Each term must be unique and not redundant with existing terms
+- **Self-contained**: Tag descriptions should be understandable without external context
+
+See [**HED schema developer's guide**](https://www.hedtags.org/hed-resources/HedSchemaDevelopersGuide.html) 
+for detailed information on schema structure and design principles.
+
+(contributing-to-existing-schemas-anchor)=
+### Contributing to existing schemas
+
+The HED community welcomes suggestions for improving existing schemas. Whether you've found
+an error, need additional terms, or want to clarify descriptions, your input helps improve HED for everyone.
 
 (improving-an-existing-schema-anchor)=
-### Improving an existing schema
+#### Improving an existing schema
 
 If you see a need for additional terms in an existing schema,
-post an issue to schema to
-[**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) on GitHub 
-with the following information:
+post an issue to [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) on GitHub.
 
-````{admonition} Proposing a new tag in an existing HED schema.
-Be sure to include the following when posting an issue to add a schema term.
+````{admonition} **Proposing changes to HED schemas**
+:class: tip
 
-- The name of the schema (standard or library-name).
-- The proposed name of the term or the name of term to be modified. 
-- A brief and informative text description of its meaning. 
-- A suggestion for where term should be placed in the schema if new.
-- An explanation of why this term is needed and how it might be used. 
+**For new tags, include:**
 
-Proposals for modifications to existing terms should include similar information.
+- The name of the schema (standard or library name)
+- Proposed name of the new term
+- Brief and informative description of its meaning
+- Suggested location in the schema hierarchy
+- Explanation of why this term is needed and how it will be used
+- Examples of usage in annotations
 
+**For modifications to existing terms:**
+
+- Current term name and location
+- Proposed changes (description, attributes, hierarchy)
+- Rationale for the change
+- Impact on existing annotations (if applicable)
+
+**For schema attributes or structure:**
+
+- Description of the proposed new attribute, value class, or unit class
+- Use cases and examples
+- How it relates to existing schema features
 ````
 
-The posting of an issue will start the discussion going.
-A HED schema term must stand on its own and must not exist elsewhere in the schema.
-When thinking about where a term should be located within the schema hierarchy,
-also remember that every term satisfies the **is-a** relationship with any of its schema parents.
+(schema-review-process-anchor)=
+#### Schema review process
 
-Besides adding new terms, you might suggest improvements to an existing term's
-description or a modification of its attributes.
-You might also suggest the need for modifications or additions to the schema attributes, 
-value classes, or unit classes.
+Schema changes go through a community review process:
 
-All suggested changes or errors should be reported using the same mechanism
-as proposing new terms through the [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) mechanism on GitHub.
+1. **Issue posted**: You describe the proposed change on GitHub
+2. **Community discussion**: Others comment on the proposal
+3. **Refinement**: The proposal is refined based on feedback
+4. **Implementation**: Approved changes are implemented in the schema
+5. **Version release**: Changes are included in the next schema version
+
+**Important considerations:**
+
+- **Is-a relationship**: New terms must satisfy the "is-a" relationship with parent tags
+- **Uniqueness**: Terms must not duplicate existing vocabulary
+- **Clarity**: Descriptions should be self-contained and unambiguous
+- **Backward compatibility**: Changes should minimize breaking existing annotations
+
+All suggested changes should be reported using the 
+[**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) mechanism on GitHub.
+
+(creating-new-schemas-anchor)=
+### Creating new schemas
+
+If your domain requires extensive specialized vocabulary not appropriate for the standard schema,
+you may want to create a new HED library schema.
 
 (creating-a-new-library-schema-anchor)=
-### Creating a new library schema
+#### Creating a new library schema
 
-If you are interested in developing a library schema in a new area,
-you should post an issue on the [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) 
-GitHub repository. Your post should start with a brief description of the 
-proposed library and its applications.
+Creating a library schema is a collaborative process that requires community engagement.
 
-````{admonition} Starting the process of developing a new HED schema library.
-Be sure to include the following for your initial post proposing creation of a new library.
+**Getting started:**
 
-- A proposed name for the HED library schema.
-- A brief description of the library's purpose and contents.
-- GitHub handles for potential collaborators.
- 
+Post an issue on [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) 
+to start the discussion.
+
+````{admonition} **Proposing a new HED library schema**
+:class: tip
+
+**Initial proposal should include:**
+
+- Proposed name for the HED library schema
+- Brief description of the library's purpose and scope
+- Example use cases and target audience
+- List of potential collaborators (GitHub handles)
+- Initial thoughts on vocabulary organization
+- Relationship to existing HED schemas (what's missing from standard schema)
+
 ````
 
-You should also read the [**HED schema developer's guide**](https://www.hedtags.org/hed-resources/HedSchemaDevelopersGuide.html) to get an overview of the development process.
+**Requirements:**
 
-**Note**: You must have a GitHub account in order to work on the development of a
-new schema as all development processes for HED use the GitHub Pull Request mechanism for
-development and community comment.
+- **GitHub account**: All schema development uses GitHub Pull Request mechanism
+- **Community engagement**: Willingness to participate in review discussions
+- **Documentation**: Commitment to documenting terms clearly
+- **Long-term maintenance**: Plan for maintaining the schema over time
+
+(schema-development-workflow-anchor)=
+#### Schema development workflow
+
+The schema development process follows these general steps:
+
+1. **Proposal and discussion**: Post issue and gather community feedback
+2. **Planning**: Define scope, structure, and initial term list
+3. **Initial schema creation**: Develop first version following HED schema rules
+4. **Validation**: Use schema validation tools to check structure
+5. **Community review**: Gather feedback through GitHub discussions
+6. **Iteration**: Refine based on feedback
+7. **Release**: Publish to hed-schemas repository
+
+**Essential reading:**
+
+The [**HED schema developer's guide**](https://www.hedtags.org/hed-resources/HedSchemaDevelopersGuide.html) 
+provides comprehensive information on:
+
+- Schema XML structure and syntax
+- Attribute definitions and usage
+- Value class and unit class design
+- Versioning and compatibility
+- Testing and validation
+- Best practices for schema development
 
 (private-vocabularies-and-extensions-anchor)=
-### Private vocabularies and extensions
+#### Private vocabularies and extensions
 
-Although you can create a private HED vocabulary for your own use,
-many HED tools assume that only standardized schemas available on the
-[**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository will be used. 
-These tools fetch or internally cache the most recent versions of the HED schemas,
-and users need only specify the HED schema versions during validation and analysis.
+**Can I create my own private HED schema?**
 
-The decision to only support standardized schemas was after serious deliberation
-by the HED Working Group based on the observation that the ability of
-HED to enable standardized dataset summaries and comparisons would be compromised by
-allowing unvetted, private vocabularies.
+While technically possible, **private schemas are not recommended** and have limited tool support.
+
+**Why standardized schemas are preferred:**
+
+- **Tool compatibility**: Many HED tools assume standardized schemas from the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) repository
+- **Schema fetching**: Tools automatically fetch/cache official schemas
+- **Cross-dataset comparison**: Standardized vocabularies enable meta-analyses
+- **Community benefit**: Shared vocabularies benefit the entire research community
+- **Long-term maintainability**: Official schemas are maintained by the community
+
+**Alternatives to private schemas:**
+
+- **Propose library schema**: Work with the community to develop a standardized library
+- **Extend existing schema**: Suggest additions to standard or library schemas
+- **Use definitions**: Create complex concepts using existing vocabulary
+- **Temporary extensions**: Use descriptive tags (e.g., `Description/...`) until proper terms are available
+
+**Decision rationale:**
+
+The HED Working Group decided to prioritize standardized schemas after observing that
+unvetted private vocabularies would compromise HED's ability to enable standardized
+dataset summaries and cross-study comparisons.
+
+If you have a use case that genuinely requires a private vocabulary, please email
+hed.maintainers@gmail.com to discuss options.
