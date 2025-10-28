@@ -329,7 +329,7 @@ This extension provides data types for storing HED annotations alongside neuroph
 provides detailed information on using HED with NWB, including examples and best practices.
 <p></p>
 
-- See the [**ndx-hed examples**](https://github.com/VisLab/ndx-hed/tree/main/examples) for
+- See the [**ndx-hed examples**](https://github.com/hed-standard/ndx-hed/tree/main/examples) for
 runnable code demonstrating real-world usage patterns and integration techniques.
 
 **Integrating HED in NWB:**
