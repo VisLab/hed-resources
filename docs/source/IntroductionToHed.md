@@ -100,8 +100,8 @@ HED provides tools to check your annotations:
 
 **Ready to start?** Go to [**How can you use HED?**](HowCanYouUseHed.md) to find role-specific guidance and workflows tailored to your needs:
 
-- **🧪 Experimenters**: Event logging, data collection, and log processing
-- **📝 Data Annotators**: BIDS curation, annotation workflows, and quality control  
-- **📊 Data Analysts**: Search strategies, analysis pipelines, and cross-study methods
-- **🛠️ Tool Developers**: API integration, schema handling, and validation frameworks
-- **🏗️ Schema Builders**: Vocabulary development, library schemas, and community coordination
+- [**🧪 Experimenters**](as-an-experimenter-anchor): Event logging, data collection, and log processing
+- [**📝 Data Annotators**](as-a-data-annotator-anchor): BIDS curation, annotation workflows, and quality control  
+- [**📊 Data Analysts**](as-a-data-analyst-anchor): Search strategies, analysis pipelines, and cross-study methods
+- [**🛠️ Tool Developers**](as-a-tool-developer-anchor): API integration, schema handling, and validation frameworks
+- [**🏗️ Schema Builders**](as-a-schema-builder-anchor): Vocabulary development, library schemas, and community coordination
