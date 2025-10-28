@@ -4,6 +4,9 @@ https://www.sciencedirect.com/science/article/pii/S1053811921010387
 https://www.sciencedirect.com/science/article/pii/S0010945221001106
 https://www.sciencedirect.com/science/article/pii/S1388245717309069
 
+# Springer links (503 Service Unavailable errors, but links work in browsers)
+^https?://link\.springer\.com/
+
 # INCF links (certificate/network issues)
 ^https?://.*\.incf\.org/
 ^https?://incf\.org/
