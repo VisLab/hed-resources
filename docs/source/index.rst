@@ -9,7 +9,7 @@ HED resources
    
    * `HED homepage <https://www.hedtags.org/>`_ 
 
-   * `HED vocabularies <https://hedtags.org/hed-schema-browser>`_
+   * `HED vocabularies <https://www.hedtags.org/hed-schema-browser>`_
 
    * `HED online tools <https://hedtools.org/hed/>`_
 
@@ -29,20 +29,20 @@ easily searchable and shareable across studies.
 HED is used across neuroimaging (EEG, MEG, fMRI), physiological (ECG, EMG, GSR), and behavioral experiments
 to create permanent, human- and machine-readable records of what happened during data collection.
 
-HED is integrated into data standards like `BIDS <https://bids.neuroimaging.io/>`_ 
-(Brain Imaging Data Structure) and `NWB <https://www.nwb.org/>`_ (Neurodata Without Borders),
+HED is integrated into data standards like `**BIDS** <https://bids.neuroimaging.io/>`_ 
+(Brain Imaging Data Structure) and `**NWB** <https://www.nwb.org/>`_ (Neurodata Without Borders),
 making it easy to share analysis-ready datasets.
 
 Where to begin?
 ***************
 
-**New to HED?** Start with the `Introduction to HED <./IntroductionToHed.md>`_ for core concepts (5 min read).
+**New to HED?** Start with the `**Introduction to HED** <./IntroductionToHed.md>`_ for core concepts (5 min read).
 
-**Ready to get started?** Use the `How can you use HED? <./HowCanYouUseHed.md>`_ guide to find role-specific 
+**Ready to get started?** Use the `**How can you use HED?** <./HowCanYouUseHed.md>`_ guide to find role-specific
 workflows and detailed guidance for your use case (experimenters, annotators, analysts, developers, or schema builders).
 
-**Need tools?** Browse the `HED online tools <https://hedtools.org/hed/>`_ for validation, annotation, and analysis,
-or visit the `HED standard organization <https://github.com/hed-standard/>`_ on GitHub.
+**Need tools?** Browse the `**HED online tools** <https://hedtools.org/hed/>`_ for validation, annotation, and analysis,
+or visit the `**HED standard organization** <https://github.com/hed-standard/>`_ on GitHub.
 
 
 .. toctree::
