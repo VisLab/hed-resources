@@ -2,7 +2,12 @@
 
 # What's new?
 
-**Oct 2o, 2025**: **ndx-hed 0.2.0 for NWB on PyPI**  
+**Oct 30, 2025**: **HED at Practical MEEG 2025**  
+> HED Tool Bouquet -- demos and advice.  
+> Use [**this link**](https://docs.google.com/forms/d/e/1FAIpQLSf88Q8At6QSssaX52rsLNxvlWIdZ5oB6efu3za_ncDnuL0o3g/viewform) to register.  
+> See you there!   
+
+**Oct 20, 2025**: **ndx-hed 0.2.0 for NWB on PyPI**  
 > Complete implementation of HED for NWB.  
 > Validation and support for NWB events.  
 > See [v0.2.0 release notes](https://github.com/hed-standard/ndx-hed/releases/tag/0.2.0).  
