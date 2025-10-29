@@ -47,7 +47,7 @@ The simplest way to create a minimal HED annotation for your events is:
 | ------------- | -------------------- | ------------ | ------ |
 | **<em>Sensory-event</em>** | *Sensory-presentation* | *Visual-presentation*<br>*Auditory-presentation*| Which sense? | 
 |              | *Task-event-role* | *Experimental-stimulus*<br>*Instructional* | What task role? | 
-|              | *Task-stimulus-role* | *Cue*<br>*Target* | Stimulus purpose? |  
+|              | *Task-stimulus-role* | *Distractor*<br>*Target* | Stimulus purpose? |  
 |              | *Item*  | *(Face, Image)*<br>*Siren* | What is presented? | 
 |              | *Sensory-attribute* | *Red* | What modifiers are needed? | 
 | **<em>Agent-action</em>** | *Agent-task-role* | *Experiment-participant* | Who is agent? |  

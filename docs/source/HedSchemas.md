@@ -84,11 +84,11 @@ directory of the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) 
 
 | Format     | Type | Use | 
 |------------| ---- | ---- | 
-| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedxml/HED8.2.0.xml) | Accessed by tools for validation and analysis. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.2.0.xml) | Readable display. |
-| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedwiki/HED8.1.0.mediawiki) | Edited to create a new schema. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.1.0.mediawiki) |  Readable display for editing. |
-| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
+| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedxml/HED8.4.0.xml) | Accessed by tools for validation and analysis. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.4.0.xml) | Readable display. |
+| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedwiki/HED8.4.0.mediawiki) | Edited to create a new schema. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.4.0.mediawiki) |  Readable display for editing. |
+| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schemas/prerelease) |  Working directory for developing the prerelease. |
 
 ### The SCORE library
 
@@ -98,10 +98,10 @@ For more information and the latest references see
 
 | Format     | Type | Use | 
 |------------| ---- | ---- | 
-| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_1.1.0.xml) | Accessed by tools for validation and analysis. |  
+| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_2.1.0.xml) | Accessed by tools for validation and analysis. |  
 |            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_1.1.0.xml) | Readable display. |
-| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_1.1.0.mediawiki) | Edited to create a new schema. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_1.1.0.mediawiki) |  Readable display for editing. |
+| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_2.1.0.mediawiki) | Edited to create a new schema. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_2.1.0.mediawiki) |  Readable display for editing. |
 | Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
 
 ### The LANG library
