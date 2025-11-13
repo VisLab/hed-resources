@@ -184,7 +184,7 @@ script calls all the services on test data.
 users can access HED validation through the
 [**EEGLAB HEDTools plugin**](./HedAndEEGLAB.md).
 
-[**CTagger**](./CTaggerGuiTaggingTool.md) is an annotation tool that
+[**CTagger**](./CTaggerGuide.md) is an annotation tool that
 guides users through the tagging process using a graphical user interface.
 CTagger is available as a stand-alone program as well from EEGLAB through
 the HEDtools plugin.

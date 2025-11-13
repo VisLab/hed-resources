@@ -46,10 +46,11 @@ HED development has been supported by multiple funding sources across its evolut
 
 - **Generation 1**: The Swartz Foundation and NIH grants R01-MH084819 (Makeig, Grethe PIs) and R01-NS047293 (Makeig PI)
 - **Generation 2**: The Cognition and Neuroergonomics Collaborative Technology Alliance (CaN CTA) program of U.S Army Research Laboratory (ARL) under Cooperative Agreement W911NF-10-2-0022
-- **Generation 3**: NIH grant `RF1-MH126700 <https://reporter.nih.gov/project-details/10480619>`_
+- **Generation 3**: NIH grant [**RF1-MH126700**](https://reporter.nih.gov/project-details/10480619).
 
 ## Community and participation
 
-HED is an open research community effort. Researchers and developers interested in contributing are invited to participate. Visit the `HED project homepage <https://github.com/hed-standard>`_ for links to the latest developments.
+HED is an open research community effort. Researchers and developers interested in contributing are invited to participate. 
+Visit the [**HED project homepage**](https:/www.hedtags.org)for links to the latest developments.
 
-For comprehensive documentation, see the [**HED Specification**](https://www.hedtags.org/hed-specification/) and the [**documentation summary**](DocumentationSummary.md).
+For questions, email: hed.maintainers@gmail.com or post an issue at [**hed-issues**](https://hed-standard/hed-schemas/issues).

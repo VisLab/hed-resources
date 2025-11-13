@@ -78,7 +78,7 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
    :caption: Tool documentation:
 
    HedOnlineTools.md
-   CTaggerGuiTaggingTool.md
+   CTaggerGuiGuide.md
    HedRemodelingTools.md
    HedPythonTools.md
    HedJavascriptTools.md
