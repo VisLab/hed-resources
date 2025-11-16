@@ -60,6 +60,7 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
    :hidden:
    :caption: Tutorials:
 
+   HedSchemas.md
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
    HedAnnotationSemantics.md
@@ -69,7 +70,7 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
    HedSummaryGuide.md
    HedConditionsAndDesignMatrices.md
    HedRemodelingQuickstart.md
-   HedSchemaDevelopersGuide.md
+
 
 
 .. toctree::
@@ -84,6 +85,7 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
    HedJavascriptTools.md
    HedMatlabTools.md
    HedAndEEGLAB.md
+   HedSchemaDevelopersGuide.md
 
 
 .. toctree::
