@@ -31,5 +31,5 @@ jobs:
           
       - name: Run mdformat (check only)
         run: |
-          mdformat --check --number docs/source/
-          mdformat --check --number *.md
+          mdformat --check --wrap no --number docs/source/
+          mdformat --check --wrap no --number *.md
