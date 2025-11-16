@@ -20,8 +20,7 @@ Introducing the HED Lang library schema for annotation of linguistic stimulation
 
 Practical use of HED SCORE:
 
-> Dan, J., Pale, U. Amirshahi, A., Capelletti, W. Ingolfsson, T., Wang, X., Cossettini, A.,
-> Bernini, A. Benini, L., Beniczky, S., Atienza, D., and P. Ryvlin (2024).\
+> Dan, J., Pale, U. Amirshahi, A., Capelletti, W. Ingolfsson, T., Wang, X., Cossettini, A., Bernini, A. Benini, L., Beniczky, S., Atienza, D., and P. Ryvlin (2024).\
 > SzCORE: Seizure Community Open-Source Research Evaluation framework for the validation\
 > of electroencephalography-based automated seizure detection algorithms\
 > Epilepsia, Sept 18, 2024.\
@@ -61,8 +60,7 @@ Development of the HED SCORE library schema for clinical annotation of EEG:
 ### Book chapters
 
 > Truong, D., Robbins, K., Delorme, A., and S. Makeig (2025).\
-> End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB.
-> [**https://doi.org/10.1007/978-1-0716-4260-3_6**](https://doi.org/10.1007/978-1-0716-4260-3_6).\
+> End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB. [**https://doi.org/10.1007/978-1-0716-4260-3_6**](https://doi.org/10.1007/978-1-0716-4260-3_6).\
 > in [**Methods for analyzing large neuroimaging datasets**](https://link.springer.com/book/10.1007/978-1-0716-4260-3?sap-outbound-id=69561CF5F3C7B79DBF9A0BB3B96DF69BB87216A4&utm_source=standard&utm_medium=email&utm_campaign=000_LAN36_0000019083_Book+author+congrats+NEW&utm_content=EN_34155_20241214&mkt-key=42010A0550671EEA9BCE72E91631DEBF) edited by Whelan and Lemaitre.
 
 > Denissen, D., Richlan, F., Birklbauer, J., Pawlik, M., Ravenschlag, A., Himmelstoss, N., Hutzler, F. and K. Robbins (in press).\
@@ -72,13 +70,7 @@ Development of the HED SCORE library schema for clinical annotation of EEG:
 
 ## HED schema viewer
 
-The HED schema is usually developed in `.mediawiki` format and converted to XML for use by tools.
-However, researchers wishing to tag datasets will find both of these views hard to read.
-All versions of the standard schema and library schemas including the prerelease versions
-available via the expandable [**HTML viewer**](https://www.hedtags.org/hed-schema-browser/).
-The `.mediawiki` sources can be viewed on the
-[\*\*hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository using
-GitHub's default markdown viewer.
+The HED schema is usually developed in `.mediawiki` format and converted to XML for use by tools. However, researchers wishing to tag datasets will find both of these views hard to read. All versions of the standard schema and library schemas including the prerelease versions available via the expandable [**HTML viewer**](https://www.hedtags.org/hed-schema-browser/). The `.mediawiki` sources can be viewed on the [\*\*hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository using GitHub's default markdown viewer.
 
 ## HED Websites
 
@@ -138,8 +130,7 @@ Mapping of HED terms and their descriptions to known ontologies is:
 > HED-3G Working Document on Ontology mapping\
 > [https://drive.google.com/file/d/13y17OwwNBlHdhB7hguSmOBdxn0Uk4hsI/view?usp=sharing](https://drive.google.com/file/d/13y17OwwNBlHdhB7hguSmOBdxn0Uk4hsI/view?usp=sharing)
 
-Two other working documents hold portions of the HED-3G specification that are under development
-and will not be finalized for Release 1:
+Two other working documents hold portions of the HED-3G specification that are under development and will not be finalized for Release 1:
 
 > HED-3G Working Document on Spatial Annotation\
 > [https://docs.google.com/document/d/1jpSASpWQwOKtan15iQeiYHVewvEeefcBUn1xipNH5-8/view?usp=sharing](https://docs.google.com/document/d/1jpSASpWQwOKtan15iQeiYHVewvEeefcBUn1xipNH5-8/view?usp=sharing)

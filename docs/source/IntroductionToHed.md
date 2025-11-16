@@ -50,8 +50,7 @@ This tells us: A sensory event occurred involving visual presentation of a face 
 
 ## Quick start
 
-For role-specific guidance and detailed workflows, see [**How can you use HED?**](HowCanYouUseHed.md) to find
-information tailored to your needs (experimenters, annotators, analysts, developers, or schema builders).
+For role-specific guidance and detailed workflows, see [**How can you use HED?**](HowCanYouUseHed.md) to find information tailored to your needs (experimenters, annotators, analysts, developers, or schema builders).
 
 For quick hands-on learning, start with the tutorials:
 

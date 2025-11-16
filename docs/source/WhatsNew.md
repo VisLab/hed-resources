@@ -23,8 +23,7 @@
 **Aug 22, 2025**: **SCORE paper published**
 
 > Hierarchical Event Descriptor library schema for EEG data annotation\
-> Hermes, D., Pal Attia, T., Beniczky, S. et al.
-> Sci Data 12, 1448 (2025).\
+> Hermes, D., Pal Attia, T., Beniczky, S. et al. Sci Data 12, 1448 (2025).\
 > [https://doi.org/10.1038/s41597-025-05791-2](https://doi.org/10.1038/s41597-025-05791-2).
 
 **Aug 07, 2025**: **HEDTools 0.6.0 on PyPI**
@@ -40,8 +39,7 @@
 
 **Jun 25, 2025**: **Browser-based HED validator**
 
-> Validates datasets and files locally.
-> Uses the HED JavaScript validator.\
+> Validates datasets and files locally. Uses the HED JavaScript validator.\
 > Available at [**https://www.hedtags.org/hed-javascript**](https://www.hedtags.org/hed-javascript).
 
 **Jun 10, 2025**: **HED LANG v 1.1.0 released**
@@ -137,9 +135,7 @@
 
 **June 10, 2024**: **HED standard schema v8.3.0 released.**
 
-> The [**HED schema v8.3,0**](https://doi.org/10.5281/zenodo.7876037) has just
-> been released. This release introduces `hedId` globally unique identifiers for every HED element and enables mapping.
-> into a HED ontology.
+> The [**HED schema v8.3,0**](https://doi.org/10.5281/zenodo.7876037) has just been released. This release introduces `hedId` globally unique identifiers for every HED element and enables mapping. into a HED ontology.
 
 **May 28 - May 30, 2024: MOBI Tools Workshop at** [**MOBI 2024**](https://sites.google.com/view/mobi-2024/program/workshop-schedule?authuser=0)
 
@@ -163,8 +159,7 @@
 
 **Nov. 14, 2023 Dora Hermes elected to BIDS steering committee:**
 
-> HED working group member Dora Hermes from Mayo has been elected to the BIDS steering committee for a two-year term.
-> **Congratulations** Dora!
+> HED working group member Dora Hermes from Mayo has been elected to the BIDS steering committee for a two-year term. **Congratulations** Dora!
 
 **Nov. 10-17, 2023 sFN (Society for Neuroscience)** in Washington D.C.:
 
@@ -180,8 +175,7 @@
 **October 4, 2023**: **New HED preprint Score HED library**
 
 > <em>Hierarchical Event Descriptor library schema for EEG data annotation</em>.\
-> by Pal Attia, T., Robbins, K., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S.,
-> Valdes-Sosa, P., Truong, D., Worrell, G., Makeig, S., and D. Hermes (2023).\
+> by Pal Attia, T., Robbins, K., Beniczky, S., Bosch-Bayard, J., Delorme, A., Lundstrom, B., Rogers, C., Rampp, S., Valdes-Sosa, P., Truong, D., Worrell, G., Makeig, S., and D. Hermes (2023).\
 > **Preprint**: [**https://arxiv.org/abs/2310.15173**](https://arxiv.org/abs/2310.15173).\
 > DOI:10.48550/arXiv.2310.15173.
 
@@ -208,8 +202,7 @@
 
 **August 2, 2023**: **HED has a mailing list/discussion forum**
 
-> The HED mailing list/discussion forum is managed via googlegroups.
-> To join email: [**hed-discussion+subscribe@googlegroups.com**](mailto:hed-discussion+subscribe@googlegroups.com).
+> The HED mailing list/discussion forum is managed via googlegroups. To join email: [**hed-discussion+subscribe@googlegroups.com**](mailto:hed-discussion+subscribe@googlegroups.com).
 
 **July 12, 2023**: **HED SCORE version 1.1.0 released**
 
@@ -219,8 +212,7 @@
 
 > [**HEDTools**](https://pypi.org/project/hedtools/) version 0.3.1 has been released on PyPI.\
 > See also [**hed-python**](https://github.com/hed-standard/hed-python) on GitHub.\
-> This patch includes improvement to models exception handling, minor bug fixes, and improvement of format for JSON
-> format of remodeling summaries.
+> This patch includes improvement to models exception handling, minor bug fixes, and improvement of format for JSON format of remodeling summaries.
 
 **June 20, 2023**: **HEDTools version 0.3.0 released**
 
@@ -230,47 +222,35 @@
 
 **June 14, 2023**: **HED brain initiative meeting video poster online.**
 
-> [\*\*HED video poster
-> \*\*](https://brainmeeting2023.ipostersessions.com/?s=DA-51-73-83-1B-EA-B8-0A-CB-8F-41-BD-78-CD-68-D2) available until
-> June 2024:\
-> *HED: Annotation standards and software infrastructure to enable sharing of analysis-reading neuroimaging and behavior
-> data*\
-> Presented as part of the [\*\*Brain Initiative Meeting 2023
-> \*\*](https://brainmeeting.swoogo.com/2023/begin?i=SChfLW2xODsF7JgaKhJT1nJAhf5QcbGi).
+> [\*\*HED video poster \*\*](https://brainmeeting2023.ipostersessions.com/?s=DA-51-73-83-1B-EA-B8-0A-CB-8F-41-BD-78-CD-68-D2) available until June 2024:\
+> *HED: Annotation standards and software infrastructure to enable sharing of analysis-reading neuroimaging and behavior data*\
+> Presented as part of the [\*\*Brain Initiative Meeting 2023 \*\*](https://brainmeeting.swoogo.com/2023/begin?i=SChfLW2xODsF7JgaKhJT1nJAhf5QcbGi).
 
 **June 2, 2023**: **HED online tools have a new look.**
 
-> The HED online tools at [**https://hedtools.org/hed/**](https://hedtools.org/hed/) have been redesigned and
-> streamlined.
+> The HED online tools at [**https://hedtools.org/hed/**](https://hedtools.org/hed/) have been redesigned and streamlined.
 
 **May 12, 2023**: **Version 3.2.0 of the HED specification released.**
 
-> [**Version 3.2.0**](https://doi.org/10.5281/zenodo.7869149) of the HED specification
-> introduces the `Inset` tag as well as partnered and rooted library schemas.
-> This version is the first to support the curly brace notation in sidecars.
+> [**Version 3.2.0**](https://doi.org/10.5281/zenodo.7869149) of the HED specification introduces the `Inset` tag as well as partnered and rooted library schemas. This version is the first to support the curly brace notation in sidecars.
 
 **April 28, 2023**: **HED standard schema v8.2.0 released.**
 
-> The [**HED schema v8.2.0**](https://doi.org/10.5281/zenodo.7876037) has just
-> been released. This release supports the `Inset` tag for annotating intermediate
-> points in an ongoing event as well as partnered library schemas.
+> The [**HED schema v8.2.0**](https://doi.org/10.5281/zenodo.7876037) has just been released. This release supports the `Inset` tag for annotating intermediate points in an ongoing event as well as partnered library schemas.
 
 **April 25, 2023**: **HED playlist goes live on YouTube.**
 
-> The [**Hierarchical Event Descriptor**](https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-)
-> playlist is now available on YouTube. A 5-part short-course on HED (from OHBM 2022) has just been released.
+> The [**Hierarchical Event Descriptor**](https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-) playlist is now available on YouTube. A 5-part short-course on HED (from OHBM 2022) has just been released.
 
 **April 6, 2023**: **Version 3.1.0 of the HED specification released.**
 
-> [**Version 3.1.0**](https://hed-specification.readthedocs.io/en/stable/) of the HED specification clarifies existing
-> features.
+> [**Version 3.1.0**](https://hed-specification.readthedocs.io/en/stable/) of the HED specification clarifies existing features.
 >
 > HED validators will be able to link error messages directly to descriptions in the spec.
 
 **April 3, 2023**: **New versions of HED schema browser available.**
 
-> You can now use the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) to view both standard and
-> library schemas.
+> You can now use the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) to view both standard and library schemas.
 
 **March 28, 2023**: **Release of HED Javascript validator for BIDS v3.9.0 on npm**
 
@@ -279,8 +259,7 @@
 **March 27, 2023**: **HED Workshop at CNS 2023**
 
 > **Title:** *Recording what happened during your experiment using Hierarchical Event Descriptors (HED)*\
-> **Presenter**: [**Scott Makeig**](https://sccn.ucsd.edu/~scott/) UCSD and assisted by members of the HED Working
-> Group.\
+> **Presenter**: [**Scott Makeig**](https://sccn.ucsd.edu/~scott/) UCSD and assisted by members of the HED Working Group.\
 > **Time and location:** 12:15-1:15 pm Seacliff Room Hyatt Regency San Francisco Hotel.
 
 **March 24, 2023**: **HED is now on Twitter**
@@ -295,15 +274,13 @@
 **Feb 28, 2023**: **INCF Software Highlight on HED**
 
 > **Title:** *HED, a practical system for describing an experiment using an analysis-ready framework*\
-> **Presenter:** [**Kay Robbins**](https://www.utsa.edu/sciences/computer-science/faculty/KayRobbins.html) UTSA,
-> member of the HED Working Group.\
+> **Presenter:** [**Kay Robbins**](https://www.utsa.edu/sciences/computer-science/faculty/KayRobbins.html) UTSA, member of the HED Working Group.\
 > [**Abstract**](https://ocns.github.io/SoftwareWG/2023/02/17/software-highlight-kay-robbins-hed.html).
 
 **February 22, 2023**: **HED YouTube Channel goes live**<br/>
 
 > First video: [**HED Tagging 101**](https://youtu.be/iRAWO-Fn6Bw)\
-> HED YouTube channel: [\*\*https://www.youtube.com/@HierarchicalEventDescriptors/playlists
-> \*\*](https://www.youtube.com/@HierarchicalEventDescriptors/playlists)
+> HED YouTube channel: [\*\*https://www.youtube.com/@HierarchicalEventDescriptors/playlists \*\*](https://www.youtube.com/@HierarchicalEventDescriptors/playlists)
 
 **February 14, 2023**: **HEDTools 0.2.0 is released.**
 
@@ -313,29 +290,15 @@
 
 **January 28, 2023**: **HED SCORE Library v1.0.0 released**<br/>
 
-> The HED score library schema v1.0.0 has been officially released.
-> This library is based on the Standardized Computer-based Organized Reporting of EEG
-> ([**SCORE**](https://pubmed.ncbi.nlm.nih.gov/28838815/)) standard and adapted for
-> annotation using the HED infrastructure and requirements.
-> For more information see the [\*\*SCORE schema library
-> \*\*](https://hed-schemas.readthedocs.io/en/latest/hed_score_schema.html) guide.
+> The HED score library schema v1.0.0 has been officially released. This library is based on the Standardized Computer-based Organized Reporting of EEG ([**SCORE**](https://pubmed.ncbi.nlm.nih.gov/28838815/)) standard and adapted for annotation using the HED infrastructure and requirements. For more information see the [\*\*SCORE schema library \*\*](https://hed-schemas.readthedocs.io/en/latest/hed_score_schema.html) guide.
 
 **January 20, 2023**: **New preprint available**<br/>
 
-> **Actionable event annotation and analysis in fMRI** [**preprint**](https://osf.io/h7puk)<br/>
-> *Monique Denissen*, *Fabio Richlan*, *Jürgen Birkibauer*, *Mateusz Pawlik*, *Anna Ravenschlag*, *Nicole Himmelstoß*,
-> *Florian Hutzler*, *Kay Robbins*<br/>
-> Supporting materials and data are available at [**https://osf.io/93km8/**](https://osf.io/93km8/).<br/>
-> Chapter to appear in the book *Methods for analyzing large neuroimaging datasets*
-> edited by Robert Whelan and Herve Lemaitre.
+> **Actionable event annotation and analysis in fMRI** [**preprint**](https://osf.io/h7puk)<br/> *Monique Denissen*, *Fabio Richlan*, *Jürgen Birkibauer*, *Mateusz Pawlik*, *Anna Ravenschlag*, *Nicole Himmelstoß*, *Florian Hutzler*, *Kay Robbins*<br/> Supporting materials and data are available at [**https://osf.io/93km8/**](https://osf.io/93km8/).<br/> Chapter to appear in the book *Methods for analyzing large neuroimaging datasets* edited by Robert Whelan and Herve Lemaitre.
 
 **January 4, 2023**: **New preprint available**<br/>
 
-> **End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB** [**preprint**](https://osf.io/h7puk)<br/>
-> *Dung Truong*, *Kay Robbins*, *Arnaud Delorme*, and *Scott Makeig*</br>
-> Supporting materials and data are available at [**https://osf.io/8brgv/**](https://osf.io/8brgv/).<br/>
-> Chapter to appear in the book *Methods for analyzing large neuroimaging datasets*
-> edited by Robert Whelan and Herve Lemaitre.
+> **End-to-end processing of M/EEG data with BIDS, HED, and EEGLAB** [**preprint**](https://osf.io/h7puk)<br/> *Dung Truong*, *Kay Robbins*, *Arnaud Delorme*, and *Scott Makeig*</br> Supporting materials and data are available at [**https://osf.io/8brgv/**](https://osf.io/8brgv/).<br/> Chapter to appear in the book *Methods for analyzing large neuroimaging datasets* edited by Robert Whelan and Herve Lemaitre.
 
 **January 3, 2023**: **Project page live**<br/>
 

@@ -73,8 +73,7 @@ Green, Triangle, Target, Center-of, Visual-presentation, Sensory-event, Computer
 
 ## Semantic grouping rules
 
-Parentheses in HED annotations are not decorative—they carry semantic meaning. Tags within a group are semantically bound and work together to describe one thing. Tags outside the group describe different aspects or entities.
-Since HED annotations are unordered, parentheses are key for this binding.
+Parentheses in HED annotations are not decorative—they carry semantic meaning. Tags within a group are semantically bound and work together to describe one thing. Tags outside the group describe different aspects or entities. Since HED annotations are unordered, parentheses are key for this binding.
 
 ### Rule 1: Group object properties together
 
@@ -283,19 +282,15 @@ presentation of a red circle and a buzz.
 
 If the event is a `Sensory-event`, a `Sensory-modality` tag (e.g., `Visual-presentation` or `Auditory-presentation`) SHOULD be be able to be associated unambiguously with what is being presented.
 
-The examples in Rule 4 illustrate the different cases.
-In Example 1 (top-level-placement), there is only one `Sensory-event` and
-one `Visual-presentation`:
+The examples in Rule 4 illustrate the different cases. In Example 1 (top-level-placement), there is only one `Sensory-event` and one `Visual-presentation`:
 
 ```
 Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle), (Green, Triangle)
 ```
 
-so the assumption is that the event, which is an experimental stimulus consists of a visual
-presentation of a red circle and a green triangle.
+so the assumption is that the event, which is an experimental stimulus consists of a visual presentation of a red circle and a green triangle.
 
-In an event using multiple sensory modalities, what is being presented should be grouped
-with its corresponding modality as in Rule 4 Example 4.
+In an event using multiple sensory modalities, what is being presented should be grouped with its corresponding modality as in Rule 4 Example 4.
 
 ### Rule 6: Use directional pattern for relationships
 
@@ -382,8 +377,7 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 
 ### Rule 7: Keep independent concepts separate
 
-Tags that describe independent aspects or unrelated concepts should NOT be grouped together.
-Don't group tags with no semantic relationship.
+Tags that describe independent aspects or unrelated concepts should NOT be grouped together. Don't group tags with no semantic relationship.
 
 ```{admonition} Examples of incorrect grouping
 
@@ -458,8 +452,7 @@ widths: 20 40 40
 
 ## Event classification: Event and Task-event-role
 
-Every event annotation should include BOTH an `Event` tag (what kind of event) and a `Task-event-role` tag (the event's role in the task from the participant's perspective).
-The distinction between these two classification systems is fundamental:
+Every event annotation should include BOTH an `Event` tag (what kind of event) and a `Task-event-role` tag (the event's role in the task from the participant's perspective). The distinction between these two classification systems is fundamental:
 
 - **Event tags** (from `Event/`): Classify the NATURE of what happened
 
@@ -613,14 +606,9 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 
 ### Task-action-type and task-stimulus-role
 
-For participant responses, the event should be further modified
-by tags from the `Task-action-type/` subtree. These tags
-indicate properties such as correctness of the response with respect to a task
+For participant responses, the event should be further modified by tags from the `Task-action-type/` subtree. These tags indicate properties such as correctness of the response with respect to a task
 
-Sensory-events that are experimental stimuli should be further modified by tags
-from the `Task-stimulus-role/` subtree (e.g., `Distractor`, `Novel`, etc.).
-These tags are often related to the psychological effect being elicited by
-the stimulus.
+Sensory-events that are experimental stimuli should be further modified by tags from the `Task-stimulus-role/` subtree (e.g., `Distractor`, `Novel`, etc.). These tags are often related to the psychological effect being elicited by the stimulus.
 
 ### Complete event annotation examples
 
@@ -681,8 +669,7 @@ Data-feature, (Incidental, (Eye-blink, Def/AutoDetected))
 ```
 ````
 
-These examples show a single event and the items may or may not be grouped with additional
-task role tags as long as the interpretation is unambiguous.
+These examples show a single event and the items may or may not be grouped with additional task role tags as long as the interpretation is unambiguous.
 
 ## Decision guidelines for simultaneous events
 
