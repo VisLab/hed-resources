@@ -9,17 +9,18 @@ HED annotation semantics refers to the **meaning** conveyed by HED annotations. 
 The semantic interpretation of a HED annotation depends on:
 
 1. **Which tags are selected** - Each tag has a specific meaning in the HED vocabulary
-2. **How tags are grouped** - Parentheses bind tags that describe the same entity or relationship
-3. **Where tags are placed** - Top-level vs. nested grouping affects interpretation
-4. **The context of use** - Whether the annotation appears in a timeline file vs. descriptor file
+1. **How tags are grouped** - Parentheses bind tags that describe the same entity or relationship
+1. **Where tags are placed** - Top-level vs. nested grouping affects interpretation
+1. **The context of use** - Whether the annotation appears in a timeline file vs. descriptor file
 
-````{admonition} Key principle
-:class: tip
-
+```{admonition} Key principle
+---
+class: tip
+---
 **A well-formed HED annotation can be translated back into a coherent English description.**
 
 This reversibility principle serves as the fundamental validation test for HED semantics. If you cannot convert a HED string back into a meaningful English sentence, the annotation likely has structural problems.
-````
+```
 
 ## The reversibility principle
 
@@ -289,12 +290,12 @@ one `Visual-presentation`:
 ```
 Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle), (Green, Triangle)
 ```
+
 so the assumption is that the event, which is an experimental stimulus consists of a visual
-presentation of a red circle and a green triangle. 
+presentation of a red circle and a green triangle.
 
 In an event using multiple sensory modalities, what is being presented should be grouped
 with its corresponding modality as in Rule 4 Example 4.
-
 
 ### Rule 6: Use directional pattern for relationships
 
@@ -358,7 +359,7 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 **Full interpretation:** "An experimental stimulus sensory event with visual presentation where a red circle is to-right-of a blue square"
 ````
 
-````{admonition} Common Relation tags requiring this structure
+```{admonition} Common Relation tags requiring this structure
 
 **Spatial relations:**
 - `To-left-of`, `To-right-of` - horizontal positioning
@@ -377,28 +378,29 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 - `Contained-in` - inclusion relationship
 
 **Important:** The order matters! `(A, (To-left-of, B))` means "A is to the left of B", which is different from `(B, (To-left-of, A))` which means "B is to the left of A".
-````
+```
 
 ### Rule 7: Keep independent concepts separate
 
 Tags that describe independent aspects or unrelated concepts should NOT be grouped together.
 Don't group tags with no semantic relationship.
 
-````{admonition} Examples of incorrect grouping
+```{admonition} Examples of incorrect grouping
 
 - `(Red, Press)` - Color and action are unrelated
 - `(Triangle, Mouse-button)` - Stimulus shape and response device are unrelated
 - `(Green, Response-time)` - Color and temporal measure are unrelated
-````
+```
 
 ### Rule 8: Reserved tags have special syntax
 
 The reserved tags have special grouping rules and usage patterns as shown in the following table:
 
 ```{list-table}
-:header-rows: 1
-:widths: 20 40 40
-
+---
+header-rows: 1
+widths: 20 40 40
+---
 * - Tag
   - Example
   - Rules
@@ -460,6 +462,7 @@ Every event annotation should include BOTH an `Event` tag (what kind of event) a
 The distinction between these two classification systems is fundamental:
 
 - **Event tags** (from `Event/`): Classify the NATURE of what happened
+
   - `Sensory-event` - Something presented to senses
   - `Agent-action` - An agent performs an action
   - `Data-feature` - Computed or observed feature
@@ -469,6 +472,7 @@ The distinction between these two classification systems is fundamental:
   - `Measurement-event` - Measurement taken
 
 - **Task-event-role tags** (from `Task-event-role/`): Classify the event's ROLE in the experimental task
+
   - `Experimental-stimulus` - Primary stimulus to respond to
   - `Cue` - Signal about what to expect or do
   - `Participant-response` - Action by participant
@@ -515,7 +519,7 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 
 ### Selecting the right Event tag
 
-````{admonition} **Decision guide:** Choosing Event tags
+```{admonition} **Decision guide:** Choosing Event tags
 
 **Question: What is the primary nature of what happened?**
 
@@ -553,11 +557,11 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 - A measurement is taken
 - Instrument reading recorded
 - Examples: "Temperature measured", "Pupil size recorded"
-````
+```
 
 ### Selecting the right Task-event-role
 
-````{admonition} **Decision guide:** Choosing Task-event-role tags
+```{admonition} **Decision guide:** Choosing Task-event-role tags
 
 **Question: What is the event's role from the participant's perspective?**
 
@@ -605,7 +609,7 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 - Unplanned occurrence affecting experiment
 - Equipment failure, environmental disruption
 - Example: Stimulus failed to display, unexpected loud noise
-````
+```
 
 ### Task-action-type and task-stimulus-role
 
@@ -680,10 +684,9 @@ Data-feature, (Incidental, (Eye-blink, Def/AutoDetected))
 These examples show a single event and the items may or may not be grouped with additional
 task role tags as long as the interpretation is unambiguous.
 
-
 ## Decision guidelines for simultaneous events
 
-````{admonition} **Guidelines:** When to use single vs. multiple events
+```{admonition} **Guidelines:** When to use single vs. multiple events
 
 **Use SINGLE sensory event when:**
 - ✓ Same modality (e.g., multiple visual objects)
@@ -706,7 +709,7 @@ task role tags as long as the interpretation is unambiguous.
 - ≈ Both interpretations are scientifically valid
 
 **Consistency Principle:** Whatever approach you choose, use it consistently throughout your dataset. Document your decision in the dataset description.
-````
+```
 
 ## File type semantics
 
@@ -839,7 +842,6 @@ This indicates that a fixation cross was displayed starting at 0
 
 ````
 
-
 ## Progressive complexity examples
 
 To help you build correct annotations, here are progressive examples from simple to complex:
@@ -931,15 +933,14 @@ Sensory-event, Experimental-stimulus, Visual-presentation,
 of the computer screen is displayed for 2 secondsw"
 ````
 
-
-
 ## Best practices checklist
 
 Use this checklist before finalizing your annotations:
 
-````{admonition} **Checklist:** Creating semantically correct HED annotations
-:class: tip
-
+```{admonition} **Checklist:** Creating semantically correct HED annotations
+---
+class: tip
+---
 **✓ Grouping**
 - [ ] Stimulus properties grouped: `(Red, Circle)` not `Red, Circle`
 - [ ] Task context grouped with evidence: `(Intended-effect, Target)`
@@ -991,29 +992,31 @@ Use this checklist before finalizing your annotations:
 - [ ] Consistent capitalization throughout
 - [ ] Standard spacing (space after comma)
 - [ ] No extra spaces inside parentheses
-````
+```
 
 ## Summary
 
 Creating semantically correct HED annotations requires understanding:
 
 1. **The reversibility principle** - Your annotations should translate back to coherent English
-2. **Semantic grouping rules** - Parentheses bind tags that describe the same entity
-3. **Event classification** - Every event should have both Event-type and Task-event-role
-4. **File type semantics** - Timeline vs. descriptor files have different requirements
-5. **Relationship patterns** - Agent-action-object and directional relationships need specific structures
-6. **Assembly control** - Use curly braces to control how multi-column annotations are assembled
-7. **Consistency** - Use the same patterns for similar events throughout your dataset
+1. **Semantic grouping rules** - Parentheses bind tags that describe the same entity
+1. **Event classification** - Every event should have both Event-type and Task-event-role
+1. **File type semantics** - Timeline vs. descriptor files have different requirements
+1. **Relationship patterns** - Agent-action-object and directional relationships need specific structures
+1. **Assembly control** - Use curly braces to control how multi-column annotations are assembled
+1. **Consistency** - Use the same patterns for similar events throughout your dataset
 
 By following these principles and patterns, you create annotations that are not only syntactically valid but also semantically meaningful and machine-actionable, enabling powerful downstream analysis and cross-study comparisons.
 
 For additional information, see:
+
 - [**HED Annotation Quickstart**](./HedAnnotationQuickstart.md) - Practical annotation guide
 - [**BIDS Annotation Quickstart**](./BidsAnnotationQuickstart.md) - BIDS integration
 - [**HED Schemas**](./HedSchemas.md) - Understanding the HED vocabulary
 - [**HED Validation Guide**](./HedValidationGuide.md) - Validating your annotations
 
 Available tools:
+
 - [**HED online tools**](https://hedtools.org/hed) - Fairly complete set of tools for a single tsv and json file.
 - [**HED browser-based validation**](https://www.hedtags.org/hed-javascript) - validate an entire BIDS dataset -- all local, no installation
 - [**HED extension for NWB**](https://github.com/hed-standard/ndx-hed) - incorporates HED into Neurodata Without Borders datasets.

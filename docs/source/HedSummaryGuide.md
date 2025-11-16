@@ -1,4 +1,5 @@
 (hed-summary-guide-anchor)=
+
 # HED summary guide
 
 The HED [**HED remodeling tools**](https://www.hedtags.org/hed-resources/HedRemodelingTools.html) provide a number of event summaries
@@ -6,9 +7,9 @@ and event file transformations that are very useful during curation and analysis
 
 The summaries described in this guide are:
 
-* [**Column value summary**](column-value-summary-anchor)
-* [**HED tag summary**](hed-tag-summary-anchor)
-* [**Experimental design summary**](experimental-design-summary-anchor)
+- [**Column value summary**](column-value-summary-anchor)
+- [**HED tag summary**](hed-tag-summary-anchor)
+- [**Experimental design summary**](experimental-design-summary-anchor)
 
 As described in more detail in the [**HED remodeling quickstart**](https://www.hedtags.org/hed-resources/HedRemodelingQuickstart.html) tutorial and the
 [**HED remodeling tools**](https://www.hedtags.org/hed-resources/HedRemodelingTools.html)
@@ -23,26 +24,25 @@ files that have been processed and, if requested, also include an individual sum
 for each input file.
 
 The examples in this tutorial use the Wakeman-Hanson Face Processing dataset as an example.
-A [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) 
+A [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed)
 containing 2 subjects and no imaging data is used to produce the summaries in the examples.
 The reduced dataset has 6 event files each containing 200 events.
 The full dataset is available on OpenNeuro as [**ds003645**](https://openneuro.org/datasets/ds003645/versions/2.0.0).
 
 Each example only shows the overall summary with links to the full summaries that
-include individual summaries. The summaries use a **[number events, number files]**
+include individual summaries. The summaries use a **\[number events, number files\]**
 display of the counts of how many events and files an item appears in.
 
 (column-value-summary-anchor)=
+
 ## Column value summary
 
 The `summarize_column_value` operation produces a summary of three types of columns:
 
-- **categorical column**: the summary counts the number of events (rows) and files for each unique column value. 
+- **categorical column**: the summary counts the number of events (rows) and files for each unique column value.
 
-
-- **value column**: the summary counts the number of files containing the column and 
-total number of rows in the column.
-
+- **value column**: the summary counts the number of files containing the column and
+  total number of rows in the column.
 
 - **skip columns**: are ignored.
 
@@ -53,18 +53,19 @@ the responses were not properly recorded.
 
 The value column information in the current release of the remodeling tools is limited.
 However, if a value column file count is different from the number of event files
-in the dataset, you can conclude that some event files are missing that column or 
+in the dataset, you can conclude that some event files are missing that column or
 have that column multiple times.
 More extensive information reporting for value columns is planned for future releases.
 
-A sample JSON remodeling file with the command for creating a column value summary 
+A sample JSON remodeling file with the command for creating a column value summary
 is shown in the following example. The remodeling file specifies how columns are treated.
 Columns that are not listed as *skip_columns* or *value_columns* are assumed to be
 categorical columns.
 
 ````{admonition} Example JSON remodeling file for a column value summary.
-:class: tip
-
+---
+class: tip
+---
 ```json
 [{
    "operation": "summarize_column_values",
@@ -78,7 +79,6 @@ categorical columns.
 }] 
 ```
 ````
-
 
 The following excerpt shows the dataset portion of the resulting summary in text format:
 
@@ -105,10 +105,10 @@ Dataset: Total events=1200 Total files=6
 ```
 ````
 
-Notice that there is one *double_press* event in the *event_type* column of one of the 
+Notice that there is one *double_press* event in the *event_type* column of one of the
 six event files analyzed in this summary.
 To narrow down which file this *double_press* event occurred in,
-we could look at the 
+we could look at the
 [**full text summary**](./_static/data/summaries/FacePerception_column_values_summary.txt),
 which includes individual summaries for each event file.
 
@@ -117,18 +117,19 @@ appear roughly the same number of times in the *face_type* across the six datase
 The large number of *n/a* values in *face_type* is because the type of face is only
 specified for the stimulus events:
 
-> 108 (*famous_face*) + 103 (*scrambled_face*) + 105 (*unfamiliar_face*) =  
->  &nbsp; &nbsp; &nbsp; &nbsp; 310 (*show_face*) + 6 (*show_face_initial*)
+> 108 (*famous_face*) + 103 (*scrambled_face*) + 105 (*unfamiliar_face*) =\
+> 310 (*show_face*) + 6 (*show_face_initial*)
 
-As expected, the *show_face_initial* appears exactly once in each file (e.g., [6 events, 6 files]) since it is a setup-event.
+As expected, the *show_face_initial* appears exactly once in each file (e.g., \[6 events, 6 files\]) since it is a setup-event.
 
 (hed-tag-summary-anchor)=
+
 ## HED tag summary
 
 The HED tag summary gives an overall picture of the types of HED tags in the
 dataset along with counts and the number of files that these tags appear in.
 An advantage that HED tag summaries have over straight column value summaries
-is that the tags are comparable across experiments, 
+is that the tags are comparable across experiments,
 while column values are experiment-specific.
 
 The *tags* dictionary specifies how the results should be reported.
@@ -137,9 +138,10 @@ the tag counts will be grouped under the titles: "Sensory events",
 "Agent actions" and "Items".
 Tags that don't fit in these three categories will be grouped under "Other tags".
 
-
 ````{admonition} Example JSON remodeling file for a HED tag summary.
-:class: tip
+---
+class: tip
+---
 ```json
 [{
    "operation": "summarize_hed_tags",
@@ -160,7 +162,6 @@ Tags that don't fit in these three categories will be grouped under "Other tags"
 
 ```
 ````
-
 
 The following excerpt shows the dataset portion of the resulting summary in text format
 when running on the [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) face processing
@@ -193,8 +194,8 @@ The summary indicates that the event type breakdown:
 
 Further, there were 626 cues and 316 experimental stimuli among the sensory events.
 
-
 (experimental-design-summary-anchor)=
+
 ## Experimental design summary
 
 The HED type summary allows users to obtain a detailed summary of a particular tag.
@@ -205,9 +206,10 @@ tutorial explains how this information is encoded and can be used.
 
 Type summaries based on the *Task* tag and *Time-block* tag are also informative.
 
-
 ````{admonition} Example JSON remodeling file for a HED type summary based on *Condition-variable*.
-:class: tip
+---
+class: tip
+---
 ```json
 [{
    "operation": "summarize_hed_type",
@@ -267,14 +269,14 @@ The *face-type* condition variable has three levels with roughly equal numbers o
 (*famous-face-cond* with 108 events, *scrambled-face-cond* with 103 events, and
 *unfamiliar-face-cond* with 105 events).
 
-This information is similar to that obtained in the 
+This information is similar to that obtained in the
 [**column value summary**](column-value-summary-anchor),
 but only because these condition variables were directly encoded by columns `face_type` and
 `repetition_type` in the events files.
 The HED approach allows a more general, dataset-independent extraction of design matrices
 and experimental conditions.
 
-The final condition variable *key-assignment* only has one level and appears in all events in all the files. 
+The final condition variable *key-assignment* only has one level and appears in all events in all the files.
 In reality the key assignment is designated in a single event in each file, but it appears
 with an *Onset* and no *Offset*, indicating that it runs until the end of the file.
 The *key-assignment* condition actually has two levels: *right-sym-cond* and *left-sym-cond*,

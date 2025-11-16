@@ -1,31 +1,32 @@
-# HED online tools 
+# HED online tools
 
-HED web-based tools are available directly through a browser from 
-[**https://hedtools.org/hed]**(https://hedtools.org/hed) or
+HED web-based tools are available directly through a browser from
+\[**https://hedtools.org/hed\]**(https://hedtools.org/hed) or
 as RESTful services from the same URL.
 These services do not require a login to use.
 
-The tools are implemented in a Docker module and can be deployed locally 
-provided that Docker is installed. 
+The tools are implemented in a Docker module and can be deployed locally
+provided that Docker is installed.
 See the [**HED Web**](https://www.hedtags.org/hed-web) documentation
 about download and deployment information.
 
-* [**Online tools**](online-access-anchor) - web-based tools for HED.
-* [**RESTful services**](hed-restful-services-anchor) - RESTful online HED services.
+- [**Online tools**](online-access-anchor) - web-based tools for HED.
+- [**RESTful services**](hed-restful-services-anchor) - RESTful online HED services.
 
 (online-access-anchor)=
+
 ## Online access
 
 The HED browser-based tools are organized into the following pages,
-each focused on a particular type of file. 
+each focused on a particular type of file.
 
-| Operates on          | URL | Description                                                |  
-|-----------------| ----- |------------------------------------------------------------|  
-| [**Events**](events-online-tools-anchor)             | [**link**](https://hedtools.org/hed/events) | validation, summary, search, and generation tools.         |  
-| [**Sidecars**](sidecars-online-tools-anchor)         | [**link**](https://hedtools.org/hed/sidecars) | validation, transformation, extraction, and merging tools. |  
-| [**Spreadsheets**](spreadsheets-online-tools-anchor) | [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools.                       |   
-| [**Strings**](strings-online-tools-anchor)           |  [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools.                       |   
-| [**Schemas**](schemas-online-tools-anchor)           | [**link**](https://hedtools.org/hed/schemas) | validation, conversion, and comparison tools.              |  
+| Operates on                                          | URL                                               | Description                                                |
+| ---------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------- |
+| [**Events**](events-online-tools-anchor)             | [**link**](https://hedtools.org/hed/events)       | validation, summary, search, and generation tools.         |
+| [**Sidecars**](sidecars-online-tools-anchor)         | [**link**](https://hedtools.org/hed/sidecars)     | validation, transformation, extraction, and merging tools. |
+| [**Spreadsheets**](spreadsheets-online-tools-anchor) | [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools.                       |
+| [**Strings**](strings-online-tools-anchor)           | [**link**](https://hedtools.org/hed/spreadsheets) | validation and transformation tools.                       |
+| [**Schemas**](schemas-online-tools-anchor)           | [**link**](https://hedtools.org/hed/schemas)      | validation, conversion, and comparison tools.              |
 
 Many of the tools require that you provide a HED schema.
 Usually, you can do this by selecting one of the standard HED versions using a pull-down menu,
@@ -36,7 +37,7 @@ you can select the *Other* option from the pull-down and upload your own HED sch
 
 The long form HED tag consists of the tag's full path in the HED schema,
 while the short form consists only of the tag's leaf node in the schema and possibly a value.
-Intermediate form tags consist of a partial paths from a leaf node to an 
+Intermediate form tags consist of a partial paths from a leaf node to an
 intermediate node in the HED schema.
 Compliant HED tools should be able to handle any combination of short, long,
 or intermediate form tags.
@@ -49,9 +50,10 @@ tag group of the form *(Def-expand/xxx, yyy)* where 'yyy' is the actual definiti
 **Note**: Expansion of definitions is independent of whether the individual HED tags are
 in long form or short form.
 
-
 (events-online-tools-anchor)=
+
 ### Events files
+
 Events files are BIDS style tab-separated value files.
 The first line is always a header line giving the names of the columns,
 which are used as keys to metadata in accompanying JSON sidecars.
@@ -60,12 +62,13 @@ The HED tools have four separate tools: validate, assemble annotations,
 generate sidecar template, and execute remodel script.
 
 #### Validate an events file
-The validate tool for events is useful for debugging the HED annotations in your 
+
+The validate tool for events is useful for debugging the HED annotations in your
 BIDS dataset while avoiding a full BIDS-validation each time you make a change.
 The tool first validates the sidecar if present and
 then does a final validation in combination with the events file.
 
-``````{admonition} Validate a BIDS-style events file
+```{admonition} Validate a BIDS-style events file
 
 **Steps:**
  - Select the `Validate` action.
@@ -78,7 +81,7 @@ then does a final validation in combination with the events file.
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages.
  
-``````
+```
 
 The online events file validation tool is very useful for quick validation while developing your annotation.
 However, the tool only validates a single events file with an accompanying sidecar.
@@ -97,7 +100,7 @@ produces a two-column result file whose first column
 contains the onsets of the original events file and the second column
 contains the fully assembled HED annotation for each event.
 
-``````{admonition} Assemble HED annotations for a BIDS-style events file.
+```{admonition} Assemble HED annotations for a BIDS-style events file.
 
 **Steps:**
  - Select the `Assemble annotations` action.  
@@ -111,7 +114,7 @@ contains the fully assembled HED annotation for each event.
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns the assembled `.tsv` events file.  
-``````
+```
 
 The online tools do not allow the option of retaining other columns in the returned file.
 A more general alternative is to use the remodeling tools through the interface.
@@ -121,10 +124,10 @@ A more general alternative is to use the remodeling tools through the interface.
 #### Generate sidecar template
 
 Generating a sidecar template file from the information in a single events file
-produces a `.json` sidecar template file ready to be filled in with 
+produces a `.json` sidecar template file ready to be filled in with
 descriptions and HED annotations.
 
-``````{admonition} Generate a sidecar template from an events file.
+```{admonition} Generate a sidecar template from an events file.
 
 **Steps:**
  - Select the `Generate sidecar template` action.
@@ -137,7 +140,7 @@ descriptions and HED annotations.
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable `.json` sidecar template file 
 corresponding to the events file.  
-``````
+```
 
 The online generation tool is very useful for constructing a sidecar template file,
 but the template is based only on the particular events file used in the generation.
@@ -154,7 +157,7 @@ and summaries of events files as explained in
 the [**HED remodeling quickstart**](https://www.hedtags.org/hed-resources/HedRemodelingQuickstart.html) and the
 [**HED remodeling tools**](https://www.hedtags.org/hed-resources/HedRemodelingTools.html).
 
-``````{admonition} Execute a remodel script.
+```{admonition} Execute a remodel script.
 
 **Steps:**
  - Select the `Execute remodel script` action.  
@@ -170,9 +173,10 @@ If there are any errors, the tool returns a downloadable `.txt` file of error me
 If there are no errors, the tool returns a zip archive containing 
 the transformed events file and any possible summaries that were generated.
 
-``````
+```
 
 (sidecars-online-tools-anchor)=
+
 ### Sidecar files
 
 BIDS JSON sidecars have file names ending in `events.json`.
@@ -180,11 +184,11 @@ These JSON files contain metadata and HED tags applicable to associated events f
 
 #### Validate a sidecar
 
-The validate tool for sidecars is useful for debugging the HED annotations in your 
+The validate tool for sidecars is useful for debugging the HED annotations in your
 BIDS dataset while avoiding a full BIDS-validation each time you make a change.
 The tool validates a single JSON sidecar.
 
-``````{admonition} Validate a BIDS style JSON sidecar.
+```{admonition} Validate a BIDS style JSON sidecar.
 
  - Select the `Validate` action.
  - Set `Check for warnings` to on if you want to include warnings.  
@@ -194,15 +198,15 @@ The tool validates a single JSON sidecar.
    
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages.  
-``````
+```
 
 The online validation tool is very useful for quick validation while developing your annotation.
-For datasets that have all of their HED annotations in a single JSON sidecar in the 
+For datasets that have all of their HED annotations in a single JSON sidecar in the
 dataset root directory, this is all that is needed.
 
 However, if the sidecar is part of an inheritance chain, some of its definitions
 are externally defined, or the sidecar contains tags from multiple HED schemas,
-you should use the 
+you should use the
 [validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb)
 Python Jupyter notebook to validate the HED in your BIDS dataset.
 
@@ -216,7 +220,7 @@ If successful, the convert sidecar to long tool produces a new sidecar file
 with all the HED tags in full long-form. The non-HED portions of the sidecar
 are the same as in the original file.
 
-``````{admonition} Convert a JSON sidecar HED tags to long form.
+```{admonition} Convert a JSON sidecar HED tags to long form.
 
 **Steps:**
  - Select the `Convert to long` action.  
@@ -228,7 +232,7 @@ are the same as in the original file.
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable converted JSON sidecar file.  
-``````
+```
 
 #### Convert sidecar to short
 
@@ -240,7 +244,7 @@ If successful, the convert sidecar to short tool produces a new sidecar file
 with all the HED tags in short form, making the sidecar easier to read and work with.
 The non-HED portions of the sidecar are the same as in the original file.
 
-``````{admonition} Convert a JSON sidecar HED tags to short form.
+```{admonition} Convert a JSON sidecar HED tags to short form.
 
 **Steps:**
  - Select the `Convert to short` action.  
@@ -252,7 +256,7 @@ The non-HED portions of the sidecar are the same as in the original file.
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable converted JSON sidecar file.  
-``````
+```
 
 #### Extract spreadsheet from sidecar
 
@@ -261,10 +265,10 @@ The extract spreadsheet from sidecar tool
 produces a 4-column `.tsv` file that can be edited with tools such as Excel.
 The first row of the extracted spreadsheet contains the 4 column names:
 `column_name`, `column_value`, `description` and `HED`.
-See the [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) 
+See the [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html)
 for a tutorial on how to use the resulting spreadsheet for annotation.
 
-``````{admonition} Extract a 4-column spreadsheet from a JSON sidecar.
+```{admonition} Extract a 4-column spreadsheet from a JSON sidecar.
 
 **Steps:**
  - Select the `Extract HED spreadsheet` action.
@@ -274,7 +278,8 @@ for a tutorial on how to use the resulting spreadsheet for annotation.
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable `.tsv` spreadsheet.  
-``````
+```
+
 The [sidecar_to_spreadsheet.ipynb](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/sidecar_to_spreadsheet.ipynb) Python Jupyter notebook does the same operation.
 
 #### Merge a spreadsheet with a sidecar
@@ -288,10 +293,10 @@ but it must have the 4 column names: `column_name`, `column_value`, `description
 You have the option of including the contents of each cell in the *description* column
 of the spreadsheet as a *Description/xxx* tag in the corresponding HED annotation.
 
-See the [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) 
+See the [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html)
 for a tutorial on how this works in practice.
 
-``````{admonition} Merge a 4-column spreadsheet with a JSON sidecar.
+```{admonition} Merge a 4-column spreadsheet with a JSON sidecar.
 
 **Steps:**
  - Select the `Merge HED spreadsheet` action.
@@ -303,11 +308,12 @@ for a tutorial on how this works in practice.
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable merged `.json` file.  
-``````
+```
+
 The [bids_merge_spreadsheet_into_sidecar.ipynb](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/merge_spreadsheet_into_sidecar.ipynb) Python Jupyter notebook does the same operation.
 
-
 (spreadsheets-online-tools-anchor)=
+
 ### Spreadsheet files
 
 Spreadsheets (either in Excel or tab-separated-value format) are convenient for organizing tags.
@@ -315,7 +321,7 @@ Of particular interest is the 4-column spreadsheet described in the
 [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html).
 However, the online tools support a more general spreadsheet format,
 where any columns can contain HED tags.
-You can also specify prefixed columns --- 
+You can also specify prefixed columns ---
 columns in which a particular column has its values prefixed by a
 particular HED tag prior to processing.
 Often prefixing is used for the *Description* tag.
@@ -337,7 +343,7 @@ a list of column names will appear with checkboxes on the left and text boxes on
 Select the checkboxes for columns you wish to validate. Add a prefix tag in the corresponding
 text box on the left, if the entry is to be prefixed by a particular tag before validating.
 
-``````{admonition} Validate a spreadsheet.
+```{admonition} Validate a spreadsheet.
 
  - Select the `Validate` action.
  - Set `Check for warnings` to on if you want to include warnings. 
@@ -350,7 +356,7 @@ text box on the left, if the entry is to be prefixed by a particular tag before 
    
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages.  
-``````
+```
 
 #### Convert spreadsheet to long
 
@@ -367,7 +373,7 @@ If successful, the convert spreadsheet to long tool produces a new spreadsheet f
 with all the HED tags in full long-form.
 The non-HED portions of the spreadsheet and the prefix-columns are the same as in the original file.
 
-``````{admonition} Convert a spreadsheet to long.
+```{admonition} Convert a spreadsheet to long.
 
  - Select the `Convert to long` action.
  - Select the HED version.  
@@ -380,7 +386,7 @@ The non-HED portions of the spreadsheet and the prefix-columns are the same as i
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable spreadsheet with the HED tags converted to long.  
 
-``````
+```
 
 #### Convert spreadsheet to short
 
@@ -397,7 +403,7 @@ If successful, the convert spreadsheet to short tool produces a new spreadsheet 
 with all the HED tags in short form.
 The non-HED portions of the spreadsheet and the prefix-columns are the same as in the original file.
 
-``````{admonition} Convert a spreadsheet to short form.
+```{admonition} Convert a spreadsheet to short form.
 
  - Select the `Convert to short` action.
   - Select the HED version.  
@@ -409,9 +415,10 @@ The non-HED portions of the spreadsheet and the prefix-columns are the same as i
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable spreadsheet with the HED tags converted to short.  
-``````
+```
 
 (strings-online-tools-anchor)=
+
 ### String online tools
 
 While in the process of annotating or working with HED,
@@ -424,7 +431,7 @@ The HED string online tools are useful for this.
 The validate tool for HED strings validates a single HED string.
 The HED string may contain multiple HED tags and parenthesized groups of HED tags.
 
-``````{admonition} Validate a HED string.
+```{admonition} Validate a HED string.
 
  - Select the `Validate` action.
  - Set `Check for warnings` to on if you want to include warnings.
@@ -434,8 +441,7 @@ The HED string may contain multiple HED tags and parenthesized groups of HED tag
    
 **Returns:** 
 Errors are displayed in the *Results* text box at the bottom of the page.
-``````
-
+```
 
 #### Convert a HED string to long
 
@@ -447,7 +453,7 @@ If successful, the convert to long tool displays the converted string
 in the *Results* text box at the bottom of the page.
 You can then use copy or cut with paste to use the converted string in other documents.
 
-``````{admonition} Convert HED string to long form.
+```{admonition} Convert HED string to long form.
 
 **Steps:**
  - Select the `Convert to long` action.  
@@ -458,7 +464,7 @@ You can then use copy or cut with paste to use the converted string in other doc
 **Returns:**  
 If there are any errors, the tool displays the error messages in the *Results* at the bottom of the page,
 otherwise the tool displays the converted string in the *Results* textbox.  
-``````
+```
 
 #### Convert HED string to short
 
@@ -470,7 +476,7 @@ If successful, the convert to short tool displays the converted string
 in the *Results* text box at the bottom of the page.
 You can then use copy or cut with paste to use the converted string in other documents.
 
-``````{admonition} Convert HED string to short form.
+```{admonition} Convert HED string to short form.
 
 **Steps:**
  - Select the `Convert to short` action.  
@@ -481,14 +487,16 @@ You can then use copy or cut with paste to use the converted string in other doc
 **Returns:**  
 If there are any errors, the tool displays the error messages in the *Results* at the bottom of the page,
 otherwise the tool displays the converted string in the *Results* textbox.  
-``````
+```
 
 (schemas-online-tools-anchor)=
+
 ### Schema online tools
+
 HED schema tools are designed to assist HED schema developers and library schema developers
 in making sure that their schema has the correct form.
 The schema tools also provide an easy mechanism for converting between
- `.xml` and `.mediawiki` schema formats.
+`.xml` and `.mediawiki` schema formats.
 
 You can view standard schema using the expandable
 [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/).
@@ -498,7 +506,7 @@ You can view standard schema using the expandable
 The validation operation checks syntax as well as HED-3G compliance.
 Schema nodes must be unique and have a specified format.
 
-``````{admonition} Validate a HED schema.
+```{admonition} Validate a HED schema.
 
  - Select the `Validate` action.
  - Set `Check for warnings` on if you want to include warnings.  
@@ -507,7 +515,7 @@ Schema nodes must be unique and have a specified format.
    
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages.  
-``````
+```
 
 #### Convert a HED schema
 
@@ -518,7 +526,7 @@ and modify.
 The [**HED specification**](https://github.com/hed-standard/hed-specification) GitHub
 repository maintains both versions of the schema.
 
-``````{admonition} Convert a HED schema.
+```{admonition} Convert a HED schema.
 
  - Select the `Convert schema` action. 
  - Enter a schema URL or upload a schema file (`.xml` or `.mediawiki`) and select corresponding option.
@@ -527,7 +535,7 @@ repository maintains both versions of the schema.
 **Returns:**  
 If there are any errors, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable `.xml` or `.mediawiki` file.  
-``````
+```
 
 #### Compare HED schemas
 
@@ -535,7 +543,7 @@ The compare HED schemas tool produces a summary of the differences between two s
 This is useful for determining what has changed between schema versions or detecting overlap
 between different library schemas.
 
-``````{admonition} Compare HED schemas.
+```{admonition} Compare HED schemas.
 
  - Select the `Compare schemas` action. 
  - Enter a schema URL or upload a schema file (`.xml` or `.mediawiki`) and select corresponding option for the first schema.  
@@ -545,9 +553,10 @@ between different library schemas.
 **Returns:**  
 If the schemas are invalid, the tool returns a downloadable `.txt` file of error messages,
 otherwise the tool returns a downloadable `.txt` file with the schema differences.  
-``````
+```
 
 (hed-restful-services-anchor)=
+
 ## HED RESTful services
 
 HED supports a number of REST web services in support of HED including schema conversion
@@ -557,30 +566,31 @@ BIDS events file with supporting JSON sidecar.
 Short-to-long and long-to-short conversion of HED tags are supported for HED strings,
 JSON sidecars, BIDS-style events files, and spreadsheets in `.tsv` or `.xlsx` format.
 
-Support is also included for assembling the annotations for a BIDS-style 
+Support is also included for assembling the annotations for a BIDS-style
 events file with a JSON sidecar and for generating a template of a JSON sidecar from a BIDS events file.
 
-The [**web_services_demos**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos) 
-directory in the `hed-examples` GitHub repository provides MATLAB examples of how to call these 
+The [**web_services_demos**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos)
+directory in the `hed-examples` GitHub repository provides MATLAB examples of how to call these
 services in MATLAB.
 
 ### Service setup
 
 The HED web services are accessed by making a request to the HED web server to obtain a
-CSRF access token for the session and then making subsequent requests as designed. 
+CSRF access token for the session and then making subsequent requests as designed.
 The steps are:
 
-1. Send an HTTP `get` request to the HED CSRF token access URL. 
-2. Extract the CSRF token and returned cookie from the response to use in the headers of future `post` requests.
-3. Send an HTTP `post` request in the format as described below and read the response.
+1. Send an HTTP `get` request to the HED CSRF token access URL.
+1. Extract the CSRF token and returned cookie from the response to use in the headers of future `post` requests.
+1. Send an HTTP `post` request in the format as described below and read the response.
 
-The following table summarizes the location of the relevant URLs for online deployments of HED 
+The following table summarizes the location of the relevant URLs for online deployments of HED
 web-based tools and services.
 
-`````{list-table} URLs for HED online services.
-:header-rows: 1
-:widths: 20 50
-
+```{list-table} URLs for HED online services.
+---
+header-rows: 1
+widths: 20 50
+---
 * - Service
   - URL
 * - Online HED tools
@@ -589,24 +599,24 @@ web-based tools and services.
   - [https://hedtools.org/hed/services](https://hedtools.org/hed/services)  
 * - Service request
   - https://hedtools.org/hed/services_submit (with access token)
-`````
+```
 
 ### Request format
 
 HED services are accessed by passing a JSON dictionary of parameters in a request to the online server.
-All requests are in JSON format and include a `service` name and additional parameters. 
+All requests are in JSON format and include a `service` name and additional parameters.
 
-The service names are of the form `target_command` where `target` specifies the 
+The service names are of the form `target_command` where `target` specifies the
 input data type (events, sidecar, spreadsheet, string, or schema)
-and `command`specifies the service to be performed. 
+and `command`specifies the service to be performed.
 For example, `events_validate` indicates that
-a BIDS-style events file is to be validated. 
+a BIDS-style events file is to be validated.
 The exception to this naming rule is the `get_services` command,
 which returns a list of all available services and their parameters.
 
-All parameter values are passed as strings. 
+All parameter values are passed as strings.
 The contents of file parameters are read into strings to be passed as part of the request.
-The following example shows the JSON for a HED service request to validate a JSON sidecar. 
+The following example shows the JSON for a HED service request to validate a JSON sidecar.
 The contents of the JSON file to be validated are abbreviated as `"json file text"`.
 
 ````{admonition} **Example:** Request parameters for validating a JSON sidecar.
@@ -623,12 +633,13 @@ The contents of the JSON file to be validated are abbreviated as `"json file tex
 ````
 
 The parameters are explained in the following table. Parameter values listed in square brackets
-(e,g, [`a`, `b`]) indicate that only one of `a` or `b`should be provided.
+(e,g, \[`a`, `b`\]) indicate that only one of `a` or `b`should be provided.
 
-`````{list-table} Summary of HED ReST services
-:header-rows: 1
-:widths: 15 20 45
-
+```{list-table} Summary of HED ReST services
+---
+header-rows: 1
+widths: 15 20 45
+---
 * - Service
   - Parameters	
   - Descriptions
@@ -745,15 +756,15 @@ The parameters are explained in the following table. Parameter values listed in 
   - Validates a list of hed strings and returns a list of errors.
       
     Returned data: an error string or a list of strings in short form.
-``````
+```
 
 The following table gives an explanation of the parameters used for various services.
 
-
-`````{list-table} Parameters for web services.
-:header-rows: 1
-:widths: 20 20 40
-
+```{list-table} Parameters for web services.
+---
+header-rows: 1
+widths: 20 20 40
+---
 * - Key value
   - Type
   - Description
@@ -799,20 +810,22 @@ The following table gives an explanation of the parameters used for various serv
 * - spreadsheet_string
   - string
   - A spreadsheet tsv as a string.
-``````
+```
+
 ### Service responses
 
-The web-services always return a JSON dictionary with four keys: `service`, 
-`results`, `error_type`, and `error_msg`. If `error_type` and `error_msg` 
-are not empty, the operation failed, while if these fields are empty, 
-the operation completed. Completed operations always return their results 
-in the `results` dictionary. Keys in the `results` dictionary return 
+The web-services always return a JSON dictionary with four keys: `service`,
+`results`, `error_type`, and `error_msg`. If `error_type` and `error_msg`
+are not empty, the operation failed, while if these fields are empty,
+the operation completed. Completed operations always return their results
+in the `results` dictionary. Keys in the `results` dictionary return
 as part of a HED web service response.
 
-`````{list-table} The results dictionary.
-:header-rows: 1
-:widths: 20 10 50
-
+```{list-table} The results dictionary.
+---
+header-rows: 1
+widths: 20 10 50
+---
 * - Key
   - Type
   - Description
@@ -835,11 +848,11 @@ as part of a HED web service response.
   - string
   - Explanation of the result of service processing.
 
-``````
+```
 
-The `msg` and `msg_category` pertain to contents of the response information. For example a `msg_category` of 
+The `msg` and `msg_category` pertain to contents of the response information. For example a `msg_category` of
 `warning` in response to a validation request indicates that the validation completed and that the object that
-was validated had validation errors.  In contrast, the `error_type`, and `error_msg` values are 
-only for web service requests. These keys indicate whether validation was able to take place. 
-Examples of failures that would cause errors include the service timing out or the 
-service request parameters were incorrect. 
+was validated had validation errors. In contrast, the `error_type`, and `error_msg` values are
+only for web service requests. These keys indicate whether validation was able to take place.
+Examples of failures that would cause errors include the service timing out or the
+service request parameters were incorrect.

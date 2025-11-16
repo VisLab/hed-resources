@@ -8,10 +8,11 @@ The mechanics of putting your selected HED annotations into
 [BIDS (Brain Imaging Data Structure)](https://bids.neuroimaging.io/) format
 is covered in the [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md) guide.
 
-* [**What is HED annotation?**](what-is-hed-annotation-anchor)  
-* [**A recipe for simple annotation**](a-recipe-for-simple-annotation-anchor)  
+- [**What is HED annotation?**](what-is-hed-annotation-anchor)
+- [**A recipe for simple annotation**](a-recipe-for-simple-annotation-anchor)
 
 (what-is-hed-annotation-anchor)=
+
 ## What is HED annotation?
 
 A HED annotation consists of a comma separated list of tags selected from
@@ -25,7 +26,9 @@ The [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) allows
 you to explore these terms.
 
 (a-recipe-for-simple-annotation-anchor)=
+
 ## A recipe for simple annotation
+
 In thinking about how to annotate an event, you should always start
 by selecting a tag from the *Event* subtree to indicate the general event category.
 Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*,
@@ -36,13 +39,15 @@ to view the available tags.
 Most experiments will only have a few types of distinct events.
 The simplest way to create a minimal HED annotation for your events is:
 
-1. Select one of the 7 tags from the *Event* subtree to designate the general category of the event.  
-2. Use the following table to select the appropriate supporting tags given that event type.
+1. Select one of the 7 tags from the *Event* subtree to designate the general category of the event.
+1. Use the following table to select the appropriate supporting tags given that event type.
 
 (standard-hed-tag-selections-anchor)=
-```{admonition} Standard HED tag selections for minimal annotation.
-:class: tip
 
+```{admonition} Standard HED tag selections for minimal annotation.
+---
+class: tip
+---
 |  Event tag    | Support tag type |  Example tags  | Reason | 
 | ------------- | -------------------- | ------------ | ------ |
 | **<em>Sensory-event</em>** | *Sensory-presentation* | *Visual-presentation*<br>*Auditory-presentation*| Which sense? | 
@@ -66,15 +71,15 @@ The simplest way to create a minimal HED annotation for your events is:
 |                | *Data-value*       | *Percentage/32.5* <br>*Time-interval/1.5 s* | What value or type? 
 ```
 
-
 As in BIDS, we assume that the event metadata is given in tabular form.
 Each table row represents the metadata associated with a single data event marker,
 as shown in the following excerpt of the `events.tsv` file for a simple Go/No-go experiment.
 The `onset` column gives the time in seconds of the marker relative
-to the beginning of the associated data file. 
+to the beginning of the associated data file.
 
 (example-go-no-go-event-table-anchor)=
-````{admonition} Event file from a simple Go/No-go experiment.
+
+```{admonition} Event file from a simple Go/No-go experiment.
 
 | onset | duration | event_type | value | stim_file | 
 | ----- | -------- | ---------- | ----- | --------- | 
@@ -86,7 +91,7 @@ to the beginning of the associated data file.
 | 10.801 | n/a | stimulus | animal_distractor | 38014.jpg |
 | 12.684 | n/a | stimulus | animal_distractor | 82063.jpg |
 | 12.943 | n/a | response | incorrect_response | n/a |
-````
+```
 
 In the Go/No-go experiment, the experimental participant is presented
 with a series of target and distractor animal images.
@@ -97,7 +102,7 @@ for all possible unique event types, the `event_type` column is redundant.
 In this case, we can choose to assign all the annotations to
 the `value` column as demonstrated in the following example.
 
-````{admonition} Version 1: Assigning all annotations to the value column.
+```{admonition} Version 1: Assigning all annotations to the value column.
 
 | value | Event category |  Supporting tags |  
 | ------- | -------------- | --------------- |   
@@ -106,18 +111,18 @@ the `value` column as demonstrated in the following example.
 | correct_response | *Agent-action* | *Experiment-participant*, (*Lift*, *Finger*), *Correct-action* |  
 | incorrect_response | *Agent-action* | *Experiment-participant*, (*Lift*, *Finger*), *Incorrect-action* |  
 
-````
+```
 
 The table above shows the event category and the supporting tags as suggested in the
 [**Standard hed tags for minimal annotation**](standard-hed-tag-selections-anchor) table.
 
-A better format for your annotations is the 
+A better format for your annotations is the
 [**4-column spreadsheet format**](four-column-spreadsheet-format-anchor) described in
 [**BIDS annotation quickstart**](BidsAnnotationQuickstart.md), since there are online
 tools to convert this format into a JSON sidecar that can be deployed directly in
-a BIDS dataset. 
+a BIDS dataset.
 
-````{admonition} 4-column spreadsheet format for the previous example.
+```{admonition} 4-column spreadsheet format for the previous example.
 
 | column_name| column_value | description | HED |  
 | ------- | -------------- | ----------- | ------- |  
@@ -126,13 +131,13 @@ a BIDS dataset.
 | value | correct_response | Participant correctly<br>lifted finger off button.  | *Agent-action*, *Experiment-participant*,<br>(*Lift*, *Finger*), *Correct-action* |  
 | value | incorrect_response | Participant lifted finger off<br>the button but should not have. | *Agent-action*, *Experiment-participant*,<br>(*Lift*, *Finger*), *Incorrect-action* |  
 
-````
+```
 
 HED tools assemble the annotations for each event into a single HED tag string.
 An exactly equivalent version of the previous example splits the HED tag annotation between
 the `event_type` and `value` columns as shown in the next example.
 
-````{admonition} Version 2: Assigning annotations to multiple event file columns.
+```{admonition} Version 2: Assigning annotations to multiple event file columns.
 
 | column_name | column_value | description | HED |  
 | ------- | -------------- | --------------- | ------ |  
@@ -143,13 +148,14 @@ the `event_type` and `value` columns as shown in the next example.
 | value | correct_response | The previous stimulus<br>was a target animal. | *Correct-action* |  
 | value | incorrect_response | The previous stimulus<br>was not a target animal. | *Incorrect-action* |  
 | stim_file | n/a | Filename of stimulus image. | (*Image*, *Pathname/#*) |  
-````
+```
+
 In version 2, the annotations that are common
 to all stimuli and responses are assigned to `event_type`.
 We have also included the annotation for the `stim_file` column in the last row
-of this table. 
+of this table.
 
-The assembled annotation for the first event (with onset 5.035) in the 
+The assembled annotation for the first event (with onset 5.035) in the
 [**event file excerpt from go/no-go**](example-go-no-go-event-table-anchor) above is:
 
 > *Sensory-event*, *Visual-presentation*, *Experimental-stimulus*, *Target*, (*Animal*, *Image*), (*Image*, *Pathname/105064.jpg*)
@@ -169,12 +175,13 @@ HED is capable of much more extensive and expressive annotations as
 explained in a series of tutorials on this site.
 
 (assembly-and-curly-braces-anchor)=
+
 ## Assembly and curly braces
 
-When you annotate events in BIDS, HED annotations from multiple columns 
-of the `_events.tsv` file are automatically combined (assembled) 
-to create the final annotation for each event. 
-By default, the annotations are simply concatenated with commas. 
+When you annotate events in BIDS, HED annotations from multiple columns
+of the `_events.tsv` file are automatically combined (assembled)
+to create the final annotation for each event.
+By default, the annotations are simply concatenated with commas.
 However, sometimes you need more control over how they are combined — especially when multiple columns describe properties of the same object.
 
 ### The problem: Default assembly
@@ -182,11 +189,13 @@ However, sometimes you need more control over how they are combined — especial
 Consider an experiment where stimulus color and shape are recorded in separate columns:
 
 **Events file excerpt:**
+
 | onset | event_type | color | shape  |
-|-------|------------|-------|--------|
+| ----- | ---------- | ----- | ------ |
 | 2.5   | visual     | red   | circle |
 
 **JSON sidecar (without curly braces):**
+
 ```json
 {
   "event_type": {
@@ -211,17 +220,18 @@ Consider an experiment where stimulus color and shape are recorded in separate c
 
 **Result:** `Sensory-event, Visual-presentation, Red, Circle`
 
-**Problem:** The `Red` and `Circle` tags are separate, 
-so it's ambiguous whether they describe the same object 
-or two different things. 
+**Problem:** The `Red` and `Circle` tags are separate,
+so it's ambiguous whether they describe the same object
+or two different things.
 Are we presenting "a red circle" or "something red and also something circular"?
 
 ### The solution: Curly braces
 
-Curly braces `{ }` let you control exactly where annotations from other columns are inserted. 
+Curly braces `{ }` let you control exactly where annotations from other columns are inserted.
 Use `{column_name}` as a placeholder, and HED will replace it with that column's annotation.
 
 **Sidecar (with curly braces):**
+
 ```json
 {
   "event_type": {
@@ -246,25 +256,26 @@ Use `{column_name}` as a placeholder, and HED will replace it with that column's
 
 **Result:** `Sensory-event, Visual-presentation, (Red, Circle)`
 
-**Success!** Now `Red` and `Circle` are grouped together in parentheses, clearly indicating they describe 
+**Success!** Now `Red` and `Circle` are grouped together in parentheses, clearly indicating they describe
 a single object: a red circle.
 
 ### How it works
 
 1. HED looks at the `event_type` annotation: `"Sensory-event, Visual-presentation, ({color}, {shape})"`
-2. It finds `{color}` and replaces it with the annotation from the color column: `Red`
-3. It finds `{shape}` and replaces it with the annotation from the shape column: `Circle`
-4. The final result groups them: `Sensory-event, Visual-presentation, (Red, Circle)`
+1. It finds `{color}` and replaces it with the annotation from the color column: `Red`
+1. It finds `{shape}` and replaces it with the annotation from the shape column: `Circle`
+1. The final result groups them: `Sensory-event, Visual-presentation, (Red, Circle)`
 
 ### When to use curly braces
 
 Use curly braces when:
+
 - Multiple columns describe properties of the same object (color, shape, size)
 - You need to control grouping structure
 - You want to ensure related annotations are grouped together
 
-**Tip:** Curly braces are your tool for creating properly grouped HED annotations when information 
+**Tip:** Curly braces are your tool for creating properly grouped HED annotations when information
 comes from multiple columns!
 
-For more detailed information about assembly and advanced grouping rules, 
+For more detailed information about assembly and advanced grouping rules,
 see [**HED Annotation Semantics**](./HedAnnotationSemantics.md).
