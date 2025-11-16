@@ -52,6 +52,7 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
 
    IntroductionToHed.md
    HowCanYouUseHed.md
+   HedSchemas.md
    WhatsNew.md   
 
 
@@ -69,7 +70,7 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
    HedSummaryGuide.md
    HedConditionsAndDesignMatrices.md
    HedRemodelingQuickstart.md
-   HedSchemaDevelopersGuide.md
+
 
 
 .. toctree::
@@ -78,12 +79,13 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
    :caption: Tool documentation:
 
    HedOnlineTools.md
-   CTaggerGuiTaggingTool.md
+   CTaggerGuiGuide.md
    HedRemodelingTools.md
    HedPythonTools.md
    HedJavascriptTools.md
    HedMatlabTools.md
    HedAndEEGLAB.md
+   HedSchemaDevelopersGuide.md
 
 
 .. toctree::

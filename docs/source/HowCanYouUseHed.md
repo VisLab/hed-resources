@@ -862,7 +862,7 @@ All repositories welcome contributions and issue reports.
 
 **Repository**: [**hed-matlab**](https://github.com/hed-standard/hed-matlab) | **Installation**: Via EEGLAB plugin manager
 
-**Documentation**: [**HED MATLAB tools**](./HedMatlabTools.md) | [**CTagger GUI**](./CTaggerGuiTaggingTool.md)
+**Documentation**: [**HED MATLAB tools**](./HedMatlabTools.md) | [**CTagger GUI**](./CTaggerGuide.md)
 
 (web-tools-and-rest-services-anchor)=
 #### Online tools and REST services
