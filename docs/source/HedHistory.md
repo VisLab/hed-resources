@@ -4,7 +4,7 @@ Hierarchical Event Descriptors (HED) has evolved through three major generations
 
 ## HED generation 1 (2010-2016)
 
-**Versions: < 4.0.0**
+**Versions: \< 4.0.0**
 
 The first version of HED was proposed and developed by Nima Bigdely-Shamlo in 2010 as part of his PhD thesis under the supervision of Scott Makeig and Kenneth Kreutz-delgado at the Swartz Center for Computational Neuroscience (SCCN), UCSD. The system was created to support event annotation in HeadIT, an early public repository for EEG data (Bigdely-Shamlo et al. 2013).
 
@@ -26,9 +26,10 @@ A major milestone occurred in 2019 when the [BIDS (Brain Imaging Data Structure)
 
 Work began in 2019 on a fundamental rethinking of HED vocabulary design, culminating in the release of HED Generation 3 in August 2021. This generation represents a dramatic increase in annotation capacity and significant simplification of the user experience.
 
-````{admonition} **Key innovations in HED Generation 3**
-:class: tip
-
+```{admonition} **Key innovations in HED Generation 3**
+---
+class: tip
+---
 1. **Improved vocabulary structure** - More intuitive organization and expanded coverage
 2. **Short-form annotation** - Simplified syntax for common use cases
 3. **Library schema** - Domain-specific extensions to the core vocabulary
@@ -36,7 +37,7 @@ Work began in 2019 on a fundamental rethinking of HED vocabulary design, culmina
 5. **Temporal scope** - Enhanced representation of time-based relationships
 6. **Encoding of experimental design** - Better support for complex experimental structures
 
-````
+```
 
 HED Generation 3 is currently maintained and developed by the HED Working Group led by Kay Robbins, Scott Makeig, and Yahya Shirazi with key contributors including Dung Truong, Monique Denissen, Dora Hermes Miller, and Arnaud Delorme.
 
@@ -50,7 +51,6 @@ HED development has been supported by multiple funding sources across its evolut
 
 ## Community and participation
 
-HED is an open research community effort. Researchers and developers interested in contributing are invited to participate. 
-Visit the [**HED project homepage**](https:/www.hedtags.org)for links to the latest developments.
+HED is an open research community effort. Researchers and developers interested in contributing are invited to participate. Visit the [**HED project homepage**](https:/www.hedtags.org)for links to the latest developments.
 
 For questions, email: hed.maintainers@gmail.com or post an issue at [**hed-issues**](https://hed-standard/hed-schemas/issues).
