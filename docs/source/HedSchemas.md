@@ -13,6 +13,21 @@ The HED ecosystem includes a **standard schema** containing the basic vocabulary
 needed for annotation of experimental data as well as specialized **library schemas** for
 the additional field-specific terms needed to complete an annotation.
 
+## Scope of HED 
+
+HED allows researchers to annotate what happened during an 
+experiment, including experimental stimuli and other sensory events, participant responses 
+and actions, experimental design, the role of events in the task, and the temporal structure 
+of the experiment. The resulting annotation is machine-actionable, meaning that it can be 
+used as input to algorithms without manual intervention. HED facilitates detailed comparisons
+of data across studies.
+
+As the name HED implies, much of the HED framework focuses on
+associating metadata with the experimental timeline to make datasets analysis-ready and
+machine-actionable. However, HED annotations and framework can be used to incorporate 
+other types of metadata into analysis by providing a common API (Application Programming 
+Interface) for building inter-operable tools.
+
 ## HED schema basics
 
 HED annotations consist of unordered comma separated lists of HED tags.
@@ -21,6 +36,8 @@ For example in the HED annotation *Red, Triangle, Blue, Square*,
 cannot use ordering to determine which tags belong together.
 To indicate a red triangle and a blue square, you must use parentheses:
 *(Red, Triangle), (Blue, Square)*.
+
+### Tag hierarchy
 
 The HED tags used to annotate data come from a controlled vocabulary
 called a **HED schema**. A HED schema consists of a series of **top-level** tags representing
@@ -37,61 +54,17 @@ means that when downstream tools search for *2D-shape*,
 the search will return tag strings containing *Square* as well as those 
 containing the tags *Rectangle* and *2D-shape*.
 
-Rules for the HED schema vocabulary and for HED-compliant tools can be found in the
-[**HED Specification**](https://www.hedtags.org/hed-specification/).
-
-## Scope of HED 
-
-HED allows researchers to annotate what happened during an 
-experiment, including experimental stimuli and other sensory events, participant responses 
-and actions, experimental design, the role of events in the task, and the temporal structure 
-of the experiment. The resulting annotation is machine-actionable, meaning that it can be 
-used as input to algorithms without manual intervention. HED facilitates detailed comparisons
-of data across studies.
-
-As the name HED implies, much of the HED framework focuses on
-associating metadata with the experimental timeline to make datasets analysis-ready and
-machine-actionable. However, HED annotations and framework can be used to incorporate 
-other types of metadata into analysis by providing a common API (Application Programming 
-Interface) for building inter-operable tools.
-
 ### Tag forms
-
 When you tag, you need only use the tag node name (e.g, *Square*).
 **HED-compliant tools** can convert between this "short-form" and the complete path or "long-form" 
 (e.g. */Item/Object/Geometric-object/2D-shape/Rectangle/Square*) 
 when needed for search, summarization, or other processing.
 
-### Types of schemas
+Rules for the HED schema vocabulary and for HED-compliant tools can be found in the
+[**HED Specification**](https://www.hedtags.org/hed-specification/).
 
-The HED standard schema consists of a terms that are likely to be of use in all experiments,
-while library schemas capture the terms that are important for annotations in a specialized areas.
-You may use terms from as many schemas as you wish.
-However, if you use more than one schema, terms from the additional schemas must be prefixed
-by **local namespace designators** to indicate which schemas the tags came from.
-A namespace designator is the form *xx:* where *xx* is a user-chosen string of alphabetic characters.
 
-The following diagram shows a representation of a standard schema (blue nodes) used in
-conjunction with the SCORE 1.0.0 library schema (green nodes).
-Tags from the standard schema, such as *Data-feature* appear without the prefix.
-The remaining tags, which come from the SCORE library, 
-appear with the user-defined *sc:* namespace prefix in the annotation.
-
-![separate schemas](./_static/images/standardPlusLibrary.png).  
-
-Starting with HED schema version **8.2.0**, HED supports **partnered schemas**,
-which are library schemas that are merged with a standard schema.
-Partnered schemas allow schema designers to include library
-tags that are elaborations of tags in the standard schema in addition to other
-specialized tags as shown in the following diagram:
-
-![partnered schemas](./_static/images/partneredSchema.png).
-
-SCORE version 1.1.0 will be distributed as a partnered schema.
-Annotations from a partnered schema can include tags from both the library schema
-and its partner without prefixes.
-
-## Role of library schemas
+### Library schemas
 
 **To avoid** uncontrolled expansion of the base HED vocabulary with specialized terminology, 
 HED supports the creation of library schemas, which are specialized vocabularies that can
@@ -103,14 +76,27 @@ part of a library used in conjunction with core modules of the programming langu
 HED annotations may contain any combination of tags from the standard vocabulary and/or
 HED library vocabularies.
 
-Several library schemas are currently under development including the SCORE library
-for describing data features of clinical interest (e.g., seizure, sleep stage IV) as
-well as schemas for describing features in language structure and video.
-
+Several library schemas are as described [**below**](#available-schemas.
 Each library schema has its own directory under in the 
 [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository.
-The [**hed-specification**](https://www.hedtags.org/hed-specification/) has a
-detailed description of the rules for HED schemas.
+
+Each library schema version is now partnered with a specific
+version of the standard schema. The library schema is merged
+with its standard schema partner to form a unified schema
+vocabulary as shown in:
+
+![partnered schemas](./_static/images/partneredSchema.png)
+
+Multiple library schemas can be used together, provided
+they are partnered with the same standard schema and don't conflict.
+
+It is also possible to use conflicting schemas together if you use
+namespace designators as illustrated in:
+
+![separate schemas](./_static/images/standardPlusLibrary.png)
+
+In this case, both the version specification and the associated
+annotations must have a xxx: namespace designator
 
 ## Viewing and accessing schemas
 
@@ -175,9 +161,9 @@ For more information and the latest references see
 ## The HED community and resources
 
 All HED-related source and documentation repositories are housed on the HED-standard 
-organization GitHub site, [https://github.com/hed-standard](https://github.com/hed-standard),
+organization GitHub site, [**https://github.com/hed-standard**](https://github.com/hed-standard),
 which is maintained by the HED Working Group. HED development is open-source and
-community-based. The official HED website [https://www.hedtags.org](https://www.hedtags.org). 
+community-based. The official HED website [**https://www.hedtags.org**](https://www.hedtags.org). 
 
 The HED Working Group invites those interested in HED to contribute to the HED ecosystem and development process.
 
@@ -211,7 +197,7 @@ HED schema available on GitHub in the `standard_schema` directory of the
 Starting with BIDS version 1.8.0, BIDS allows the value associated with the
 `"HEDVersion"` key in the `dataset_description.json` file to be a list rather 
 than a string expressing the HED version. 
-This allows the use of multiple, non conflicting schemas to be specified.
+This allows the use of multiple, non-conflicting schemas to be specified.
 
 
 `````{admonition} **Example:** Using multiple non-conflicting schemas
@@ -250,10 +236,15 @@ Tags from the `testlib` schema library are to be prefixed with `la:` in annotati
 ```
 `````
 
-More details about HED schemas can be found in:  
+More details about HED schemas can be found in:
 [**Library schemas**](https://www.hedtags.org/hed-specification/07_Library_schemas.html) in
 the [**HED specification**](https://www.hedtags.org/hed-specification).
 
 ## HED schemas in NWB
 
-NWB ([**Neurodata Without Borders**])
+NWB ([**Neurodata Without Borders**](https://nwb.org/)) is
+another HED-supported standard and software ecosystem for
+neurophysiology and behavioral data. 
+
+The HED version specfications for NWB are similar to those in BIDS.
+HED's use in NWB is documented in the [**ndx-hed**](https://www.hedtags.org/ndx-hed/) extension documentation.
