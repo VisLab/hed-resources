@@ -1,4 +1,5 @@
 [![Documentation](https://img.shields.io/badge/docs-hedtags.org-blue.svg)](https://www.hedtags.org/hed-resources)
+
 # HED Resources
 
 This repository contains the primary documentation and user resources
@@ -13,10 +14,11 @@ This includes comprehensive guides for using HED tools, MATLAB support, Python t
 and integration with various platforms like EEGLAB and NWB.
 
 The documentation covers:
+
 - Introduction to HED and how to use it
 - Tool-specific guides (Python, MATLAB, JavaScript, Online tools)
 - Integration guides (EEGLAB, NWB, BIDS)
-- Validation and search guides  
+- Validation and search guides
 - Schema development guides
 - Quick-start tutorials and examples
 
@@ -48,12 +50,12 @@ python check_links.py
 ```
 
 ### Available dependency groups:
+
 - `docs` - Sphinx documentation building
-- `quality` - Link checking and code quality tools  
+- `quality` - Link checking and code quality tools
 - `dev` - All of the above for development
 
 ### Building documentation
+
 The documentation is built using Sphinx and hosted at [www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources).
 After building locally, open `docs/_build/html/index.html` in your browser to view the documentation.
-
-
