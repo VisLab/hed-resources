@@ -1,10 +1,17 @@
 # HED schemas
 
-## Viewing schemas
+## What is a HED schema?
 
-All versions of the HED schemas are located in the GitHub
-[**hed-schemas**](https://github.com/hed-standard/hed-schemas)
-and can be best-viewed using the [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/).
+HED (Hierarchical Event Descriptors) is an evolving framework for the description and
+formal annotation of events and other types of data.
+The HED ecosystem includes a structured vocabulary (specified by a HED schema)
+together with tools for validation and for using HED annotations in data search, 
+extraction, and analysis. 
+
+A **HED schema** is a hierarchically-structured specification of a vocabulary.
+The HED ecosystem includes a **standard schema** containing the basic vocabulary
+needed for annotation of experimental data as well as specialized **library schemas** for
+the additional field-specific terms needed to complete an annotation.
 
 ## HED schema basics
 
@@ -32,6 +39,21 @@ containing the tags *Rectangle* and *2D-shape*.
 
 Rules for the HED schema vocabulary and for HED-compliant tools can be found in the
 [**HED Specification**](https://www.hedtags.org/hed-specification/).
+
+## Scope of HED 
+
+HED allows researchers to annotate what happened during an 
+experiment, including experimental stimuli and other sensory events, participant responses 
+and actions, experimental design, the role of events in the task, and the temporal structure 
+of the experiment. The resulting annotation is machine-actionable, meaning that it can be 
+used as input to algorithms without manual intervention. HED facilitates detailed comparisons
+of data across studies.
+
+As the name HED implies, much of the HED framework focuses on
+associating metadata with the experimental timeline to make datasets analysis-ready and
+machine-actionable. However, HED annotations and framework can be used to incorporate 
+other types of metadata into analysis by providing a common API (Application Programming 
+Interface) for building inter-operable tools.
 
 ### Tag forms
 
@@ -69,74 +91,6 @@ SCORE version 1.1.0 will be distributed as a partnered schema.
 Annotations from a partnered schema can include tags from both the library schema
 and its partner without prefixes.
 
-
-## Available schemas
-
-### The standard schema
-
-The HED standard schema contains the basic vocabulary for annotating experiments.
-These are terms that are likely to be useful in all types of annotations.
-The HED standard schema source is located in the 
-[**standard_schema**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema)
-directory of the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository.
-
-| Format     | Type | Use | 
-|------------| ---- | ---- | 
-| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedxml/HED8.4.0.xml) | Accessed by tools for validation and analysis. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.4.0.xml) | Readable display. |
-| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedwiki/HED8.4.0.mediawiki) | Edited to create a new schema. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.4.0.mediawiki) |  Readable display for editing. |
-| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease) |  Working directory for developing the prerelease. |
-
-### The SCORE library
-
-The HED SCORE library is an implementation of the [**SCORE**](https://www.sciencedirect.com/science/article/pii/S1388245717309069) standard for clinical annotation of EEG by neurologists.
-For more information and the latest references see 
-[**HED SCORE schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/README.md).
-
-| Format     | Type | Use | 
-|------------| ---- | ---- | 
-| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_2.1.0.xml) | Accessed by tools for validation and analysis. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_.1.0.xml) | Readable display. |
-| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_2.1.0.mediawiki) | Edited to create a new schema. |  
-|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_2.1.0.mediawiki) |  Readable display for editing. |
-| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
-
-### The LANG library
-
-The HED LANG library represents a vocabulary for annotating linguistic stimuli in language and other
-types of experiments.
-For more information and the latest references see 
-[**HED LANG schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/lang/README.md).
-The LANG library is under development and is only available in 
-[**prerelease**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/lang/prerelease) format.
-
-HED (Hierarchical Event Descriptors) is an evolving framework for the description and
-formal annotation of events and other types of data.
-The HED ecosystem includes a structured vocabulary (specified by a HED schema)
-together with tools for validation and for using HED annotations in data search, 
-extraction, and analysis. 
-
-A **HED schema** is a hierarchically-structured specification of a vocabulary.
-The HED ecosystem includes a **standard schema** containing the basic vocabulary
-needed for annotation of experimental data as well as specialized **library schemas** for
-the additional field-specific terms needed to complete an annotation.
-
-## Scope of HED 
-
-HED allows researchers to annotate what happened during an 
-experiment, including experimental stimuli and other sensory events, participant responses 
-and actions, experimental design, the role of events in the task, and the temporal structure 
-of the experiment. The resulting annotation is machine-actionable, meaning that it can be 
-used as input to algorithms without manual intervention. HED facilitates detailed comparisons
-of data across studies.
-
-As the name HED implies, much of the HED framework focuses on
-associating metadata with the experimental timeline to make datasets analysis-ready and
-machine-actionable. However, HED annotations and framework can be used to incorporate 
-other types of metadata into analysis by providing a common API (Application Programming 
-Interface) for building inter-operable tools. 
-
 ## Role of library schemas
 
 **To avoid** uncontrolled expansion of the base HED vocabulary with specialized terminology, 
@@ -155,6 +109,68 @@ well as schemas for describing features in language structure and video.
 
 Each library schema has its own directory under in the 
 [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository.
+The [**hed-specification**](https://www.hedtags.org/hed-specification/) has a
+detailed description of the rules for HED schemas.
+
+## Viewing and accessing schemas
+
+All versions of the HED schemas are located in the GitHub
+[**hed-schemas**](https://github.com/hed-standard/hed-schemas)
+and can be best-viewed using the [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/).
+
+
+## Available schemas
+
+### The standard schema
+
+The HED standard schema contains the basic vocabulary for annotating experiments.
+These are terms that are likely to be useful in all types of annotations.
+The HED standard schema source is located in the 
+[**standard_schema**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema)
+directory of the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository.
+
+| Format     | Type | Use | 
+|------------| ---- | ---- | 
+| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedxml/HED8.4.0.xml) | Accessed by tools for validation and analysis. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedxml/HED8.4.0.xml) | Readable display. |
+| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedwiki/HED8.4.0.mediawiki) | Edited to create a new schema. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/standard_schema/hedwiki/HED8.4.0.mediawiki) |  Readable display for editing. |
+| JSON  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedjson/HED8.4.0.json) | Used by AIs for easy lookup. |  
+| tsv  | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/hedtsv/HED8.4.0) | Spreadsheet representation. |  
+| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema/prerelease) |  Working directory for developing the prerelease. |
+
+### The SCORE library
+
+The HED SCORE library is an implementation of the [**SCORE**](https://www.sciencedirect.com/science/article/pii/S1388245717309069) standard for clinical annotation of EEG by neurologists.
+For more information and the latest references see 
+[**HED SCORE schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/README.md).
+
+| Format     | Type | Use | 
+|------------| ---- | ---- | 
+| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedxml/HED_score_2.1.0.xml) | Accessed by tools for validation and analysis. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedxml/HED_score_.1.0.xml) | Readable display. |
+| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedwiki/HED_score_2.1.0.mediawiki) | Edited to create a new schema. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/hedwiki/HED_score_2.1.0.mediawiki) |  Readable display for editing. |
+| JSON  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/score/hedjson/HED_score_2.1.0.json) | Used by AIs for easy lookup. |  
+| tsv  | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/hedtsv/HED_score_2.1.0) | Spreadsheet representation. |  
+| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/score/prerelease) |  Working directory for developing the prerelease. |
+
+### The LANG library
+
+The HED LANG library represents a vocabulary for annotating linguistic stimuli in language and other
+types of experiments.
+For more information and the latest references see 
+[**HED LANG schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/lang/README.md).
+
+| Format     | Type | Use | 
+|------------| ---- | ---- | 
+| XML        |  [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/lang/hedxml/HED_lang_1.1.0.xml) | Accessed by tools for validation and analysis. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/lang/hedxml/HED_lang_1.1.0.xml) | Readable display. |
+| MediaWiki  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/lang/hedwiki/HED_lang_1.1.0.mediawiki) | Edited to create a new schema. |  
+|            | [**Formatted**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/lang/hedwiki/HED_lang_1.1.0.mediawiki) |  Readable display for editing. |
+| JSON  | [**Raw**](https://raw.githubusercontent.com/hed-standard/hed-schemas/main/library_schemas/lang/hedjson/HED_lang_1.1.0.json) | Used by AIs for easy lookup. |  
+| tsv  | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/lang/hedtsv/HED_lang_1.1.0) | Spreadsheet representation. |  
+| Prerelease | [**Directory**](https://github.com/hed-standard/hed-schemas/tree/main/library_schemas/lang/prerelease) |  Working directory for developing the prerelease. |
 
 ## The HED community and resources
 
@@ -238,4 +254,6 @@ More details about HED schemas can be found in:
 [**Library schemas**](https://www.hedtags.org/hed-specification/07_Library_schemas.html) in
 the [**HED specification**](https://www.hedtags.org/hed-specification).
 
+## HED schemas in NWB
 
+NWB ([**Neurodata Without Borders**])

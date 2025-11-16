@@ -52,6 +52,7 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
 
    IntroductionToHed.md
    HowCanYouUseHed.md
+   HedSchemas.md
    WhatsNew.md   
 
 
@@ -60,7 +61,6 @@ or visit the `**HED standard organization** <https://github.com/hed-standard/>`_
    :hidden:
    :caption: Tutorials:
 
-   HedSchemas.md
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
    HedAnnotationSemantics.md
