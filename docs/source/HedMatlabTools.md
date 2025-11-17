@@ -666,9 +666,9 @@ This script also demonstrates how to call the individual demo functions. Each de
 Calling HED services from MATLAB requires the following steps:
 
 1. [**Set up a session**](setting-up-a-session-from-matlab-anchor).
-1. [**Create a request structure**](creating-a-request-structure-anchor).
-1. [**Make a request**](making-a-service-request-anchor).
-1. [**Decode the response**](decoding-a-service-response-anchor).
+2. [**Create a request structure**](creating-a-request-structure-anchor).
+3. [**Make a request**](making-a-service-request-anchor).
+4. [**Decode the response**](decoding-a-service-response-anchor).
 
 Usually, you will do the first step (the session setup) once at the beginning of your script to construct a fixed session header that can be used in subsequent requests in your script.
 

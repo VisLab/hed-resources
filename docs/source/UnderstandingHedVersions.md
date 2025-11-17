@@ -33,9 +33,9 @@ name: hed-version-examples
   - LANG library schema version *lang_1.0.0* and<br/>SCORE library schema *score_2.0.0*<br/>both partnered with standard schema *8.3.0*.
 ```
 
-SCORE library schema version 1.0.0 is an **unpartnered schema**. This means that if you want to use any tags from the standard schema you must explicitly give the version. Multiple unpartnered schemas must use prefixes for all but one of the schema versions. Annotations using tags from schemas whose versions are prefixed must also include the prefix in the tag. So if the version specification is *\["score_1.0.0", "ac:8.3.0"\]*, an annotation using the HED tag `Event` must be `ac:Event`.
+SCORE library schema version 1.0.0 is an **unpartnered schema**. This means that if you want to use any tags from the standard schema you must explicitly give the version. Multiple unpartnered schemas must use prefixes for all but one of the schema versions. Annotations using tags from schemas whose versions are prefixed must also include the prefix in the tag. So if the version specification is *["score_1.0.0", "ac:8.3.0"]*, an annotation using the HED tag `Event` must be `ac:Event`.
 
-**Partnered schemas** automatically include a specific version of the standard schema. LANG library schema 1.0.0 and SCORE library schema 2.0.0 (both in prerelease) are both partnered with standard schema 8.3.0. Further, these library schemas have no conflicts with each other. Hence, the version specifications *\["lang_1.0.0", "score_2.0.0"\]* does not require a prefixes. All three schemas are loaded as a single schema at runtime.
+**Partnered schemas** automatically include a specific version of the standard schema. LANG library schema 1.0.0 and SCORE library schema 2.0.0 (both in prerelease) are both partnered with standard schema 8.3.0. Further, these library schemas have no conflicts with each other. Hence, the version specifications *["lang_1.0.0", "score_2.0.0"]* does not require a prefixes. All three schemas are loaded as a single schema at runtime.
 
 ## Using HED versions
 

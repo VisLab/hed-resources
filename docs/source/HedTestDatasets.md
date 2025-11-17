@@ -3,7 +3,7 @@
 The [**hed-examples**](https://github.com/hed-standard/hed-examples) repository contains a set of HED-annotated datasets in [**BIDS**](https://bids.neuroimaging.io/)-compatible format. These datasets can be useful for:
 
 1. Writing lightweight software tests.
-1. Serving as examples of how to incorporate HED into BIDS-structured data.
+2. Serving as examples of how to incorporate HED into BIDS-structured data.
 
 The datasets have **empty raw data files**. However, some data headers containing the metadata are still intact.
 

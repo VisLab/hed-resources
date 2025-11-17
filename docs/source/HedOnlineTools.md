@@ -442,8 +442,8 @@ The [**web_services_demos**](https://github.com/hed-standard/hed-matlab/tree/mai
 The HED web services are accessed by making a request to the HED web server to obtain a CSRF access token for the session and then making subsequent requests as designed. The steps are:
 
 1. Send an HTTP `get` request to the HED CSRF token access URL.
-1. Extract the CSRF token and returned cookie from the response to use in the headers of future `post` requests.
-1. Send an HTTP `post` request in the format as described below and read the response.
+2. Extract the CSRF token and returned cookie from the response to use in the headers of future `post` requests.
+3. Send an HTTP `post` request in the format as described below and read the response.
 
 The following table summarizes the location of the relevant URLs for online deployments of HED web-based tools and services.
 

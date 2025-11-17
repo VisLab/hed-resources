@@ -11,9 +11,9 @@ The following application was submitted to [**International Neuroinformatics Coo
 
 1. A **specification** for how standardized vocabularies should be constructed, how these vocabularies should be used to annotate dataset, and how tools should handle HED-annotated dataset in search, summary, and analysis.
 
-1. A set of community-developed **standardized vocabularies** and a specified process for how other community groups can develop additional vocabularies.
+2. A set of community-developed **standardized vocabularies** and a specified process for how other community groups can develop additional vocabularies.
 
-1. A **reference implementation** in Python for validation and other operations as described in the specification.
+3. A **reference implementation** in Python for validation and other operations as described in the specification.
 
 The **goals** of HED are:
 
@@ -256,7 +256,7 @@ HED is an integral part of the following repositories:
 - EEGNET (HED third-generation)
 - Austrian NeuroCloud (HED third-generation)
 - CANCTA (HED second-generation)
-- HeadIT \[deprecated\] (HED first-generation)
+- HeadIT [deprecated] (HED first-generation)
 
 Since the event-annotation mechanism for [BIDS](https://bids.neuroimaging.io/) (Brain Imaging Data Structure), any BIDS dataset could use HED.\
 In reality, many users who have deposited their data on OpenNeuro (often to meet the requirements of funding agencies) have not even provided basic text descriptions of the meaning of their event codes.\
@@ -386,49 +386,49 @@ Related
 
 1. Nominations are received from the community via an [on-line form](https://incf.org/form/suggest-a-sbp).
 
-1. Nominations are reviewed on a monthly basis by the committee and those that are deemed appropriate are selected for further vetting.
+2. Nominations are reviewed on a monthly basis by the committee and those that are deemed appropriate are selected for further vetting.
 
-1. If a large number of SBP’s are submitted, the committee will establish a schedule for vetting and will send a communication to the submitter regarding the time line
+3. If a large number of SBP’s are submitted, the committee will establish a schedule for vetting and will send a communication to the submitter regarding the time line
 
-1. A subcommittee of 2-3 individuals is selected to further review the SBP:
+4. A subcommittee of 2-3 individuals is selected to further review the SBP:
 
    1. The submitter will be contacted to provide more detail about the SBP
 
-   1. Committee members will use an [on-line form](https://incf.org/form/suggest-a-sbp) for their review
+   2. Committee members will use an [on-line form](https://incf.org/form/suggest-a-sbp) for their review
 
-   1. Reviewers may interact with the contact individual or other relevant parties to obtain clarifications or additional information
+   3. Reviewers may interact with the contact individual or other relevant parties to obtain clarifications or additional information
 
-   1. Reviewers may solicit a proxy from their node to conduct the review
+   4. Reviewers may solicit a proxy from their node to conduct the review
 
-1. The findings of the subcommittee are discussed at the next monthly meeting and a recommendation put forward for vote:
+5. The findings of the subcommittee are discussed at the next monthly meeting and a recommendation put forward for vote:
 
    1. Possible outcomes:
 
       1. Put forward the SBP for community feedback
 
-      1. Reject the SBP
+      2. Reject the SBP
 
-      1. Request further details
+      3. Request further details
 
-   1. Voting procedure: Ideally, the SBP committee will work through concerns to arrive at consensus on the required action. In the case of a disagreement, the action will be put to a vote to be decided by a simple majority of SBP members.
+   2. Voting procedure: Ideally, the SBP committee will work through concerns to arrive at consensus on the required action. In the case of a disagreement, the action will be put to a vote to be decided by a simple majority of SBP members.
 
-1. Outcomes:
+6. Outcomes:
 
    1. Put forward the SBP for community feedback: A description of the SBP will be prepared and put forward to the INCF community for comment.
 
-   1. Reject the SBP: SBP chair will put together an email to be sent to the submitter and/or steward as appropriate detailing the reasons why the SBP will not be considered further.
+   2. Reject the SBP: SBP chair will put together an email to be sent to the submitter and/or steward as appropriate detailing the reasons why the SBP will not be considered further.
 
-   1. Request further details: Questions and comments will be sent to the submitter/steward so they can respond. Action will be deferred until SBP committee hears back.
+   3. Request further details: Questions and comments will be sent to the submitter/steward so they can respond. Action will be deferred until SBP committee hears back.
 
 ### Part 2: Community comment
 
 1. SBP’s under consideration will be posted for community comment. The current plan is to use the F1000 platform: The public review may extend a minimum of sixty (60) days. The CTSI reserves the right to extend the public review period if it deems necessary.
 
-1. Once an SBP is posted, it will be broadly advertised through INCF and other networks
+2. Once an SBP is posted, it will be broadly advertised through INCF and other networks
 
-1. Members of the community will be given the opportunity to respond via email or using the comment feature of the platform.
+3. Members of the community will be given the opportunity to respond via email or using the comment feature of the platform.
 
-1. After the commenting period, the subcommittee in charge of the SBP will summarize the feedback.
+4. After the commenting period, the subcommittee in charge of the SBP will summarize the feedback.
 
 ### Part 3: Committee review
 
@@ -436,35 +436,35 @@ Related
 
    1. Endorse the SBP as an INCF SBP: Any suggestions/criticisms by the community are easy addressable, e.g., typos, wording
 
-   1. Reject the SBP: The community provides information which disqualifies the SBP from endorsement
+   2. Reject the SBP: The community provides information which disqualifies the SBP from endorsement
 
-   1. Request further details: Significant concerns have been raised that will have to be addressed before further consideration
+   3. Request further details: Significant concerns have been raised that will have to be addressed before further consideration
 
-1. Endorsement: The INCF secretariat notifies the submitter/steward and that they are now allowed to display the “Endorsed by INCF” badge. The final SPB review is posted online. The SBP is included on the INCF Portal list of endorsed SBPs.
+2. Endorsement: The INCF secretariat notifies the submitter/steward and that they are now allowed to display the “Endorsed by INCF” badge. The final SPB review is posted online. The SBP is included on the INCF Portal list of endorsed SBPs.
 
-1. Reject: The secretariat sends a note to the submitter/steward detailing reasons why the SBP was rejected.
+3. Reject: The secretariat sends a note to the submitter/steward detailing reasons why the SBP was rejected.
 
-1. Request further details: Questions/comments are sent to the submitter/steward. The SBP is then considered at the next SBP meeting to determine whether the SBP needs to be posted for further community review.
+4. Request further details: Questions/comments are sent to the submitter/steward. The SBP is then considered at the next SBP meeting to determine whether the SBP needs to be posted for further community review.
 
-1. Voting Procedure: Ideally, the SBP committee will work through concerns to arrive at consensus on the required action. In the case of a disagreement, the action will be put to a vote to be decided by a ⅔ vote of SBP members.
+5. Voting Procedure: Ideally, the SBP committee will work through concerns to arrive at consensus on the required action. In the case of a disagreement, the action will be put to a vote to be decided by a ⅔ vote of SBP members.
 
 ## Conflicts of interest
 
 1. Members who have a conflict of interest should declare those conflicts and recuse themselves from the review and voting process
 
-1. Examples of conflicts:
+2. Examples of conflicts:
 
    1. Member is an author or steward of an SBP
 
-   1. Member is in a line management or other supervisory chain (above or below) with the author of an SBP
+   2. Member is in a line management or other supervisory chain (above or below) with the author of an SBP
 
-   1. Member has a financial interest in the SBP or tools related to the SBP
+   3. Member has a financial interest in the SBP or tools related to the SBP
 
-   1. Member serves on the advisory board for an SBP
+   4. Member serves on the advisory board for an SBP
 
-   1. Member is developing or has developed a competing standard
+   5. Member is developing or has developed a competing standard
 
-   1. Member does not feel that s/he can be an impartial reviewer
+   6. Member does not feel that s/he can be an impartial reviewer
 
 ## Grievance procedures
 
