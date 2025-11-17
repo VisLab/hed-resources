@@ -168,7 +168,7 @@ Each line in the MediaWiki file represents a distinct tag (or other schema entit
 
 Lines defining tags cannot be split.
 
-Everything after the tag name should be enclosed in <b>\<nowiki> \</nowiki></b> delimiters. The tag description appears in square brackets (\[ \]), while schema attributes such as `extensionAllowed` are enclosed in curly braces ({ }).
+Everything after the tag name should be enclosed in <b>\<nowiki> \</nowiki></b> delimiters. The tag description appears in square brackets ([ ]), while schema attributes such as `extensionAllowed` are enclosed in curly braces ({ }).
 
 The tag `Top-level-1`, which is a top-level tag or root of one of the schema's trees, represents a major category in the schema. Top-level tags are enclosed in sets of three consecutive single quotes.
 

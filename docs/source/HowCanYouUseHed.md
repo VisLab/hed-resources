@@ -327,9 +327,9 @@ pip install -U ndx-hed
 **Basic workflow:**
 
 1. Install the ndx-hed extension package
-1. Add HedLabMetaData to your NWB file with the HED schema version
-1. Add HED columns to DynamicTables (trials, events, etc.) using HedTags
-1. Annotate individual rows with HED strings
+2. Add HedLabMetaData to your NWB file with the HED schema version
+3. Add HED columns to DynamicTables (trials, events, etc.) using HedTags
+4. Annotate individual rows with HED strings
 
 ````{dropdown} **Example: Creating an NWB file with HED annotations**
 
@@ -1004,10 +1004,10 @@ class: tip
 Schema changes go through a community review process:
 
 1. **Issue posted**: You describe the proposed change on GitHub
-1. **Community discussion**: Others comment on the proposal
-1. **Refinement**: The proposal is refined based on feedback
-1. **Implementation**: Approved changes are implemented in the schema
-1. **Version release**: Changes are included in the next schema version
+2. **Community discussion**: Others comment on the proposal
+3. **Refinement**: The proposal is refined based on feedback
+4. **Implementation**: Approved changes are implemented in the schema
+5. **Version release**: Changes are included in the next schema version
 
 **Important considerations:**
 
@@ -1063,12 +1063,12 @@ class: tip
 The schema development process follows these general steps:
 
 1. **Proposal and discussion**: Post issue and gather community feedback
-1. **Planning**: Define scope, structure, and initial term list
-1. **Initial schema creation**: Develop first version following HED schema rules
-1. **Validation**: Use schema validation tools to check structure
-1. **Community review**: Gather feedback through GitHub discussions
-1. **Iteration**: Refine based on feedback
-1. **Release**: Publish to hed-schemas repository
+2. **Planning**: Define scope, structure, and initial term list
+3. **Initial schema creation**: Develop first version following HED schema rules
+4. **Validation**: Use schema validation tools to check structure
+5. **Community review**: Gather feedback through GitHub discussions
+6. **Iteration**: Refine based on feedback
+7. **Release**: Publish to hed-schemas repository
 
 **Essential reading:**
 

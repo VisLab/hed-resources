@@ -4,7 +4,7 @@ Hierarchical Event Descriptors (HED) has evolved through three major generations
 
 ## HED generation 1 (2010-2016)
 
-**Versions: \< 4.0.0**
+**Versions: < 4.0.0**
 
 The first version of HED was proposed and developed by Nima Bigdely-Shamlo in 2010 as part of his PhD thesis under the supervision of Scott Makeig and Kenneth Kreutz-delgado at the Swartz Center for Computational Neuroscience (SCCN), UCSD. The system was created to support event annotation in HeadIT, an early public repository for EEG data (Bigdely-Shamlo et al. 2013).
 

@@ -16,7 +16,7 @@ The summary tools produce text and/or JSON summaries of the tabular files (usual
 
 The examples in this tutorial use the Wakeman-Hanson Face Processing dataset as an example. A [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) containing 2 subjects and no imaging data is used to produce the summaries in the examples. The reduced dataset has 6 event files each containing 200 events. The full dataset is available on OpenNeuro as [**ds003645**](https://openneuro.org/datasets/ds003645/versions/2.0.0).
 
-Each example only shows the overall summary with links to the full summaries that include individual summaries. The summaries use a **\[number events, number files\]** display of the counts of how many events and files an item appears in.
+Each example only shows the overall summary with links to the full summaries that include individual summaries. The summaries use a **[number events, number files]** display of the counts of how many events and files an item appears in.
 
 (column-value-summary-anchor)=
 
@@ -86,7 +86,7 @@ We also observe that three values *famous_face*, *unfamiliar_face* and *scramble
 > 108 (*famous_face*) + 103 (*scrambled_face*) + 105 (*unfamiliar_face*) =\
 > 310 (*show_face*) + 6 (*show_face_initial*)
 
-As expected, the *show_face_initial* appears exactly once in each file (e.g., \[6 events, 6 files\]) since it is a setup-event.
+As expected, the *show_face_initial* appears exactly once in each file (e.g., [6 events, 6 files]) since it is a setup-event.
 
 (hed-tag-summary-anchor)=
 

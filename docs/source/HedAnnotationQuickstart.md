@@ -22,7 +22,7 @@ In thinking about how to annotate an event, you should always start by selecting
 Most experiments will only have a few types of distinct events. The simplest way to create a minimal HED annotation for your events is:
 
 1. Select one of the 7 tags from the *Event* subtree to designate the general category of the event.
-1. Use the following table to select the appropriate supporting tags given that event type.
+2. Use the following table to select the appropriate supporting tags given that event type.
 
 (standard-hed-tag-selections-anchor)=
 
@@ -205,9 +205,9 @@ Curly braces `{ }` let you control exactly where annotations from other columns 
 ### How it works
 
 1. HED looks at the `event_type` annotation: `"Sensory-event, Visual-presentation, ({color}, {shape})"`
-1. It finds `{color}` and replaces it with the annotation from the color column: `Red`
-1. It finds `{shape}` and replaces it with the annotation from the shape column: `Circle`
-1. The final result groups them: `Sensory-event, Visual-presentation, (Red, Circle)`
+2. It finds `{color}` and replaces it with the annotation from the color column: `Red`
+3. It finds `{shape}` and replaces it with the annotation from the shape column: `Circle`
+4. The final result groups them: `Sensory-event, Visual-presentation, (Red, Circle)`
 
 ### When to use curly braces
 

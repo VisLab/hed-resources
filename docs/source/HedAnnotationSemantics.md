@@ -9,9 +9,9 @@ HED annotation semantics refers to the **meaning** conveyed by HED annotations. 
 The semantic interpretation of a HED annotation depends on:
 
 1. **Which tags are selected** - Each tag has a specific meaning in the HED vocabulary
-1. **How tags are grouped** - Parentheses bind tags that describe the same entity or relationship
-1. **Where tags are placed** - Top-level vs. nested grouping affects interpretation
-1. **The context of use** - Whether the annotation appears in a timeline file vs. descriptor file
+2. **How tags are grouped** - Parentheses bind tags that describe the same entity or relationship
+3. **Where tags are placed** - Top-level vs. nested grouping affects interpretation
+4. **The context of use** - Whether the annotation appears in a timeline file vs. descriptor file
 
 ```{admonition} Key principle
 ---
@@ -986,12 +986,12 @@ class: tip
 Creating semantically correct HED annotations requires understanding:
 
 1. **The reversibility principle** - Your annotations should translate back to coherent English
-1. **Semantic grouping rules** - Parentheses bind tags that describe the same entity
-1. **Event classification** - Every event should have both Event-type and Task-event-role
-1. **File type semantics** - Timeline vs. descriptor files have different requirements
-1. **Relationship patterns** - Agent-action-object and directional relationships need specific structures
-1. **Assembly control** - Use curly braces to control how multi-column annotations are assembled
-1. **Consistency** - Use the same patterns for similar events throughout your dataset
+2. **Semantic grouping rules** - Parentheses bind tags that describe the same entity
+3. **Event classification** - Every event should have both Event-type and Task-event-role
+4. **File type semantics** - Timeline vs. descriptor files have different requirements
+5. **Relationship patterns** - Agent-action-object and directional relationships need specific structures
+6. **Assembly control** - Use curly braces to control how multi-column annotations are assembled
+7. **Consistency** - Use the same patterns for similar events throughout your dataset
 
 By following these principles and patterns, you create annotations that are not only syntactically valid but also semantically meaningful and machine-actionable, enabling powerful downstream analysis and cross-study comparisons.
 

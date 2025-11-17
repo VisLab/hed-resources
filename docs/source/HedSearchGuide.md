@@ -109,16 +109,16 @@ Indicates a red square and a blue triangle. Group queries allow analysts to dete
 
 As with logical queries, *A* and *B* represent HED expressions that may contain multiple comma-separated tags and parenthesized groups.
 
-| Query form                                                                                                           | Example query        | Matches                                                     | Does not match                                    |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------- | ------------------------------------------------- |
-| *{A, B}*<br/>Match a group that<br/>contains both *A* and *B*<br/>at the same level<br/>in the same group.           | *{Red, Blue}*        | *(Red, Blue)*<br/>*(Red, Blue, Green)*                      | *(Red, (Blue, Green))*                            |
-| *\[A, B\]* <br/> Match a group that<br/>contains *A* and *B*.<br/> Both *A* and *B* could<br/>be any subgroup level. | *\[Red, Blue\]*      | *(Red, (Blue, Green))*<br/>*((Red, Yellow), (Blue, Green))* | *Red, (Blue, Green)*                              |
-| *{A, B:}*<br/>Match a group that<br/>contains both *A* and *B*<br/>at the same level<br/>and no other contents.      | *{Red, Blue:}*       | *(Red, Blue)*                                               | *(Red, Blue, Green)*<br/>*(Red, Blue, (Green))*   |
-| *{A, B: C}*<br/>Match a group that<br/>contains both *A* and *B*<br/>at the same level<br/>and optionally *C*.       | *{Red, Blue: Green}* | *(Red, Blue)*<br/>*(Red, Blue, Green)*                      | *(Red, (Blue, Green))*<br/>*(Red, Blue, (Green))* |
+| Query form                                                                                                         | Example query        | Matches                                                     | Does not match                                    |
+| ------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------- | ------------------------------------------------- |
+| *{A, B}*<br/>Match a group that<br/>contains both *A* and *B*<br/>at the same level<br/>in the same group.         | *{Red, Blue}*        | *(Red, Blue)*<br/>*(Red, Blue, Green)*                      | *(Red, (Blue, Green))*                            |
+| *[A, B]* <br/> Match a group that<br/>contains *A* and *B*.<br/> Both *A* and *B* could<br/>be any subgroup level. | *[Red, Blue]*        | *(Red, (Blue, Green))*<br/>*((Red, Yellow), (Blue, Green))* | *Red, (Blue, Green)*                              |
+| *{A, B:}*<br/>Match a group that<br/>contains both *A* and *B*<br/>at the same level<br/>and no other contents.    | *{Red, Blue:}*       | *(Red, Blue)*                                               | *(Red, Blue, Green)*<br/>*(Red, Blue, (Green))*   |
+| *{A, B: C}*<br/>Match a group that<br/>contains both *A* and *B*<br/>at the same level<br/>and optionally *C*.     | *{Red, Blue: Green}* | *(Red, Blue)*<br/>*(Red, Blue, Green)*                      | *(Red, (Blue, Green))*<br/>*(Red, Blue, (Green))* |
 
 These operations can be arbitrarily nested and combined, as for example in the query:
 
-> *\[A || {B && C} \]*
+> *[A || {B && C} ]*
 
 Ordering on either the search terms or strings to be searched doesn't matter, precedence is generally left to right outside of grouping operations.
 

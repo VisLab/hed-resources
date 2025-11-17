@@ -92,15 +92,15 @@ Along with members of the preceding groups, this group comprises broadly any ind
 The HED approach to standards development follows the principles of the [Modern Paradigm for Standards](https://open-stand.org/about-us/principles/) developed by OpenStand:
 
 1. Respectful cooperation between standards organizations
-1. Adherence to fundamental principles of standards development:\
+2. Adherence to fundamental principles of standards development:\
    a. Due Process\
    b. Broad Consensus\
    c. Transparency\
    d. Balance\
    e. Openness
-1. Collective empowerment
-1. Availability
-1. Voluntary adoption
+3. Collective empowerment
+4. Availability
+5. Voluntary adoption
 
 The foundation of HED decision-making is listening to all members of the HED Community and striving to achieve consensus on each level of the HED standard process.
 
