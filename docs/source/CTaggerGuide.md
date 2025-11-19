@@ -1,7 +1,5 @@
 # CTagger GUI tagging tool
 
-**This tutorial is under development.**
-
 This tutorial takes you through the process of using CTagger, a user interface we developed to ease the process of adding HED annotations. CTagger can be used as a standalone application or as part of the EEGLAB BIDS data pipeline, making it easy to integrate the annotation pipeline mentioned in the Quick guide.
 
 ## CTAGGER installation
@@ -10,13 +8,15 @@ This tutorial takes you through the process of using CTagger, a user interface w
 
 #### Step 1:Check to see that you have Java installed.
 
-Linux usually comes with OpenJDK (open source version of JDK) already installed. We have tested up to Java version 11 in Mac and Ubuntu.
+CTagger requires Java Runtime Environment (JRE) 8 or higher. Most systems come with Java pre-installed.
 
-Executing `java -version` on terminal should return something similar to: `java version "1.8.0_211"` or `openjdk version "11.0.11" 2021-04-20`.
+Executing `java -version` on terminal should return something similar to: `java version "1.8.0_211"` or `openjdk version "11.0.11" 2021-04-20` or higher.
 
-If Java is not installed, download and install Java Runtime Environment accordingly to your OS: [https://www.oracle.com/java/technologies/javase-jre8-downloads.html](https://www.oracle.com/java/technologies/javase-jre8-downloads.html). You might be asked to create an Oracle account first before you can download.
+If Java is not installed, download and install Java Runtime Environment accordingly to your OS from [Adoptium](https://adoptium.net/) (recommended) or [Oracle](https://www.oracle.com/java/technologies/downloads/).
 
-#### Step 2: Download [CTagger.jar](https://github.com/hed-standard/CTagger/raw/main/CTagger.jar).
+#### Step 2: Download CTagger.jar
+
+Download the latest [CTagger.jar from the releases page](https://github.com/hed-standard/ctagger/releases) or directly from [the repository](https://github.com/hed-standard/ctagger/raw/main/CTagger.jar).
 
 #### Step 3: Double-click on *CTagger.jar* to run.
 
