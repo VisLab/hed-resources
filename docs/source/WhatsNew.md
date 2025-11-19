@@ -2,11 +2,24 @@
 
 # What's new?
 
+**Nov 19 2025**: **ctagger 4.0.0 released**
+
+> Update to Javas supported by MATALB.\
+> Added GitHub actions.
+
+**Nov 18 2025**: **hed-python 0.8.0 released**
+
+> JSON representation of HED schemas.\
+> Unified git-style CLI.
+
+**Nov 16, 2025**: **HED at sFN**
+
+> Stop by our booth to see latest HED BOT
+
 **Oct 30, 2025**: **HED at Practical MEEG 2025**
 
 > HED Tool Bouquet -- demos and advice.\
-> Use [**this link**](https://docs.google.com/forms/d/e/1FAIpQLSf88Q8At6QSssaX52rsLNxvlWIdZ5oB6efu3za_ncDnuL0o3g/viewform) to register.\
-> See you there!
+> Use [**this link**](https://docs.google.com/forms/d/e/1FAIpQLSf88Q8At6QSssaX52rsLNxvlWIdZ5oB6efu3za_ncDnuL0o3g/viewform) to register. See you there!
 
 **Oct 20, 2025**: **ndx-hed 0.2.0 for NWB on PyPI**
 
@@ -22,8 +35,7 @@
 
 **Aug 22, 2025**: **SCORE paper published**
 
-> Hierarchical Event Descriptor library schema for EEG data annotation\
-> Hermes, D., Pal Attia, T., Beniczky, S. et al. Sci Data 12, 1448 (2025).\
+> Hierarchical Event Descriptor library schema for EEG data annotation Hermes, D., Pal Attia, T., Beniczky, S. et al. Sci Data 12, 1448 (2025).\
 > [https://doi.org/10.1038/s41597-025-05791-2](https://doi.org/10.1038/s41597-025-05791-2).
 
 **Aug 07, 2025**: **HEDTools 0.6.0 on PyPI**
