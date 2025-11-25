@@ -450,6 +450,118 @@ widths: 20 40 40
     * Keeps track of ungoing events at intermediate time points
 ```
 
+### Rule 9: Extend tags carefully
+
+The HED schema vocabulary can be extended in most places where extension is allowed. Extension is indicated by the `extensionAllowed` property in the schema, which appears on most nodes except the `Event` subtree and nodes that have a `#` child (value-taking nodes). You should only consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation.
+
+When you need to use a term that doesn't exist in the schema, extend from the most specific applicable parent tag while preserving the is-a (taxonomic) relationship.
+
+````{admonition} **Pattern:** Extending schema vocabulary
+
+**General Rule:**
+```
+Parent-tag/Extension-tag
+```
+
+**Guidelines:**
+- **Extend from the closest applicable parent** - Follow the schema hierarchy as deep as possible
+- **Preserve the is-a relationship** - Your extension should be a specific type of its parent
+- **Don't extend from overly general terms** - Go deeper into the hierarchy when possible
+- **Check for extension restrictions** - Some tags cannot be extended (Event subtree, # value nodes)
+
+---
+
+**Example 1: Extending Item hierarchy**
+
+**Scenario:** You need to annotate a house, which isn't in the schema.
+
+**Wrong:**
+```
+Item/House
+```
+**Problem:** Too general. `Item` has many levels of hierarchy that better classify "house."
+
+**Correct:**
+```
+Item/Object/Man-made-object/Building/House
+```
+**Why:** Follows the schema hierarchy to the most specific applicable parent (`Building`), making it clear that a house is a type of building.
+The actual tag in the annotation is `Building\House`.
+
+---
+
+**Example 2: Extending Action hierarchy**
+
+**Scenario:** You need to describe a "squeeze" action.
+
+**Wrong:**
+```
+Action/Squeeze
+```
+**Problem:** `Action` has subcategories that better classify squeezing.
+
+**Correct:**
+```
+Action/Move/Move-body-part/Move-fingers/Squeeze
+```
+**Why:** Squeezing is a specific type of finger movement, so extending from `Move-fingers` preserves the proper taxonomic relationship.
+
+---
+
+**Example 3: Cannot extend Event**
+
+**Scenario:** You want to add a custom event type.
+
+**Wrong:**
+```
+Event/My-custom-event
+```
+**Problem:** The `Event` subtree does not allow extensions. Use existing event types.
+
+**Correct:**
+```
+Sensory-event
+```
+or
+```
+Agent-action
+```
+**Why:** Choose from the predefined event types that best match your situation.
+The reason is that the tags from the `Event` subtree are primary strategy for
+classifying
+
+---
+
+**Example 4: Cannot extend value-taking nodes**
+
+**Scenario:** You want to specify a non standard acceleration. The schema has `Property/Data-property/Data-value/Spatiotemporal-value/Rate-of-change/Acceleration/#`.
+
+**Wrong:**
+```
+Acceleration/#/Custom-acceleration-unit
+```
+**Problem:** The `#` child indicates a placeholder for a value, not a category. Cannot extend after `#`.
+
+**Correct:**
+```
+Rate-of-change/Custom-acceleration-type
+```
+
+````{admonition} **When to extend**
+
+**Extend when:**
+- You REALLY need a tag that doesn't exist in the schema
+- You need domain-specific terminology
+- The extension preserves clear taxonomic relationships
+- The parent tag allows extensions
+
+**Don't extend when:**
+- An existing tag already captures your meaning
+- You're in the `Event` subtree
+- You're trying to extend a value-taking node (has `#` child)
+- The extension would create ambiguous taxonomy
+````
+
 ## Event classification: Event and Task-event-role
 
 Every event annotation should include BOTH an `Event` tag (what kind of event) and a `Task-event-role` tag (the event's role in the task from the participant's perspective). The distinction between these two classification systems is fundamental:

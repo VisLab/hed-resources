@@ -36,13 +36,13 @@ making it easy to share analysis-ready datasets.
 Where to begin?
 ***************
 
-**New to HED?** Start with the `**Introduction to HED** <./IntroductionToHed.md>`_ for core concepts (5 min read).
+**New to HED?** Start with the `Introduction to HED <./IntroductionToHed.md>`_ for core concepts (5 min read).
 
-**Ready to get started?** Use the `**How can you use HED?** <./HowCanYouUseHed.md>`_ guide to find role-specific
+**Ready to get started?** Use the `How can you use HED? <./HowCanYouUseHed.md>`_ guide to find role-specific
 workflows and detailed guidance for your use case (experimenters, annotators, analysts, developers, or schema builders).
 
-**Need tools?** Browse the `**HED online tools** <https://hedtools.org/hed/>`_ for validation, annotation, and analysis,
-or visit the `**HED standard organization** <https://github.com/hed-standard/>`_ on GitHub.
+**Need tools?** Browse the `HED online tools <https://hedtools.org/hed/>`_ for validation, annotation, and analysis,
+or visit the `HED standard organization <https://github.com/hed-standard/>`_ on GitHub.
 
 
 .. toctree::
