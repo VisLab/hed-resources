@@ -456,7 +456,7 @@ The HED schema vocabulary can be extended in most places where extension is allo
 
 When you need to use a term that doesn't exist in the schema, extend from the most specific applicable parent tag while preserving the is-a (taxonomic) relationship.
 
-````{admonition} **Pattern:** Extending schema vocabulary
+`````{admonition} **Pattern:** Extending schema vocabulary
 
 **General Rule:**
 ```
@@ -560,7 +560,7 @@ Rate-of-change/Custom-acceleration-type
 - You're in the `Event` subtree
 - You're trying to extend a value-taking node (has `#` child)
 - The extension would create ambiguous taxonomy
-````
+`````
 
 ## Event classification: Event and Task-event-role
 
