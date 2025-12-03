@@ -118,7 +118,7 @@ name: matlab-hedtools-download
 * - *hedmat/hedtools*
   - MATLAB interface for the HED tools.
 * - *hedmat/remodeling_demos*
-  - Demos of calling the HED remodeling tools.
+  - Demos of calling the table remodeler.
 * - *hedmat/utilities*
   - General purpose utilities.
 * - *hedmat/web_services_demos*
@@ -606,9 +606,9 @@ The MATLAB `matlab.exception.PyException` captures error information generated d
 
 ## Additional demos
 
-### Calling HED remodeling tools
+### Calling table remodeler
 
-Many of the most useful HEDTools functions are packaged in the HED remodeling tool suite. These tools allow operations such as creating summaries, validating the dataset, and transforming event files to be run on an entire dataset.
+Many of the most useful HEDTools functions are packaged in the table remodeler tool suite. These tools allow operations such as creating summaries, validating the dataset, and transforming event files to be run on an entire dataset.
 
 The following example illustrates a call that creates a summary of the experimental conditions for a HED-tagged dataset.
 
@@ -634,7 +634,7 @@ runRemodel(remodel_args);
 ```
 ````
 
-The command line arguments to the various remodeling functions are given in a cell array, rather than a regular MATLAB array. For the remodeling operations, first and second operation must be the dataset root directory and the remodeling file name, respectively. In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive. The remodeling file used in this example can be found at See [**HED remodeling quickstart**](HedRemodelingQuickstart.md) and [**HED remodeling tools**](HedRemodelingTools.md) for additional information.
+The command line arguments to the various remodeling functions are given in a cell array, rather than a regular MATLAB array. For the remodeling operations, first and second operation must be the dataset root directory and the remodeling file name, respectively. In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive.  See the [**Table remodeler documentation**](https://www.hedtags.org/table-remodeler) for additional information.
 
 (web-service-matlab-demos-anchor)=
 

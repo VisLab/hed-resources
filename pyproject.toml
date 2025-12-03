@@ -9,10 +9,14 @@ description = "Documentation and user resources for Hierarchical Event Descripto
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "HED Working Group", email = "hed.maintainers@gmail.com"}
+    {name = "HED Working Group", email = "hed.maintainers@gmail.com"},
+    {name = "Monique Denisson"},
+    {name = "Kay A. Robbins"}
 ]
 maintainers = [
-    {name = "HED Maintainers", email = "hed.maintainers@gmail.com"}
+    {name = "HED Maintainers", email = "hed.maintainers@gmail.com"},
+    {name = "Monique Denisson"},
+    {name = "Kay A. Robbins"}
 ]
 keywords = [
     "HED", 

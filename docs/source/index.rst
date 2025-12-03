@@ -1,9 +1,6 @@
 HED resources
 ===========================
 
-.. image:: _static/images/croppedWideLogo.png
-  :width: 220
-  :alt: HedLogo
 
 .. sidebar:: **Links**
    
@@ -29,8 +26,8 @@ easily searchable and shareable across studies.
 HED is used across neuroimaging (EEG, MEG, fMRI), physiological (ECG, EMG, GSR), and behavioral experiments
 to create permanent, human- and machine-readable records of what happened during data collection.
 
-HED is integrated into data standards like `**BIDS** <https://bids.neuroimaging.io/>`_ 
-(Brain Imaging Data Structure) and `**NWB** <https://www.nwb.org/>`_ (Neurodata Without Borders),
+HED is integrated into data standards like `BIDS <https://bids.neuroimaging.io/>`_ 
+(Brain Imaging Data Structure) and `NWB <https://www.nwb.org/>`_ (Neurodata Without Borders),
 making it easy to share analysis-ready datasets.
 
 Where to begin?
@@ -59,7 +56,7 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
 .. toctree::
    :maxdepth: 5
    :hidden:
-   :caption: Tutorials:
+   :caption: Tutorials and guides:
 
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
@@ -69,7 +66,7 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    HedSearchGuide.md
    HedSummaryGuide.md
    HedConditionsAndDesignMatrices.md
-   HedRemodelingQuickstart.md
+   Table-remodeler quickstart <https://www.hedtags.org/table-remodeler/quickstart.html>
 
 
 
@@ -79,8 +76,8 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    :caption: Tool documentation:
 
    HedOnlineTools.md
-   CTaggerGuiGuide.md
-   HedRemodelingTools.md
+   CTaggerGuide.md
+   Table-remodeler <https://www.hedtags.org/table-remodeler>
    HedPythonTools.md
    HedJavascriptTools.md
    HedMatlabTools.md

@@ -91,18 +91,22 @@ widths: 20 50
   - [https://https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors](https://en.wikipedia.org/wiki/Hierarchical_Event_Descriptors)
 * - HED specification
   - [https://www.hedtags.org/hed-specification](https://www.hedtags.org/hed-specification)
-* - CTAGGER executable jar
-  - [https://github.com/hed-standard/hed-java/raw/master/ctagger.jar](https://github.com/hed-standard/hed-java/raw/master/ctagger.jar)
+* - CTagger executable jar
+  - [https://github.com/hed-standard/CTagger/raw/main/CTagger.jar](https://github.com/hed-standard/CTagger/raw/main/CTagger.jar)
 * - **Repositories**
   -
 * - HED organization
   - [https://github.com/hed-standard](https://github.com/hed-standard)
 * - HED specification
   - [https://github.com/hed-standard/hed-specification](https://github.com/hed-standard/hed-specification)
+   - HED specification
+  - [https://github.com/hed-standard/hed-specification](https://github.com/hed-standard/hed-specification)
 * - HED examples and datasets
   - [https://github.com/hed-standard/hed-examples](https://github.com/hed-standard/hed-examples)
 * - HED Python tools
   - [https://github.com/hed-standard/hed-python](https://github.com/hed-standard/hed-python)
+*  - HED specification
+  - [https://github.com/hed-standard/hed-specification](https://github.com/hed-standard/hed-specification)
 * - HED Javascript code
   - [https://github.com/hed-standard/hed-javascript](https://github.com/hed-standard/hed-javascript)
 * - HED Matlab code and EEGLAB support
@@ -111,7 +115,7 @@ widths: 20 50
   - [https://github.com/hed-standard/hed-web](https://github.com/hed-standard/hed-web)
 * - HED-2G support
   - [https://github.com/hed-standard/hed2-python](https://github.com/hed-standard/hed2-python)
-* - CTAGGER resources
+* - CTagger resources
   - [https://github.com/hed-standard/CTagger](https://github.com/hed-standard/CTagger)
 * - **Online tools**
   -
@@ -125,15 +129,20 @@ widths: 20 50
 
 ## HED working documents
 
+HED was approved as an INCF standard in December of 2024:
+
+> HED submission to INCF\
+> [https://www.hedtags.org/hed-resources/HedSubmissionToINCF.html](./HEDSubmissionToINCF.md)
+
 Mapping of HED terms and their descriptions to known ontologies is:
 
-> HED-3G Working Document on Ontology mapping\
+> HED Working Document on Ontology mapping\
 > [https://drive.google.com/file/d/13y17OwwNBlHdhB7hguSmOBdxn0Uk4hsI/view?usp=sharing](https://drive.google.com/file/d/13y17OwwNBlHdhB7hguSmOBdxn0Uk4hsI/view?usp=sharing)
 
 Two other working documents hold portions of the HED-3G specification that are under development and will not be finalized for Release 1:
 
-> HED-3G Working Document on Spatial Annotation\
+> HED Working Document on Spatial Annotation\
 > [https://docs.google.com/document/d/1jpSASpWQwOKtan15iQeiYHVewvEeefcBUn1xipNH5-8/view?usp=sharing](https://docs.google.com/document/d/1jpSASpWQwOKtan15iQeiYHVewvEeefcBUn1xipNH5-8/view?usp=sharing)
 
-> HED-3G Working Document on Task Annotation\
+> HED Working Document on Task Annotation\
 > [https://docs.google.com/document/d/1eGRI_gkYutmwmAl524ezwkX7VwikrLTQa9t8PocQMlU/view?usp=sharing](https://docs.google.com/document/d/1eGRI_gkYutmwmAl524ezwkX7VwikrLTQa9t8PocQMlU/view?usp=sharing)

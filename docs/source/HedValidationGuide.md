@@ -177,7 +177,7 @@ Errors, if any are printed to the command line.
 
 #### Remodeling validation summaries
 
-Validation is also available through HED remodeling tool interface. As explained in [**HED remodeling quickstart**](./HedRemodelingQuickstart.md), the HED remodeling tools allow users to restructure their event files and/or summarize their contents in various ways. Users specify a list of operations in a JSON remodeling file, and the HED remodeler executes these operations in sequence.
+Validation is also available through table remodeling tool interface. As explained in [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation, the table remodeler tools allow users to restructure their event files and/or summarize their contents in various ways. Users specify a list of operations in a JSON remodeling file, and the HED remodeler executes these operations in sequence.
 
 Validation is a summary operation, meaning that it does not modify any event files, but rather produces a summary, in this case of HED validation errors for the dataset. An example of a remodeling operation that is not a summary operation is an operation to rename the columns in an event file.
 
@@ -226,4 +226,4 @@ The results of the validation are stored in the file name specified in the remod
 
 Both a `.json` and a `.txt` file are created. For example, the text file is: `/root_path/derivatives/remodel/summaries/validate_initial_xxx.txt` where xxx is the time of generation.
 
-For more information see [**HED remodeling quickstart**](./HedRemodelingQuickstart.md) for an overview of the remodeling process and [**HED remodeling tools**](./HedRemodelingTools.md) for detailed descriptions of the operations that are currently supported.
+For more information see [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation for detailed descriptions of the operations that are currently supported.

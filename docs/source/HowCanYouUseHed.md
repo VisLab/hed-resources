@@ -137,7 +137,7 @@ gutter: 2
 
 ````{dropdown} **🔄 Post-processing and data transformation**
 
-After data collection, raw logs need processing before analysis. HED remodeling tools help transform experimental logs into analysis-ready event files.
+After data collection, raw logs need processing before analysis. Table remodeling tools help transform experimental logs into analysis-ready event files.
 
 **Common transformations needed:**
 1. **Log summarization**: Get overview of collected events
@@ -145,7 +145,7 @@ After data collection, raw logs need processing before analysis. HED remodeling 
 3. **Column restructuring**: Create BIDS-compliant event files
 4. **Data validation**: Check for missing or invalid events
 
-**Example workflow using HED remodeling tools:**
+**Example workflow using table remodeler tools:**
 ```json
 [{
    "operation": "summarize_column_values",
@@ -162,8 +162,8 @@ After data collection, raw logs need processing before analysis. HED remodeling 
 **Resources for experimenters:**
 
 - **📚 Guide**: [Actionable event annotation and analysis in fMRI](https://osf.io/93km8/) - Practical guidance with sample data
-- **🛠️ Tools**: [HED remodeling tools](./HedRemodelingTools.md) - Transform logs to event files
-- **🌐 Online**: [Event remodeling service](https://hedtools.org/hed_dev/events) - Process files without installation
+- **🛠️ Tools**: [Table remodeler tools](https://www.hedtags.org/table-remodeler) - Transform logs to event files
+- **🌐 Online**: [Event services](https://hedtools.org/hed/events) - Process files without installation
 
 ______________________________________________________________________
 
@@ -466,9 +466,9 @@ or press the key both before and after the feedback.
 
 Ideally, a data annotator would provide information in the event file marking unusual things such as these bad trials, since it is easy for downstream users to improperly handle these situations, reducing the accuracy of analysis.
 
-At this time, your only option is to do manual checks or write custom code to detect these types of experiment-specific inconsistencies. However, work is underway to include some standard types of checks in the HED [**HED remodeling tools**](./HedRemodelingTools.md) in future releases.
+At this time, your only option is to do manual checks or write custom code to detect these types of experiment-specific inconsistencies. However, work is underway to include some standard types of checks in the [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation in future releases.
 
-You may also want to reorganize the event files using the remodeling tools. See the [**Remap columns**](remap-columns-anchor) a discussion above and links to examples of how to reorganize the information in the columns of the event files.
+You may also want to reorganize the event files using the remodeling tools. See the [**Remap columns**](https://www.hedtags.org/table-remodeler/operations_reference.html#remap-columns) for an example.
 
 <hr style="border: 3px solid #000080;" />
 
@@ -539,7 +539,7 @@ The [**column value summary**](./HedSummaryGuide.md#column-value-summary) compil
 - Helps identify missing or unexpected event codes
 - Useful for detecting data entry errors
 
-You can generate this summary using the [**HED online tools for debugging**](./HedRemodelingQuickstart.md#online-tools-for-debugging) by uploading a single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar.
+You can generate this summary using the [**HED online tools for debugging**](https://www.hedtags.org/table-remodeler/quickstart.html#online-tools-for-debugging-anchor) by uploading a single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar.
 
 (hed-tag-summaries-anchor)=
 
@@ -565,8 +565,7 @@ The [**experimental design summary**](./HedSummaryGuide.md#experimental-design-s
 
 **Additional resources:**
 
-- The [**HED remodeling quickstart**](./HedRemodelingQuickstart.md) tutorial gives an overview of the remodeling tools and how to use them.
-- More detailed information can be found in [**HED remodeling tools**](./HedRemodelingTools.md).
+- The [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation gives an overview of the remodeling tools and how to use them.
 - The [**HED conditions and design matrices**](HedConditionsAndDesignMatrices.md) guide explains how information structure information is encoded in HED and how to interpret the summaries of this information.
 
 (preparing-the-data-anchor)=
@@ -597,7 +596,7 @@ Common restructuring tasks include:
 - Adding computed columns (e.g., reaction times, trial types)
 - Filtering events based on criteria
 
-See the [**HED remodeling tools**](./HedRemodelingTools.md) documentation for detailed examples and operation descriptions.
+See the [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation for detailed examples and operation descriptions.
 
 (analyzing-the-data-anchor)=
 
@@ -615,15 +614,15 @@ HED facilitates this selection through **factor vectors**. A **factor vector** f
 
 **Types of factor operations:**
 
-- **[factor column operation](./HedRemodelingTools.md#factor-column)**: Creates factor vectors based on the unique values in specified columns. Does **not** require HED annotations.
+- **[factor column operation](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-column)**: Creates factor vectors based on the unique values in specified columns. This operation **not** require HED annotations.
 
 <p></p>
 
-- **[factor HED tags](./HedRemodelingTools.md#factor-hed-tags)**: Creates factor vectors based on a HED tag query. Enables flexible, generalizable event selection.
+- **[factor HED tags](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-tags)**: Creates factor vectors based on a HED tag query. Enables flexible, generalizable event selection.
 
 <p></p>
 
-- **[factor HED type](./HedRemodelingTools.md#factor-hed-type)**: Creates factors based on HED tags representing structural information such as *Condition-variable*, *Task*, or *Temporal-marker*.
+- **[factor HED type](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-type)**: Creates factors based on HED tags representing structural information such as *Condition-variable*, *Task*, or *Temporal-marker*.
 
 (hed-search-queries-anchor)=
 
