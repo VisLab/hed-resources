@@ -109,7 +109,7 @@ The online generation tool is very useful for constructing a sidecar template fi
 
 #### Execute remodel script
 
-The table remodeling tools provide an interface to nearly all the HED tools functionality without programming. To use the tools, create a JSON file containing the commands that you wish to execute on the events file. Command are available to do various transformations and summaries of events files as explained in the [**Table remodeler documentation](https://www.hedtags.org/table-remodeler).
+The table remodeling tools provide an interface to nearly all the HED tools functionality without programming. To use the tools, create a JSON file containing the commands that you wish to execute on the events file. Command are available to do various transformations and summaries of events files as explained in the [\*\*Table remodeler documentation](https://www.hedtags.org/table-remodeler).
 
 ```{admonition} Execute a remodel script.
 

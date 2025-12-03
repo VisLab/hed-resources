@@ -6,7 +6,7 @@ This tutorial works through the process of restructuring tabular (`.tsv`) files 
 
 The tools, which are written in Python, are designed to be run on an entire dataset. This dataset can be in BIDS ([**Brain Imaging Data Structure**](https://bids.neuroimaging.io/)), Alternative users can specify files with a particular suffix and extension appearing in a specified directory tree. The later format is useful for restructuring that occurs early in the experimental process, for example, during the conversion from the experimental control software formats.
 
-The tools can be run using a command-line script, called from a Jupyter notebook, or run using online tools. This quickstart covers the basic concepts of remodeling and develops some basic examples of how remodeling is used. See the [*Table-remodeler**](https://www.hedtags.org/table-remodeler) documentation for detailed descriptions of the available operations.
+The tools can be run using a command-line script, called from a Jupyter notebook, or run using online tools. This quickstart covers the basic concepts of remodeling and develops some basic examples of how remodeling is used. See the [*Table-remodeler*\*](https://www.hedtags.org/table-remodeler) documentation for detailed descriptions of the available operations.
 
 - [**What is remodeling?**](what-is-remodeling-anchor)
 - [**The remodeling process**](the-remodeling-process-anchor)

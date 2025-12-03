@@ -634,7 +634,7 @@ runRemodel(remodel_args);
 ```
 ````
 
-The command line arguments to the various remodeling functions are given in a cell array, rather than a regular MATLAB array. For the remodeling operations, first and second operation must be the dataset root directory and the remodeling file name, respectively. In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive.  See the [**Table remodeler documentation**](https://www.hedtags.org/table-remodeler) for additional information.
+The command line arguments to the various remodeling functions are given in a cell array, rather than a regular MATLAB array. For the remodeling operations, first and second operation must be the dataset root directory and the remodeling file name, respectively. In this example, dataset `ds003645` has been downloaded from [**openNeuro**](https://openneuro.org) to the `G:\` drive. See the [**Table remodeler documentation**](https://www.hedtags.org/table-remodeler) for additional information.
 
 (web-service-matlab-demos-anchor)=
 
