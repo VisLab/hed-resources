@@ -2,7 +2,7 @@
 
 The primary codebase for HED support is in Python. Source code for the HED Python tools is available in the [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository See the [**HED tools API documentation**](https://www.hedtags.org/hed-python/) for detailed information about the HED Tools API.
 
-Many of the most-frequently used tools are available using the [**HED remodeling tools**](https://www.hedtags.org/hed-resources/HedRemodelingTools.html). Using the remodeling interface, users specify operations and parameters in a JSON file rather than writing code.
+Many of the most-frequently used tools are available via the [**Table remodeler**](https://www.hedtags.org/table-remodeler) tool suite. Using the remodeling interface, users specify operations and parameters in a JSON file rather than writing code.
 
 The [**HED online tools**](https://hedtools.org/hed) provide an easy-to-use GUI and web service for accessing the tools. See the [**HED online tools documentation**](https://www.hedtags.org/hed-resources/HedOnlineTools.html) for more information.
 

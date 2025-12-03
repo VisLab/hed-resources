@@ -145,7 +145,7 @@ As summarized in the following discussion, annotation using HED requires very li
 **b. Analysis:** Much of the useful functionality of the HED tools (including validation, creation of summaries, restructuring event files, tag assembly, conversions between forms, expanding or shrinking definitions, and creating factor vectors based on HED tag searches) can be performed through the command line interface provided by the HED remodeling tools without any programming. Users create JSON files listing the commands that they wish to execute and then run the remodeling tools on a dataset.
 
 No programming is required to call the remodeling tools from the command line.\
-See the [HED remodeling quickstart](https://www.hedtags.org/hed-resources/HedRemodelingQuickstart.html) tutorial and the [HED remodeling tools](https://www.hedtags.org/hed-resources/HedRemodelingTools.html) user manual for additional information.
+See the [**Table remodeler documentation**](https://www.hedtags.org/table-remodeler) for additional information.
 
 Users can also access the functionality of the online tools through HED web services. See [HED services in MATLAB](https://www.hedtags.org/hed-resources/HedMatlabTools.html#hed-services-in-matlab) for examples of how these services can be called from MATLAB.\
 Example code for all services can be found in the [web_services-demos](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos) directory of the [hed-examples](https://github.com/hed-standard/hed-examples) GitHub repository.

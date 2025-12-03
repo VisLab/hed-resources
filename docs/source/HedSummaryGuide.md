@@ -2,7 +2,7 @@
 
 # HED summary guide
 
-The HED [**HED remodeling tools**](https://www.hedtags.org/hed-resources/HedRemodelingTools.html) provide a number of event summaries and event file transformations that are very useful during curation and analysis.
+The HED [**table remodeler**](https://www.hedtags.org/table-remodeler) provides a number of event summaries and event file transformations that are very useful during curation and analysis.
 
 The summaries described in this guide are:
 
@@ -10,7 +10,7 @@ The summaries described in this guide are:
 - [**HED tag summary**](hed-tag-summary-anchor)
 - [**Experimental design summary**](experimental-design-summary-anchor)
 
-As described in more detail in the [**HED remodeling quickstart**](https://www.hedtags.org/hed-resources/HedRemodelingQuickstart.html) tutorial and the [**HED remodeling tools**](https://www.hedtags.org/hed-resources/HedRemodelingTools.html) user manual, these tools have as input, a JSON file with a list of remodeling commands and an event file. Summaries involving HED also require a HED schema version and possibly a JSON sidecar containing HED annotations.
+As described in more detail in the [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation, these tools have as input, a JSON file with a list of remodeling commands and an event file. Summaries involving HED also require a HED schema version and possibly a JSON sidecar containing HED annotations.
 
 The summary tools produce text and/or JSON summaries of the tabular files (usually event files). Summaries accumulate the results for each tabular file that is input. When the results are output, the summary tools produce an overall summary of all input files that have been processed and, if requested, also include an individual summary for each input file.
 
@@ -79,7 +79,7 @@ Dataset: Total events=1200 Total files=6
 ```
 ````
 
-Notice that there is one *double_press* event in the *event_type* column of one of the six event files analyzed in this summary. To narrow down which file this *double_press* event occurred in, we could look at the [**full text summary**](./_static/data/summaries/FacePerception_column_values_summary.txt), which includes individual summaries for each event file.
+Notice that there is one *double_press* event in the *event_type* column of one of the six event files analyzed in this summary. To narrow down which file this *double_press* event occurred in, we could look at the [**full text summary**](./_static/data/FacePerception_column_values_summary.txt), which includes individual summaries for each event file.
 
 We also observe that three values *famous_face*, *unfamiliar_face* and *scrambled_face* appear roughly the same number of times in the *face_type* across the six dataset. The large number of *n/a* values in *face_type* is because the type of face is only specified for the stimulus events:
 

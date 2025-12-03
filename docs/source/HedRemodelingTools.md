@@ -6,7 +6,7 @@
 
 There are two types of remodeling operations: **transformation** and **summarization**. The **transformation** operations modify the tabular files, while **summarization** produces an auxiliary information file but leaves the tabular files unchanged.
 
-The file remodeling tools can be applied to any tab-separated value (`.tsv`) file but are particularly useful for restructuring files representing experimental events. Please read the [**HED remodeling quickstart**](./HedRemodelingQuickstart.md) tutorials for an introduction and basic use of the tools.
+The file remodeling tools can be applied to any tab-separated value (`.tsv`) file but are particularly useful for restructuring files representing experimental events. Please read the [**HED remodeling quickstart**](https://www.hedtags.org/table-remodeler/quickstart.html) tutorials for an introduction and basic use of the tools.
 
 The file remodeling tools can be applied to individual files using the [**HED online tools**](https://hedtools.org/hed) or to entire datasets using the [**remodel command-line interface**](remodel-command-line-interface-anchor) either by calling Python scripts directly from the command line or by embedding calls in a Jupyter notebook. The tools are also available as [**HED RESTful services**](./HedOnlineTools.md#hed-restful-services). The online tools are particularly useful for debugging.
 
@@ -59,7 +59,7 @@ Internally, the remodeling operations represent the tabular file using a [**Pand
 
 **Transformation** operations, shown schematically in the following figure, are designed to transform an incoming tabular file into a new DataFrame without modifying the incoming data.
 
-![Transformation operations](./_static/images/TransformationOperations.png)
+![Transformation operations](https://www.hedtags.org/table-remodeler/_static/images/TransformationOperations.png)
 
 Transformation operations are stateless and do not save any context information or affect future applications of the transformation.
 
@@ -75,7 +75,7 @@ See the [**remodeling tool program interface**](remodel-command-line-interface-a
 
 **Summarization** operations do not modify the input DataFrame but rather extract and save information in an internally stored summary dictionary as shown schematically in the following figure.
 
-![Summary operations](./_static/images/SummaryOperation.png)
+![Summary operations](https://www.hedtags.org/table-remodeler/_static/images/SummaryOperation.png)
 
 The dispatcher that executes remodeling operations can be interrogated at any time for the state information contained in the global summary dictionary and can save additional summary information at any time during execution. Usually summaries are dumped at the end of processing to the `derivatives/remodel/summaries` subdirectory under the dataset root.
 
@@ -140,7 +140,7 @@ The released [**HED online tools**](https://hedtools.org/hed/) support remodelin
 
 The following diagram shows a schematic of the remodeling process.
 
-![Event remodeling process](./_static/images/EventRemappingProcess.png)
+![Event remodeling process](https://www.hedtags.org/table-remodeler/_static/images/EventRemappingProcess.png)
 
 Initially, the user creates a backup of the specified tabular files (usually `events.tsv` files). This backup is a mirror of the data files in the dataset, but is located in the `derivatives/remodel/backups` directory and never modified once the backup is created.
 
@@ -293,7 +293,7 @@ This section discusses the three main remodeling scripts with command-line inter
 
 The `run_remodel_backup` Python program creates a backup of the specified files. The backup is always created in the `derivatives/remodel/backups` subdirectory under the dataset root as shown in the following example for the sample dataset `eeg_ds003645s_hed_remodel`, which can be found in the `datasets` subdirectory of the [**hed-examples**](https://github.com/hed-standard/hed-examples) GitHub repository.
 
-![Remodeling backup structure](./_static/images/RemodelingBackupStructure.png)
+![Remodeling backup structure](https://www.hedtags.org/table-remodeler/_static/images/RemodelingBackupStructure.png)
 
 The backup process creates a mirror of the directory structure of the source files to be backed up in the directory `derivatives/remodel/backups/backup_name/backup_root` as shown in the figure above. The default backup name is `default_back`.
 
@@ -561,7 +561,7 @@ The remodeling JSON files should have names ending in `_rmdl.json` to more easil
 
 ### Sample remodel event file
 
-Several examples illustrating the remodeling operations use the following excerpt of the stop-go task from sub-0013 of the AOMIC-PIOP2 dataset available on [**OpenNeuro**](https://openneuro.org) as ds002790. The full event file is [**sub-0013_task-stopsignal_acq-seq_events.tsv**](./_static/data/sub-0013_task-stopsignal_acq-seq_events.tsv).
+Several examples illustrating the remodeling operations use the following excerpt of the stop-go task from sub-0013 of the AOMIC-PIOP2 dataset available on [**OpenNeuro**](https://openneuro.org) as ds002790. The full event file is [**sub-0013_task-stopsignal_acq-seq_events.tsv**](https://www.hedtags.org/table-remodeler/_static/data/sub-0013_task-stopsignal_acq-seq_events.tsv).
 
 ```{admonition} Excerpt from an event file from the stop-go task of AOMIC-PIOP2 (ds002790).
 | onset | duration | trial_type | stop_signal_delay | response_time | response_accuracy | response_hand | sex |
@@ -578,7 +578,7 @@ Several examples illustrating the remodeling operations use the following excerp
 
 ### Sample remodel sidecar file
 
-For remodeling operations that use HED, a JSON sidecar is usually required to provide the necessary HED annotations. The following JSON sidecar excerpt is used in several examples to illustrate some of these operations. The full JSON file can be found at [**task-stopsiqnal_acq-seq_events.json**](./_static/data/task-stopsignal_acq-seq_events.json).
+For remodeling operations that use HED, a JSON sidecar is usually required to provide the necessary HED annotations. The following JSON sidecar excerpt is used in several examples to illustrate some of these operations. The full JSON file can be found at [**task-stopsiqnal_acq-seq_events.json**](https://www.hedtags.org/table-remodeler/_static/data/task-stopsignal_acq-seq_events.json).
 
 ````{admonition} Excerpt of JSON sidecar with HED annotations for the stop-go task of AOMIC-PIOP2.
 ---
@@ -1519,7 +1519,7 @@ Because the [**sample remodel event file**](sample-remodel-event-file-anchor) on
 
 This command was executed with the `-i` option in `run_remodel`, results from the individual data files are shown after the overall summary. The individual results are similar to the overall summary because only one data file was processed.
 
-For a more extensive example see the [**text**](./_static/data/summaries/FacePerception_column_values_summary.txt) and [**JSON**](./_static/data/summaries/FacePerception_column_values_summary.json) format summaries of the sample dataset [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) using the [**summarize_columns_rmdl.json**](./_static/data/summaries/summarize_columns_rmdl.json) remodeling file.
+For a more extensive example see the [**text**](https://www.hedtags.org/table-remodeler/_static/data/summaries/FacePerception_column_values_summary.txt) and [**JSON**](https://www.hedtags.org/table-remodeler/_static/data/summaries/FacePerception_column_values_summary.json) format summaries of the sample dataset [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) using the [**summarize_columns_rmdl.json**](https://www.hedtags.org/table-remodeler/_static/data/summaries/summarize_columns_rmdl.json) remodeling file.
 
 (summarize-definitions-anchor)=
 
@@ -1568,7 +1568,7 @@ class: tip
 ```
 ````
 
-A text format summary of the results of executing this operation on the [**sub-003_task-FacePerception_run-3_events.tsv**](_static/data/sub-003_task-FacePerception_run-3_events.tsv) file of the [**eeg_ds_003645s_hed_column**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed_column) dataset is shown in the following example.
+A text format summary of the results of executing this operation on the [**sub-003_task-FacePerception_run-3_events.tsv**](https://www.hedtags.org/table-remodeler/_static/data/sub-003_task-FacePerception_run-3_events.tsv) file of the [**eeg_ds_003645s_hed_column**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed_column) dataset is shown in the following example.
 
 ````{admonition} Sample *summarize_definitions* operation results in text format.
 ---
@@ -1810,7 +1810,7 @@ The HED tag *Task-action-type* was specified in the "Agent actions" category, *I
 
 The sample events file had 6 events, including 1 correct action and 2 incorrect actions. Since only one file was processed, the information for *Dataset* was similar to that presented under *Individual files*.
 
-For a more extensive example, see the [**text**](./_static/data/summaries/FacePerception_hed_tag_summary.txt) and [**JSON**](./_static/data/summaries/FacePerception_hed_tag_summary.json) format summaries of the sample dataset [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) using the [**summarize_hed_tags_rmdl.json**](./_static/data/summaries/summarize_hed_tags_rmdl.json) remodeling file.
+For a more extensive example, see the [**text**](https://www.hedtags.org/table-remodeler//_static/data/summaries/FacePerception_hed_tag_summary.txt) and [**JSON**](https://www.hedtags.org/table-remodeler/_static/data/summaries/FacePerception_hed_tag_summary.json) format summaries of the sample dataset [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) using the [**summarize_hed_tags_rmdl.json**](https://www.hedtags.org/table-remodeler/_static/data/summaries/summarize_hed_tags_rmdl.json) remodeling file.
 
 (summarize-hed-type-anchor)=
 
@@ -1891,7 +1891,7 @@ Type=condition-variable Total events=6
 
 Because *summarize_hed_type* is a HED operation, a HED schema version is required and a JSON sidecar is also usually needed. This summary was produced by using `hed_version="8.1.0"` when creating the `dispatcher` and using the [**sample remodel sidecar file**](sample-remodel-sidecar-file-anchor) in the `do_op`. The sidecar provides the annotations that use the `condition-variable` tag in the summary.
 
-For a more extensive example, see the [**text**](./_static/data/summaries/FacePerception_hed_type_summary.txt) and [**JSON**](./_static/data/summaries/FacePerception_hed_type_summary.json) format summaries of the sample dataset [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) using the [**summarize_hed_types_rmdl.json**](./_static/data/summaries/summarize_hed_types_rmdl.json) remodeling file.
+For a more extensive example, see the [**text**](https://www.hedtags.org/table-remodeler/_static/data/summaries/FacePerception_hed_type_summary.txt) and [**JSON**](https://www.hedtags.org/table-remodeler/_static/data/summaries/FacePerception_hed_type_summary.json) format summaries of the sample dataset [**ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) using the [**summarize_hed_types_rmdl.json**](.https://www.hedtags.org/table-remodeler/_static/data/summaries/summarize_hed_types_rmdl.json) remodeling file.
 
 (summarize-hed-validation-anchor)=
 
