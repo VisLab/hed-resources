@@ -452,9 +452,9 @@ widths: 20 40 40
 
 ### Rule 9: Extend tags carefully
 
-The HED schema vocabulary can be extended in most places where extension is allowed. Extension is indicated by the `extensionAllowed` property in the schema, which appears on most nodes except the `Event` subtree and nodes that have a `#` child (value-taking nodes). You should only consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation.
+The HED schema vocabulary hierarchy can for tags with the `extensionAllowed` property, which includes most tags except those in the `Event` subtree and nodes that have a `#` child (value-taking nodes). You should only consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation.
 
-When you need to use a term that doesn't exist in the schema, extend from the most specific applicable parent tag while preserving the is-a (taxonomic) relationship.
+When you need to use a tag that doesn't exist in the schema, extend from the most specific applicable parent tag while preserving the is-a (taxonomic) relationship.
 
 `````{admonition} **Pattern:** Extending schema vocabulary
 
@@ -502,9 +502,9 @@ Action/Squeeze
 
 **Correct:**
 ```
-Action/Move/Move-body-part/Move-fingers/Squeeze
+Move-fingers/Squeeze
 ```
-**Why:** Squeezing is a specific type of finger movement, so extending from `Move-fingers` preserves the proper taxonomic relationship.
+**Why:** Squeezing is a specific type of finger movement, so extending from `Move-fingers` preserves the proper taxonomic relationship. The full path to in the hierarchy is: `Action/Move/Move-body-part/Move-fingers/Squeeze`, but always use the shortest path possible.
 
 ---
 
@@ -527,12 +527,12 @@ or
 Agent-action
 ```
 **Why:** Choose from the predefined event types that best match your situation.
-The reason is that the tags from the `Event` subtree are primary strategy for
+The reason is that the tags from the `Event` subtree are a primary strategy for
 classifying
 
 ---
 
-**Example 4: Cannot extend value-taking nodes**
+**Example 4: Cannot extend value-taking tags**
 
 **Scenario:** You want to specify a non standard acceleration. The schema has `Property/Data-property/Data-value/Spatiotemporal-value/Rate-of-change/Acceleration/#`.
 
@@ -576,7 +576,7 @@ Every event annotation should include BOTH an `Event` tag (what kind of event) a
   - `Experiment-procedure` - Questionnaire or other measurement
   - `Measurement-event` - Measurement taken
 
-- **Task-event-role tags** (from `Task-event-role/`): Classify the event's ROLE in the experimental task
+- **Task-event-role tags** (from `Task-event-role/`): Classify the event's ROLE in the experimental task if this is a task-driven situation.
 
   - `Experimental-stimulus` - Primary stimulus to respond to
   - `Cue` - Signal about what to expect or do
@@ -588,7 +588,15 @@ Every event annotation should include BOTH an `Event` tag (what kind of event) a
   - `Task-activity` - Ongoing activity marker
   - `Mishap` - Unplanned occurrence
 
+### When to use
+
+An `Event` tag should always be included for the annotation for each event or event process. Usually events are represented in data that has start times for each data point. Files are called **timeline** files if they contain data representing individual time points. Non-timeline files usually contain metadata such as participant characteristics. `Event` tags should not be used in non-timeline files. See [**File type semantics**](file-type-semantics-anchor) for additional information. We call non-timeline files descriptor files.
+
+Not all data is associated with a task. Non-timeline files usually contain metadata rather than event information and usually would not contain `Task-event-role`, unless they contain metadata about about the task itself. Examples of other data that would not contain `Task-event-role` tags include annotations of images (which would not contain `Event` tags either), or recordings of undirected behavior, which would contain `Event` tags but not `Task-event-role` tags.
+
 ### Why both are needed
+
+For task-related event files usually both are needed.
 
 ````{admonition} **Example:** Event alone is insufficient
 
@@ -656,7 +664,7 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 **Use `Experiment-structure` when:**
 - Organizational boundary or marker
 - Trial, block, or condition markers
-- Examples: "Trial 5 begins", "Block 2", "Condition A start"
+- Examples: "Trial 5 begins", "Block 2", "Condition A starts"
 
 **Use `Measurement-event` when:**
 - A measurement is taken
@@ -728,14 +736,14 @@ Sensory-events that are experimental stimuli should be further modified by tags 
 
 **Example 1: Target stimulus in oddball task**
 ```
-Sensory-event, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/1000 Hz, Target)
+Sensory-event, Experimental-stimulus, Auditory-presentation, Target, (Tone, Frequency/1000 Hz)
 ```
 
 ---
 
 **Example 2: Standard (non-target) stimulus**
 ```
-Sensory-event, Experimental-stimulus, Auditory-presentation, (Tone, Frequency/500 Hz, Non-target)
+Sensory-event, Experimental-stimulus, Auditory-presentation, Non-target, (Tone, Frequency/500 Hz)
 ```
 
 ---
@@ -749,39 +757,39 @@ Agent-action, Participant-response, Correct-action, (Experiment-participant, (Pr
 
 **Example 4: Feedback on correct response**
 ```
-Sensory-event,  Visual-presentation, (Feedback, Positive, (Green, Circle))
+Sensory-event,  Visual-presentation, (Feedback, Positive), (Green, Circle)
 ```
 
 ---
 
 **Example 5: Fixation cue**
 ```
-Sensory-event, Visual-presentation, (Cue, Label/Fixation-point, (White, Cross))
+Sensory-event, Visual-presentation, (Cue, Label/Fixation-point), (White, Cross)
 ```
 
 ---
 
 **Example 6: Task instructions**
 ```
-Sensory-event, Visual-presentation, (Instructional, (Text, Label/Press-left-for-red))
+Sensory-event, Visual-presentation, Instructional, (Text, Label/Press-left-for-red)
 ```
 
 ---
 
 **Example 7: Environmental noise**
 ```
-Sensory-event, Auditory-presentation, (Mishap, (Environmental-sound, Label/Construction-noise))
+Sensory-event, Auditory-presentation, Mishap, (Environmental-sound, Label/Construction-noise)
 ```
 
 ---
 
 **Example 8: Computed artifact**
 ```
-Data-feature, (Incidental, (Eye-blink, Def/AutoDetected))
+Data-feature, Incidental, (Eye-blink, Def/AutoDetected)
 ```
 ````
 
-These examples show a single event and the items may or may not be grouped with additional task role tags as long as the interpretation is unambiguous.
+These examples show a single event and the items may or may not be grouped with additional task role tags as long as the interpretation is unambiguous. If they appeared in annotation that included other information, there should be a set of outer parentheses around each of them.
 
 ## Decision guidelines for simultaneous events
 
@@ -797,7 +805,7 @@ These examples show a single event and the items may or may not be grouped with 
 **Use SEPARATE sensory events when:**
 - ✓ Clearly independent sources
 - ✓ Not functionally coordinated
-- ✓ Different experimental roles (different Task-event-roles)
+- ✓ Different experimental roles (different `Task-event-role`)
 - ✓ Analysis requires modality separation
 - ✓ Could occur independently
 
@@ -807,7 +815,7 @@ These examples show a single event and the items may or may not be grouped with 
 - ≈ Functionally related but separable components
 - ≈ Both interpretations are scientifically valid
 
-**Consistency Principle:** Whatever approach you choose, use it consistently throughout your dataset. Document your decision in the dataset description.
+**Consistency Principle:** Whatever approach you choose, use it consistently throughout your dataset. Document your decision in your data.
 ```
 
 ## File type semantics
@@ -816,9 +824,9 @@ The semantic requirements for HED annotations depend on whether they appear in t
 
 ### Timeline files require Event-type tags
 
-Timeline files have timestamps (`onset` column) indicating when things happen. Every annotation in a timeline file MUST include an Event-type tag.
+Timeline files have timestamps indicating when things happen. (In BIDS format this is a `.tsv` file with an `onset` column, while in NWB format it is a `DynamicTable` type with a time-stamp of some sort.) Every annotation in a timeline file MUST include an `Event` type tag.
 
-````{admonition} **Example:** Correct timeline file annotation
+````{admonition} **Example:** Correct timeline file annotation (BIDS)
 
 **File:** `events.tsv`
 
@@ -854,13 +862,13 @@ Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
 ```
 
 **Why it's correct:**
-- Includes Task-event-role (Experimental-stimulus)
-- Includes Event-type (Sensory-event)
-- Specifies modality (Visual-presentation)
+- Includes Task-event-role (`Experimental-stimulus`)
+- Includes Event-type (`Sensory-event`)
+- Specifies modality (`Visual-presentation`)
 - Properly groups stimulus properties
 ````
 
-### Descriptor files prohibit Event-type tags
+### No Event-type tags in descriptor files
 
 Descriptor files (e.g., `participants.tsv`, `samples.tsv`) describe properties or characteristics, not events. Event-type tags should NEVER appear in descriptor files.
 
@@ -902,7 +910,7 @@ Age/25 years, Right-handed
 
 ### Temporal scope tags
 
-Temporal scope tags (`Onset`, `Offset`, `Inset`) are ONLY for timeline files and indicate duration or temporal containment.
+Temporal scope tags (`Onset`, `Offset`, `Inset`, and `Delay`) are ONLY for timeline files and indicate the time course of events..
 
 ````{admonition} **Example:** Using Onset for duration events
 
@@ -934,7 +942,7 @@ Sensory-event, Visual-presentation, Cue, (Def/Fixation-point, (Size/3 cm) Onset)
 This indicates that a fixation cross was displayed starting at 0
 **Why use `Onset`:**
 - Event has duration (duration column = 1.5)
-- The grouped content under Onset continues for the duration
+- The grouped content under `Onset` continues for the duration
 - Temporal scope is explicit
 - Everything within the Onset group persists for 1.5 seconds
 - The inner group containing the `({cross_size})` allows each occurrence of the Fixation-point to be specialized.
@@ -1017,8 +1025,8 @@ Sensory-event, Experimental-stimulus, Visual-presentation,
 
 **Annotation:**
 ```
-(Duration/2 s, (Experimental-stimulus, Sensory-event, Visual-presentation, 
-((Red, Circle, Target), (Left-side-of, Computer-screen))))
+(Duration/2 s, (Experimental-stimulus, Sensory-event, Visual-presentation, Target,
+((Red, Circle), (Left-side-of, Computer-screen))))
 ```
 
 **Components:**
