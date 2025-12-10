@@ -1003,7 +1003,7 @@ displayed at 2.0 s into the recording. The grouped content under `Onset` continu
 - Can use the anchor definition content to shorten annotations.
 - Can use the `Inset` mechanism to mark intermediate time points and features.
 
-Notice that the `Fixation-point` defintion doesn't have any content in this example. We didn't put the `Sensory-event` and related tags in the definition itself in this case because we wanted to get the correct grouping with parentheses.
+Notice that the `Fixation-point` definition doesn't have any content in this example. We didn't put the `Sensory-event` and related tags in the definition itself in this case because we wanted to get the correct grouping with parentheses.
 
 `````
 
