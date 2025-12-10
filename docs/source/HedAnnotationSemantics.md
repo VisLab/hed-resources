@@ -45,7 +45,7 @@ Experimental-stimulus, Sensory-event, Visual-presentation,
 - `Visual-presentation` specifies the modality
 - `(Green, Triangle, Target)` - grouped properties describe ONE object
 - `(Center-of, Computer-screen)` - spatial relationship
-- The outer grouping connects the object to its location
+- The outer grouping `((Green, Triangle, Target), (Center-of, Computer-screen))` connects the object to its location
 ````
 
 ````{admonition} **Example:** A non-reversible HED annotation
@@ -68,12 +68,12 @@ Green, Triangle, Target, Center-of, Visual-presentation, Sensory-event, Computer
 **Problems:**
 - Tags are flat (no grouping), so relationships are lost
 - No indication of what is being presented vs. where it is presented
-- Missing both Event-type classification and Task-event-role
+- Missing both `Event` classification and `Task-event-role`
 ````
 
 ## Semantic grouping rules
 
-Parentheses in HED annotations are not decorative—they carry semantic meaning. Tags within a group are semantically bound and work together to describe one thing. Tags outside the group describe different aspects or entities. Since HED annotations are unordered, parentheses are key for this binding.
+Parentheses in HED annotations are not decorative—they carry semantic meaning. Tags within a group are semantically bound and work together to describe one thing. Tags outside the group describe different aspects or entities. Since HED annotations are unordered, parentheses are key for this binding. Remember that HED vocabularies maintain a strict taxonomical or is-a relationship of child tags to parents. When we say `Event` tag, we mean `Event` or any tag that is a descendent of `Event` in the HED vocabulary hierarchy.
 
 ### Rule 1: Group object properties together
 
@@ -135,7 +135,7 @@ Agent-action, ((Human-agent, Experiment-participant), (Press, (Left, Mouse-butto
 **Translation:** "An action in which the experiment participant (who is human) presses the left mouse button"
 
 **Structure Explanation:**
-- `Agent-action` - Event-type classification (top level)
+- `Agent-action` - `Event` classification (top level)
 - Outer grouping: Connects agent to action
 - Inner group 1: `(Human-agent, Experiment-participant)` - describes WHO
 - Inner group 2: `(Press, (Left, Mouse-button))` - describes WHAT action on WHICH object
@@ -163,7 +163,7 @@ When multiple columns or sources contribute properties of the same entity, curly
 
 **Incorrect assembly (flat concatenation):**
 
-**Sidecar:**
+**Sidecar (BIDS):**
 ```json
 {
   "event_type": {
@@ -200,7 +200,7 @@ Experimental-stimulus, Sensory-event, Visual-presentation, Red, Circle
 
 **Correct assembly (with grouping control):**
 
-**Sidecar:**
+**Sidecar (BIDS):**
 ```json
 {
   "event_type": {
@@ -229,6 +229,8 @@ Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
 **Why it works:** The curly braces `{color}` and `{shape}` are replaced by their annotations within the grouping parentheses, ensuring they are grouped as properties of the same object.
 ````
 
+Note: NWB (Neurodata Without Borders) is an alternative data format standard to BIDS (Brain Imaging Data Structure). NWB does not use sidecars, but has an equivalent representation and the HED annotation rules apply.
+
 ### Rule 4: Group Event and Task-event-role
 
 Event classification tags (`Event` and `Task-event-role`) should typically be at the top level or grouped together.
@@ -244,7 +246,7 @@ Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle), (Green
 A single top-level `Event` tag is assumed to represent an event that
 includes all of the rest of the tags in the annotation.
 The `Task-event-role` (in this case `Experimental-stimulus`)
-and the sensory-modality (in this case `Visual-presentation`) also
+and the `Sensory-modality` tag (in this case `Visual-presentation`) also
 apply since there is only one `Event` tag in the annotation.
 This is the most common method of annotating events.
 
@@ -278,7 +280,7 @@ presentation of a red circle and a buzz.
 
 ````
 
-### Rule 5: Sensory-events should have a sensory-modality.
+### Rule 5: Sensory-event should have Sensory-modality
 
 If the event is a `Sensory-event`, a `Sensory-modality` tag (e.g., `Visual-presentation` or `Auditory-presentation`) SHOULD be be able to be associated unambiguously with what is being presented.
 
@@ -403,40 +405,43 @@ widths: 20 40 40
   - * Allows users to name frequently used strings
     * Can only be defined in sidecars or externally
     * Defining tags are in inner group
+    * Definition group cannot contain any other reserved tags.
 * - `Def`
   - `Def/Red-triangle`
-  - * Must correspond to definition
+  - * Must correspond to a `Definition`
     * Used to anchor `Onset`, `Inset`, `Offset`
     * Cannot appear in definitions
 * - `Def-expand`
   - `(Def-expand/Red-triangle, (Red, Triangle))`
-  - * Must correspond to definition
+  - * Must correspond to `Definition`
     * Used to anchor `Onset`, `Inset`, `Offset`
     * Cannot appear in definitions
     * DO NOT USE -- Tools use during processing
 * - `Onset`
-  - `(Def/Red-triangle, Onset)
+  - `(Def/Red-triangle, Onset)`
   - * Marks the start of an unfolding event
-    * Must have a definition anchor
+    * Must have a `Def` anchor corresponding to a `Definition`.
     * Can include an internal tag group
     * Must be in a top-level tag group
-    * Event ends when an `Offset` or `Onset` with same definition name is encountered
+    * Event ends when an `Offset` or `Onset` with same `Def` name is encountered
 * - `Offset`
-  - `(Def/Red-triangle, Offset)
+  - `(Def/Red-triangle, Offset)`
   - * Marks the end of an unfolding event
-    * Must have a definition anchor
+    * Must have a `Def` tag anchor
     * Must be in a top-level tag group
-    * An earlier `Onset` group of same name must have occurred
+    * Must correspond to an ongoing `Onset` group of same name
 * - `Inset`
-  - `(Def/Red-triangle, (Luminance-contrast/0.5), Inset)
+  - `(Def/Red-triangle, (Luminance-contrast/0.5), Inset)`
   - * Marks an interesting point during the unfolding of an event process.
-    * Must have a definition anchor
+    * Must have a `Def` tag anchor
     * Can include an internal tag group
     * Must be in a top-level tag group
     * Must be between an `Onset` and the ending time of that event process
 * - `Duration`
   - `(Duration/2 s, (Sensory-event, Auditory-presentation, Feedback Buzz))`
   -  * Must be in a top-level tag group
+     * Cannot be used in same group with `Onset`, `Inset`, or `Offset`.
+     * May be used in both timeline and description files.
      * Inner tag group defines the event process that starts at that point
      * If used with `Delay`, the event process start is delayed by indicated amount
 * - `Delay`
@@ -452,9 +457,9 @@ widths: 20 40 40
 
 ### Rule 9: Extend tags carefully
 
-The HED schema vocabulary hierarchy can for tags with the `extensionAllowed` property, which includes most tags except those in the `Event` subtree and nodes that have a `#` child (value-taking nodes). You should only consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation.
+The HED schema vocabulary hierarchy can be extended to accommodate more specialized annotations. HED library schemas are formal extensions of HED for specialized vocabularies. Users can also extend the hierarchy by appending new tag to an existing tag that allows extension. Tags that can be extended have (or have inherited) the `extensionAllowed` attribute. Tags that can be extended include all tags EXCEPT those in the `Event` or `Agent` subtrees or that have a `#` child (value-taking nodes). You should ONLY consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation.
 
-When you need to use a tag that doesn't exist in the schema, extend from the most specific applicable parent tag while preserving the is-a (taxonomic) relationship.
+When you need to use a tag that doesn't exist in the schema, EXTEND FROM THE MOST SPECIFIC applicable parent tag while preserving the is-a (taxonomic) relationship.
 
 `````{admonition} **Pattern:** Extending schema vocabulary
 
@@ -467,7 +472,7 @@ Parent-tag/Extension-tag
 - **Extend from the closest applicable parent** - Follow the schema hierarchy as deep as possible
 - **Preserve the is-a relationship** - Your extension should be a specific type of its parent
 - **Don't extend from overly general terms** - Go deeper into the hierarchy when possible
-- **Check for extension restrictions** - Some tags cannot be extended (Event subtree, # value nodes)
+- **Check for extension restrictions** - Some tags cannot be extended (`Event` subtree, `Agent` subtree, or # value nodes)
 
 ---
 
@@ -486,7 +491,7 @@ Item/House
 Item/Object/Man-made-object/Building/House
 ```
 **Why:** Follows the schema hierarchy to the most specific applicable parent (`Building`), making it clear that a house is a type of building.
-The actual tag in the annotation is `Building\House`.
+The actual tag in the annotation is `Building/House`.
 
 ---
 
@@ -564,7 +569,7 @@ Rate-of-change/Custom-acceleration-type
 
 ## Event classification: Event and Task-event-role
 
-Every event annotation should include BOTH an `Event` tag (what kind of event) and a `Task-event-role` tag (the event's role in the task from the participant's perspective). The distinction between these two classification systems is fundamental:
+Every event annotation should include an `Event` tag (what kind of event) and if this is a task-driven situation, a`Task-event-role` tag (the event's role in the task from the participant's perspective). The distinction between these two classification systems is fundamental:
 
 - **Event tags** (from `Event/`): Classify the NATURE of what happened
 
@@ -654,7 +659,7 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 **Use `Experiment-control` when:**
 - Experiment structure or parameters change
 - Control system takes action
-- Examples: "Block starts", "Difficulty increases", "Recording begins"
+- Examples: "Task changes", "Difficulty increases", "Recording begins"
 
 **Use `Experiment-procedure` when:**
 - Experiment paused to administer something
@@ -680,7 +685,7 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 
 **Use `Experimental-stimulus` when:**
 - Primary stimulus participant must detect, identify, or respond to
-- The "target" or non-target in an attention experiment
+- The "target" or "non-target" in an attention experiment
 - Example: Oddball target, image in recognition task
 
 **Use `Cue` when:**
@@ -710,8 +715,8 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 
 **Use `Incidental` when:**
 - Present in environment but not task-relevant
-- Air
-- Example: Standard stimulus in oddball (not target), background noise
+- Might be unexpected.
+- Example: The air-conditioner kicks on/off
 
 **Use `Task-activity` when:**
 - Marker of ongoing task activity period
@@ -721,10 +726,10 @@ Sensory-event, Warning, Auditory-presentation, (Tone, Frequency/440 Hz)
 **Use `Mishap` when:**
 - Unplanned occurrence affecting experiment
 - Equipment failure, environmental disruption
-- Example: Stimulus failed to display, unexpected loud noise
+- Example: Stimulus failed to display
 ```
 
-### Task-action-type and task-stimulus-role
+### Task-action-type and Task-stimulus-role
 
 For participant responses, the event should be further modified by tags from the `Task-action-type/` subtree. These tags indicate properties such as correctness of the response with respect to a task
 
@@ -732,7 +737,7 @@ Sensory-events that are experimental stimuli should be further modified by tags 
 
 ### Complete event annotation examples
 
-````{admonition} **Examples:** Combining Event-type and Task-event-role
+````{admonition} **Examples:** Combining Event and Task-event-role tags
 
 **Example 1: Target stimulus in oddball task**
 ```
@@ -771,7 +776,7 @@ Sensory-event, Visual-presentation, (Cue, Label/Fixation-point), (White, Cross)
 
 **Example 6: Task instructions**
 ```
-Sensory-event, Visual-presentation, Instructional, (Text, Label/Press-left-for-red)
+Sensory-event, Visual-presentation, Instructional, (Textblock, Label/Press-left-for-red)
 ```
 
 ---
@@ -822,7 +827,7 @@ These examples show a single event and the items may or may not be grouped with 
 
 The semantic requirements for HED annotations depend on whether they appear in timeline files (e.g., `events.tsv`) or descriptor files (e.g., `participants.tsv`).
 
-### Timeline files require Event-type tags
+### Timeline files require Event tags
 
 Timeline files have timestamps indicating when things happen. (In BIDS format this is a `.tsv` file with an `onset` column, while in NWB format it is a `DynamicTable` type with a time-stamp of some sort.) Every annotation in a timeline file MUST include an `Event` type tag.
 
@@ -863,14 +868,14 @@ Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
 
 **Why it's correct:**
 - Includes Task-event-role (`Experimental-stimulus`)
-- Includes Event-type (`Sensory-event`)
+- Includes `Event` tag (`Sensory-event`)
 - Specifies modality (`Visual-presentation`)
 - Properly groups stimulus properties
 ````
 
-### No Event-type tags in descriptor files
+### No Event tags in descriptor files
 
-Descriptor files (e.g., `participants.tsv`, `samples.tsv`) describe properties or characteristics, not events. Event-type tags should NEVER appear in descriptor files.
+Descriptor files (e.g., `participants.tsv`, `samples.tsv`) describe properties or characteristics, not events. `Event` tags should not appear in descriptor files.
 
 ````{admonition} **Example:** Correct descriptor file annotation
 
@@ -904,27 +909,31 @@ Age/25 years, Right-handed
 **Why it's correct:**
 - Describes participant properties
 - No event classification
-- No temporal tags (Onset/Offset)
+- No temporal tags (`Onset`/`Offset`)
 - Semantically appropriate for descriptor context
 ````
 
 ### Temporal scope tags
 
-Temporal scope tags (`Onset`, `Offset`, `Inset`, and `Delay`) are ONLY for timeline files and indicate the time course of events..
+Temporal scope tags (`Onset`, `Offset`, `Inset`, and `Delay`) are ONLY for timeline files and indicate the time course of events. `Duration` can be used in either type of file but cannot be used with `Onset`, `Offset`, and `Inset`, which are associated with explicit time point markers in the event files, while `Duration` represents something starting at the current time and extending for a specified amount of time from that point.
 
-````{admonition} **Example:** Using Onset for duration events
+`````{admonition} **Example:** Encoding ongoing events using Duration
 
 **Scenario:** A fixation cross appears and stays on screen for 1.5 seconds
 
 **Sidecar:**
 ```json
-{
+{ 
+  "duration": {
+    "HED": "Duration/# s"
+  },
   "event_type": {
     "HED": {
-      "fixation": "Sensory-event, Visual-presentation, Cue, (Def/Fixation-point, ({Cross-size}), Onset)"
+      "fixation": "({duration}, (Sensory-event, Visual-presentation, Cue, (Cross, {cross-size})))"
+
     }
   },
-  "cross_size": {
+  "cross-size": {
     "HED": "Size/# cm"
   }
 }
@@ -935,19 +944,70 @@ Temporal scope tags (`Onset`, `Offset`, `Inset`, and `Delay`) are ONLY for timel
 |-------|----------|------------| ---------- |
 | 0.5   | 1.5      | fixation   | 3          |
 
-**Assembled Result:**
+**Assembled result:**
 ```
-Sensory-event, Visual-presentation, Cue, (Def/Fixation-point, (Size/3 cm) Onset)
+"(Duration/1.5 s, (Sensory-event, Visual-presentation, Cue, (Cross, Size/3 cm)))"
 ```
-This indicates that a fixation cross was displayed starting at 0
-**Why use `Onset`:**
-- Event has duration (duration column = 1.5)
-- The grouped content under `Onset` continues for the duration
-- Temporal scope is explicit
-- Everything within the Onset group persists for 1.5 seconds
-- The inner group containing the `({cross_size})` allows each occurrence of the Fixation-point to be specialized.
+This indicates that a fixation cross was displayed starting at 0.5 seconds from the start of the recording (as indicated by the value in the `onset` column). The display continues for 1.5 seconds as indicated by the `duration` column.  All of the information is encoded in a single annotation.
 
-````
+**Why use `Duration`:**
+- Captures the information of an ongoing event in a single annotation.
+- Duration is often of direct interest.
+- Don't need any `Definition` anchors.
+
+````{admonition} **Example:** Encoding ongoing events using `Onset` and `Offset`
+
+**Scenario:** A fixation cross appears and stays on screen for 1.5 seconds
+
+**Sidecar:**
+```json
+{
+  "event_type": {
+    "HED": {
+      "fixation_start": "(Def/Fixation-point, (Sensory-event, Visual-presentation, Cue, (Cross,{cross_size})), Onset)",
+      "fixation_end": "(Def/Fixation-point, Offset)"
+    }
+  },
+  "cross_size": {
+    "HED": "Size/# cm"
+  },
+  "definitions": {
+    "HED": {
+      "fix_def":  "(Definition/Fixation-point)"
+	}
+  }
+}
+```
+
+**Event:**
+| onset | duration | event_type     | cross_size |
+|-------|----------|----------------| ---------- |
+| 0.5   | 'n/a'    | fixation_start | 3          |
+| 2.0   | 'n/a'    | fixation_end   | 'n/a'       |
+
+**Assembled results:**
+```
+(Def/Fixation-point, (Sensory-event, Visual-presentation, Cue, (Cross, Size/3 cm)), Onset)
+```
+This indicates that a fixation cross was displayed starting at 0.5 seconds from the start of the recording at time 0.5.
+
+```
+(Def/Fixation-point, Offset)
+```
+This indicates that the fixation cross that started being shown at 0.5 s stops being
+displayed at 2.0 s into the recording. The grouped content under `Onset` continues for the duration of the event.
+
+**Why use `Onset`:**
+- Temporal scope is explicit (the end of the event is an event marker)
+- Can explicitly express complicated interleaving of events.
+- Can use the anchor definition content to shorten annotations.
+- Can use the `Inset` mechanism to mark intermediate time points and features.
+
+Notice that the `Fixation-point` definition doesn't have any content in this example. We didn't put the `Sensory-event` and related tags in the definition itself in this case because we wanted to get the correct grouping with parentheses.
+
+`````
+
+The `Delay` tag is used to indicate that the event starts at a specified delay from the time of the event marker in which the annotation appears. This mechanism is often used when the information about an entire trial (i.e., both stimulus and response) are associated with a single time marker. In this case the annotation may contain multiple events -- some of which are delayed from the event marker time.
 
 ## Progressive complexity examples
 
@@ -1051,25 +1111,25 @@ class: tip
 **✓ Grouping**
 - [ ] Stimulus properties grouped: `(Red, Circle)` not `Red, Circle`
 - [ ] Task context grouped with evidence: `(Intended-effect, Target)`
-- [ ] Agent-action uses nested structure: `((agent), (action, object))`
-- [ ] Event-type NOT inside property groups (keep at top level)
+- [ ] `Agent-action` uses nested structure: `((agent), (action, object))`
+- [ ] `Event` tag NOT inside property groups (keep at top level)
 - [ ] Unrelated concepts NOT grouped together
 
 **✓ Event Classification**
-- [ ] Every timeline event has Event-type tag
-- [ ] Every timeline event has Task-event-role tag (when applicable)
-- [ ] Event-type and Task-event-role at top level or grouped together
-- [ ] Sensory-event includes Sensory-modality tag
+- [ ] Every timeline event has `Event` tag
+- [ ] Every timeline event has `Task-event-role` tag (when applicable)
+- [ ] `Event` and `Task-event-role` tags at top level or grouped together
+- [ ] `Sensory-event` includes `Sensory-modality` tag
 
 **✓ File Type**
-- [ ] Timeline files: Event-type tag present
-- [ ] Descriptor files: NO Event-type tags
-- [ ] Timeline files only: Onset/Offset/Inset if needed
-- [ ] Descriptor files: NO temporal tags
+- [ ] Timeline files: `Event` tag present
+- [ ] Descriptor files: NO `Event` tags
+- [ ] Timeline files only: `Onset`/`Offset`/Inset if needed
+- [ ] Descriptor files: NO temporal tags (`Duration` is allowed but interpreted as a description)
 
 **✓ Assembly**
-- [ ] Curly braces used for complex grouping
-- [ ] `#` placeholder for numeric values -- units allowed
+- [ ] Curly braces used for complex grouping (in sidecar)
+- [ ] `#` placeholder for numeric values -- units allowed if `#` tag has a `unitClass`
 - [ ] Column references match actual column names
 
 **✓ Relationships**
@@ -1087,7 +1147,7 @@ class: tip
 - [ ] All tags exist in HED schema
 - [ ] Required children specified
 - [ ] Extensions have parent tag in the HED schema
-- [ ] Units provided where needed
+- [ ] Units provided where needed andallowed
 
 **✓ Semantics**
 - [ ] Annotation translates to coherent English (reversibility test)
@@ -1096,7 +1156,8 @@ class: tip
 - [ ] Consistent structure across similar events
 
 **✓ Style**
-- [ ] Consistent capitalization throughout
+- [ ] Multi-word tags use hyphen to separate
+- [ ] Consistent capitalization throughout (leading word capitalized)
 - [ ] Standard spacing (space after comma)
 - [ ] No extra spaces inside parentheses
 ```
@@ -1107,7 +1168,7 @@ Creating semantically correct HED annotations requires understanding:
 
 1. **The reversibility principle** - Your annotations should translate back to coherent English
 2. **Semantic grouping rules** - Parentheses bind tags that describe the same entity
-3. **Event classification** - Every event should have both Event-type and Task-event-role
+3. **Event classification** - Every event should have both `Event` and `Task-event-role` tags
 4. **File type semantics** - Timeline vs. descriptor files have different requirements
 5. **Relationship patterns** - Agent-action-object and directional relationships need specific structures
 6. **Assembly control** - Use curly braces to control how multi-column annotations are assembled
