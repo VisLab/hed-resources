@@ -114,7 +114,7 @@ Edit `docs/source/index.rst` and remove the page from the table of contents:
    
    IntroductionToHed
    OtherPage
-   <!-- Remove: YourOldPage -->
+   .. Remove: YourOldPage
 ```
 
 ### Step 4: Test the Redirect
@@ -153,16 +153,16 @@ After pushing to GitHub:
 
 ## Example: Table Remodeling Migration
 
-The table remodeling documentation was moved from `hedtags.org/hed-resources` to `hedtags.org/table-remodeling`.
+The table remodeling documentation was moved from `hedtags.org/hed-resources` to `hedtags.org/table-remodeler`.
 
 ### Configuration Entry
 
 ```javascript
 "HedRemodelingQuickstart.html": {
-    newUrl: "https://www.hedtags.org/table-remodeling/QuickStart.html",
+    newUrl: "https://www.hedtags.org/table-remodeler/quickstart.html",
     anchorMap: {
-        "hed-remodeling-quickstart-anchor": "quickstart-anchor",
-        "what-is-remodeling-anchor": "what-is-remodeling",
+        "#hed-remodeling-quickstart-anchor": "#quickstart-anchor",
+        "#what-is-remodeling-anchor": "#what-is-remodeling-anchoor",
         // ... more mappings
     }
 }
@@ -171,7 +171,7 @@ The table remodeling documentation was moved from `hedtags.org/hed-resources` to
 ### Result
 
 - Old URL: `hedtags.org/hed-resources/HedRemodelingQuickstart.html#what-is-remodeling-anchor`
-- Redirects to: `hedtags.org/table-remodeling/QuickStart.html#what-is-remodeling`
+- Redirects to: `hedtags.org/table-remodeler/quickstart.html#what-is-remodeling`
 
 ## SEO Considerations
 
