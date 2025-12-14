@@ -62,7 +62,7 @@ var/
 .installed.cfg
 *.egg
 *.ruff_cache/
-status/
+.status/
 .github/copilot-instructions.md
 
 # Installer logs
