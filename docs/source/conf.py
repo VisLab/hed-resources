@@ -76,7 +76,7 @@ master_doc = "index"
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["_build", "_templates", "Thumbs.db", ".DS_Store"]
+exclude_patterns = ["_build", "_templates", "Thumbs.db", ".DS_Store", "*.md.backup"]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -120,3 +120,7 @@ html_sidebars = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+
+# Copy redirect HTML pages directly to output without processing by Sphinx
+# These files will be copied as-is to the _build/html directory
+html_extra_path = ["HedRemodelingQuickstart.html"]

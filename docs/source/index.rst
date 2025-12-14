@@ -76,12 +76,12 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    :caption: Tool documentation:
 
    HedOnlineTools.md
-   CTaggerGuide.md
    Table-remodeler <https://www.hedtags.org/table-remodeler>
    HedPythonTools.md
    HedJavascriptTools.md
    HedMatlabTools.md
    HedAndEEGLAB.md
+   CTaggerGuide.md
    HedSchemaDevelopersGuide.md
 
 
