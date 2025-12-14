@@ -123,4 +123,4 @@ html_css_files = ["custom.css"]
 
 # Copy redirect HTML pages directly to output without processing by Sphinx
 # These files will be copied as-is to the _build/html directory
-html_extra_path = ["HedRemodelingQuickstart.html"]
+html_extra_path = ["HedRemodelingQuickstart.html", "HedRemodelingTools.html"]
