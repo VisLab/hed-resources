@@ -31,7 +31,7 @@ def main():
     print("Installing/updating dependencies from pyproject.toml...")
     print("-" * 70)
     try:
-        result = subprocess.run(
+        subprocess.run(
             [sys.executable, "-m", "pip", "install", "-e", ".[docs,quality]"],
             cwd=repo_root,
             check=True,
@@ -50,7 +50,7 @@ def main():
     build_dir = repo_root / "docs" / "_build" / "html"
 
     try:
-        result = subprocess.run(
+        subprocess.run(
             [
                 sys.executable,
                 "-m",
@@ -74,7 +74,7 @@ def main():
     print("=" * 70)
     print(f"\nStatic files are in: {build_dir}")
     print(f"Open {build_dir / 'index.html'} in your browser to view locally.")
-    print(f"\nOr run: python scripts/serve_docs.py")
+    print("\nOr run: python scripts/serve_docs.py")
     print()
 
     return 0

@@ -79,7 +79,7 @@ def main():
     except OSError as e:
         if "address already in use" in str(e).lower():
             print(f"\n❌ Error: Port {args.port} is already in use.", file=sys.stderr)
-            print(f"\nTry a different port:")
+            print("\nTry a different port:")
             print(f"    python scripts/serve_docs.py --port {args.port + 1}")
         else:
             print(f"\n❌ Error starting server: {e}", file=sys.stderr)
