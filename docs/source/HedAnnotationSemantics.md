@@ -1185,7 +1185,7 @@ For additional information, see:
 
 Available tools:
 
-- [**HED online tools**](https://hedtools.org/hed) - Fairly complete set of tools for a single tsv and json file.
+- [**HED online tools**](https://hedtools.org/hed) - Fairly complete set of tools for a single tsv and json files.
 - [**HED browser-based validation**](https://www.hedtags.org/hed-javascript) - validate an entire BIDS dataset -- all local, no installation
 - [**HED extension for NWB**](https://github.com/hed-standard/ndx-hed) - incorporates HED into Neurodata Without Borders datasets.
 - [**HED python tools**](https://github.com/hed-standard/hed-python) - comprehensive set of tools for HED in Python.

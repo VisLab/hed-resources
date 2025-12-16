@@ -435,7 +435,7 @@ Short-to-long and long-to-short conversion of HED tags are supported for HED str
 
 Support is also included for assembling the annotations for a BIDS-style events file with a JSON sidecar and for generating a template of a JSON sidecar from a BIDS events file.
 
-The [**web_services_demos**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos) directory in the `hed-examples` GitHub repository provides MATLAB examples of how to call these services in MATLAB.
+The [**web_services_demos**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos) directory in the `hed-matlab` GitHub repository provides MATLAB examples of how to call these services in MATLAB.
 
 ### Service setup
 
