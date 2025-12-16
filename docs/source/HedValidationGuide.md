@@ -128,23 +128,23 @@ An interface for accessing HED in [**Fieldtrip**](https://www.fieldtriptoolbox.o
 
 ### Validation for Python users
 
-The [HEDTools](https://pypi.org/project/hedtools/) for Python are available on PyPI and can be installed using the usual Python package installation mechanisms with PIP. However, new features are not immediately available in the released version. If you need the latest version you should install the `develop` branch of the GitHub [**hed-python**](https://github.com/hed-standard/hed-python) repository directly using PIP.
+The [HEDTools](https://pypi.org/project/hedtools/) for Python are available on PyPI and can be installed using the usual Python package installation mechanisms with PIP. However, new features are not immediately available in the released version. If you need the latest version you should install the `main` branch of the GitHub [**hed-python**](https://github.com/hed-standard/hed-python) repository directly using PIP.
 
 ````{admonition} Installing the Python HedTools from the develop branch on GitHub.
 ---
 class: tip
 ---
 ```python
- pip install git+https://github.com/hed-standard/hed-python/@develop
+ pip install git+https://github.com/hed-standard/hed-python/@main
  ```
  
 ````
 
 #### Jupyter notebooks for validation
 
-Several [**Jupyter notebooks**](https://github.com/hed-standard/hed-examples/tree/main/src/jupyter_notebooks) are available as wrappers for calling various Python HED tools.
+Several \[**Jupyter notebooks**\]https://github.com/hed-standard/hed-python/tree/main/examples) are available as wrappers for calling various Python HED tools.
 
-For example, the [**validate_bids_datasets.ipynb**](https://github.com/hed-standard/hed-examples/blob/main/src/jupyter_notebooks/bids/validate_bids_datasets.ipynb) notebook shown in the following example validates an entire BIDS dataset just give the path to the root directory of the dataset.
+For example, the [**validate_bids_datasets.ipynb**](https://raw.githubusercontent.com/hed-standard/hed-python/refs/heads/main/examples/validate_bids_dataset.ipynb) notebook shown in the following example validates an entire BIDS dataset just give the path to the root directory of the dataset.
 
 ````{admonition} Python code to validate HED in a BIDS dataset.
 ---

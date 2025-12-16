@@ -779,7 +779,7 @@ The [**HED standard organization**](https://github.com/hed-standard) maintains o
 
 **Repository**: [**hed-python**](https://github.com/hed-standard/hed-python) | **Package**: `pip install hedtools`
 
-**Documentation**: [**HED Python tools**](./HedPythonTools.md)
+**Documentation**: [**HED Python tools**](https://www.hedtags.org/hed-python)
 
 (the-hed-javascript-code-base-anchor)=
 
@@ -789,7 +789,7 @@ The [**HED standard organization**](https://github.com/hed-standard) maintains o
 
 **Repository**: [**hed-javascript**](https://github.com/hed-standard/hed-javascript) | **Package**: `npm install hed-validator`
 
-**Documentation**: [**HED JavaScript tools**](./HedJavascriptTools.md)
+**Documentation**: [**HED JavaScript tools**](https://www.hedtags.org/hed-javascript)
 
 (the-hed-matlab-code-base-anchor)=
 
@@ -799,7 +799,7 @@ The [**HED standard organization**](https://github.com/hed-standard) maintains o
 
 **Repository**: [**hed-matlab**](https://github.com/hed-standard/hed-matlab) | **Installation**: Via EEGLAB plugin manager
 
-**Documentation**: [**HED MATLAB tools**](./HedMatlabTools.md) | [**CTagger GUI**](./CTaggerGuide.md)
+**Documentation**: [**HED MATLAB tools**](https://wwww/hedtags.org/hed-matlab) | [**CTagger GUI**](./CTaggerGuide.md)
 
 (web-tools-and-rest-services-anchor)=
 
@@ -811,7 +811,7 @@ The [**HED standard organization**](https://github.com/hed-standard) maintains o
 
 **Repository**: [**hed-web**](https://github.com/hed-standard/hed-web)
 
-**Documentation**: [**HED online tools**](./HedOnlineTools.md)
+**Documentation**: [**HED online tools**](https://www.hedtags.org/hed-web)
 
 (contributing-to-hed-development-anchor)=
 
