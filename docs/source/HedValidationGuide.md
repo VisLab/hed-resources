@@ -38,7 +38,7 @@ The JavaScript [**hed-validator**](https://www.npmjs.com/package/hed-validator/v
 
 ### MATLAB support
 
-Validation in MATLAB is supported through web-services calls and through wrappers for native HED Python tool calls. See the [**HED MATLAB documentation](https://www.hedtags.org/hed-matlab) for additional information. 
+Validation in MATLAB is supported through web-services calls and through wrappers for native HED Python tool calls. See the [\*\*HED MATLAB documentation](https://www.hedtags.org/hed-matlab) for additional information.
 
 ## Validation strategies
 
