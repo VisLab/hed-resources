@@ -112,6 +112,36 @@ const REDIRECT_CONFIG = {
             "#restoring-files": "#backup-and-restore",
             "#remodel-error-handling": "#troubleshooting",
         }
+    },
+    
+    // HED Python Tools documentation moved to hedtags.org/hed-python
+    "HedPythonTools.html": {
+        newUrl: "https://www.hedtags.org/hed-python/",
+        anchorMap: {
+            // Explicit MyST-style anchors
+            "#jupyter-notebooks-for-hed-anchor": "#",
+            "#extract-json-template-anchor": "#",
+            "#find-event-combinations-anchor": "#",
+            "#merge-spreadsheet-into-sidecar-anchor": "#",
+            "#sidecar-to-spreadsheet-anchor": "#",
+            "#summarize-events-anchor": "#",
+            "#validate-bids-dataset-anchor": "#",
+            "#validate-bids-dataset-with-libraries-anchor": "#",
+            "#validate-bids-datasets-anchor": "#",
+            
+            // Auto-generated heading anchors
+            "#hed-python-tools": "#",
+            "#hed-python-tool-installation": "#",
+            "#jupyter-notebooks-for-hed": "#",
+            "#extract-json-template": "#",
+            "#find-event-combinations": "#",
+            "#merge-spreadsheet-into-sidecar": "#",
+            "#sidecar-to-spreadsheet": "#",
+            "#summarize-events": "#",
+            "#validate-bids-dataset": "#",
+            "#validate-bids-dataset-with-libraries": "#",
+            "#validate-bids-datasets": "#"
+        }
     }
     
     // Add more pages as they are migrated:

@@ -113,14 +113,12 @@ widths: 20 50
   - [https://github.com/hed-standard/hed-matlab](https://github.com/hed-standard/hed-matlab)
 * - HED web deployment
   - [https://github.com/hed-standard/hed-web](https://github.com/hed-standard/hed-web)
-* - HED-2G support
-  - [https://github.com/hed-standard/hed2-python](https://github.com/hed-standard/hed2-python)
 * - CTagger resources
   - [https://github.com/hed-standard/CTagger](https://github.com/hed-standard/CTagger)
 * - **Online tools**
   -
 * - HED tools
-  - [https://hedtools.org](https://hedtools.org)
+  - [https://hedtools.org/hed](https://hedtools.org/hed)
 * - HED tools (development)
   - [https://hedtools.org/hed_dev](https://hedtools.org/hed_dev)
 * - Browser-based validation
@@ -139,7 +137,7 @@ Mapping of HED terms and their descriptions to known ontologies is:
 > HED Working Document on Ontology mapping\
 > [https://drive.google.com/file/d/13y17OwwNBlHdhB7hguSmOBdxn0Uk4hsI/view?usp=sharing](https://drive.google.com/file/d/13y17OwwNBlHdhB7hguSmOBdxn0Uk4hsI/view?usp=sharing)
 
-Two other working documents hold portions of the HED-3G specification that are under development and will not be finalized for Release 1:
+Two other working documents hold HED concepts under development:
 
 > HED Working Document on Spatial Annotation\
 > [https://docs.google.com/document/d/1jpSASpWQwOKtan15iQeiYHVewvEeefcBUn1xipNH5-8/view?usp=sharing](https://docs.google.com/document/d/1jpSASpWQwOKtan15iQeiYHVewvEeefcBUn1xipNH5-8/view?usp=sharing)

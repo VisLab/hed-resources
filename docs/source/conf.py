@@ -76,7 +76,14 @@ master_doc = "index"
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["_build", "_templates", "Thumbs.db", ".DS_Store", "*.md.backup"]
+exclude_patterns = [
+    "_build",
+    "_templates",
+    "Thumbs.db",
+    ".DS_Store",
+    "*.md.backup",
+    "HedPythonTools.md",
+]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -123,4 +130,8 @@ html_css_files = ["custom.css"]
 
 # Copy redirect HTML pages directly to output without processing by Sphinx
 # These files will be copied as-is to the _build/html directory
-html_extra_path = ["HedRemodelingQuickstart.html", "HedRemodelingTools.html"]
+html_extra_path = [
+    "HedRemodelingQuickstart.html",
+    "HedRemodelingTools.html",
+    "HedPythonTools.html",
+]

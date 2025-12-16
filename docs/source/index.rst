@@ -66,8 +66,6 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    HedSearchGuide.md
    HedSummaryGuide.md
    HedConditionsAndDesignMatrices.md
-   Table-remodeler quickstart <https://www.hedtags.org/table-remodeler/quickstart.html>
-
 
 
 .. toctree::
@@ -77,7 +75,7 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
 
    HedOnlineTools.md
    Table-remodeler <https://www.hedtags.org/table-remodeler>
-   HedPythonTools.md
+   HED Python Tools <https://hedtools.org/hed-python>
    HedJavascriptTools.md
    HedMatlabTools.md
    HedAndEEGLAB.md

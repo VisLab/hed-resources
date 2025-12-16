@@ -22,13 +22,16 @@ Although the HED web tools base the template on the information extracted from a
 `events.tsv` file, this will be sufficient to produce a good template for most datasets.
 
 For datasets with widely-varying event files, you should use the 
-[validate_bids_dataset.ipynb](https://github.com/hed-standard/hed-examples/blob/develop/src/jupyter_notebooks/bids/validate_bids_dataset.ipynb)
+[**validate_bids_dataset.ipynb**](https://raw.githubusercontent.com/hed-standard/hed-python/refs/heads/main/examples/validate_bids_dataset.ipynb)
 Jupyter notebook version rather than the online tools.
 The Jupyter notebook consolidates information from all of the `events.tsv` files in the dataset
 to produce a comprehensive JSON sidecar template.
+
 ```
 
-The examples in this tutorial use an [**abbreviated version**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003645s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv) of the `events.tsv`file from subject 002 run 1 from [**ds003645**](https://openneuro.org/datasets/ds003645/versions/2.0.0):Face processing MEEG dataset with HED annotation dataset on OpenNeuro. A reduced version of this dataset [**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) is also available.
+\*\*HED now also has a [**browser-based dataset HED validator**](https://www.hedtags.org/hed-javascript) which provides an fast method of validating an entire dataset without data upload.
+
+The examples in this tutorial use an [**abbreviated version**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003645s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv) of the `events.tsv`file from subject 002 run 1 from [**ds003645**](https://openneuro.org/datasets/ds003645/):Face processing MEEG dataset with HED annotation dataset on OpenNeuro. A reduced version of this dataset [**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) is also available.
 
 (how-hed-works-in-bids-anchor)=
 
