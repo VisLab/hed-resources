@@ -6,7 +6,7 @@ This repository contains the primary documentation and user resources for the Hi
 
 ## Repository contents
 
-The [**docs**](https://github.com/hed-standard/hed-resources/tree/main/docs) directory contains the source documentation for HED resources, tools, and tutorials. 
+The [**docs**](https://github.com/hed-standard/hed-resources/tree/main/docs) directory contains the source documentation for HED resources, tools, and tutorials.
 
 The documentation covers:
 
