@@ -38,7 +38,7 @@ The JavaScript [**hed-validator**](https://www.npmjs.com/package/hed-validator/v
 
 ### MATLAB support
 
-Validation in MATLAB is currently not directly supported, although some discussion about future native support is ongoing. MATLAB users should use the [**HED online validation tools**](https://hedtools.org/hed/) or the [**HED RESTful services interface**](./HedOnlineTools.md#hed-restful-services) as discussed [**below**](validation-for-matlab-users-anchor).
+Validation in MATLAB is supported through web-services calls and through wrappers for native HED Python tool calls. See the [**HED MATLAB documentation](https://www.hedtags.org/hed-matlab) for additional information. 
 
 ## Validation strategies
 
@@ -114,7 +114,7 @@ HED validation in MATLAB is currently done by accessing the HED online tools as 
 
 #### Direct access to services
 
-Users can access these services directly by calling wrapper functions or by using the HED MATLAB web services functions as explained in [**MATLAB HedTools**](./HedMatlabTools.md). Download the [**hed-matlab**](https://github.com/hed-standard/hed-matlab) repository from GitHub and include the `hedmat` directory and its children in your MATLAB path. The [**runAllDemos.m**](https://github.com/hed-standard/hed-matlab/blob/main/hedmat/web_services_demos/runAllDemos.m) script calls all the services on test data.
+Users can access these services directly by calling wrapper functions or by using the HED MATLAB web services functions as explained in [**MATLAB HedTools**](https://www.hedtags.org/hed-matlab). Download the [**hed-matlab**](https://github.com/hed-standard/hed-matlab) repository from GitHub and include the `hedmat` directory and its children in your MATLAB path. The [**runAllDemos.m**](https://github.com/hed-standard/hed-matlab/blob/main/hedmat/web_services_demos/runAllDemos.m) script calls all the services on test data.
 
 #### Access through EEGLAB
 

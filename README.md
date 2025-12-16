@@ -6,12 +6,12 @@ This repository contains the primary documentation and user resources for the Hi
 
 ## Repository contents
 
-The [**docs**](https://github.com/hed-standard/hed-resources/tree/main/docs) directory contains the source documentation for HED resources, tools, and tutorials. This includes comprehensive guides for using HED tools, MATLAB support, Python tools, and integration with various platforms like EEGLAB and NWB.
+The [**docs**](https://github.com/hed-standard/hed-resources/tree/main/docs) directory contains the source documentation for HED resources, tools, and tutorials. 
 
 The documentation covers:
 
 - Introduction to HED and how to use it
-- Tool-specific guides (Python, MATLAB, JavaScript, Online tools)
+- Links-to-tool-specific guides (Python, MATLAB, JavaScript, Online tools)
 - Integration guides (EEGLAB, NWB, BIDS)
 - Validation and search guides
 - Schema development guides

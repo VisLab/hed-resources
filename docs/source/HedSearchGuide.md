@@ -175,6 +175,6 @@ The HED search facility allows users to form sophisticated queries based on HED 
 
 For example, the [**factor_hed_tags**](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-tags) operation of the [**Table remodeler**](https://www.hedtags.org/table-remodeler.html) creates factor vectors for selecting events satisfying general HED queries.
 
-The [**HED-based epoching**](https://www.hedtags.org/hed-resources/HedMatlabTools.html#hed-based-epoching) tools in [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) can use HED-based search to epoch data based on HED tags.
+The HED-based epoching tools in [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) can use HED-based search to epoch data based on HED tags.
 
 Work is underway to integrate HED-based search into other tools including [**Fieldtrip**](https://www.fieldtriptoolbox.org/) and [**MNE-python**](https://mne.tools/stable/index.html) as well into the analysis platforms [**NEMAR**](https://nemar.org/) and [**EEGNET**](http://eegnet.org/)
