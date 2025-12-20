@@ -142,7 +142,7 @@ inquire about user interest and the HED Working Group can
 publicize the potential development and ask for participation
 to get things started.
 This process and schema design guidelines are described 
-in the [**HED schema developer's guide**](https://www.hedtags.org/hed-resources/HedSchemaDevelopersGuide.html).
+in the [**HED schema developer's guide**](https://www.hedtags.org/hed-schemas/developer_guide.html).
 ```
 
 All HED community members are required to follow the HED [**Code of conduct**](https://github.com/hed-standard/hed-examples/blob/main/CODE_OF_CONDUCT.md). Please contact the HED maintainers at [**hed.maintainers+coc@gmail.com**](mailto:hed.maintainers+coc@gmail.com) if you have any concerns or would like to report a violation.

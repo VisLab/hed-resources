@@ -75,12 +75,12 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
 
    HedOnlineTools.md
    Table-remodeler <https://www.hedtags.org/table-remodeler>
-   HED Python Tools <https://hedtools.org/hed-python>
+   HED Python Tools <https://hedtags.org/hed-python>
    HedJavascriptTools.md
    HED Matlab Tools <https://www.hedtags.org/hed-matlab>
    HedAndEEGLAB.md
    CTaggerGuide.md
-   HedSchemaDevelopersGuide.md
+   Schema Developers <https://www.hedtags.org/hed-schemas>
 
 
 .. toctree::
