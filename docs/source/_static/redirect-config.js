@@ -142,6 +142,11 @@ const REDIRECT_CONFIG = {
             "#validate-bids-dataset-with-libraries": "#",
             "#validate-bids-datasets": "#"
         }
+    },
+    
+    // HED Schema Developers Guide moved to hedtags.org/hed-schemas
+    "HedSchemaDevelopersGuide.html": {
+        newUrl: "https://www.hedtags.org/hed-schemas/developer_guide.html"
     }
     
     // Add more pages as they are migrated:
