@@ -951,7 +951,7 @@ HED schemas have structured elements including:
 
 Tags are the main elements of interest. The tags have attributes that specify behavior. For example the `topLevelTagGroup` specifies that this tag is a special tag that can only appear inside parentheses at the top level of an annotation. The `Definition` tag is a special tag in the standard schema that has both the `reserved` and the `topLevelTagGroup` attributes.
 
-The value classes and unit classes are mainly relevant for tags that take values. These tags have a `#` placeholder in the schema hierarchy, indicating that they can be specfied with a value. For example, the `Temperature` tag's `#` child has the `numeric` value class and the `temperatureUnits` unit class, allowing annotations such as `Temperature/32 oC`.
+The value classes and unit classes are mainly relevant for tags that take values. These tags have a `#` placeholder in the schema hierarchy, indicating that they can be specified with a value. For example, the `Temperature` tag's `#` child has the `numeric` value class and the `temperatureUnits` unit class, allowing annotations such as `Temperature/32 oC`.
 
 **Key principles:**
 
