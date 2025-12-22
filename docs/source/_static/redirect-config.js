@@ -166,6 +166,67 @@ const REDIRECT_CONFIG = {
             "#hed-and-ndx-events": "",
             "#hed-in-nwb-files": ""
         }
+    },
+    
+    // HED Online Tools documentation moved to hedtags.org/hed-web
+    // All anchors redirect to the base URL (no fragments)
+    "HedOnlineTools.html": {
+        newUrl: "https://www.hedtags.org/hed-web/",
+        anchorMap: {
+            // Explicit MyST-style anchors - all redirect to base page
+            "#online-access-anchor": "",
+            "#events-online-tools-anchor": "",
+            "#sidecars-online-tools-anchor": "",
+            "#spreadsheets-online-tools-anchor": "",
+            "#strings-online-tools-anchor": "",
+            "#schemas-online-tools-anchor": "",
+            "#hed-restful-services-anchor": "",
+            
+            // Auto-generated heading anchors - all redirect to base page
+            "#hed-online-tools": "",
+            "#online-access": "",
+            "#events-files": "",
+            "#validate-an-events-file": "",
+            "#assemble-annotations": "",
+            "#search-annotations": "",
+            "#generate-sidecar-template": "",
+            "#execute-remodel-script": "",
+            "#sidecar-files": "",
+            "#validate-a-sidecar": "",
+            "#convert-sidecar-to-long": "",
+            "#convert-sidecar-to-short": "",
+            "#extract-spreadsheet-from-sidecar": "",
+            "#merge-a-spreadsheet-with-a-sidecar": "",
+            "#spreadsheet-files": "",
+            "#validate-a-spreadsheet": "",
+            "#convert-spreadsheet-to-long": "",
+            "#convert-spreadsheet-to-short": "",
+            "#string-online-tools": "",
+            "#validate-a-hed-string": "",
+            "#convert-a-hed-string-to-long": "",
+            "#convert-hed-string-to-short": "",
+            "#schema-online-tools": "",
+            "#validate-a-hed-schema": "",
+            "#convert-a-hed-schema": "",
+            "#compare-hed-schemas": "",
+            "#hed-restful-services": "",
+            "#service-setup": "",
+            "#request-format": "",
+            "#service-responses": ""
+        }
+    },
+    
+    // HED JavaScript Tools documentation moved to hedtags.org/hed-javascript
+    // All anchors redirect to the base URL (no fragments)
+    "HedJavascriptTools.html": {
+        newUrl: "https://www.hedtags.org/hed-javascript/",
+        anchorMap: {
+            // Auto-generated heading anchors - all redirect to base page
+            "#hed-javascript-tools": "",
+            "#javascript-tool-installation": "",
+            "#javascript-package-organization": "",
+            "#javascript-programmatic-interface": ""
+        }
     }
     
     // Add more pages as they are migrated:

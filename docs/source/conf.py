@@ -135,4 +135,6 @@ html_extra_path = [
     "HedRemodelingTools.html",
     "HedPythonTools.html",
     "HedAnnotationInNWB.html",
+    "HedOnlineTools.html",
+    "HedJavascriptTools.html",
 ]

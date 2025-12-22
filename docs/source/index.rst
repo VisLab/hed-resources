@@ -73,14 +73,14 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    :hidden:
    :caption: Tool documentation:
 
-   HedOnlineTools.md
+   HED online tools <https://www.hedtags.org/hed-web>
+   Python HEDTools <https://www.hedtags.org/hed-python>
+   HED JavaScript tools <https://www.hedtags.org/hed-javascript>
    Table-remodeler <https://www.hedtags.org/table-remodeler>
-   Python HEDTools <https://hedtags.org/hed-python>
-   HedJavascriptTools.md
+   Schema developer guide <https://www.hedtags.org/hed-schemas>
    HED Matlab tools <https://www.hedtags.org/hed-matlab>
    HedAndEEGLAB.md
    CTaggerGuide.md
-   Schema Developers <https://www.hedtags.org/hed-schemas>
 
 
 .. toctree::
