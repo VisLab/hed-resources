@@ -41,4 +41,4 @@ SCORE library schema version 1.0.0 is an **unpartnered schema**. This means that
 
 In BIDS (Brain Imaging Data Structure) datasets, the HED version is specified in the `dataset_description.json` file at the top level of the dataset. See [**7.5. Library schemas in BIDS**](https://www.hedtags.org/hed-specification/07_Library_schemas.html#library-schemas-in-bids) in the HED specification for information about the rules.
 
-In NWB (Neurodata Without Borders) dataset, the HED version is specified when `HedTags` objects are created. See [**HED annotation in NWB**](https://www.hedtags.org/hed-resources/HedAnnotationInNWB.html) for additional information and examples.
+In NWB (Neurodata Without Borders) dataset, the HED version is specified when `HedTags` objects are created. See [**HED annotation in NWB**](https://www.hedtags.org/ndx-hed) for additional information and examples.
