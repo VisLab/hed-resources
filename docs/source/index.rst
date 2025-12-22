@@ -61,7 +61,7 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
    HedAnnotationSemantics.md
-   HedAnnotationInNWB.md
+   HED annotation in NWB <https://www.hedtags.org/ndx-hed>
    HedValidationGuide.md
    HedSearchGuide.md
    HedSummaryGuide.md
@@ -75,9 +75,9 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
 
    HedOnlineTools.md
    Table-remodeler <https://www.hedtags.org/table-remodeler>
-   HED Python Tools <https://hedtags.org/hed-python>
+   Python HEDTools <https://hedtags.org/hed-python>
    HedJavascriptTools.md
-   HED Matlab Tools <https://www.hedtags.org/hed-matlab>
+   HED Matlab tools <https://www.hedtags.org/hed-matlab>
    HedAndEEGLAB.md
    CTaggerGuide.md
    Schema Developers <https://www.hedtags.org/hed-schemas>

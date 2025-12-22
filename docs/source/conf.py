@@ -82,7 +82,6 @@ exclude_patterns = [
     "Thumbs.db",
     ".DS_Store",
     "*.md.backup",
-    "HedPythonTools.md",
 ]
 
 
@@ -135,4 +134,5 @@ html_extra_path = [
     "HedRemodelingQuickstart.html",
     "HedRemodelingTools.html",
     "HedPythonTools.html",
+    "HedAnnotationInNWB.html",
 ]

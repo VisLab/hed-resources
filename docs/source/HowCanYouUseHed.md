@@ -399,7 +399,7 @@ See the [**BIDS to NWB conversion example**](https://github.com/hed-standard/ndx
 
 #### Viewing available tags
 
-The HED vocabulary is hierarchically organized as shown in the schema as viewed in the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/). Library schemas can also be viewed using this viewer.
+The HED vocabulary is hierarchically organized as shown in the schema as viewed in the [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/). Library schemas can also be viewed using this viewer.
 
 <p></p>
 
