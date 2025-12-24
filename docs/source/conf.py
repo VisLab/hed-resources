@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath("."))
 
 # -- Project information -----------------------------------------------------
 
-project = "HED Resources"
+project = "HED resources"
 copyright = f"2017-{date.today().year}, HED Working Group"
 author = "HED Working Group"
 
@@ -91,7 +91,7 @@ pygments_style = "sphinx"
 pygments_dark_style = "monokai"
 
 html_theme = "furo"
-html_title = "HED Resources"
+html_title = "HED resources"
 html_logo = "_static/images/croppedWideLogo.png"
 
 # Furo theme options
@@ -130,7 +130,7 @@ html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 html_js_files = ["gh_icon_fix.js"]
 
-# Copy redirect HTML pages directly to output without processing by Sphinx
+# Copy redirect HTML pages and custom search page directly to output without processing by Sphinx
 # These files will be copied as-is to the _build/html directory
 html_extra_path = [
     "HedRemodelingQuickstart.html",
@@ -139,4 +139,5 @@ html_extra_path = [
     "HedAnnotationInNWB.html",
     "HedOnlineTools.html",
     "HedJavascriptTools.html",
+    "hed-search.html",  # Multi-repository search page
 ]
