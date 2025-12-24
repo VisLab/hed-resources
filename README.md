@@ -34,13 +34,11 @@ pip install -e .[dev]
 # Build documentation using Sphinx
 sphinx-build -b html docs/source docs/_build/html
 
-# Or use the provided scripts (Windows)
-build-docs.bat          # Install dependencies and build docs
-build-sphinx.bat        # Build docs only
-check-links.bat         # Check for broken links
+# Serve documentation locally for preview (requires Python's http.server)
+python -m http.server 8000 -d docs/_build/html
 
-# Check links manually
-python check_links.py
+# Check links
+sphinx-build -b linkcheck docs/source docs/_build/linkcheck
 ```
 
 ### Available dependency groups:
@@ -51,4 +49,4 @@ python check_links.py
 
 ### Building documentation
 
-The documentation is built using Sphinx and hosted at [www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources). After building locally, open `docs/_build/html/index.html` in your browser to view the documentation.
+The documentation is built using Sphinx with the Furo theme and hosted at [www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources). After building locally, open `docs/_build/html/index.html` in your browser to view the documentation.

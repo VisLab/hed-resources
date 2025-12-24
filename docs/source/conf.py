@@ -63,9 +63,7 @@ myst_enable_extensions = [
     "linkify",
     "replacements",
     "smartquotes",
-    "substitution",
     "tasklist",
-    "attrs_inline",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -92,33 +90,36 @@ pygments_style = "sphinx"
 # Syntax highlighting style for dark mode
 pygments_dark_style = "monokai"
 
-html_theme = "sphinx_book_theme"
+html_theme = "furo"
 html_title = "HED Resources"
 html_logo = "_static/images/croppedWideLogo.png"
 
-# Theme options for sphinx-book-theme
+# Furo theme options
 html_theme_options = {
-    "repository_url": "https://github.com/hed-standard/hed-resources",
-    "use_repository_button": True,
-    "use_issues_button": True,
-    "use_edit_page_button": True,
-    "path_to_docs": "docs/source",
-    "show_toc_level": 2,
-    "navigation_with_keys": False,
-    "show_navbar_depth": 1,
-    "use_download_button": True,
-    "toc_title": None,
-    "use_fullscreen_button": False,
+    "sidebar_hide_name": False,
+    "light_css_variables": {
+        "color-brand-primary": "#0969da",
+        "color-brand-content": "#0969da",
+    },
+    "dark_css_variables": {
+        "color-brand-primary": "#58a6ff",
+        "color-brand-content": "#58a6ff",
+    },
+    "source_repository": "https://github.com/hed-standard/hed-resources/",
+    "source_branch": "main",
+    "source_directory": "docs/source/",
 }
 
-# Force the sidebar to use toctree titles instead of page titles
+# Configure sidebar to show logo, search, navigation, and quick links
 html_sidebars = {
     "**": [
-        "navbar-logo",
-        "sidebar-title.html",
-        "search-field",
-        "sbt-sidebar-nav.html",
+        "sidebar/brand.html",
+        "sidebar/search.html",
+        "sidebar/scroll-start.html",
+        "sidebar/navigation.html",
         "quicklinks.html",
+        "sidebar/ethical-ads.html",
+        "sidebar/scroll-end.html",
     ]
 }
 
@@ -127,6 +128,7 @@ html_sidebars = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+html_js_files = ["gh_icon_fix.js"]
 
 # Copy redirect HTML pages directly to output without processing by Sphinx
 # These files will be copied as-is to the _build/html directory

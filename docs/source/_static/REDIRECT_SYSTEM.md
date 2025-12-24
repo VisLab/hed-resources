@@ -122,13 +122,13 @@ Edit `docs/source/index.rst` and remove the page from the table of contents:
 1. **Build the documentation**:
 
 ```powershell
-.\build-docs.bat
+sphinx-build -b html docs/source docs/_build/html
 ```
 
-2. **Test locally**:
+2. **Test locally from the repository root directory**:
 
 ```powershell
-.\serve-sphinx.bat
+python -m http.server 8000 -d docs/_build/html
 ```
 
 3. **Test scenarios**:
