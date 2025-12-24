@@ -10,7 +10,7 @@ HED resources
 
    * `HED online tools <https://hedtools.org/hed/>`_
 
-   * `HED browse tools <https://www.hedtags.org/hed-javascript>`_
+   * `HED browser tools <https://www.hedtags.org/hed-javascript>`_
 
    * `HED organization <https://github.com/hed-standard/>`_  
 

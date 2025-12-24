@@ -52,7 +52,7 @@ In this case, both the version specification and the associated annotations must
 
 ## Viewing and accessing schemas
 
-All versions of the HED schemas are located in the GitHub [**hed-schemas**](https://github.com/hed-standard/hed-schemas) and can be best-viewed using the [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/).
+All versions of the HED schemas are located in the GitHub [**hed-schemas**](https://github.com/hed-standard/hed-schemas) and can be best-viewed using the [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/). See the [**HED schemas documentation**](https://www.hedtags.org/hed-schemas) and the [**HED specification**](https://www.hedtags.org/hed-specification) for more detailed information about HED schema structure and development.
 
 ## Available schemas
 

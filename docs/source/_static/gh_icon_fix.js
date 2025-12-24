@@ -24,10 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     link.title = "Go to repository";
                     link.setAttribute("aria-label", "Go to repository");
 
-                    // Remove any text content (like "View source") to ensure only icon shows
-                    // But keep the SVG if we were using the original, but we are replacing it via CSS.
-                    // Safest is to empty the text content but keep the element structure if needed.
-                    // Actually, Furo puts an SVG inside. We want to hide that SVG and show our own background.
+                    // Mark this link so CSS can style it as an icon-only GitHub link
+                    // (e.g. hide any text/SVG content and show a custom background icon).
+                    // The actual hiding of text/SVG is handled in CSS using the github-repo-link 
                     link.classList.add("github-repo-link"); // Add class for CSS targeting
                     link.style.display = "inline-flex";
                 }
