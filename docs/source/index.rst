@@ -10,9 +10,9 @@ HED resources
 
    * `HED online tools <https://hedtools.org/hed/>`_
 
-   * `HED browser-based tools <https://www.hedtags.org/hed-javascript>`_
+   * `HED browse tools <https://www.hedtags.org/hed-javascript>`_
 
-   * `HED organization source code <https://github.com/hed-standard/>`_  
+   * `HED organization <https://github.com/hed-standard/>`_  
 
    * `HED specification <https://www.hedtags.org/hed-specification>`_ 
 
@@ -99,7 +99,6 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    :hidden:
    :caption: Data resources:
 
-   HedSchemas.md
    HedTestDatasets.md
 
 
