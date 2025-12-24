@@ -83,9 +83,12 @@ class HEDSearch {
                 this.loadingStatus[source.name] = 'loaded';
                 return { source: source.name, status: 'success' };
             } catch (error) {
-                console.error(`Failed to load index for ${source.name}:`, error);
+                const errorMessage = `Failed to load search index for "${source.name}" from "${source.searchIndex}". ` +
+                    `This may be due to network issues, server unavailability, or invalid index format. ` +
+                    `Original error: ${error.message}`;
+                console.error('[HED Search]', errorMessage, error);
                 this.loadingStatus[source.name] = 'error';
-                return { source: source.name, status: 'error', error: error.message };
+                return { source: source.name, status: 'error', error: errorMessage };
             }
         });
 
@@ -163,7 +166,7 @@ class HEDSearch {
 
         // Convert scores to results
         for (const [docId, rawScore] of Object.entries(docScores)) {
-            const docIdNum = parseInt(docId);
+            const docIdNum = parseInt(docId, 10);
             if (docIdNum >= titles.length) continue;
 
             const title = titles[docIdNum];
@@ -206,7 +209,7 @@ class HEDSearch {
             .toLowerCase()
             .split(/\s+/)
             .filter(term => term.length > 1)
-            .map(term => term.replace(/[^\w]/g, ''));
+            .map(term => term.replace(/[^\w-]/g, ''));
     }
 
     /**
@@ -217,17 +220,25 @@ class HEDSearch {
             return '';
         }
 
-        let preview = text;
+        // Escape HTML to prevent XSS
+        let preview = text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
         
         // Truncate if too long
         if (preview.length > this.config.options.previewLength) {
             preview = preview.substring(0, this.config.options.previewLength) + '...';
         }
 
-        // Highlight search terms
+        // Highlight search terms (after escaping)
         if (this.config.options.highlightTerms) {
             for (const term of searchTerms) {
-                const regex = new RegExp(`\\b${term}\\b`, 'gi');
+                // Escape regex special characters
+                const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`\\b${escapedTerm}\\b`, 'gi');
                 preview = preview.replace(regex, '<mark>$&</mark>');
             }
         }
@@ -258,7 +269,6 @@ async function initializeSearch() {
     }
 
     // Show loading state
-    const resultsContainer = document.getElementById('searchResults');
     const statusContainer = document.getElementById('searchStatus');
     
     if (statusContainer) {

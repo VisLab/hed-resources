@@ -130,7 +130,7 @@ html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 html_js_files = ["gh_icon_fix.js"]
 
-# Copy redirect HTML pages and custom search page directly to output without processing by Sphinx
+# Copy redirect HTML pages and custom search page directly to output (no Sphinx)
 # These files will be copied as-is to the _build/html directory
 html_extra_path = [
     "HedRemodelingQuickstart.html",

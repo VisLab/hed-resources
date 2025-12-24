@@ -10,7 +10,7 @@
 const SEARCH_CONFIG = {
     sources: [
         {
-            name: 'HED Resources',
+            name: 'HED resources',
             url: 'https://www.hedtags.org/hed-resources',
             searchIndex: 'https://www.hedtags.org/hed-resources/searchindex.js',
             description: 'HED tutorials, guides, and documentation',
