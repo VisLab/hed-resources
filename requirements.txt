@@ -1,4 +1,4 @@
-# HED Resources Documentation Dependencies
+# HED resources documentation dependencies
 # This file is maintained for backwards compatibility
 # For the full project configuration, see pyproject.toml
 
