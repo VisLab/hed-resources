@@ -6,7 +6,7 @@ HED resources
    
    * `HED homepage <https://www.hedtags.org/>`_ 
 
-   * `HED vocabularies <https://www.hedtags.org/hed-schema-browser>`_
+   * `HED schema browser <https://www.hedtags.org/hed-schema-browser>`_
 
    * `HED online tools <https://hedtools.org/hed/>`_
 
@@ -38,8 +38,8 @@ Where to begin?
 **Ready to get started?** Use the `How can you use HED? <./HowCanYouUseHed.html>`_ guide to find role-specific
 workflows and detailed guidance for your use case (experimenters, annotators, analysts, developers, or schema builders).
 
-**Need tools?** Browse the `HED online tools <https://hedtools.org/hed/>`_ for validation, annotation, and analysis,
-or visit the `HED standard organization <https://github.com/hed-standard/>`_ on GitHub.
+**Need tools?** Browse the `HED online tools <https://hedtools.org/hed/>`_ for installation-free validation, annotation, and analysis.
+You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_, the `MATLAB HEDTools <https://www.hedtags.org/hed-matlab>`_, and the `JavaScript HEDTools <https://www.hedtags.org/hed-javascript>`_ for programmatic access on various platforms.
 
 
 .. toctree::
@@ -65,7 +65,7 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    HedValidationGuide.md
    HedSearchGuide.md
    HedSummaryGuide.md
-   HedConditionsAndDesignMatrices.md
+   Conditions and design matrices <HedConditionsAndDesignMatrices>
 
 
 .. toctree::
@@ -74,11 +74,12 @@ or visit the `HED standard organization <https://github.com/hed-standard/>`_ on 
    :caption: Tool documentation:
 
    HED online tools <https://www.hedtags.org/hed-web>
-   Python HEDTools <https://www.hedtags.org/hed-python>
-   HED JavaScript tools <https://www.hedtags.org/hed-javascript>
-   Table-remodeler <https://www.hedtags.org/table-remodeler>
    Schema developer guide <https://www.hedtags.org/hed-schemas>
-   HED Matlab tools <https://www.hedtags.org/hed-matlab>
+   Python HEDTools <https://www.hedtags.org/hed-python>
+   JavaScript HedTools <https://www.hedtags.org/hed-javascript>
+   MATLAB HEDTools <https://www.hedtags.org/hed-matlab>
+   Table-remodeler <https://www.hedtags.org/table-remodeler>
+   HED MCP <https://github.com/hed-standard/hed-mcp/blob/main/README.md>
    HedAndEEGLAB.md
    CTaggerGuide.md
 

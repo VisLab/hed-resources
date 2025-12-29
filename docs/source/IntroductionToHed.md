@@ -28,7 +28,7 @@ class: tip
 - **NWB integration**: Works seamlessly with Neurodata Without Borders (NWB)
 ```
 
-## What does HED annotation look like?
+## What do HED annotations look like?
 
 Instead of cryptic event codes, HED lets you describe events in plain, structured language:
 
@@ -55,37 +55,37 @@ For role-specific guidance and detailed workflows, see [**How can you use HED?**
 For quick hands-on learning, start with the tutorials:
 
 - **New to HED?** Try the [HED annotation quickstart](HedAnnotationQuickstart.md)
-- **Have BIDS data?** Follow the [BIDS annotation quickstart](BidsAnnotationQuickstart.md)
-- **Want to analyze?** Read the [HED search guide](HedSearchGuide.md)
+- **Have BIDS data?** Follow the [BIDS annotation quickstart](BidsAnnotationQuickstart.md) followed by the [HED annotation quickstart](HedAnnotationQuickstart.md)
+- **Need practical guidelines?** Review the [HED annotation semantics](HedAnnotationSemantics.md)
 
 ## Key concepts to understand
 
 Before diving into HED annotation, familiarize yourself with these fundamental concepts:
 
-```{dropdown} **HED Schema - The Vocabulary**
+```{dropdown} **HED schemas - the vocabulary**
 ---
 color: primary
 ---
 The HED schema is a structured vocabulary organized as a hierarchy. Think of it like a taxonomy:
-- **Event** → **Sensory-event** → **Visual-presentation**
-- **Item** → **Object** → **Man-made-object** → **Tool**
-- **Property** → *Sensory-pproperty** → **Visual-presentation**
+- **Event** → **Sensory-event** 
+- **Item** → **Object** → **Man-made-object** → **Device** → **Tool**
+- **Property** → **Sensory-property** → **Sensory-presentation** → **Visual-presentation**
 
 You generally tag using short form (`Face`), but tools can automatically expand to long form (`Item/Biological-item/Anatomical-item/Body-part/Head/Face`) for tasks such as searching for all body parts.
 ```
 
-```{dropdown} **Tags and Grouping**
+```{dropdown} **Tags and grouping**
 ---
 color: info
 ---
-- **Tags**: Individual terms from the HED schema (`Sensory-event`, `Red`, `Onset`)
-- **Groups**: Related tags in parentheses `(Visual-presentation, (Face, Image))`
-- **Comma separation**: Different aspects of the same event
+- **Tags**: Individual terms from the HED schema (e.g., `Sensory-event`, `Red`, `Onset`)
+- **Groups**: Items associated with their properties (e.g., `(Visual-presentation, (Face, Image))`)
+- **Comma separation**: Separates tags and tag groups
 
 Example: `Sensory-event, Experimental-stimulus, (Visual-presentation, (Face, Image))`
 ```
 
-```{dropdown} **Annotation Levels**
+```{dropdown} **Annotation levels**
 ---
 color: success
 ---
@@ -94,14 +94,14 @@ color: success
 - **Advanced**: Use definitions and temporal scope for complex experiments
 ```
 
-```{dropdown} **Validation and Tools**
+```{dropdown} **Validation and tools**
 ---
 color: warning
 ---
 HED provides tools to check your annotations:
-- **Online validator**: Check syntax and schema compliance
-- **Python/MATLAB libraries**: Integrate validation and analysis into your workflows
-- **BIDS validator**: Automatically checks HED in BIDS datasets
+- [**Online validator**](https://hedtools.org/hed): Check syntax and schema compliance
+- [**Python**](https:/www.hedtags.org/hed-python)/[**MATLAB libraries**](https://www.hedtags.org/hed-matlab) libraries: Integrate validation and analysis into your workflows
+- [**HED validator for BIDS**](https://github.com/hed-javascript): Automatically checks HED in BIDS datasets
 ```
 
 ## Next steps
@@ -109,7 +109,7 @@ HED provides tools to check your annotations:
 **Ready to start?** Go to [**How can you use HED?**](HowCanYouUseHed.md) to find role-specific guidance and workflows tailored to your needs:
 
 - [**🧪 Experimenters**](as-an-experimenter-anchor): Event logging, data collection, and log processing
-- [**📝 Data Annotators**](as-a-data-annotator-anchor): BIDS curation, annotation workflows, and quality control
-- [**📊 Data Analysts**](as-a-data-analyst-anchor): Search strategies, analysis pipelines, and cross-study methods
-- [**🛠️ Tool Developers**](as-a-tool-developer-anchor): API integration, schema handling, and validation frameworks
-- [**🏗️ Schema Builders**](as-a-schema-builder-anchor): Vocabulary development, library schemas, and community coordination
+- [**📝 Data annotators**](as-a-data-annotator-anchor): BIDS curation, annotation workflows, and quality control
+- [**📊 Data analysts**](as-a-data-analyst-anchor): Search strategies, analysis pipelines, and cross-study methods
+- [**🛠️ Tool developers**](as-a-tool-developer-anchor): API integration, schema handling, and validation frameworks
+- [**🏗️ Schema builders**](as-a-schema-builder-anchor): Vocabulary development, library schemas, and community coordination
