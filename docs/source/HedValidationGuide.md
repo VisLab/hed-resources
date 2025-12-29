@@ -118,9 +118,9 @@ Users can access these services directly by calling wrapper functions or by usin
 
 #### Access through EEGLAB
 
-[**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) users can access HED validation through the [**EEGLAB HEDTools plugin**](./HedAndEEGLAB.md).
+[**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) users can access HED validation through the [**EEGLAB HEDTools plugin**](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html).
 
-[**CTagger**](./CTaggerGuide.md) is an annotation tool that guides users through the tagging process using a graphical user interface. CTagger is available as a stand-alone program as well from EEGLAB through the HEDtools plugin.
+[**CTagger**](https://www.hedtags.org/CTagger) is an annotation tool that guides users through the tagging process using a graphical user interface. CTagger is available as a stand-alone program as well from EEGLAB through the HEDtools plugin.
 
 #### Access through Fieldtrip
 

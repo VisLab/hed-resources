@@ -568,7 +568,7 @@ The [**HED search guide**](./HedSearchGuide.md) explains the HED query structure
 
 #### HED analysis in EEGLAB
 
-[**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php), the interactive MATLAB toolbox for EEG/MEG analysis, supports HED through the [**EEGLAB HEDTools plugin**](./HedAndEEGLAB.md).
+[**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php), the interactive MATLAB toolbox for EEG/MEG analysis, supports HED through the [**EEGLAB HEDTools plugin**](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html).
 
 **Key capabilities:**
 
@@ -596,7 +596,7 @@ If you are interested in helping with HED integration in other tools, please ema
 
 - **📚 Guides**: [**HED search guide**](./HedSearchGuide.md), [**HED summary guide**](./HedSummaryGuide.md), [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md)
 - **🛠️ Tools**: [**Table remodeler**](https://www.hedtags.org/table-remodeler) - Transform and analyze event files
-- **🧪 EEGLAB**: [**HED and EEGLAB**](./HedAndEEGLAB.md) - HED integration in EEGLAB
+- **🧪 EEGLAB**: [**HED and EEGLAB**](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html) - HED integration in EEGLAB
 - **📖 Book chapter**: [**End-to-end EEG processing**](https://doi.org/10.1007/978-1-0716-4260-3_6) - Complete analysis workflow
 
 <hr style="border: 3px solid #000080" />

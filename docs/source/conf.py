@@ -139,5 +139,7 @@ html_extra_path = [
     "HedAnnotationInNWB.html",
     "HedOnlineTools.html",
     "HedJavascriptTools.html",
+    "CTaggerGuide.html",
+    "HedAndEEGLAB.html",
     "hed-search.html",  # Multi-repository search page
 ]

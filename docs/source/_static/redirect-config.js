@@ -227,6 +227,46 @@ const REDIRECT_CONFIG = {
             "#javascript-package-organization": "",
             "#javascript-programmatic-interface": ""
         }
+    },
+    
+    // CTagger Guide moved to hedtags.org/CTagger
+    // All anchors redirect to the base URL (no fragments)
+    "CTaggerGuide.html": {
+        newUrl: "https://www.hedtags.org/CTagger/",
+        anchorMap: {
+            // Auto-generated heading anchors - all redirect to base page
+            "#ctagger-guide": "",
+            "#ctagger-installation": "",
+            "#ctagger-standalone-installation": "",
+            "#step-1check-to-see-that-you-have-java-installed": "",
+            "#step-2-download-ctaggerjar": "",
+            "#step-3-double-click-on-ctaggerjar-to-run": "",
+            "#ctagger-in-eeglab": "",
+            "#loading-bids-event-files": "",
+            "#adding-hed-annotation": "",
+            "#validating-your-annotation": ""
+        }
+    },
+    
+    // HED and EEGLAB documentation moved to hedtags.org/CTagger/ctagger_in_eeglab.html
+    "HedAndEEGLAB.html": {
+        newUrl: "https://www.hedtags.org/CTagger/ctagger_in_eeglab.html",
+        anchorMap: {
+            // Explicit MyST-style anchors
+            "#hed-and-eeglab-anchor": "",
+            "#annotating-datasets-anchor": "#annotating-datasets",
+            
+            // Auto-generated heading anchors
+            "#hed-and-eeglab": "",
+            "#installing-hedtools-eeglab-plugin": "#installing-hedtools-eeglab-plugin",
+            "#method-1-eeglab-extension-manager": "#method-1-eeglab-extension-manager",
+            "#method-2-download-and-unzip": "#method-2-download-and-unzip",
+            "#annotating-datasets": "#annotating-datasets",
+            "#launching-eeglab-hedtools": "#launching-eeglab-hedtools",
+            "#tagging-the-events": "#tagging-the-events",
+            "#validation": "#validation",
+            "#hed-based-epoching": "#hed-based-epoching"
+        }
     }
     
     // Add more pages as they are migrated:
