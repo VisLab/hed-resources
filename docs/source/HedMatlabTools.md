@@ -18,7 +18,7 @@ Calling the HED MATLAB tools using web services requires no installation beyond 
 
 Using direct calls to the Python HEDTools from MATLAB is more efficient and provides additional functionality not available through the web service interface. However, direct calls require a one-time setup of Python for your MATLAB installation. See [**MATLAB Python install**](#matlab-python-install) for additional setup information.
 
-Another option is to use the [**EEGLAB HEDTools plug-in**](./HedAndEEGLAB.md) integration for HED. The EEGLAB plug-ins provide easy access through the EEGLAB GUI interface
+Another option is to use the [**EEGLAB HEDTools plug-in**](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html) integration for HED. The EEGLAB plug-ins provide easy access through the EEGLAB GUI interface
 
 ### The HED MATLAB interface
 
