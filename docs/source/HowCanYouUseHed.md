@@ -794,26 +794,13 @@ gutter: 2
 ```
 ````
 
-**Here are some topics of interest to schema developers:**
-
-- [**Exploring existing schemas**](exploring-existing-schemas-anchor)
-  - [**Viewing available schemas**](viewing-available-schemas-anchor)
-  - [**Understanding schema structure**](understanding-schema-structure-anchor)
-- [**Contributing to existing schemas**](contributing-to-existing-schemas-anchor)
-  - [**Improving an existing schema**](improving-an-existing-schema-anchor)
-  - [**Schema review process**](schema-review-process-anchor)
-- [**Creating new schemas**](creating-new-schemas-anchor)
-  - [**Creating a new library schema**](creating-a-new-library-schema-anchor)
-  - [**Schema development workflow**](schema-development-workflow-anchor)
-  - [**Private vocabularies and extensions**](private-vocabularies-and-extensions-anchor)
-
 (exploring-existing-schemas-anchor)=
 
-### Exploring existing schemas
+### 🔍 Exploring existing schemas
+
+```{dropdown} **Understanding existing HED vocabularies**
 
 Before proposing changes or creating a new schema, familiarize yourself with existing HED vocabularies to avoid duplication and understand HED's organizational principles.
-
-(viewing-available-schemas-anchor)=
 
 #### Viewing available schemas
 
@@ -835,8 +822,6 @@ All of the versions and prereleases of the schemas are available through the vie
 | mouse_1.0.0       | library  | Annotations for mouse experiments                                  | prerelease |
 | media             | Library  | Tags for annotating images and video                               | proposed   |
 
-(understanding-schema-structure-anchor)=
-
 #### Understanding schema structure
 
 HED schemas have structured elements including:
@@ -857,14 +842,15 @@ The value classes and unit classes are mainly relevant for tags that take values
 - **Self-contained**: Tag descriptions should be understandable without external context
 
 See the [**HED specification**](https://www.hedtags.org/hed-specification) for the rules that govern HED tag syntax and usage. See HED schema [**developer guide**](https://www.hedtags.org/hed-schemas/developer_guide.html) for detailed information on schema structure and design principles.
+```
 
 (contributing-to-existing-schemas-anchor)=
 
-### Contributing to existing schemas
+### ✏️ Contributing to existing schemas
+
+````{dropdown} **Proposing improvements to HED schemas**
 
 The HED community welcomes suggestions for improving existing schemas. Whether you've found an error, need additional terms, or want to clarify descriptions, your input helps improve HED for everyone.
-
-(improving-an-existing-schema-anchor)=
 
 #### Improving an existing schema
 
@@ -897,8 +883,6 @@ class: tip
 - How it relates to existing schema features
 ```
 
-(schema-review-process-anchor)=
-
 #### Schema review process
 
 Schema changes go through a community review process:
@@ -917,14 +901,15 @@ Schema changes go through a community review process:
 - **Backward compatibility**: Changes should minimize breaking existing annotations
 
 All suggested changes should be reported using the [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) mechanism on GitHub.
+````
 
 (creating-new-schemas-anchor)=
 
-### Creating new schemas
+### 🏛️ Creating new schemas
+
+````{dropdown} **Developing new HED library schemas**
 
 If your domain requires extensive specialized vocabulary not appropriate for the standard schema, you may want to create a new HED library schema.
-
-(creating-a-new-library-schema-anchor)=
 
 #### Creating a new library schema
 
@@ -956,8 +941,6 @@ class: tip
 - **Documentation**: Commitment to documenting terms clearly
 - **Long-term maintenance**: Plan for maintaining the schema over time
 
-(schema-development-workflow-anchor)=
-
 #### Schema development workflow
 
 The schema development process follows these general steps:
@@ -980,8 +963,6 @@ The [**HED specification**](https://www.hedtags.org/hed-specification) is the de
 - Versioning and compatibility
 - Testing and validation
 - Best practices for schema development
-
-(private-vocabularies-and-extensions-anchor)=
 
 #### Private vocabularies and extensions
 
@@ -1008,4 +989,13 @@ While technically possible, **private schemas are not recommended** and have lim
 
 The HED Working Group decided to prioritize standardized schemas after observing that unvetted private vocabularies would compromise HED's ability to enable standardized dataset summaries and cross-study comparisons.
 
-If you have a use case that genuinely requires a private vocabulary, please email hed.maintainers@gmail.com to discuss options.
+If you have a use case that genuinely requires a private vocabulary, please email [**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com) to discuss options.
+````
+
+### Resources for schema developers
+
+- **🌐 Schema browser**: [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/) - Interactive schema viewer
+- **📖 Documentation**: [**HED specification**](https://www.hedtags.org/hed-specification), [**Schema developer's guide**](https://www.hedtags.org/hed-schemas/developer_guide.html)
+- **📋 Repository**: [**hed-schemas**](https://github.com/hed-standard/hed-schemas) - All official HED schemas
+- **💬 Discussions**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) - Propose changes or new schemas
+- **📧 Contact**: [**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com) - Direct schema questions
