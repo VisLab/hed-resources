@@ -110,6 +110,7 @@ gutter: 2
 ````
 
 ### 🎯 Data collection
+
 ```{dropdown} **Planning and running experiments**
 
 #### Key questions to address
@@ -135,6 +136,7 @@ gutter: 2
 ```
 
 ### 🔄 Post-processing
+
 `````{dropdown} **Post-processing and data transformation**
 
 After data collection, raw logs need processing before analysis. The [**table-remodeler**](https://www.hedtags.org/table-remodeler) tools help transform experimental logs into analysis-ready event files.
@@ -167,7 +169,8 @@ class: tip
 `````
 
 ### 📋 Data scharing
-`````{dropdown} **Standardizing data format for sharing**
+
+```{dropdown} **Standardizing data format for sharing**
 
 An important aspect of data collection is organizing your data in a standardized format so that analysis tools can read and manipulate the data without special-purpose reformatting code. BIDS and NWB are the most widely-used standards for organizing brain and behavioral data in neuroscience.
 
@@ -213,7 +216,7 @@ HED annotations in NWB use the **ndx-hed** extension with three main classes:
 Installation: `pip install -U ndx-hed`
 
 BIDS allows NWB file format for recording sessions within a BIDS-organized experiment. HED is well-integrated into both standards.
-`````
+```
 
 ### Resources for experimenters
 
@@ -232,6 +235,7 @@ ______________________________________________________________________
 You're adding meaningful annotations to event data, ensuring consistency and completeness, and validating that datasets meet quality standards. HED provides tools and workflows to make your data FAIR (Findable, Accessible, Interoperable, Reusable).
 
 ### Annotator challenges
+
 ````{grid} 2
 ---
 gutter: 2
@@ -258,6 +262,7 @@ gutter: 2
 ````
 
 (basic-background-anchor)=
+
 ### 📚 Basic background
 
 ```{dropdown} **Getting started resources**
@@ -272,6 +277,7 @@ gutter: 2
 ```
 
 (adding-hed-annotations-anchor)=
+
 ### ✏️ Adding HED annotations
 
 ```{dropdown} **Annotation strategies**
@@ -326,6 +332,7 @@ The [**Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advan
 ```
 
 (validating-hed-annotations-anchor)=
+
 ### ✓ Validating HED annotations
 
 ```{dropdown} **Validation workflow and resources**
@@ -358,6 +365,7 @@ Checking for errors is an ongoing, iterative process. Build complex annotations 
 ```
 
 (checking-for-consistency-anchor)=
+
 ### 🔍 Checking for consistency
 
 ````{dropdown} **Consistency checking tools and strategies**
@@ -406,6 +414,7 @@ Annotators should mark these anomalies in the event file so downstream analysis 
 ````
 
 ### Resources for data annotators:
+
 - **📚 Guides**: [**HED annotation quickstart**](./HedAnnotationQuickstart.md), [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md)
 - **🛠️ Tools**: [**HED online tools**](https://hedtools.org/hed/) - Validation, templates, and conversion
 - **🌐 Browser**: [**HED schema browser**](https://www.hedtags.org/hed-schema-browser) - Explore available vocabularies
@@ -627,8 +636,6 @@ gutter: 2
 ```
 ````
 
-
-
 (getting-started-with-integration-anchor)=
 
 ### 🚀 Getting started with HEDTools
@@ -729,10 +736,9 @@ The HED project welcomes contributions from the community. Whether you're report
 
 - **General questions**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
 - **Python HEDTools**: [**hed-python/issues**](https://github.com/hed-standard/hed-python/issues)
-- **JavaScript  HEDTools**: [**hed-javascript/issues**](https://github.com/hed-standard/hed-javascript/issues)
-- **MATLAB  HEDTools**: [**hed-matlab/issues**](https://github.com/hed-standard/hed-matlab/issues)
+- **JavaScript HEDTools**: [**hed-javascript/issues**](https://github.com/hed-standard/hed-javascript/issues)
+- **MATLAB HEDTools**: [**hed-matlab/issues**](https://github.com/hed-standard/hed-matlab/issues)
 - **Schema issues**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
-
 
 #### Contributing code
 
@@ -747,7 +753,6 @@ The HED community is actively working on expanding HED's capabilities and integr
 - Better integrate experimental control software with annotation workflows
 - Capture event relationships for complex automated analysis
 - Expand library schemas for specialized domains
-
 
 ### 📚 Resources for tool developers
 
