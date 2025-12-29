@@ -627,27 +627,15 @@ gutter: 2
 ```
 ````
 
-**Here are some topics of interest to tool developers:**
 
-- [**Getting started with HED integration**](getting-started-with-integration-anchor)
-  - [**Understanding HED schemas**](understanding-hed-schemas-anchor)
-  - [**Choosing your platform**](choosing-your-platform-anchor)
-- [**Working with HED code bases**](working-with-hed-code-bases-anchor)
-  - [**The HED Python code base**](the-hed-python-code-base-anchor)
-  - [**The HED JavaScript code base**](the-hed-javascript-code-base-anchor)
-  - [**The HED MATLAB code base**](the-hed-matlab-code-base-anchor)
-  - [**Web tools and REST services**](web-tools-and-rest-services-anchor)
-- [**Contributing to HED development**](contributing-to-hed-development-anchor)
-  - [**Reporting issues and feature requests**](reporting-issues-anchor)
-  - [**Future development plans**](future-development-plans-anchor)
 
 (getting-started-with-integration-anchor)=
 
-### Getting started with HED integration
+### 🚀 Getting started with HEDTools
+
+```{dropdown} **Understanding HED structure and choosing your platform**
 
 Before diving into code, understanding HED's structure and choosing the right platform will save time and ensure your integration follows HED best practices.
-
-(understanding-hed-schemas-anchor)=
 
 #### Understanding HED schemas
 
@@ -657,15 +645,13 @@ HED schemas define the vocabulary available for annotations:
 - **HED library schemas**: Domain-specific vocabularies (e.g., SCORE for clinical EEG)
 - **Schema versions**: Schemas evolve with numbered versions (e.g., 8.3.0)
 
-**Key concepts for developers:**
+####Key concepts for developers
 
 - **Schema loading**: Most HED tools require a schema version (e.g., 8.4.0) in order to operate. The most recent versions are cached internally so that a given version of the schema is only loaded once.
 - **Validation**: Use HED validator libraries rather than implementing your own
 - **Short vs long form**: Tags can be written in short form (single tag: e.g., `Face`) or long form (full path to the root of the schema hierarchies: e.g., `Item/Biological-item/Anatomical-item/Body-part/Head/Face`). Tools should be able to handle all forms, including intermediate partial paths. Rely on the HED tools to transform when needed. The long form is needed mostly for search -- searching for `Body-part` should also return more specific annotations such as `Face`.
 
 See [**HED schemas**](./HedSchemas.md) guide for detailed information about the HED schemas.
-
-(choosing-your-platform-anchor)=
 
 #### Choosing your platform
 
@@ -683,49 +669,45 @@ HED provides official tools in three languages:
 - **Custom needs**: Consider calling REST services from any language
 
 **Note**: HED REST services are available at [**HED online tools**](https://hedtools.org/hed).
+```
 
 (working-with-hed-code-bases-anchor)=
 
-### Working with HED code bases
+### 💻 Working with code bases
+
+```{dropdown} **Open-source HED implementations and tools**
 
 The GitHub [**HED standard**](https://github.com/hed-standard) organization maintains open-source code projects in Python, MATLAB, and JavaScript. All repositories welcome contributions, issue reports, and pull requests.
 
-**Core resources:**
+#### Core resources
 
 - **Project page**: [**https://www.hedtags.org**](https://www.hedtags.org)
 - **Documentation**: [**https://www.hedtags.org/hed-resources**](https://www.hedtags.org/hed-resources)
 - **Annotated datasets**: [**hed-examples**](https://github.com/hed-standard/hed-examples) repository
 - **Schemas**: [**hed-schemas**](https://github.com/hed-standard/hed-schemas) repository
 
-(the-hed-python-code-base-anchor)=
-
-#### Python tools
+#### Python HEDTools
 
 **Focus**: Core HED technology including validation, analysis, and schema development
 
 - **Repository**: [**hed-python**](https://github.com/hed-standard/hed-python) - **Package installation**: `pip install hedtools`
 - **Documentation**: [**HED Python tools**](https://www.hedtags.org/hed-python)
 
-(the-hed-javascript-code-base-anchor)=
-
-#### JavaScript tools
+#### JavaScript HEDTools
 
 **Focus**: HED validation for web applications and BIDS validator
 
 - **Repository**: [**hed-javascript**](https://github.com/hed-standard/hed-javascript)
 - **Package installation**: `npm install hed-validator`
-- **Documentation**: [**HED JavaScript tools**](https://www.hedtags.org/hed-javascript)
+- **Documentation**: [**HED JavaScript tools**](https://www.hedtags.org/hed-javascript) -- includes browser-based HED validator for BIDS
 
-(the-hed-matlab-code-base-anchor)=
-
-#### MATLAB tools
+#### MATLAB HEDTools
 
 **Focus**: Analysis, annotation, and validation with EEGLAB integration
 
 - **Repository**: [**hed-matlab**](https://github.com/hed-standard/hed-matlab) - **Installation**: Via EEGLAB plugin manager
-- **Documentation**: [**HED MATLAB tools**](https://wwww/hedtags.org/hed-matlab)- [**CTagger GUI**](./CTaggerGuide.md)
-
-(web-tools-and-rest-services-anchor)=
+- **Documentation**: [**HED MATLAB tools**](https://wwww/hedtags.org/hed-matlab)
+- [**CTagger**](https://www.hedtags.org/CTagger) - a standalone annotation Java-based annotation tool with an EEGLAB plugin available.
 
 #### Online tools and REST services
 
@@ -735,38 +717,30 @@ The GitHub [**HED standard**](https://github.com/hed-standard) organization main
 - **Development**: [**hedtools.org/hed_dev**](https://hedtools.org/hed_dev)
 - **Repository**: [**hed-web**](https://github.com/hed-standard/hed-web)
 - **Documentation**: [**HED online tools**](https://www.hedtags.org/hed-web)
+```
 
 (contributing-to-hed-development-anchor)=
 
-### Contributing to HED development
+### 🤝 Contributing to HED development
 
 The HED project welcomes contributions from the community. Whether you're reporting bugs, suggesting features, or contributing code, your input helps improve HED for everyone.
 
-(reporting-issues-anchor)=
-
-#### Reporting issues and feature requests
-
 **Where to report:**
 
-- **Python tools**: [**hed-python/issues**](https://github.com/hed-standard/hed-python/issues)
-- **JavaScript tools**: [**hed-javascript/issues**](https://github.com/hed-standard/hed-javascript/issues)
-- **MATLAB tools**: [**hed-matlab/issues**](https://github.com/hed-standard/hed-matlab/issues)
-- **Schema issues**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
 - **General questions**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
+- **Python HEDTools**: [**hed-python/issues**](https://github.com/hed-standard/hed-python/issues)
+- **JavaScript  HEDTools**: [**hed-javascript/issues**](https://github.com/hed-standard/hed-javascript/issues)
+- **MATLAB  HEDTools**: [**hed-matlab/issues**](https://github.com/hed-standard/hed-matlab/issues)
+- **Schema issues**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
 
-**Contributing code:**
 
-All HED repositories welcome pull requests. See the CONTRIBUTING.md file in each repository for specific guidelines.
+#### Contributing code
 
-Alternatively, you can email hed.maintainers@gmail.com with questions or suggestions.
+All HED repositories welcome pull requests. See the CONTRIBUTING.md file in each repository for specific guidelines. If you have ideas or want to contribute to these efforts, please post an issue or email [**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com).
 
-(future-development-plans-anchor)=
+#### Long-term vision
 
-### Future development plans
-
-The HED community is actively working on expanding HED's capabilities and integration.
-
-**Long-term vision:**
+The HED community is actively working on expanding HED's capabilities and integration:
 
 - Develop more sophisticated analysis methods
 - Leverage AI to reduce the cognitive burden on users
@@ -774,9 +748,14 @@ The HED community is actively working on expanding HED's capabilities and integr
 - Capture event relationships for complex automated analysis
 - Expand library schemas for specialized domains
 
-**Get involved:**
 
-If you have ideas or want to contribute to these efforts, please join the discussion on [**GitHub Discussions**](https://github.com/hed-standard/hed-python/discussions) or email hed.maintainers@gmail.com.
+### 📚 Resources for tool developers
+
+- **🔧 Code repositories**: [**hed-python**](https://github.com/hed-standard/hed-python), [**hed-javascript**](https://github.com/hed-standard/hed-javascript), [**hed-matlab**](https://github.com/hed-standard/hed-matlab)
+- **📖 Documentation**: [**Python tools**](https://www.hedtags.org/hed-python), [**JavaScript tools**](https://www.hedtags.org/hed-javascript), [**MATLAB tools**](https://www.hedtags.org/hed-matlab)
+- **🌐 Online tools**: [**hedtools.org**](https://hedtools.org/hed) - REST services and web validation
+- **📋 Schemas**: [**hed-schemas**](https://github.com/hed-standard/hed-schemas) - Standard and library schemas
+- **💬 Support**: [**GitHub Discussions**](https://github.com/hed-standard/hed-python/discussions) or email hed.maintainers@gmail.com
 
 <hr style="border: 3px solid #000080;" />
 
