@@ -267,6 +267,57 @@ const REDIRECT_CONFIG = {
             "#validation": "#validation",
             "#hed-based-epoching": "#hed-based-epoching"
         }
+    },
+    
+    // HED MATLAB Tools documentation moved to hedtags.org/hed-matlab
+    "HedMatlabTools.html": {
+        newUrl: "https://www.hedtags.org/hed-matlab/",
+        anchorMap: {
+            // Explicit MyST-style anchors
+            "#matlab-hedtools-anchor": "",
+            "#what-to-download-anchor": "",
+            "#matlab-python-install-anchor": "",
+            "#step-1-find-python-anchor": "",
+            "#step-2-install-python-if-needed-anchor": "",
+            "#step-3-connect-python-to-matlab-anchor": "",
+            "#step-4-install-hedtools-anchor": "",
+            "#web-service-matlab-demos-anchor": "",
+            "#overview-of-service-requests-anchor": "",
+            "#setting-up-a-session-from-matlab-anchor": "",
+            "#gethostoptions-source-anchor": "",
+            "#creating-a-request-structure-anchor": "",
+            "#create-request-sidecar-validate-anchor": "",
+            "#making-a-service-request-anchor": "",
+            "#decoding-a-service-response-anchor": "",
+            
+            // Auto-generated heading anchors - redirect to base
+            "#hed-matlab-tools": "",
+            "#tool-overview": "",
+            "#matlab-hedtools-interface": "",
+            "#what-to-download": "",
+            "#using-matlab-hedtools": "",
+            "#getting-a-hedtools-object": "",
+            "#calling-a-tool": "",
+            "#input-of-events": "",
+            "#input-of-sidecars": "",
+            "#assembling-hed-annotations": "",
+            "#searching-hed-annotations": "",
+            "#matlab-python-install": "",
+            "#installing-python": "",
+            "#step-1-find-python": "",
+            "#step-2-install-python-if-needed": "",
+            "#step-3-connect-python-to-matlab": "",
+            "#step-4-install-hedtools": "",
+            "#matlab-functions-for-python": "",
+            "#additional-demos": "",
+            "#calling-table-remodeler": "",
+            "#web-service-matlab-demos": "",
+            "#overview-of-service-requests": "",
+            "#setting-up-a-session-from-matlab": "",
+            "#creating-a-request-structure": "",
+            "#making-a-service-request": "",
+            "#decoding-a-service-response": ""
+        }
     }
     
     // Add more pages as they are migrated:

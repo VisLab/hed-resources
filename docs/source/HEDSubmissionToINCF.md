@@ -147,7 +147,7 @@ As summarized in the following discussion, annotation using HED requires very li
 No programming is required to call the remodeling tools from the command line.\
 See the [**Table remodeler documentation**](https://www.hedtags.org/table-remodeler) for additional information.
 
-Users can also access the functionality of the online tools through HED web services. See [HED services in MATLAB](https://www.hedtags.org/hed-resources/HedMatlabTools.html#hed-services-in-matlab) for examples of how these services can be called from MATLAB.\
+Users can also access the functionality of the online tools through HED web services. See [HED services in MATLAB](https://www.hedtags.org/hed-matlab/) for examples of how these services can be called from MATLAB.\
 Example code for all services can be found in the [web_services-demos](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos) directory of the [hed-examples](https://github.com/hed-standard/hed-examples) GitHub repository.
 
 **c. Schema development:** The [HED schema developer’s guide](https://www.hedtags.org/hed-resources/HedSchemaDevelopersGuide.html) describes HED’s open process for adding a vocabulary to the HED ecosystem. While this process requires considerable domain knowledge, it does not require technical expertise beyond basic use of GitHub.
