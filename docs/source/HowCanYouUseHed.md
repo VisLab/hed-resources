@@ -448,28 +448,13 @@ gutter: 2
 ```
 ````
 
-**Here are some topics of interest to data analysts:**
-
-- [**Understanding the data**](understanding-the-data-anchor)
-  - [**Column value summaries**](column-value-summaries-anchor)
-  - [**HED tag summaries**](hed-tag-summaries-anchor)
-  - [**Experimental design summaries**](experimental-design-summaries-anchor)
-- [**Preparing the data**](preparing-the-data-anchor)
-  - [**Data transformation**](data-transformation-anchor)
-  - [**Event file restructuring**](event-file-restructuring-anchor)
-- [**Analyzing the data**](analyzing-the-data-anchor)
-  - [**Factor vectors and selection**](factor-vectors-and-selection-anchor)
-  - [**HED search queries**](hed-search-queries-anchor)
-  - [**HED analysis in EEGLAB**](hed-analysis-in-eeglab-anchor)
-  - [**HED support in other tools**](hed-support-in-other-tools-anchor)
-
 (understanding-the-data-anchor)=
 
-### Understanding the data
+### 📊 Understanding the data
+
+```{dropdown} **Data quality and content assessment**
 
 Before running any analysis, you need to understand what events are actually present in your data. Most shared datasets have minimal documentation, so HED summary tools help you quickly assess data quality and content without manual inspection.
-
-(column-value-summaries-anchor)=
 
 #### Column value summaries
 
@@ -482,8 +467,6 @@ The [**column value summary**](./HedSummaryGuide.md#column-value-summary) compil
 
 You can generate this summary using the [**HED online tools for debugging**](https://www.hedtags.org/table-remodeler/quickstart.html#online-tools-for-debugging-anchor) by uploading a single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar.
 
-(hed-tag-summaries-anchor)=
-
 #### HED tag summaries
 
 The [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary) creates a summary of the HED tags used to annotate the data.
@@ -492,8 +475,6 @@ The [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary) creates a summar
 - Works across different event coding schemes
 - Enables comparison between datasets
 - Requires HED annotations in the dataset
-
-(experimental-design-summaries-anchor)=
 
 #### Experimental design summaries
 
@@ -508,14 +489,15 @@ The [**experimental design summary**](./HedSummaryGuide.md#experimental-design-s
 
 - The [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation gives an overview of the remodeling tools and how to use them.
 - The [**HED conditions and design matrices**](HedConditionsAndDesignMatrices.md) guide explains how information structure information is encoded in HED and how to interpret the summaries of this information.
+```
 
 (preparing-the-data-anchor)=
 
-### Preparing the data
+### 🛠️ Preparing the data
+
+```{dropdown} **Data transformation and restructuring**
 
 After understanding your data, you may need to transform or reorganize event files to support your analysis goals.
-
-(data-transformation-anchor)=
 
 #### Data transformation
 
@@ -525,8 +507,6 @@ HED remodeling tools allow you to transform event files without writing custom c
 - **Factor extraction**: Create binary factor vectors for event selection
 - **Column merging**: Combine information from multiple columns
 - **Value renaming**: Standardize event codes across sessions
-
-(event-file-restructuring-anchor)=
 
 #### Event file restructuring
 
@@ -538,14 +518,15 @@ Common restructuring tasks include:
 - Filtering events based on criteria
 
 See the [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation for detailed examples and operation descriptions.
+```
 
 (analyzing-the-data-anchor)=
 
-### Analyzing the data
+### 📈 Analyzing the data
+
+```{dropdown} **Event selection and analysis workflows**
 
 HED enables powerful, flexible analysis through standardized event selection and design matrix extraction. The key advantage is that HED queries work consistently across different experiments using different event codes.
-
-(factor-vectors-and-selection-anchor)=
 
 #### Factor vectors and selection
 
@@ -565,8 +546,6 @@ HED facilitates this selection through **factor vectors**. A **factor vector** f
 
 - **[factor HED type](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-type)**: Creates factors based on HED tags representing structural information such as *Condition-variable*, *Task*, or *Temporal-marker*.
 
-(hed-search-queries-anchor)=
-
 #### HED search queries
 
 HED search queries allow you to find events based on their semantic properties rather than specific event codes. This enables:
@@ -577,8 +556,6 @@ HED search queries allow you to find events based on their semantic properties r
 - **Temporal context**: Find events within ongoing processes
 
 The [**HED search guide**](./HedSearchGuide.md) explains the HED query structure and available search options in detail.
-
-(hed-analysis-in-eeglab-anchor)=
 
 #### HED analysis in EEGLAB
 
@@ -595,8 +572,6 @@ The [**HED search guide**](./HedSearchGuide.md) explains the HED query structure
 
 The *End-to-end processing of EEG with HED and EEGLAB* book chapter, which can be found at [**https://doi.org/10.1007/978-1-0716-4260-3_6**](https://doi.org/10.1007/978-1-0716-4260-3_6), works through the entire analysis process, including porting the analysis to high performance computing platforms. The site includes sample data to use in running the examples.
 
-(hed-support-in-other-tools-anchor)=
-
 #### HED support in other tools
 
 Work is underway to integrate HED support in other analysis packages:
@@ -606,6 +581,14 @@ Work is underway to integrate HED support in other analysis packages:
 - **NEMAR/EEGNET**: Platform integration for large-scale analysis
 
 If you are interested in helping with HED integration in other tools, please email hed.maintainers@gmail.com.
+```
+
+### Resources for data analysts
+
+- **📚 Guides**: [**HED search guide**](./HedSearchGuide.md), [**HED summary guide**](./HedSummaryGuide.md), [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md)
+- **🛠️ Tools**: [**Table remodeler**](https://www.hedtags.org/table-remodeler) - Transform and analyze event files
+- **🧪 EEGLAB**: [**HED and EEGLAB**](./HedAndEEGLAB.md) - HED integration in EEGLAB
+- **📖 Book chapter**: [**End-to-end EEG processing**](https://doi.org/10.1007/978-1-0716-4260-3_6) - Complete analysis workflow
 
 <hr style="border: 3px solid #000080" />
 
