@@ -65,7 +65,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    HedValidationGuide.md
    HedSearchGuide.md
    HedSummaryGuide.md
-   Conditions and design matrices <HedConditionsAndDesignMatrices>
+   Design matrices <HedConditionsAndDesignMatrices>
 
 
 .. toctree::
@@ -79,6 +79,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    JavaScript HedTools <https://www.hedtags.org/hed-javascript>
    MATLAB HEDTools <https://www.hedtags.org/hed-matlab>
    Table-remodeler <https://www.hedtags.org/table-remodeler>
+   HED VSCode extension <HedVsCode.md>
    HED MCP <https://github.com/hed-standard/hed-mcp/blob/main/README.md>
    CTagger <https://www.hedtags.org/CTagger>
 
