@@ -47,7 +47,6 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx_design",
     "sphinx_copybutton",
-    "sphinxcontrib.mermaid",
 ]
 
 autosummary_generate = True
