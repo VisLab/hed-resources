@@ -10,8 +10,21 @@ The semantic interpretation of a HED annotation depends on:
 
 1. **Which tags are selected** - Each tag has a specific meaning in the HED vocabulary
 2. **How tags are grouped** - Parentheses bind tags that describe the same entity or relationship
-3. **Where tags are placed** - Top-level vs. nested grouping affects interpretation
+3. **Where tags are placed** - Top-level (not inside any parentheses) vs. nested (inside parentheses) grouping affects interpretation
 4. **The context of use** - Whether the annotation appears in a timeline file vs. descriptor file
+
+(tag-placement-anchor)=
+
+```{admonition} Understanding tag placement
+---
+class: tip
+---
+**Top-level tags:** Tags appearing outside all parentheses. Example: In `Sensory-event, (Red, Circle)`, the tag `Sensory-event` is top-level.
+
+**Nested tags:** Tags appearing inside parentheses. Example: In `Sensory-event, (Red, Circle)`, the tags `Red` and `Circle` are nested within a group.
+
+Tag placement determines scope and relationships - top-level tags typically classify the entire annotation, while nested tags describe specific entities or relationships.
+```
 
 ## The reversibility principle
 
@@ -35,19 +48,27 @@ The reversibility principle provides a practical test for whether your HED annot
 
 **English Translation:**
 "A sensory event that is an experimental stimulus consists of a visual presentation of a green triangle target that appears at the center of the computer screen."
+````
 
 **Why it works:**
+
 - Each group describes a single entity or relationship
 - The overall structure tells a coherent story
 - `Sensory-event` indicates this is a sensory presentation
 - `Experimental-stimulus` indicates the role in the task
 - `Visual-presentation` specifies the modality
 - `(Green, Triangle, Target)` - grouped properties describe ONE object
-- `(Center-of, Computer-screen)` - spatial relationship
+- `(Center-of, Computer-screen)` - spatial relationship (see [Rule 6](#rule-6-use-directional-pattern-for-relationships) for relationship patterns)
 - The outer grouping `((Green, Triangle, Target), (Center-of, Computer-screen))` connects the object to its location
-````
 
-**Note:** Unless otherwise indicated (by HED tags), a HED annotation reflects the perspective of the experiment participant. Thus the sensory event is as perceived by the subject of the experiment.
+(participant-perspective-anchor)=
+
+```{admonition} Participant perspective principle
+---
+class: important
+---
+Unless otherwise indicated (by HED tags), a HED annotation reflects the **perspective of the experiment participant**. Thus a sensory event is as perceived by the subject of the experiment, not what the experimenter intended or what equipment records show.
+```
 
 ````{admonition} **Example:** A non-reversible HED annotation
 
@@ -58,8 +79,10 @@ Green, Triangle, Target, Center-of, Visual-presentation, Sensory-event, Computer
 
 **Attempted English Translation:**
 "Something green, and something triangular, and a target, and a center position, and visual presentation, and a sensory event, and a computer screen."
+````
 
 **Why it fails:**
+
 - Cannot tell if green describes the triangle
 - Cannot tell if target refers to the triangle
 - Spatial information is disconnected
@@ -67,12 +90,113 @@ Green, Triangle, Target, Center-of, Visual-presentation, Sensory-event, Computer
 - No clear relationship between the components
 
 **Problems:**
+
 - Tags are flat (no grouping), so relationships are lost
 - No indication of what is being presented vs. where it is presented
 - Missing both `Event` classification and `Task-event-role`
+
+## File type semantics
+
+The semantic requirements for HED annotations depend on whether they appear in timeline files (e.g., `events.tsv`) or descriptor files (e.g., `participants.tsv`). Understanding this distinction is essential before learning the annotation rules.
+
+### Timeline files require Event tags
+
+Timeline files have timestamps indicating when things happen. (In BIDS format this is a `.tsv` file with an `onset` column, while in NWB format it is a `DynamicTable` type with a time-stamp of some sort.) Every annotation in a timeline file MUST include an `Event` type tag.
+
+````{admonition} **Example:** Correct timeline file annotation (BIDS)
+
+**File:** `events.tsv`
+
+**Sidecar:**
+```json
+{
+  "event_type": {
+    "HED": {
+      "visual": "Experimental-stimulus, Sensory-event, Visual-presentation, ({color}, {shape})"
+    }
+  },
+  "color": {
+    "HED": {
+      "red": "Red"
+    }
+  },
+  "shape": {
+    "HED": {
+      "circle": "Circle"
+    }
+  }
+}
+```
+
+**Event:**
+| onset | event_type | color | shape  |
+|-------|------------|-------|--------|
+| 2.5   | visual     | red   | circle |
+
+**Assembled Result:**
+```
+Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
+```
+
+**Why it's correct:**
+- Includes Task-event-role (`Experimental-stimulus`)
+- Includes `Event` tag (`Sensory-event`)
+- Specifies modality (`Visual-presentation`)
+- Properly groups stimulus properties
 ````
 
+### Descriptor files have no Event tags
+
+Descriptor files (e.g., `participants.tsv`, `samples.tsv`) describe properties or characteristics, not events. `Event` tags should not appear in descriptor files.
+
+````{admonition} **Example:** Correct descriptor file annotation
+
+**File:** `participants.tsv`
+
+**Sidecar:**
+```json
+{
+  "age": {
+    "HED": "Age/# years"
+  },
+  "hand": {
+    "HED": {
+      "right": "Right-handed",
+      "left": "Left-handed"
+    }
+  }
+}
+```
+
+**Row:**
+| participant_id | age | hand  |
+|----------------|-----|-------|
+| sub-001        | 25  | right |
+
+**Assembled Result:**
+```
+Age/25 years, Right-handed
+```
+
+**Why it's correct:**
+- Describes participant properties
+- No event classification
+- No temporal tags (`Onset`/`Offset`)
+- Semantically appropriate for descriptor context
+````
+
+### Temporal scope tags
+
+Temporal scope tags (`Onset`, `Offset`, `Inset`, and `Delay`) are ONLY for timeline files and indicate the time course of events. `Duration` can be used in either type of file but cannot be used with `Onset`, `Offset`, and `Inset`, which are associated with explicit time point markers in the event files, while `Duration` represents something starting at the current time and extending for a specified amount of time from that point.
+
 ## Semantic grouping rules
+
+```{admonition} Important context for the following rules
+---
+class: tip
+---
+The rules in this section primarily apply to **timeline files** (events with timestamps). For descriptor files, Event-related rules do not apply. See "File type semantics" above for the distinction.
+```
 
 Parentheses in HED annotations are not decorative—they carry semantic meaning. Tags within a group are semantically bound and work together to describe one thing. Tags outside the group describe different aspects or entities. Since HED annotations are unordered, parentheses are key for this binding. Remember that HED vocabularies maintain a strict taxonomical or is-a relationship of child tags to parents. When we say `Event` tag, we mean `Event` or any tag that is a descendent of `Event` in the HED vocabulary hierarchy.
 
@@ -94,12 +218,13 @@ Without grouping the meaning can be ambiguous:
 ```
 Red, Circle
 ```
+````
+
 **Possible meanings:**
+
 1. A red circle (most likely interpretation)
 2. Something red AND separately something circular (could be two different things)
 3. Redness AND circularity as independent properties
-
-````
 
 If an item has multiple properties, they should all be grouped together:
 
@@ -113,38 +238,68 @@ If an item has multiple properties, they should all be grouped together:
 
 Without grouping, these three properties that may or may not apply to the same object.
 
-### Rule 2: Events must be defined
+### Rule 2: Events must be classified
 
 Event files are tabular files that associate annotations with points on the experimental time line. Each row in such a tabular file can represent one or more "events" (or markers in an ongoing event process).
 
-```{admonition} Event tags are the anchors for event annotations.
+```{admonition} Event tags are the anchors for event annotations
 ---
 class: tip
 ---
-**Rules for annotating an event:**
-  - All the tags in the annotation are assumed to describe that event. 
-  - It should have exactly one tag from the `Event` tag hierarchy. 
-  - Each event annotation should be in a separate group unless this is the only event at that time marker.
+**Core requirements for annotating an event:**
+  - Every event MUST have exactly one tag from the `Event` hierarchy
+  - If there is a task, events SHOULD have a `Task-event-role` tag
+  - If a sensory event, it SHOULD have a `Sensory-modality` tag
+  - Each event annotation should be in a separate group if multiple events occur at the same time
 ```
 
-The `Event` tags are:
+#### Event classification tags
 
-- `Sensory-event`
-- `Agent-action`
-- `Data-feature`
-- `Experiment-control`
-- `Experiment-procedure` ` `Experiment-structure\`
-- `Measurement-event`
+The `Event` tags provide the primary classification:
 
-````{admonition} **Example: A row annotation with a unique time marker represents a single "event"**
+- `Sensory-event` - A sensory presentation occurs
+- `Agent-action` - An agent performs an action (if no explicit agent is given, a single experiment participant is assumed)
+- `Data-feature` - A computed or observed feature is marked
+- `Experiment-control` - Experiment structure or parameters change
+- `Experiment-procedure` - Experiment paused to administer something
+- `Experiment-structure` - Organizational boundary or marker (like start of a trial or block)
+- `Measurement-event` - A measurement is taken
+
+````{admonition} **Example: Single event with proper classification**
 
 ```
 Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle), (Green, Square)
 ```
 **Meaning:** The event is a sensory event (from the perspective of the experiment participant) which is an experimental stimulus consisting of the simultaneous presentation of a red circle and a green square.
+
+**Classification breakdown:**
+- `Sensory-event` - Event type (from Event hierarchy)
+- `Experimental-stimulus` - Task role (from Task-event-role hierarchy)
+- `Visual-presentation` - Sensory modality
+- `(Red, Circle), (Green, Square)` - Describes what is presented to the senses
 ````
 
-A single top-level `Event` tag is assumed to represent an event that includes all of the rest of the tags in the annotation. The sensory event in the example is an experimental stimulus (something that the participant will need to act on has part of the experiment's task). This is the most common method of annotating events.
+A single top-level `Event` tag is assumed to represent an event that includes all of the rest of the tags in the annotation. The sensory event in the example is an experimental stimulus (something that the participant will need to act on as part of the experiment's task). This is the most common method of annotating events.
+
+#### Task-event-role tags
+
+If an experiment involves a task, each event should be associated with a `Task-event-role`. These event classification tags should typically be at the top level or grouped with the `Event` tag:
+
+- `Experimental-stimulus` - Primary stimulus participant must detect, identify, or respond to
+- `Cue` - Signal indicating what to expect or do next
+- `Participant-response` - Action by the participant
+- `Feedback` - Information about participant's performance
+- `Instructional` - Task instructions or information
+- `Warning` - Alert or warning signal
+- `Incidental` - Present but not task-relevant
+- `Task-activity` - Marker of ongoing task activity period
+- `Mishap` - Unplanned occurrence affecting experiment
+
+#### Sensory-modality tags
+
+If the event is a `Sensory-event`, a `Sensory-modality` tag (e.g., `Visual-presentation` or `Auditory-presentation`) SHOULD be included to specify how the stimulus is presented. This is essential for search and query functionality.
+
+#### Handling multiple events
 
 If a single row annotation contains multiple events, the tags relevant to each event must be separately grouped in parentheses.
 
@@ -213,41 +368,53 @@ This annotation represents two separate events:
 
 ````
 
-### Rule 3: Events should be further classified
+### Rule 3: Further qualify event roles
 
-While the `Event` tags form the anchor for event-related annotations, it is crucial to include the additional event modifiers in the annotation.
+After selecting the appropriate `Event` and `Task-event-role` tags, consider adding more specific qualifiers:
 
-#### Rule 3a: Use Task-event-role if there is a task
+#### Task-stimulus-role qualifiers
 
-If an experiment involves a task, each event should be associated with a `Task-event-role`. These event classification tags should typically be in the same group as the event.
+Tags from the `Task-stimulus-role` hierarchy provide important information about the task stimulus. For example, tags such as `Penalty` or `Reward` are often used to modify the `Feedback` role. Common qualifiers:
 
-````{admonition} **Example:** Top-level placement of Event and Task-event-role tags
+- `Target` - The thing the participant should focus on or respond to
+- `Non-target` - Something to ignore or not respond to
+- `Expected` - Stimulus matches what was cued
+- `Unexpected` - Stimulus differs from what was cued
+- `Penalty` - Negative consequence for performance
+- `Reward` - Positive consequence for performance
+
+If the annotation contains an `Experimental-stimulus` tag, consider whether any tags from `Task-stimulus-role` are appropriate.
+
+````{admonition} **Example:** Stimulus with task role qualifier
 
 ```
-Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle), (Green, Triangle)
+Sensory-event, Experimental-stimulus, Visual-presentation, Target, (Red, Circle)
 ```
-**Meaning:** The event is a sensory event that is an experimental stimulus.
+**Meaning:** A visual experimental stimulus that is a target - the participant should respond to this red circle.
 ````
 
-An experiment may participant experience many sensory events during the course of the experiment including task stimuli, cues, and extraneous sounds. If a particular sensory event is not related to the task, its role is usually `Incidental`.
+#### Task-action-type qualifiers
 
-Similarly, a participant response may not conform to the parameters of the task. Use the `Mishap` tag or the `Incidental` tag to annotate.
+Tags from the `Task-action-type` hierarchy provide important information about the nature of the participant's response. Common qualifiers:
 
-#### Rule 3b: Experimental-stimulus needs Task-stimulus-role
+- `Correct-action` - Response matches task requirements
+- `Incorrect-action` - Response does not match task requirements
+- `Appropriate-action` - Action is suitable in context
+- `Inappropriate-action` - Action is unsuitable in context
+- `Switch-attention` - Participant shifts focus
+- `Near-miss` - Almost correct response
 
-Tags from the `Task-stimulus-role` hierarchy provide important information about the task. For example, tags such as `Penalty` or `Reward` are often used to modify the `Feedback` role. If the annotation contains an `Experimenal-stimulus` tag, always see whether any tags from `Task-stimulus-role` are appropriate.
+If the annotation contains a `Participant-response` tag, consider whether any tags from `Task-action-type` are appropriate.
 
-#### Rule 3b: Participant-response needs Task-action-type
+````{admonition} **Example:** Response with action qualifier
 
-Tags from the `Participant-response` hierarchy provide important information about the nature of the participant's response. The most common modifiers are `Correct-action` and `Incorrect-action`, but there are many other descriptors in the `Task-action-type` hierarchy. If the annotation contains a `Participant-response` tag, always see whether any tags from the `Task-action-type` are appropriate.
+```
+Agent-action, Participant-response, Correct-action, (Experiment-participant, (Press, Mouse-button))
+```
+**Meaning:** The experiment participant pressed the mouse button, and this was a correct response to the task.
+````
 
-### Rule 4: Sensory-event should have Sensory-modality
-
-If the event is a `Sensory-event`, a `Sensory-modality` tag (e.g., `Visual-presentation` or `Auditory-presentation`) SHOULD be be able to be associated unambiguously with what is being presented.
-
-Events involving multiple sensory modalities may or may not be treated as separate events, depending on the underlying intent. The examples under Rule 2 illustrate different cases.
-
-### Rule 5: Nest agent-action-object
+### Rule 4: Nest agent-action-object
 
 Agent-action-object relationships require nested grouping to show who did what to what.
 
@@ -296,16 +463,26 @@ Agent-action, Experiment-participant, Press, Mouse-button
 
 Without grouping indicates WHO did WHAT. The relationships are lost, making the annotation semantically incomplete.
 
-### Rule 6: Use curly braces for assembly control
+### Rule 5: Use curly braces for assembly control
 
-```{admonition} **Use curly braces to achieve proper grouping**
+```{admonition} When to use curly braces
 ---
 class: tip
 ---
-When multiple columns or sources contribute properties of the same entity, curly braces control how the annotations are assembled by allowing you to specify a template.
+**Use curly braces when:**
+- Multiple columns contribute properties of the SAME entity (e.g., color + shape = one object)
+- You need to control grouping across columns in sidecars
+- Flat concatenation would create ambiguous relationships
+
+**Don't use curly braces when:**
+- Each column describes independent aspects (naturally separate)
+- Annotating directly in a HED column (not a sidecar)
+- All tags naturally group correctly without templates
+
+**How they work:** Curly braces `{column_name}` in a sidecar act as placeholders that get replaced with that column's annotation during assembly, allowing you to specify a grouping template.
 ```
 
-Without curly braces annotations for each column in a row of a tabular file are concatenated to form an assembled annotation for the row. We assume that the annotations go in a JSON sidecar for BIDS (or a `Meanings` table) for NWB. The following examples annotate an events file of which the following is an excerpt:
+Without curly braces, annotations for each column in a row of a tabular file are simply concatenated (joined with commas) to form an assembled annotation for the row. This works for independent information but fails when multiple columns describe parts of the same entity. We assume that the annotations go in a JSON sidecar for BIDS (or a `Meanings` table for NWB). The following examples annotate an events file of which the following is an excerpt:
 
 | onset | duration | event_type | color | shape  |
 | ----- | -------- | ---------- | ----- | ------ |
@@ -377,9 +554,9 @@ Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle)
 
 **Note:** NWB (Neurodata Without Borders) is an alternative data format standard to BIDS (Brain Imaging Data Structure). NWB does not use sidecars, but has an equivalent representation and the HED annotation rules apply.
 
-The alternative to using sidecars for annotations is to create a HED column in the tabular file. However this requires an individual annotation for each row, while the sidecar
+The alternative to using sidecars for annotations is to create a HED column in the tabular file. However this requires an individual annotation for each row, while the sidecar approach allows reuse of annotations across many rows.
 
-### Rule 7: Use directional pattern for relationships
+### Rule 6: Use directional pattern for relationships
 
 Tags from the `Relation` tag hierarchy express directional relationships and require specific nested grouping.
 
@@ -449,7 +626,7 @@ class: tip
 **Important:** The order matters! `(A, (To-left-of, B))` means "A is to the left of B", which is different from `(B, (To-left-of, A))` which means "B is to the left of A".
 ```
 
-### Rule 8: Keep independent concepts separate
+### Rule 7: Keep independent concepts separate
 
 Tags that describe independent aspects or unrelated concepts should NOT be grouped together. Don't group tags with no semantic relationship.
 
@@ -460,7 +637,7 @@ Tags that describe independent aspects or unrelated concepts should NOT be group
 - `(Green, Response-time)` - Color and temporal measure are unrelated
 ```
 
-### Rule 9: Reserved tags have special syntax
+### Rule 8: Reserved tags have special syntax
 
 The reserved tags have special grouping rules and usage patterns as shown in the following table:
 
@@ -527,7 +704,7 @@ widths: 20 40 40
     * Keeps track of ungoing events at intermediate time points
 ```
 
-### Rule 10: Extend tags carefully
+### Rule 9: Extend tags carefully
 
 The HED schema vocabulary hierarchy can be extended to accommodate more specialized annotations. HED library schemas are formal extensions of HED for specialized vocabularies. Users can also extend the hierarchy by appending new tag to an existing tag that allows extension. Tags that can be extended have (or have inherited) the `extensionAllowed` attribute. Tags that can be extended include all tags EXCEPT those in the `Event` or `Agent` subtrees or that have a `#` child (value-taking nodes). You should ONLY consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation.
 
@@ -647,11 +824,13 @@ class: tip
 
 ## Selecting the right Event tag
 
-```{admonition} **Decision guide:** Choosing Event tags
+```{admonition} 🎯 Decision guide: Choosing Event tags
 ---
-class: tip
+class: important
 ---
-**Question: What is the primary nature of what happened?**
+**KEY QUESTION: What is the primary nature of what happened?**
+
+Every timeline event MUST have exactly one Event tag. Use this guide to select the correct one:
 
 **Use `Sensory-event` when:**
 - A stimulus/sensory presentation occurs
@@ -689,13 +868,43 @@ class: tip
 - Examples: "Temperature measured", "Pupil size recorded"
 ```
 
+````{admonition} **Complete examples:** Event classification in context
+
+**Target stimulus in oddball task:**
+```
+Sensory-event, Experimental-stimulus, Auditory-presentation, Target, (Tone, Frequency/1000 Hz)
+```
+
+**Standard (non-target) stimulus:**
+```
+Sensory-event, Experimental-stimulus, Auditory-presentation, Non-target, (Tone, Frequency/500 Hz)
+```
+
+**Participant button press:**
+```
+Agent-action, Participant-response, Correct-action, (Experiment-participant, (Press, (Left, Mouse-button)))
+```
+
+**Computed artifact:**
+```
+Data-feature, Incidental, (Eye-blink, Def/AutoDetected)
+```
+
+**Environmental noise:**
+```
+Sensory-event, Auditory-presentation, Mishap, (Environmental-sound, Label/Construction-noise)
+```
+````
+
 ### Selecting the right Task-event-role
 
-```{admonition} **Decision guide:** Choosing Task-event-role tags
+```{admonition} 🎯 Decision guide: Choosing Task-event-role tags
 ---
-class: tip
+class: important
 ---
-**Question: What is the event's role from the participant's perspective?**
+**KEY QUESTION: What is the event's role from the participant's perspective?**
+
+If your experiment has a task, each event SHOULD have a Task-event-role. Use this guide to select the correct one:
 
 **Use `Experimental-stimulus` when:**
 - Primary stimulus participant must detect, identify, or respond to
@@ -743,179 +952,27 @@ class: tip
 - Example: Stimulus failed to display
 ```
 
-### Complete event annotation examples
+````{admonition} **Complete examples:** Task-event-role in context
 
-````{admonition} Example:Target stimulus in oddball task
-
-```
-Sensory-event, Experimental-stimulus, Auditory-presentation, Target, (Tone, Frequency/1000 Hz)
-```
-````
-
-````{admonition} Example: Standard (non-target) stimulus
-```
-Sensory-event, Experimental-stimulus, Auditory-presentation, Non-target, (Tone, Frequency/500 Hz)
-```
-````
-
-````{admonition} Example: Participant button press
-```
-Agent-action, Participant-response, Correct-action, (Experiment-participant, (Press, (Left, Mouse-button)))
-```
-````
-
-````{admonition} Example: Feedback on correct response
-```
-Sensory-event,  Visual-presentation, (Feedback, Positive), (Green, Circle)
-```
-````
-
-````{admonition} Example: Fixation cue
+**Fixation cue:**
 ```
 Sensory-event, Visual-presentation, (Cue, Label/Fixation-point), (White, Cross)
 ```
-````
 
-````{admonition} Example: Task instructions
+**Feedback on correct response:**
+```
+Sensory-event, Visual-presentation, (Feedback, Positive), (Green, Circle)
+```
+
+**Task instructions:**
 ```
 Sensory-event, Visual-presentation, Instructional, (Textblock, Label/Press-left-for-red)
 ```
 ````
 
-````{admonition} Example: Environmental noise
-```
-Sensory-event, Auditory-presentation, Mishap, (Environmental-sound, Label/Construction-noise)
-```
-````
+These examples show properly classified events. If they appear in annotations that include other information, there should be an outer set of parentheses around each event.
 
-````{admonition} Example: Computed artifact
-```
-Data-feature, Incidental, (Eye-blink, Def/AutoDetected)
-```
-````
-
-These examples show a single event and the items may or may not be grouped with additional task role tags as long as the interpretation is unambiguous. If they appeared in annotation that included other information, there should be a set of outer parentheses around each of them.
-
-## Decision guidelines for simultaneous events
-
-```{admonition} **Guidelines:** When to use single vs. multiple events
-
-**Use SINGLE sensory event when:**
-- ✓ Same modality (e.g., multiple visual objects)
-- ✓ Same presentation mechanism (e.g., both on screen)
-- ✓ Functionally unified (designed to be perceived together)
-- ✓ Semantically related content (e.g., same word in different forms)
-- ✓ Analysis treats as single presentation
-
-**Use SEPARATE sensory events when:**
-- ✓ Clearly independent sources
-- ✓ Not functionally coordinated
-- ✓ Different experimental roles (different `Task-event-role`)
-- ✓ Analysis requires modality separation
-- ✓ Could occur independently
-
-**Either approach acceptable when:**
-- ≈ Different modalities but coordinated content (e.g., feedback with sound + image)
-- ≈ Same semantic content in different forms (e.g., hear + see word)
-- ≈ Functionally related but separable components
-- ≈ Both interpretations are scientifically valid
-
-**Consistency Principle:** Whatever approach you choose, use it consistently throughout your dataset. Document your decision in your data.
-```
-
-## File type semantics
-
-The semantic requirements for HED annotations depend on whether they appear in timeline files (e.g., `events.tsv`) or descriptor files (e.g., `participants.tsv`).
-
-### Timeline files require Event tags
-
-Timeline files have timestamps indicating when things happen. (In BIDS format this is a `.tsv` file with an `onset` column, while in NWB format it is a `DynamicTable` type with a time-stamp of some sort.) Every annotation in a timeline file MUST include an `Event` type tag.
-
-````{admonition} **Example:** Correct timeline file annotation (BIDS)
-
-**File:** `events.tsv`
-
-**Sidecar:**
-```json
-{
-  "event_type": {
-    "HED": {
-      "visual": "Experimental-stimulus, Sensory-event, Visual-presentation, ({color}, {shape})"
-    }
-  },
-  "color": {
-    "HED": {
-      "red": "Red"
-    }
-  },
-  "shape": {
-    "HED": {
-      "circle": "Circle"
-    }
-  }
-}
-```
-
-**Event:**
-| onset | event_type | color | shape  |
-|-------|------------|-------|--------|
-| 2.5   | visual     | red   | circle |
-
-**Assembled Result:**
-```
-Experimental-stimulus, Sensory-event, Visual-presentation, (Red, Circle)
-```
-
-**Why it's correct:**
-- Includes Task-event-role (`Experimental-stimulus`)
-- Includes `Event` tag (`Sensory-event`)
-- Specifies modality (`Visual-presentation`)
-- Properly groups stimulus properties
-````
-
-### No Event tags in descriptor files
-
-Descriptor files (e.g., `participants.tsv`, `samples.tsv`) describe properties or characteristics, not events. `Event` tags should not appear in descriptor files.
-
-````{admonition} **Example:** Correct descriptor file annotation
-
-**File:** `participants.tsv`
-
-**Sidecar:**
-```json
-{
-  "age": {
-    "HED": "Age/# years"
-  },
-  "hand": {
-    "HED": {
-      "right": "Right-handed",
-      "left": "Left-handed"
-    }
-  }
-}
-```
-
-**Row:**
-| participant_id | age | hand  |
-|----------------|-----|-------|
-| sub-001        | 25  | right |
-
-**Assembled Result:**
-```
-Age/25 years, Right-handed
-```
-
-**Why it's correct:**
-- Describes participant properties
-- No event classification
-- No temporal tags (`Onset`/`Offset`)
-- Semantically appropriate for descriptor context
-````
-
-### Temporal scope tags
-
-Temporal scope tags (`Onset`, `Offset`, `Inset`, and `Delay`) are ONLY for timeline files and indicate the time course of events. `Duration` can be used in either type of file but cannot be used with `Onset`, `Offset`, and `Inset`, which are associated with explicit time point markers in the event files, while `Duration` represents something starting at the current time and extending for a specified amount of time from that point.
+## Decision guidelines for annotation complexity
 
 `````{admonition} **Example:** Encoding ongoing events using Duration
 
@@ -1009,13 +1066,26 @@ Notice that the `Fixation-point` definition doesn't have any content in this exa
 
 The `Delay` tag is used to indicate that the event starts at a specified delay from the time of the event marker in which the annotation appears. This mechanism is often used when the information about an entire trial (i.e., both stimulus and response) are associated with a single time marker. In this case the annotation may contain multiple events -- some of which are delayed from the event marker time.
 
-## Progressive complexity examples
+## Progressive complexity examples: Putting it all together
 
-To help you build correct annotations, here are progressive examples from simple to complex:
+These examples show how to build increasingly complex annotations by progressively applying the rules you've learned. Each level references the specific rules being applied, demonstrating how they work together to create complete, semantically correct annotations.
+
+```{admonition} How to use these examples
+---
+class: tip
+---
+These examples build on each other, showing the same stimulus with progressively more information:
+- Level 1: Basic grouping and event classification ([Rule 1](#rule-1-group-objects-properties-together), [Rule 2](#rule-2-events-must-be-classified))
+- Level 2: Adding task role ([Rule 2](#rule-2-events-must-be-classified) with Task-event-role)
+- Level 3: Adding spatial, comparative and other relationships ([Rule 6](#rule-6-use-directional-pattern-for-relationships))
+- Level 4: Adding temporal scope ([File type semantics](#temporal-scope-tags))
+
+Each level is a valid annotation - choose the level of detail appropriate for your analysis needs.
+```
 
 ### Level 1: Simple sensory event
 
-````{admonition} **Example 1:** Basic stimulus
+````{admonition} **Example 1:** Basic stimulus (applies [Rule 1](#rule-1-group-objects-properties-together), [Rule 2](#rule-2-events-must-be-classified))
 
 **Scenario:** A red circle appears
 
@@ -1025,18 +1095,18 @@ Sensory-event, Visual-presentation, (Red, Circle)
 ```
 
 **Components:**
-- Event type: `Sensory-event`
-- Modality: `Visual-presentation`
-- Stimulus: `(Red, Circle)` - one grouped object
+- Event type: `Sensory-event` (required by [Rule 2](#rule-2-events-must-be-classified))
+- Modality: `Visual-presentation` (recommended in [Rule 2](#rule-2-events-must-be-classified))
+- Stimulus: `(Red, Circle)` - properties grouped per [Rule 1](#rule-1-group-objects-properties-together)
 
 **English:** "A visual sensory event presenting a red circle"
 ````
 
 ### Level 2: With task role
 
-````{admonition} **Example 2:** Adding task context
+````{admonition} **Example 2:** Adding task context (adds Task-event-role from [Rule 2](#rule-2-events-must-be-classified), qualifier from [Rule 3](#rule-3-further-qualify-event-roles))
 
-**Scenario:** A red circle target appears
+**Scenario:** A red circle target appears in a task
 
 **Annotation:**
 ```
@@ -1045,13 +1115,12 @@ Sensory-event, Experimental-stimulus, Visual-presentation,
 ```
 
 **Components:**
-- Task-event-role: `Experimental-stimulus`
-- Event type: `Sensory-event`
+- Event type: `Sensory-event` (required by [Rule 2](#rule-2-events-must-be-classified))
+- Task-event-role: `Experimental-stimulus` (recommended in [Rule 2](#rule-2-events-must-be-classified))
 - Modality: `Visual-presentation`
-- Stimulus: `(Red, Circle)`
-- Task context: `Target`
+- Stimulus: `(Red, Circle, Target)` - object properties grouped with task qualifier from [Rule 3](#rule-3-further-qualify-event-roles)
 
-**English:** "An experimental stimulus sensory event presenting a red circle intended as a target"
+**English:** "An experimental stimulus sensory event presenting a red circle target"
 ````
 
 ### Level 3: With spatial information
@@ -1070,16 +1139,15 @@ Sensory-event, Experimental-stimulus, Visual-presentation,
 - Task-event-role: `Experimental-stimulus`
 - Event type: `Sensory-event`
 - Modality: `Visual-presentation`
-- Stimulus: `(Red, Circle)`
-- Task context: `Target`
-- Location: `(Left-side-of, Computer-screen)`
+- Stimulus: `(Red, Circle, Target)` - one grouped object with properties
+- Location: `(Left-side-of, Computer-screen)` - spatial relationship (uses [Rule 6](#rule-6-use-directional-pattern-for-relationships) pattern)
 
 **English:** "An experimental stimulus sensory event presenting a red circle target on the left side of the computer screen"
 ````
 
 ### Level 4: With duration
 
-````{admonition} **Example 4:** Event with duration
+````{admonition} **Example 4:** Event with duration (adds temporal scope from [Rule 8](#rule-8-reserved-tags-have-special-syntax))
 
 **Scenario:** A red circle target appears on the left and stays visible for 2 seconds
 
@@ -1090,14 +1158,195 @@ Sensory-event, Experimental-stimulus, Visual-presentation,
 ```
 
 **Components:**
+- Temporal scope: `Duration/2 s` - reserved tag from [Rule 8](#rule-8-reserved-tags-have-special-syntax)
+- Event type: `Sensory-event` (required by [Rule 2](#rule-2-events-must-be-classified))
 - Task-event-role: `Experimental-stimulus`
-- Event type: `Sensory-event`
 - Modality: `Visual-presentation`
-- Temporal scope: `Duration/2 s` (has duration)
-- Content: Red circle target on left of computer screen (persists for duration)
+- Content: `((Red, Circle), (Left-side-of, Computer-screen))` - combines grouping ([Rule 1](#rule-1-group-objects-properties-together)) and relationships ([Rule 6](#rule-6-use-directional-pattern-for-relationships))
 
-**English:** "An experimental stimulus sensory event consisting of the presentation of a red circle target on the left
-of the computer screen is displayed for 2 secondsw"
+**English:** "An experimental stimulus sensory event consisting of the presentation of a red circle target on the left of the computer screen is displayed for 2 seconds."
+````
+
+## Common annotation mistakes
+
+Before finalizing your annotations, review these common mistakes and how to fix them:
+
+````{admonition} **Mistake 1:** Forgetting to group object properties
+---
+class: warning
+---
+**Wrong:**
+```
+Sensory-event, Visual-presentation, Red, Circle
+```
+
+**Problem:** Cannot definitively determine that red and circle describe the same object. Violates **Rule 1**.
+
+**Correct:**
+```
+Sensory-event, Visual-presentation, (Red, Circle)
+```
+````
+
+````{admonition} **Mistake 2:** Missing Event classification
+---
+class: warning
+---
+**Wrong:**
+```
+Visual-presentation, (Red, Circle)
+```
+
+**Problem:** No Event tag. Every timeline event must have an Event type. Violates **Rule 2**.
+
+**Correct:**
+```
+Sensory-event, Visual-presentation, (Red, Circle)
+```
+````
+
+````{admonition} **Mistake 3:** Missing Task-event-role for task events
+---
+class: warning
+---
+**Wrong:**
+```
+Sensory-event, Visual-presentation, (Red, Circle)
+```
+
+**Problem:** If this is a task stimulus, it needs a task role. Violates **Rule 2**.
+
+**Correct:**
+```
+Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle)
+```
+````
+
+````{admonition} **Mistake 4:** Incorrect agent-action structure
+---
+class: warning
+---
+**Wrong:**
+```
+Agent-action, Experiment-participant, Press, Mouse-button
+```
+
+**Problem:** Cannot determine who did what. Did the participant press or did the mouse-button press? Violates **Rule 4**.
+
+**Correct:**
+```
+Agent-action, (Experiment-participant, (Press, Mouse-button))
+```
+````
+
+````{admonition} **Mistake 5:** Incorrect relationship structure
+---
+class: warning
+---
+**Wrong:**
+```
+(Red, Circle, To-left-of, Green, Square)
+```
+
+**Problem:** The relationship direction is ambiguous. Violates **Rule 6**.
+
+**Correct:**
+```
+((Red, Circle), (To-left-of, (Green, Square)))
+```
+**Meaning:** Red circle is to-left-of green square.
+````
+
+````{admonition} **Mistake 6:** Grouping unrelated concepts
+---
+class: warning
+---
+**Wrong:**
+```
+(Red, Press, Circle)
+```
+
+**Problem:** Red and Circle may be related, but Press is an action, not a visual property. Violates **Rule 7**.
+
+**Correct:**
+```
+(Sensory-event, Visual-presentation, (Red, Circle)), 
+(Agent-action, Participant-response, (Experiment-participant, Press))
+```
+````
+
+````{admonition} **Mistake 7:** Using Event tags in descriptor files
+---
+class: warning
+---
+**Wrong (in participants.tsv):**
+```
+Sensory-event, Age/25 years
+```
+
+**Problem:** Descriptor files describe properties, not events. See **File type semantics**.
+
+**Correct:**
+```
+Age/25 years
+```
+````
+
+````{admonition} **Mistake 8:** Over-extending from general tags
+---
+class: warning
+---
+**Wrong:**
+```
+Item/House
+```
+
+**Problem:** Too general. House has more specific parents in the schema. Violates **Rule 9**.
+
+**Correct:**
+```
+Building/House
+```
+Extend from the most specific applicable parent.
+````
+
+````{admonition} **Mistake 9:** Forgetting curly braces for multi-column assembly
+---
+class: warning
+---
+**Wrong sidecar:**
+```json
+{
+  "event_type": {
+    "HED": {"visual": "Sensory-event, Visual-presentation"}
+  },
+  "color": {"HED": {"red": "Red"}},
+  "shape": {"HED": {"circle": "Circle"}}
+}
+```
+
+**Assembled result:**
+```
+Sensory-event, Visual-presentation, Red, Circle
+```
+
+**Problem:** Red and Circle aren't grouped. Violates **Rule 5**.
+
+**Correct sidecar:**
+```json
+{
+  "event_type": {
+    "HED": {"visual": "Sensory-event, Visual-presentation, ({color}, {shape})"}
+  },
+  "color": {"HED": {"red": "Red"}},
+  "shape": {"HED": {"circle": "Circle"}}
+}
+```
+
+**Assembled result:**
+```
+Sensory-event, Visual-presentation, (Red, Circle)
+```
 ````
 
 ## Best practices checklist
@@ -1147,7 +1396,7 @@ class: tip
 - [ ] All tags exist in HED schema
 - [ ] Required children specified
 - [ ] Extensions have parent tag in the HED schema
-- [ ] Units provided where needed andallowed
+- [ ] Units provided where needed and allowed
 
 **✓ Semantics**
 - [ ] Annotation translates to coherent English (reversibility test)
