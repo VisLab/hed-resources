@@ -42,12 +42,12 @@ The reversibility principle provides a practical test for whether your HED annot
 
 **HED String:**
 ```
- Sensory-event, Experimental-stimulus, Visual-presentation, 
-((Green, Triangle, Target), (Center-of, Computer-screen))
+ Sensory-event, Experimental-stimulus, Target, Visual-presentation, 
+((Green, Triangle), (Center-of, Computer-screen))
 ```
 
 **English Translation:**
-"A sensory event that is an experimental stimulus consists of a visual presentation of a green triangle target that appears at the center of the computer screen."
+"A sensory event that is an experimental stimulus target consists of a visual presentation of a green triangle that appears at the center of the computer screen."
 ````
 
 **Why it works:**
@@ -56,10 +56,11 @@ The reversibility principle provides a practical test for whether your HED annot
 - The overall structure tells a coherent story
 - `Sensory-event` indicates this is a sensory presentation
 - `Experimental-stimulus` indicates the role in the task
+- `Target` indicates the task stimulus role
 - `Visual-presentation` specifies the modality
-- `(Green, Triangle, Target)` - grouped properties describe ONE object
+- `(Green, Triangle)` - grouped properties describe ONE object
 - `(Center-of, Computer-screen)` - spatial relationship (see [Rule 6](#rule-6-use-directional-pattern-for-relationships) for relationship patterns)
-- The outer grouping `((Green, Triangle, Target), (Center-of, Computer-screen))` connects the object to its location
+- The outer grouping `((Green, Triangle), (Center-of, Computer-screen))` connects the object to its location
 
 (participant-perspective-anchor)=
 
@@ -198,7 +199,19 @@ class: tip
 The rules in this section primarily apply to **timeline files** (events with timestamps). For descriptor files, Event-related rules do not apply. See "File type semantics" above for the distinction.
 ```
 
-Parentheses in HED annotations are not decorative—they carry semantic meaning. Tags within a group are semantically bound and work together to describe one thing. Tags outside the group describe different aspects or entities. Since HED annotations are unordered, parentheses are key for this binding. Remember that HED vocabularies maintain a strict taxonomical or is-a relationship of child tags to parents. When we say `Event` tag, we mean `Event` or any tag that is a descendent of `Event` in the HED vocabulary hierarchy.
+```{admonition} HED annotations are unordered
+---
+class: important
+---
+**The order of tags in a HED annotation does not affect its meaning.** 
+
+The annotations `Red, Circle` and `Circle, Red` are semantically equivalent—both are just a list of two independent tags. This is why **parentheses are essential for conveying relationships**: they explicitly bind tags together to show which tags describe the same entity or relationship.
+
+Without parentheses: `Red, Circle` - ambiguous (could be two separate things)  
+With parentheses: `(Red, Circle)` - unambiguous (one red circle)
+```
+
+Parentheses in HED annotations are not decorative—they carry semantic meaning. Tags within a group are semantically bound and work together to describe one thing. Tags outside the group describe different aspects or entities. Remember that HED vocabularies maintain a strict taxonomical or is-a relationship of child tags to parents. When we say `Event` tag, we mean `Event` or any tag that is a descendent of `Event` in the HED vocabulary hierarchy.
 
 ### Rule 1: Group object's properties together
 
@@ -265,6 +278,13 @@ The `Event` tags provide the primary classification:
 - `Experiment-structure` - Organizational boundary or marker (like start of a trial or block)
 - `Measurement-event` - A measurement is taken
 
+```{admonition} Need help choosing the right Event tag?
+---
+class: tip
+---
+See the comprehensive [decision guide for Event tags](#selecting-the-right-event-tag) later in this document for detailed guidance, examples, and decision criteria.
+```
+
 ````{admonition} **Example: Single event with proper classification**
 
 ```
@@ -281,9 +301,79 @@ Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle), (Green
 
 A single top-level `Event` tag is assumed to represent an event that includes all of the rest of the tags in the annotation. The sensory event in the example is an experimental stimulus (something that the participant will need to act on as part of the experiment's task). This is the most common method of annotating events.
 
+#### Agent specification in Agent-action events
+
+For `Agent-action` events, the actor performing the action can be specified with varying levels of detail:
+
+```{admonition} Understanding agent specification
+---
+class: tip
+---
+**Agent TYPE vs. Agent ROLE:**
+- **Agent type** (from `Agent` hierarchy): `Human-agent`, `Animal-agent`, `Avatar-agent`, `Robot-agent`, `Software-agent`
+- **Agent role** (from `Agent-task-role` hierarchy): `Experiment-participant`, `Experimenter`, `Research-assistant`
+
+**When agent specification is implicit:**
+For human experiments, if only `Agent-action` appears without explicit agent tags, a single human experiment participant is assumed by default.
+
+**Example (implicit - human participant assumed):**
+```
+
+Agent-action, Participant-response, (Press, Mouse-button)
+
+```
+Meaning: A human experiment participant presses the mouse button.
+
+**When to specify agent ROLE explicitly:**
+Use `Experiment-participant`, `Experimenter`, or other `Agent-task-role` tags when:
+- Multiple people with different roles are involved
+- Clarity about who did what is important
+- You want to be explicit for consistency
+
+**Example (explicit role):**
+```
+
+Agent-action, Participant-response, (Experiment-participant, (Press, Mouse-button))
+
+```
+
+**When to specify agent TYPE explicitly:**
+Use `Animal-agent`, `Robot-agent`, or other `Agent` tags when the agent is NOT a human:
+
+**Example (non-human agent type):**
+```
+
+Agent-action, (Animal-agent, (Press, Lever))
+
+```
+Meaning: An animal agent (e.g., rat, monkey) in the experiment presses a lever. The `Experiment-participant` is implicit in this annotation, but could be made explicit by using `(Animal-agent, Experiment-participant)`.
+
+**Example (avatar in a virtual reality experiment):**
+```
+
+Agent-action, (Avatar-agent, (Collide-with, Building))
+
+```
+
+**Combined specification (type + role):**
+When needed, you can specify both agent type and role:
+```
+
+Agent-action, ((Animal-agent, Experiment-participant), (Move, Forward))
+
+```
+
+**Best practice:** 
+- In human experiments: `Human-agent` can be omitted (it's implicit)
+- In animal/robot experiments: Usually specify the agent type (`Animal-agent`, `Robotic-agent`)
+- Be consistent throughout your dataset
+```
+
+See [Rule 4](#rule-4-nest-agent-action-object) for the complete agent-action-object structural pattern.
+
 #### Task-event-role tags
 
-If an experiment involves a task, each event should be associated with a `Task-event-role`. These event classification tags should typically be at the top level or grouped with the `Event` tag:
+If an experiment involves a task, each event should be associated with a `Task-event-role`:
 
 - `Experimental-stimulus` - Primary stimulus participant must detect, identify, or respond to
 - `Cue` - Signal indicating what to expect or do next
@@ -294,6 +384,13 @@ If an experiment involves a task, each event should be associated with a `Task-e
 - `Incidental` - Present but not task-relevant
 - `Task-activity` - Marker of ongoing task activity period
 - `Mishap` - Unplanned occurrence affecting experiment
+
+```{admonition} Need help choosing the right Task-event-role?
+---
+class: tip
+---
+See the comprehensive [decision guide for Task-event-role tags](#selecting-the-right-task-event-role) later in this document for detailed guidance, examples, and decision criteria.
+```
 
 #### Sensory-modality tags
 
@@ -318,6 +415,20 @@ The annotations for each element are concatenated to form the following annotati
 (Sensory-event, Experimental-stimulus, Auditory-presentation, (Word, Label/Green))
 ```
 **Meaning:** The annotation  (from the perspective of the experiment participant) consists of two simultaneous sensory events -- a red circle (usually assumed to be displayed on the computer screen if no other information is present) and a spoken word "Green". This type of annotation often occurs in congruence experiments or attention shifting experiments.
+
+```{admonition} Understanding Label/, ID/, and Parameter-value/
+---
+class: tip
+---
+The `Label/` tag provides an identifying name or label for something. The `#` placeholder in `Label/#` gets replaced with your specific label text (e.g., `Label/Green`, `Label/Fixation-point`).
+
+Use `Label/` when:
+- Naming a specific stimulus or condition (e.g., `Label/Fixation-point`)
+- Identifying specific content (e.g., `Label/Green` for the word "Green")
+- Creating definitions (see [Rule 8](#rule-8-reserved-tags-have-special-syntax) for `Definition`)
+
+Labels must use hyphens or underscores instead of spaces (e.g., `Label/Press-left-for-red`). They have the name class attribute, meaning that their values must be alphanumeric. For identifiers that contain any printing UTF-8 character, use `ID/` or the `Parameter-value/` tags. These hae the text class attribute and an take very general values.
+```
 
 ````
 
@@ -348,13 +459,13 @@ Another common situation is data in which the response time to an event is in th
 
 ````{admonition} **Example:** An annotation for row with a stimulus and response time.
 
-Consider the following row in an events table:
+Consider the following excerpt from an events table:
 
 | onset | duration | stimulus | responseTime |
 | ----- | -------- | -------- | ------------ |
 | 104.5 |  'n/a'   |  circle  |   0.250      |
 
-At time 104.5 seconds into the experiment a circle is presented on the computer screen, and the particiant takes 0.250 seconds to push a button in response to the presentation. This situation could be annotated as:
+At time 104.5 seconds into the experiment a circle is presented on the computer screen, and the participant takes 0.250 seconds to push a button in response to the presentation. This situation could be annotated as:
 
 ```
 (Sensory-event, Experimental-stimulus, Visual-presentation, Circle),
@@ -388,9 +499,9 @@ If the annotation contains an `Experimental-stimulus` tag, consider whether any 
 ````{admonition} **Example:** Stimulus with task role qualifier
 
 ```
-Sensory-event, Experimental-stimulus, Visual-presentation, Target, (Red, Circle)
+Sensory-event, Experimental-stimulus, Target, Visual-presentation, (Red, Circle)
 ```
-**Meaning:** A visual experimental stimulus that is a target - the participant should respond to this red circle.
+**Meaning:** A visual experimental stimulus target - a red circle that the participant should respond to.
 ````
 
 #### Task-action-type qualifiers
@@ -597,7 +708,7 @@ Each `Relation` should have should be in its own grouping.
 ````{admonition} **Example:** A size comparison
 
 ```
-Sensory-event, Experiment-stimulus, Visual-presentation, ((Cross, White, Size), (Greater-than, (Circle, Red, Size)))
+Sensory-event, Experimental-stimulus, Visual-presentation, ((Cross, White, Size), (Greater-than, (Circle, Red, Size)))
 ```
 **Meaning:** An experimental stimulus consists of a white cross and a red circle. The white cross is bigger than the red circle.
 
@@ -698,10 +809,11 @@ widths: 20 40 40
   - * Must be a top-level tag group
     * Delays the start of the event by the indicated amount
 * - `Event-context`
-  - `(Event-context, (...), (...))`
+  - `(Event-context, (Def/Task-a, (Blue, Square)), (Def/Task-b, (Red, Triangle)))`
   - * Should only be created by tools
     * Must be a top-level tag group
-    * Keeps track of ungoing events at intermediate time points
+    * Keeps track of ongoing events at intermediate time points
+    * Represents concurrent active event processes
 ```
 
 ### Rule 9: Extend tags carefully
@@ -802,7 +914,7 @@ Acceleration/#/Custom-acceleration-unit
 ```
 (Rate-of-change/Custom-acceleration-type, Parameter-value/#)
 ```
-Here we added the `Paramter-value` tag to accommodate an actual substitute placeholder.
+Here we added the `Parameter-value` tag to accommodate an actual substitute placeholder.
 ````
 
 ```{admonition} **When to extend:**
@@ -820,6 +932,125 @@ class: tip
 - You're in the `Event` or `Agent` subtree
 - You're trying to extend a value-taking node (has `#` child)
 - The extension would create ambiguous taxonomy
+```
+
+## Choosing annotation detail level
+
+The HED schema supports annotations at varying levels of detail. The appropriate level depends on your experimental design, analysis goals, and the complexity of your stimuli and tasks. More detail enables more sophisticated analyses but requires more annotation effort. Too little detail limits your analysis options. Too much detail wastes time and creates noise without adding analytical value. However, try to think beyond the immediate analysis that you plan and think of your data's potential.
+
+### Annotation detail levels
+
+#### Minimal annotation
+
+**Purpose:** Basic event classification only\
+**When to use:** Exploratory studies, simple designs, when fine-grained analysis isn't planned\
+**Characteristics:**
+
+- Event type classification (`Sensory-event`, `Agent-action`)
+- Task role if applicable (`Experimental-stimulus`, `Participant-response`)
+- No detailed stimulus properties
+
+````{admonition} **Example:** Minimal annotation for a visual stimulus
+
+```
+Sensory-event, Experimental-stimulus, Visual-presentation, Circle
+```
+
+**What it captures:** A circle was presented as an experimental stimulus.
+
+**What it doesn't capture:** Color, size, location, timing details.
+
+**Sufficient when:** You only need to know when shapes appeared, not their specific properties.
+````
+
+#### Standard annotation
+
+**Purpose:** Capture properties relevant to experimental manipulations\
+**When to use:** Most experimental studies with specific hypotheses\
+**Characteristics:**
+
+- Event classification
+- Task-relevant stimulus properties
+- Agent-action-object structure for responses
+- Properties that vary within your design
+
+````{admonition} **Example:** Standard annotation for the same visual stimulus
+
+```
+Sensory-event, Experimental-stimulus, Target, Visual-presentation, (Red, Circle)
+```
+
+**What it captures:** A red circle target was presented.
+
+**What it doesn't capture:** Size, exact location, luminance.
+
+**Sufficient when:** Color and shape are manipulated variables, but size and location are constant or irrelevant to your hypotheses.
+````
+
+#### Detailed annotation
+
+**Purpose:** Comprehensive description including context and precise properties\
+**When to use:** Complex designs, data sharing, reanalysis potential\
+**Characteristics:**
+
+- Full event classification with qualifiers
+- Complete stimulus properties (including constants)
+- Spatial relationships
+- Quantitative properties (size, timing, intensity)
+- Contextual information
+
+````{admonition} **Example:** Detailed annotation for the same visual stimulus
+
+```
+Sensory-event, Experimental-stimulus, Target, Expected, Visual-presentation,
+((Red, Circle, Size/5 cm, Luminance/50 cd-m^2), (Center-of, Computer-screen))
+```
+
+**What it captures:** A red circle target of 5cm diameter with 50 cd/m² luminance appeared at screen center, and this was an expected stimulus.
+
+**Sufficient when:** Precise properties matter for analysis, data will be shared, or you anticipate reanalysis questions you can't predict now.
+````
+
+### Decision guidelines for detail level
+
+```{admonition} 🎯 Choose your detail level
+---
+class: tip
+---
+**Use MINIMAL annotation when:**
+- Conducting exploratory or pilot studies
+- Event timing is the primary variable of interest
+- Stimulus properties are constant within each condition
+- Quick annotation is a priority
+- Example: "Did a shape appear?" is sufficient
+
+**Use STANDARD annotation when:**
+- Specific stimulus properties are experimental variables
+- Task-relevant properties need to be distinguished
+- Typical hypothesis-driven research
+- Analyzing effects of manipulated variables only
+- Example: "Which color and which shape appeared?"
+
+**Use DETAILED annotation when:**
+- Planning data sharing or publication to repositories
+- Complex multi-factorial designs
+- Anticipating exploratory reanalysis
+- Quantitative properties affect neural responses
+- Creating reference datasets
+- Post-hoc questions about unmanipulated variables are likely
+- Example: "Exactly what were all the physical properties?"
+
+**Progressive annotation strategy:**
+Start with STANDARD annotation during data collection. Add detail later if needed for specific analyses or data sharing. HED allows you to augment existing annotations without rebuilding from scratch.
+```
+
+### Consistency is crucial
+
+```{admonition} Warning: Be consistent within your dataset
+---
+class: warning
+---
+All events of the same type in your dataset should the same annotation strategy and ideally, the same detail level. Inconsistent detail levels make data analysis unreliable and searches incomplete.
 ```
 
 ## Selecting the right Event tag
@@ -872,12 +1103,12 @@ Every timeline event MUST have exactly one Event tag. Use this guide to select t
 
 **Target stimulus in oddball task:**
 ```
-Sensory-event, Experimental-stimulus, Auditory-presentation, Target, (Tone, Frequency/1000 Hz)
+Sensory-event, Experimental-stimulus, Target, Auditory-presentation, (Tone, Frequency/1000 Hz)
 ```
 
 **Standard (non-target) stimulus:**
 ```
-Sensory-event, Experimental-stimulus, Auditory-presentation, Non-target, (Tone, Frequency/500 Hz)
+Sensory-event, Experimental-stimulus, Non-target, Auditory-presentation, (Tone, Frequency/500 Hz)
 ```
 
 **Participant button press:**
@@ -972,26 +1203,44 @@ Sensory-event, Visual-presentation, Instructional, (Textblock, Label/Press-left-
 
 These examples show properly classified events. If they appear in annotations that include other information, there should be an outer set of parentheses around each event.
 
-## Decision guidelines for annotation complexity
+## Temporal annotation strategies
+
+When events have duration or unfold over time, you can choose between two annotation strategies: using `Duration` for simple cases or using `Onset`/`Offset` for more complex temporal patterns. Both approaches are valid; choose based on your data structure and analysis needs.
+
+### Strategy 1: Using Duration for ongoing events
+
+Use `Duration` when you know the event's duration and want to capture it in a single annotation.
 
 `````{admonition} **Example:** Encoding ongoing events using Duration
 
-**Scenario:** A fixation cross appears and stays on screen for 1.5 seconds
+**Scenario:** A fixation cross appears and stays on screen for 1.5 seconds starting at 0.5 s from the start of the recording.
 
-**Sidecar:**
+The events file is:
+
+| onset | duration | event_type | cross_size |
+|-------|----------|------------| ---------- |
+| 0.5   | 1.5      | fixation   | 3          |
+
+The HED annotation is:
+
+```
+(Duration/1.5 s, (Sensory-event, Visual-presentation, Cue, (Cross, Size/3 cm)))
+```
+
+One approach is to use the `HED` Column in the events file to code the annotation. An alternative is to use curly braces and use the sidecar templates. Usually the `duration column provides the anchor for the template when `Duration` is used to express ongoing events. The sidecar template is:
+
 ```json
 { 
   "duration": {
-    "HED": "Duration/# s"
+    "HED": "(Duration/# s", ({eventType}, {cross-size}))
   },
   "event_type": {
     "HED": {
-      "fixation": "({duration}, (Sensory-event, Visual-presentation, Cue, (Cross, {cross-size})))"
-
+      "fixation": "Sensory-event, Visual-presentation, Cue"
     }
   },
   "cross-size": {
-    "HED": "Size/# cm"
+    "HED": "(Cross, Size/# cm)"
   }
 }
 ```
@@ -1001,27 +1250,36 @@ These examples show properly classified events. If they appear in annotations th
 |-------|----------|------------| ---------- |
 | 0.5   | 1.5      | fixation   | 3          |
 
-**Assembled result:**
-```
-"(Duration/1.5 s, (Sensory-event, Visual-presentation, Cue, (Cross, Size/3 cm)))"
-```
-This indicates that a fixation cross was displayed starting at 0.5 seconds from the start of the recording (as indicated by the value in the `onset` column). The display continues for 1.5 seconds as indicated by the `duration` column.  All of the information is encoded in a single annotation.
 
 **Why use `Duration`:**
 - Captures the information of an ongoing event in a single annotation.
-- Duration is often of direct interest.
+- `Duration` is often of direct interest.
 - Don't need any `Definition` anchors.
+- Simpler when the event has a known duration at the start of the event.
+
+### Strategy 2: Using Onset/Offset for ongoing events
+
+Use `Onset` and `Offset` when events may interleave, have variable durations, or when you need to mark intermediate time points.
 
 ````{admonition} **Example:** Encoding ongoing events using `Onset` and `Offset`
 
-**Scenario:** A fixation cross appears and stays on screen for 1.5 seconds
+**Scenario:** A fixation cross appears at 0.5 seconds. The duration is not necessarily known at initiation, but at 2.0 seconds, another marker is written that indicates the end of the display. This design is often used when items are presented for random amounts of time.
 
-**Sidecar:**
+The events file is:
+
+| onset | duration | event_type     | cross_size |
+|-------|----------|----------------| ---------- |
+| 0.5   | 'n/a'    | fixation_start | 3          |
+| 2.0   | 'n/a'    | fixation_end   | 'n/a'      |
+
+
+A JSON sidecar for this is:
+
 ```json
 {
   "event_type": {
     "HED": {
-      "fixation_start": "(Def/Fixation-point, (Sensory-event, Visual-presentation, Cue, (Cross,{cross_size})), Onset)",
+      "fixation_start": "(Def/Fixation-point, (Sensory-event, Visual-presentation, Cue, {cross_size}), Onset)",
       "fixation_end": "(Def/Fixation-point, Offset)"
     }
   },
@@ -1036,33 +1294,49 @@ This indicates that a fixation cross was displayed starting at 0.5 seconds from 
 }
 ```
 
-**Event:**
-| onset | duration | event_type     | cross_size |
-|-------|----------|----------------| ---------- |
-| 0.5   | 'n/a'    | fixation_start | 3          |
-| 2.0   | 'n/a'    | fixation_end   | 'n/a'       |
+The annotation for the row with onset 0.5 s is:
 
-**Assembled results:**
 ```
 (Def/Fixation-point, (Sensory-event, Visual-presentation, Cue, (Cross, Size/3 cm)), Onset)
 ```
-This indicates that a fixation cross was displayed starting at 0.5 seconds from the start of the recording at time 0.5.
+
+indicating that a fixation cross was displayed starting at 0.5 seconds from the start of the recording. The annotation for the row with onset 2.0 is simply:
 
 ```
 (Def/Fixation-point, Offset)
 ```
-This indicates that the fixation cross that started being shown at 0.5 s stops being
+
+indicating that the fixation cross that started being shown at 0.5 s stops being
 displayed at 2.0 s into the recording. The grouped content under `Onset` continues for the duration of the event.
 
-**Why use `Onset`:**
+**Why use `Onset`/`Offset`:**
 - Temporal scope is explicit (the end of the event is an event marker)
 - Can explicitly express complicated interleaving of events.
-- Can use the anchor definition content to shorten annotations.
-- Can use the `Inset` mechanism to mark intermediate time points and features.
+- Can use the anchor definitions content to shorten annotations.
+- Can use the `Inset` mechanism to mark intermediate time points and features associated with that event.
+- Better for events with variable or unpredictable durations.
 
 Notice that the `Fixation-point` definition doesn't have any content in this example. We didn't put the `Sensory-event` and related tags in the definition itself in this case because we wanted to get the correct grouping with parentheses.
 
 `````
+
+```{admonition} Choosing between Duration and Onset/Offset
+---
+class: tip
+---
+**Use `Duration` when:**
+- Event has a known, fixed duration at the time of annotation
+- Duration is recorded in your data file
+- Simplicity is preferred
+
+**Use `Onset`/`Offset` when:**
+- Duration is not known at the time the event begins
+- You need to mark intermediate points with `Inset`
+- You need to have an explicit marker in the file for the ending time
+- Event timing is more complex
+```
+
+### Using Delay for response timing
 
 The `Delay` tag is used to indicate that the event starts at a specified delay from the time of the event marker in which the annotation appears. This mechanism is often used when the information about an entire trial (i.e., both stimulus and response) are associated with a single time marker. In this case the annotation may contain multiple events -- some of which are delayed from the event marker time.
 
@@ -1110,17 +1384,17 @@ Sensory-event, Visual-presentation, (Red, Circle)
 
 **Annotation:**
 ```
-Sensory-event, Experimental-stimulus, Visual-presentation, 
-(Red, Circle, Target)
+Sensory-event, Experimental-stimulus, Target, Visual-presentation, (Red, Circle)
 ```
 
 **Components:**
 - Event type: `Sensory-event` (required by [Rule 2](#rule-2-events-must-be-classified))
 - Task-event-role: `Experimental-stimulus` (recommended in [Rule 2](#rule-2-events-must-be-classified))
+- Task-stimulus-role: `Target`
 - Modality: `Visual-presentation`
-- Stimulus: `(Red, Circle, Target)` - object properties grouped with task qualifier from [Rule 3](#rule-3-further-qualify-event-roles)
+- Stimulus: `(Red, Circle)` - object properties grouped with task qualifier from [Rule 3](#rule-3-further-qualify-event-roles)
 
-**English:** "An experimental stimulus sensory event presenting a red circle target"
+**English:** "A sensory event that is an experimental target stimulus consisting of the display of a red circle"
 ````
 
 ### Level 3: With spatial information
@@ -1131,15 +1405,16 @@ Sensory-event, Experimental-stimulus, Visual-presentation,
 
 **Annotation:**
 ```
-Sensory-event, Experimental-stimulus, Visual-presentation, 
-((Red, Circle, Target), (Left-side-of, Computer-screen))
+Sensory-event, Experimental-stimulus, Target, Visual-presentation, 
+((Red, Circle), (Left-side-of, Computer-screen))
 ```
 
 **Components:**
-- Task-event-role: `Experimental-stimulus`
 - Event type: `Sensory-event`
+- Task-event-role: `Experimental-stimulus`
+- Task-stimulus-role: `Target`
 - Modality: `Visual-presentation`
-- Stimulus: `(Red, Circle, Target)` - one grouped object with properties
+- Stimulus: `(Red, Circle)` - one grouped object with properties
 - Location: `(Left-side-of, Computer-screen)` - spatial relationship (uses [Rule 6](#rule-6-use-directional-pattern-for-relationships) pattern)
 
 **English:** "An experimental stimulus sensory event presenting a red circle target on the left side of the computer screen"
@@ -1153,7 +1428,7 @@ Sensory-event, Experimental-stimulus, Visual-presentation,
 
 **Annotation:**
 ```
-(Duration/2 s, (Experimental-stimulus, Sensory-event, Visual-presentation, Target,
+(Duration/2 s, (Sensory-event, Experimental-stimulus, Target, Visual-presentation,
 ((Red, Circle), (Left-side-of, Computer-screen))))
 ```
 
@@ -1359,7 +1634,6 @@ class: tip
 ---
 **✓ Grouping**
 - [ ] Stimulus properties grouped: `(Red, Circle)` not `Red, Circle`
-- [ ] Task context grouped with evidence: `(Intended-effect, Target)`
 - [ ] `Agent-action` uses nested structure: `((agent), (action, object))`
 - [ ] `Event` tag NOT inside property groups (keep at top level)
 - [ ] Unrelated concepts NOT grouped together
@@ -1367,7 +1641,7 @@ class: tip
 **✓ Event Classification**
 - [ ] Every timeline event has `Event` tag
 - [ ] Every timeline event has `Task-event-role` tag (when applicable)
-- [ ] `Event` and `Task-event-role` tags at top level or grouped together
+- [ ] Proper tag order: Event, Task-event-role, Task-stimulus-role, Sensory-modality, details
 - [ ] `Sensory-event` includes `Sensory-modality` tag
 
 **✓ File Type**
