@@ -318,7 +318,9 @@ For human experiments, if only `Agent-action` appears without explicit agent tag
 
 **Example (implicit - human participant assumed):**
 ```
+
 Agent-action, Participant-response, (Press, Mouse-button)
+
 ```
 Meaning: A human experiment participant presses the mouse button.
 
@@ -330,7 +332,9 @@ Use `Experiment-participant`, `Experimenter`, or other `Agent-task-role` tags wh
 
 **Example (explicit role):**
 ```
+
 Agent-action, Participant-response, (Experiment-participant, (Press, Mouse-button))
+
 ```
 
 **When to specify agent TYPE explicitly:**
@@ -338,19 +342,25 @@ Use `Animal-agent`, `Robot-agent`, or other `Agent` tags when the agent is NOT a
 
 **Example (non-human agent type):**
 ```
+
 Agent-action, (Animal-agent, (Press, Lever))
+
 ```
 Meaning: An animal agent (e.g., rat, monkey) in the experiment presses a lever. The `Experiment-participant` is implicit in this annotation, but could be made explicit by using `(Animal-agent, Experiment-participant)`.
 
 **Example (avatar in a virtual reality experiment):**
 ```
+
 Agent-action, (Avatar-agent, (Collide-with, Building))
+
 ```
 
 **Combined specification (type + role):**
 When needed, you can specify both agent type and role:
 ```
+
 Agent-action, ((Animal-agent, Experiment-participant), (Move, Forward))
+
 ```
 
 **Best practice:** 
@@ -932,9 +942,10 @@ The HED schema supports annotations at varying levels of detail. The appropriate
 
 #### Minimal annotation
 
-**Purpose:** Basic event classification only  
-**When to use:** Exploratory studies, simple designs, when fine-grained analysis isn't planned  
+**Purpose:** Basic event classification only\
+**When to use:** Exploratory studies, simple designs, when fine-grained analysis isn't planned\
 **Characteristics:**
+
 - Event type classification (`Sensory-event`, `Agent-action`)
 - Task role if applicable (`Experimental-stimulus`, `Participant-response`)
 - No detailed stimulus properties
@@ -954,9 +965,10 @@ Sensory-event, Experimental-stimulus, Visual-presentation, Circle
 
 #### Standard annotation
 
-**Purpose:** Capture properties relevant to experimental manipulations  
-**When to use:** Most experimental studies with specific hypotheses  
+**Purpose:** Capture properties relevant to experimental manipulations\
+**When to use:** Most experimental studies with specific hypotheses\
 **Characteristics:**
+
 - Event classification
 - Task-relevant stimulus properties
 - Agent-action-object structure for responses
@@ -977,9 +989,10 @@ Sensory-event, Experimental-stimulus, Target, Visual-presentation, (Red, Circle)
 
 #### Detailed annotation
 
-**Purpose:** Comprehensive description including context and precise properties  
-**When to use:** Complex designs, data sharing, reanalysis potential  
+**Purpose:** Comprehensive description including context and precise properties\
+**When to use:** Complex designs, data sharing, reanalysis potential\
 **Characteristics:**
+
 - Full event classification with qualifiers
 - Complete stimulus properties (including constants)
 - Spatial relationships
@@ -1004,7 +1017,6 @@ Sensory-event, Experimental-stimulus, Target, Expected, Visual-presentation,
 ---
 class: tip
 ---
-
 **Use MINIMAL annotation when:**
 - Conducting exploratory or pilot studies
 - Event timing is the primary variable of interest
@@ -1040,7 +1052,6 @@ class: warning
 ---
 All events of the same type in your dataset should the same annotation strategy and ideally, the same detail level. Inconsistent detail levels make data analysis unreliable and searches incomplete.
 ```
-
 
 ## Selecting the right Event tag
 
