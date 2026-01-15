@@ -35,11 +35,11 @@ Where to begin?
 
 **New to HED?** Start with the `Introduction to HED <./IntroductionToHed.html>`_ for core concepts (5 min read).
 
-**To understand HED annotations** read `Making HED meaningful` <./HedAnnotationSemantics>`_ the essential 
-guide to HED annotation strategy and meaning.
-
 **Ready to get started?** Use the `How can you use HED? <./HowCanYouUseHed.html>`_ guide to find role-specific
 workflows and detailed guidance for your use case (experimenters, annotators, analysts, developers, or schema builders).
+
+**To understand HED annotations** read `Making HED meaningful` <./HedAnnotationSemantics>`_ the essential 
+guide to HED annotation strategy and meaning.
 
 **Need tools?** Browse the `HED online tools <https://hedtools.org/hed/>`_ for installation-free validation, annotation, and analysis.
 You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_, the `MATLAB HEDTools <https://www.hedtags.org/hed-matlab>`_, and the `JavaScript HEDTools <https://www.hedtags.org/hed-javascript>`_ for programmatic access on various platforms.
@@ -51,8 +51,8 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Overview:
 
    IntroductionToHed.md
-   Making HED meaningful <./HedAnnotationSemantics.md>
    HowCanYouUseHed.md
+   Making HED meaningful <./HedAnnotationSemantics.md>
    HedSchemas.md
    WhatsNew.md   
 
