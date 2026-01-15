@@ -74,7 +74,7 @@ The sentence can be unambiguously translated as: "A sensory event that is a targ
 - `Target` indicates the task stimulus role
 - `Visual-presentation` specifies the sensory modality
 - `(Green, Triangle)` - grouped properties describe ONE object
-- `(Center-of, Computer-screen)` - spatial relationship (see [Rule 5](#rule-5-use-directional-pattern-for-relationships) for relationship patterns)
+- `(Center-of, Computer-screen)` - spatial relationship (see [Rule 5](#rule-5-nest-relationships) for relationship patterns)
 - The outer grouping `((Green, Triangle), (Center-of, Computer-screen))` connects the object to its location
 
 ````{admonition} **Example:** A non-reversible HED annotation
@@ -92,35 +92,6 @@ We can determine that this is a sensory event presented visually because of the 
 - Spatial information is disconnected
 
 **A simple reversiblity test:** Randomly shuffle the order of the tags and tag groups (keeping the same nesting) and see if you interpret the annotation in the same way.
-
-## The perspective principle
-
-(participant-perspective-anchor)=
-
-```{admonition} **Key principle**
----
-class: tip
----
-**By default, HED annotations for sensory events and agent actions reflect the perspective of the experiment participant, not the experimenter or the equipment.**
-
-```
-
-### Implicit versus explicit perspective
-
-The perspective is usually determined by the `Agent` and/or `Agent-task-role` tags. If an event annotation does not include an `Agent` tag and an `Agent-task-role` tag, the annotation has an **implicit perspective** that is assumed to be from the viewpoint of a single human experiment participant. This is fundamental because experiments are most commonly designed to measure the participant's response to stimuli and events.
-
-````{admonition} **Example:** Participant perspective annotation (implicit)
-
-```
-Sensory-event, Cue, Visual-presentation, (Red, Circle)
-```
-````
-
-In this sensory event, a participant sees a red circle on screen meant to be a cue to the participant to get ready to respond. The agent is assumed to be a human agent whose role is as the single experiment participant. The perspective is implicit because the agent and the agent's role in the task are not explicitly tagged.
-
-**Why it works:** Usually sensory events do not have `Agent` and `Agent-task-role`, and the annotation is assumed to describe the experiment from the viewpoint of a single human participant.
-
-More complicated scenarios (e.g., multiple participants, agents that are not human, or agents that are not the experiment participant) are also possible to annotate unambiguously, but in these cases the `Agent` and/or `Agent-task-role` are required for unambiguous annotation. See examples in [Rule 2: Events must be classified](#rule-2-events-must-be-classified).
 
 ## File type semantics
 
@@ -234,7 +205,7 @@ Tags within a group are semantically bound and work together to describe one thi
 
 Grouping rules apply to both timeline and descriptor files and typically refer to tags from the `Item` and `Property` hierarchies.
 
-#### Group an object's properties together
+#### Group object properties
 
 Tags describing properties of the same object MUST be grouped together:
 
@@ -258,7 +229,7 @@ If an item has multiple properties, they should all be grouped together:
 
 The grouping indicates that this is a large green triangle. Without grouping, these three properties that may or may not apply to the same object.
 
-#### Keep independent concepts separate
+#### Separate unrelated concepts
 
 Tags that describe independent aspects or unrelated concepts should NOT be grouped together. Don't group tags with no semantic relationship.
 
@@ -269,7 +240,7 @@ Tags that describe independent aspects or unrelated concepts should NOT be group
 - `(Green, Response-time)` - Color and temporal measure are unrelated
 ```
 
-### Rule 2: Events must be classified
+### Rule 2: Classify events carefully
 
 Event files and other timeline files are tabular files that associate annotations with points on the experimental timeline. Each row in such a tabular file can represent one or more "events" (or markers in an ongoing event process).
 
@@ -283,19 +254,19 @@ class: tip
   - Each event annotation should be in a separate group if multiple events occur at the same time
 ```
 
-#### Event classification tags
+#### Event tags give category
 
 The `Event` tags provide the primary classification or anchors for event annotations.
 
-| Event                  | Description                                                            | Implicit agent                |
-| ---------------------- | ---------------------------------------------------------------------- | ----------------------------- |
-| `Sensory-event`        | A sensory presentation occurs                                          | Single experiment participant |
-| `Agent-action`         | An agent performs an action                                            | Single experiment participant |
-| `Data-feature`         | A computed or observed feature is marked                               | Software agent                |
-| `Experiment-control`   | Experiment structure or parameters change                              | Controller agent              |
-| `Experiment-procedure` | Experiment paused to administer something (like a quiz or saliva test) | Experimenter                  |
-| `Experiment-structure` | Organizational boundary or marker (like start of a trial or block)     | Controller agent              |
-| `Measurement-event`    | A measurement is taken (which may be recorded elsewhere)               | Controller agent              |
+| Event                  | Description                                                            | Implicit agent             |
+| ---------------------- | ---------------------------------------------------------------------- | -------------------------- |
+| `Sensory-event`        | A sensory presentation occurs                                          | One experiment participant |
+| `Agent-action`         | An agent performs an action                                            | One experiment participant |
+| `Data-feature`         | A computed or observed feature is marked                               | Software agent             |
+| `Experiment-control`   | Experiment structure or parameters change                              | Controller agent           |
+| `Experiment-procedure` | Experiment paused to administer something (like a quiz or saliva test) | Experimenter               |
+| `Experiment-structure` | Organizational boundary or marker (like start of a trial or block)     | Controller agent           |
+| `Measurement-event`    | A measurement is taken (which may be recorded elsewhere)               | Controller agent           |
 
 See the comprehensive [decision guide for Event tags](#selecting-the-right-event-tag) later in this document for detailed guidance, examples, and decision criteria.
 
@@ -316,73 +287,7 @@ The event is a sensory event (from the perspective of the experiment participant
 
 A single top-level `Event` tag is assumed to represent an event that includes all of the rest of the tags in the annotation. The sensory event in the example is an experimental stimulus (something that the participant will need to act on as part of the experiment's task). This is the most common method of annotating events.
 
-#### Agent action perspective
-
-For `Agent-action` events, the actor performing the action can be specified with varying levels of detail:
-
-```{admonition} **Agent TYPE vs. Agent ROLE:**
----
-class: tip
----
-- **Agent type** (from `Agent` hierarchy): `Human-agent`, `Animal-agent`, `Avatar-agent`, `Controller-agent`, `Robot-agent`, `Software-agent`
-- **Agent role** (from `Agent-task-role` hierarchy):  `Experiment-actor`, `Experiment-controller`, `Experiment-participant`, `Experimenter`
-```
-
-**When agent specification is implicit:** If an `Agent-action` appears without explicit agent or agent task role tags, a single experiment participant is assumed by default. The characteristics of the agent as defined by the `Agent` tag (e.g., `Human-agent` or `Animial-agent`) may be specified or assumed to be provided by additional files, such as the `participants.tsv` in BIDS.
-
-````{admonition} **Example:** An implicit agent is assumed
-```
-Agent-action, Participant-response, (Press, Mouse-button)
-```
-````
-
-The annotation indicates that a human experiment participant presses the mouse button.
-
-**When to use the agent ROLE explicitly:** Use `Experiment-participant`, `Experimenter`, or other `Agent-task-role` tags when:
-
-- Multiple experiment participants are involved
-- Agents are not the experiment participant
-- When the experiment participant is not human
-- Clarity about who did what is important
-- You want to be explicit for consistency
-
-````{admonition} **Example:** An experiment with two partipants playing Jeopardy
-```
-Agent-action, Participant-response, ((Experiment-participant, ID/sub_003), (Press, Mouse-button))
-```
-````
-
-In this experiment either participant could have pressed their mouse button and so their responses must be distinguished in the annotation.
-
-**When to specify agent TYPE explicitly:** Use `Animal-agent`, `Robot-agent`, or other `Agent` tags when the agent is NOT a human:
-
-````{admonition} **Example:** A mouse presses a lever for a reward
-```
-Agent-action, Participant-response, ((Animal-agent, Animal/Mouse), (Press, Lever))
-```
-````
-
-The annotation indicates that a mouse, the single participant of this experiment, presses a lever. The `Experiment-participant` is implicit in this annotation, but could be made explicit by using `(Animal-agent, Experiment-participant, Animal/Mouse)` in the example.
-
-Note that since `Mouse` is not a tag in the schema, it must be modified by its closest potential parent in the schema: `Animal/Mouse`. (See [Rule 8](#rule-8-extend-tags-carefully) for guidance on extending tags.)
-
-````{admonition} **Example:** An avatar in a virtual reality experiment interacts with a human
-```
-Agent-action, ((Avatar-agent, Experiment-actor, ID/34A7), (Collide-with, Building))
-```
-````
-
-The avatar is not labeled with `Experiment-participant` but with `Experiment-actor`. It is part of the scenario, but we are not measuring its cognition or behavior.
-
-**Best practices:**
-
-- In human experiments: `Human-agent` can be omitted (it's implicit)
-- In animal/robot experiments: Usually specify the agent type (`Animal-agent`, `Robotic-agent`)
-- Be consistent throughout your dataset
-
-See [Rule 4](#rule-4-nest-agent-action-object) for the complete agent-action-object structural pattern.
-
-#### Task-event-role tags
+#### Task event roles
 
 If an experiment involves a task, each event should be associated with a `Task-event-role`:
 
@@ -398,7 +303,7 @@ If an experiment involves a task, each event should be associated with a `Task-e
 
 See the comprehensive [decision guide for `Task-event-role` tags](#selecting-the-right-task-event-role) later in this document for detailed guidance, examples, and decision criteria.
 
-#### Presentation of sensory events
+#### Sensory presentations
 
 If the event is a `Sensory-event`, a `Sensory-presentation` tag (e.g., `Visual-presentation` or `Auditory-presentation`) SHOULD be included to specify what senses are affected by the presentation. This is essential for search and query functionality.
 
@@ -465,13 +370,9 @@ At time 104.5 seconds into the experiment a circle is presented on the computer 
 - An experimental stimulus that is the visual presentation of a circle (assumed to be on the screen) at time 104.5 seconds from the start of the experiment.
 - A participant response consisting of the experiment participant pushing the mouse button at 104.750 seconds from the start of the experiment.
 
-### Rule 3: Further qualify event roles
-
-After selecting the appropriate `Event` and `Task-event-role` tags, consider adding more specific qualifiers:
-
 #### Task-stimulus-role qualifiers
 
-Tags from the `Task-stimulus-role` hierarchy provide important information about the task stimulus. For example, tags such as `Penalty` or `Reward` are often used to modify the `Feedback` role. If the annotation contains an `Experimental-stimulus` tag, consider whether any tags from `Task-stimulus-role` are appropriate. Common qualifiers include:
+If the event type is `Experimental-stimulus`, tags from the `Task-stimulus-role` hierarchy provide important information about the task stimulus. For example, tags such as `Penalty` or `Reward` are often used to modify the `Feedback` role. If the annotation contains an `Experimental-stimulus` tag, consider whether any tags from `Task-stimulus-role` are appropriate. Common qualifiers include:
 
 - `Target` - The thing the participant should focus on or respond to
 - `Non-target` - Something to ignore or not respond to
@@ -508,6 +409,100 @@ Agent-action, Participant-response, Correct-action, (Experiment-participant, (Pr
 ````
 
 The annotation indicates that the experiment participant pressed the mouse button, and this was a correct response to the task.
+
+### Rule 3: Understand perspective
+
+(participant-perspective-anchor)=
+
+```{admonition} **Key principle**
+---
+class: tip
+---
+**Every type of event has a perspective that informs the viewpoint of the annotation.** 
+```
+
+Perspective is timeline files, particular event files, because they contain markers of time points in the experiment that main influence the participants' cognition or behavior. The perspective is set **explicitly** in annotations containing `Agent` and/or `Agent-task-role` tags.
+
+If an event annotation does not include an `Agent` tag and an `Agent-task-role` tag, the annotation has an **implicit perspective or viewpoint** that depends on the type of event. See the Event table in [Rule 2: Classify events carefully](#rule-2-classify-events-carefully) for the implicit agent associated with each event type.
+
+````{admonition} **Example:** Participant perspective for sensory event (implicit)
+
+```
+Sensory-event, Cue, Visual-presentation, (Red, Circle)
+```
+````
+
+In this sensory event, a participant sees a red circle on screen meant to be a cue to the participant to get ready to respond. The agent is assumed to be a human agent whose role is as the single experiment participant. The perspective is implicit because the agent and the agent's role in the task are not explicitly tagged.
+
+**Why it works:** Usually sensory events do not have `Agent` and `Agent-task-role`, and the annotation is assumed to describe the experiment from the viewpoint of a single human participant.
+
+#### Agent action perspective
+
+For `Agent-action` events, the actor performing the action can be specified with varying levels of detail:
+
+```{admonition} **Agent TYPE vs. Agent ROLE:**
+---
+class: tip
+---
+- **Agent type** (from `Agent` hierarchy): `Human-agent`, `Animal-agent`, `Avatar-agent`, `Controller-agent`, `Robot-agent`, `Software-agent`
+- **Agent role** (from `Agent-task-role` hierarchy):  `Experiment-actor`, `Experiment-controller`, `Experiment-participant`, `Experimenter`
+```
+
+**When agent specification is implicit:** If an `Agent-action` appears without explicit agent or agent task role tags, a single experiment participant is assumed by default. The characteristics of the agent as defined by the `Agent` tag (e.g., `Human-agent` or `Animial-agent`) may be specified or assumed to be provided by additional files, such as the `participants.tsv` in BIDS.
+
+````{admonition} **Example:** An implicit agent is assumed
+```
+Agent-action, Participant-response, (Press, Mouse-button)
+```
+````
+
+The annotation indicates that a human experiment participant presses the mouse button.
+
+**When to use the agent ROLE explicitly:** Use `Experiment-participant`, `Experimenter`, or other `Agent-task-role` tags when:
+
+- Multiple experiment participants are involved
+- Agents are not the experiment participant
+- When the experiment participant is not human
+- Clarity about who did what is important
+- You want to be explicit for consistency
+
+````{admonition} **Example:** An experiment with two partipants playing Jeopardy
+```
+Agent-action, Participant-response, ((Experiment-participant, ID/sub_003), (Press, Mouse-button))
+```
+````
+
+In this experiment either participant could have pressed their mouse button and so their responses must be distinguished in the annotation.
+
+**When to specify agent TYPE explicitly:** Use `Animal-agent`, `Robot-agent`, or other `Agent` tags when the agent is NOT a human:
+
+````{admonition} **Example:** A mouse presses a lever for a reward
+```
+Agent-action, Participant-response, ((Animal-agent, Animal/Mouse), (Press, Lever))
+```
+````
+
+The annotation indicates that a mouse, the single participant of this experiment, presses a lever. The `Experiment-participant` is implicit in this annotation, but could be made explicit by using `(Animal-agent, Experiment-participant, Animal/Mouse)` in the example.
+
+Note that since `Mouse` is not a tag in the schema, it must be modified by its closest potential parent in the schema: `Animal/Mouse`. (See [Rule 8: Extend tags carefully](#rule-8-extend-tags-carefully) for guidance on extending tags.)
+
+````{admonition} **Example:** An avatar in a virtual reality experiment interacts with a human
+```
+Agent-action, ((Avatar-agent, Experiment-actor, ID/34A7), (Collide-with, Building))
+```
+````
+
+The avatar is not labeled with `Experiment-participant` but with `Experiment-actor`. It is part of the scenario, but we are not measuring its cognition or behavior.
+
+**Best practices:**
+
+- In human experiments: `Human-agent` can be omitted (it's implicit)
+- In animal/robot experiments: Usually specify the agent type (`Animal-agent`, `Robotic-agent`)
+- Be consistent throughout your dataset
+
+See [Rule 4](#rule-4-nest-agent-action-object) for the complete agent-action-object structural pattern.
+
+More complicated scenarios (e.g., multiple participants, agents that are not human, or agents that are not the experiment participant) are also possible to annotate unambiguously, but in these cases the `Agent` and/or `Agent-task-role` are required for unambiguous annotation. See examples in [Rule 2: Classify events carefully](#rule-2-classify-events-carefully).
 
 ### Rule 4: Nest agent-action-object
 
@@ -651,7 +646,7 @@ The BIDS sidecars and the NWB `MeaningsTable` provide equivalent mechanisms for 
     }
   }
 }
-
+```
 
 **Assembled Result:**
 ```
@@ -790,19 +785,57 @@ The `Label/` tag provides an identifying name or label for something. The `#` pl
 
 - Naming a specific stimulus or condition (e.g., `Label/Fixation-point`)
 - Identifying specific content (e.g., `Label/Green` for the word "Green")
-- Creating definitions (see [Rule 7](#rule-7-special-syntax-and-restrictions) for `Definition`)
+- Creating definitions (see [Rule 7](#rule-7-special-hed-syntax) for `Definition`)
 
 Labels must use hyphens or underscores instead of spaces (e.g., `Label/Press-left-for-red`). They have the name class attribute, meaning that their values must be alphanumeric. For identifiers that contain any printing UTF-8 character, use `ID/` or the `Parameter-name/` tags. These have the text class attribute and an take very general values.
 
 #### Value and unit classes
 
+Many HED tags are **value-taking tags** (also called placeholder tags), indicated by a `#` symbol in the schema. These tags require specific values to complete them, and the schema defines the types of values and units are allowed.
+
+**Value classes** define what type of value can be used:
+
+- `nameClass` - Alphanumeric names (letters, digits, hyphens, underscores): `Label/My-stimulus-1`
+- `textClass` - Any printable UTF-8 characters: `ID/Participant answered: "Yes!"`
+- `numericClass` - Numbers (integers or decimals): `Duration/2.5 s`, `Age/25 years`
+
+**Unit classes** define physical quantities that require units of measurement:
+
+- `timeClass` - Time measurements: `Duration/500 ms`, `Delay/2.3 s`
+- `physicalLengthClass` - Spatial measurements: `Distance/50 cm`, `Height/1.8 m`
+- `angleClass` - Angular measurements: `Angle/45 degrees`, `Visual-angle/2.5 radianAngle`
+- `frequencyClass` - Frequency measurements: `Temporal-rate/60 Hz`
+- `speedClass` - Velocity measurements: `Speed/25 m-per-s`
+- `intensityClass` - Intensity measurements: `Loudness/80 dB`, `Luminance/45 cd-per-m^2`
+
+````{admonition} **Example:** Using value-taking tags correctly
+```
+(Duration/1.5 s, (Age/34 years, Luminance/100 cd-per-m^2, Label/Fixation-cross))
+```
+````
+
+**Correct usage with appropriate units:** **Incorrect - missing or wrong units:**
+
+```
+Duration/1.5, Age/34 s, Luminance/100 watts
+```
+
+**Key rules for value-taking tags:**
+
+1. Use the `#` placeholder in templates: `Duration/# s` becomes `Duration/2.5 s`
+2. Include required units for unit classes: `Distance/50 cm` not `Distance/50`
+3. Choose appropriate units from the allowed list in the schema
+4. Follow value class restrictions (alphanumeric for `nameClass`, etc.)
+
+The HED schema specifies allowed units for each unit class. For example, `timeClass` allows units like `s` (seconds), `ms` (milliseconds), `minute`, `hour`. Always use the standard unit abbreviations defined in the schema.
+
 ### Rule 8: Extend tags carefully
 
-The HED schema vocabulary hierarchy can be extended to accommodate more specialized annotations. HED library schemas are formal extensions of HED for specialized vocabularies. Users can also extend the hierarchy by appending new tag to an existing tag that allows extension. Tags that can be extended have (or have inherited) the `extensionAllowed` attribute. Tags that can be extended include all tags EXCEPT those in the `Event` or `Agent` subtrees or that have a `#` child (value-taking nodes). You should ONLY consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation.
+The HED schema vocabulary hierarchy can be extended to accommodate more specialized annotations. HED library schemas are formal extensions of HED for specialized vocabularies. Users can also extend the hierarchy by appending new tag to an existing tag that allows extension. Tags that can be extended have (or have inherited) the `extensionAllowed` attribute. Tags that can be extended include all tags EXCEPT those in the `Event` or `Agent` subtrees or that have a `#` child (value-taking nodes). You should ONLY consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation. HED validators will always give a
 
 When you need to use a tag that doesn't exist in the schema, EXTEND FROM THE MOST SPECIFIC applicable parent tag while preserving the is-a (taxonomic) relationship.
 
-````{admonition} Extend from the deepest applicable parent
+````{admonition} **Extend from the deepest applicable parent**
 ---
 class: tip
 ---
@@ -820,17 +853,18 @@ The `Parent-tag` must be a tag in the schema.
 - **Don't extend from overly general terms** - Go deeper into the hierarchy when possible
 - **Check for extension restrictions** - Some tags cannot be extended (`Event` subtree, `Agent` subtree, or # value nodes)
 
-````{admonition} Example: Extending Item hierarchy
 Suppose you want to annotate a house, but house is not a tag in the schema.
 
-**Wrong:**
+````{admonition} **Example:** Extending Item hierarchy at the wrong level
 ```
 Item/House
 ```
-**Problem:** Too general. `Item` has many levels of hierarchy that better classify "house."
+````
 
-**Correct:**
-```
+The annotation is syntactically correct. The `Item/House` willThe difficulty with annotation is it the. `Item` has many levels of hierarchy that better classify "house.
+
+````{admonition} **Example:** Correctly adding a House tag
+
 Item/Object/Man-made-object/Building/House
 ```
 ````
@@ -1329,9 +1363,9 @@ These examples show how to build increasingly complex annotations by progressive
 class: tip
 ---
 These examples build on each other, showing the same stimulus with progressively more information:
-- Level 1: Basic grouping and event classification ([Rule 1](#rule-1-group-tags-for-meaning), [Rule 2](#rule-2-events-must-be-classified))
-- Level 2: Adding task role ([Rule 2](#rule-2-events-must-be-classified) with Task-event-role)
-- Level 3: Adding spatial, comparative and other relationships ([Rule 5](#rule-5-use-directional-pattern-for-relationships))
+- Level 1: Basic grouping and event classification ([Rule 1](#rule-1-group-tags-for-meaning), [Rule 2](#rule-2-classify-events-carefully))
+- Level 2: Adding task role ([Rule 2](#rule-2-classify-events-carefully) with Task-event-role)
+- Level 3: Adding spatial, comparative and other relationships ([Rule 5](#rule-5-nest-relationships))
 - Level 4: Adding temporal scope ([File type semantics](#temporal-scope-tags))
 
 Each level is a valid annotation - choose the level of detail appropriate for your analysis needs.
@@ -1339,7 +1373,7 @@ Each level is a valid annotation - choose the level of detail appropriate for yo
 
 ### Level 1: Simple sensory event
 
-````{admonition} **Example 1:** Basic stimulus (applies [Rule 1](#rule-1-group-tags-for-meaning), [Rule 2](#rule-2-events-must-be-classified))
+````{admonition} **Example 1:** Basic stimulus (applies [Rule 1](#rule-1-group-tags-for-meaning), [Rule 2](#rule-2-classify-events-carefully))
 
 **Scenario:** A red circle appears
 
@@ -1349,8 +1383,8 @@ Sensory-event, Visual-presentation, (Red, Circle)
 ```
 
 **Components:**
-- Event type: `Sensory-event` (required by [Rule 2](#rule-2-events-must-be-classified))
-- Modality: `Visual-presentation` (recommended in [Rule 2](#rule-2-events-must-be-classified))
+- Event type: `Sensory-event` (required by [Rule 2](#rule-2-classify-events-carefully))
+- Modality: `Visual-presentation` (recommended in [Rule 2](#rule-2-classify-events-carefully))
 - Stimulus: `(Red, Circle)` - properties grouped per [Rule 1](#rule-1-group-tags-for-meaning)
 
 **English:** "A visual sensory event presenting a red circle"
@@ -1358,7 +1392,7 @@ Sensory-event, Visual-presentation, (Red, Circle)
 
 ### Level 2: With task role
 
-````{admonition} **Example 2:** Adding task context (adds Task-event-role from [Rule 2](#rule-2-events-must-be-classified), qualifier from [Rule 3](#rule-3-further-qualify-event-roles))
+````{admonition} **Example 2:** Adding task context (adds Task-event-role from [Rule 2](#rule-2-classify-events-carefully), qualifier from [Rule 3](#rule-3-understand-perspective))
 
 **Scenario:** A red circle target appears in a task
 
@@ -1368,11 +1402,11 @@ Sensory-event, Experimental-stimulus, Target, Visual-presentation, (Red, Circle)
 ```
 
 **Components:**
-- Event type: `Sensory-event` (required by [Rule 2](#rule-2-events-must-be-classified))
-- Task-event-role: `Experimental-stimulus` (recommended in [Rule 2](#rule-2-events-must-be-classified))
+- Event type: `Sensory-event` (required by [Rule 2](#rule-2-classify-events-carefully))
+- Task-event-role: `Experimental-stimulus` (recommended in [Rule 2](#rule-2-classify-events-carefully))
 - Task-stimulus-role: `Target`
 - Modality: `Visual-presentation`
-- Stimulus: `(Red, Circle)` - object properties grouped with task qualifier from [Rule 3](#rule-3-further-qualify-event-roles)
+- Stimulus: `(Red, Circle)` - object properties grouped with task qualifier from [Rule 2](#task-event-roles)
 
 **English:** "A sensory event that is an experimental target stimulus consisting of the display of a red circle"
 ````
@@ -1395,14 +1429,14 @@ Sensory-event, Experimental-stimulus, Target, Visual-presentation,
 - Task-stimulus-role: `Target`
 - Modality: `Visual-presentation`
 - Stimulus: `(Red, Circle)` - one grouped object with properties
-- Location: `(Left-side-of, Computer-screen)` - spatial relationship (uses [Rule 5](#rule-5-use-directional-pattern-for-relationships) pattern)
+- Location: `(Left-side-of, Computer-screen)` - spatial relationship (uses [Rule 5](#rule-5-nest-relationships) pattern)
 
 **English:** "An experimental stimulus sensory event presenting a red circle target on the left side of the computer screen"
 ````
 
 ### Level 4: With duration
 
-````{admonition} **Example 4:** Event with duration (adds temporal scope from [Rule 7](#rule-7-special-syntax-and-restrictions))
+````{admonition} **Example 4:** Event with duration (adds temporal scope from [Rule 7](#rule-7-special-hed-syntax))
 
 **Scenario:** A red circle target appears on the left and stays visible for 2 seconds
 
@@ -1413,11 +1447,11 @@ Sensory-event, Experimental-stimulus, Target, Visual-presentation,
 ```
 
 **Components:**
-- Temporal scope: `Duration/2 s` - reserved tag from [Rule 7](#rule-7-special-syntax-and-restrictions)
-- Event type: `Sensory-event` (required by [Rule 2](#rule-2-events-must-be-classified))
+- Temporal scope: `Duration/2 s` - reserved tag from [Rule 7](#rule-7-special-hed-syntax)
+- Event type: `Sensory-event` (required by [Rule 2](#rule-2-classify-events-carefully))
 - Task-event-role: `Experimental-stimulus`
 - Modality: `Visual-presentation`
-- Content: `((Red, Circle), (Left-side-of, Computer-screen))` - combines grouping ([Rule 1](#rule-1-group-tags-for-meaning)) and relationships ([Rule 5](#rule-5-use-directional-pattern-for-relationships))
+- Content: `((Red, Circle), (Left-side-of, Computer-screen))` - combines grouping ([Rule 1](#rule-1-group-tags-for-meaning)) and relationships ([Rule 5](#rule-5-nest-relationships))
 
 **English:** "An experimental stimulus sensory event consisting of the presentation of a red circle target on the left of the computer screen is displayed for 2 seconds."
 ````
