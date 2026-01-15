@@ -179,7 +179,6 @@ Temporal scope tags (`Onset`, `Offset`, `Inset`, and `Delay`) are ONLY for timel
 
 See [Temporal annotation strategies](#temporal-annotation-strategies) for detailed guidance on when to use `Duration` versus `Onset`/`Offset` patterns.
 
-
 ## Semantic rules
 
 Some rules in this section primarily apply to **timeline files** (events with timestamps). For **descriptor files**, event-related rules do not apply. See [File type semantics](#file-type-semantics) above for the distinction.
@@ -288,7 +287,6 @@ The event is a sensory event (from the perspective of the experiment participant
 
 A single top-level `Event` tag is assumed to represent an event that includes all of the rest of the tags in the annotation. The sensory event in the example is an experimental stimulus (something that the participant will need to act on as part of the experiment's task). This is the most common method of annotating events.
 
-
 #### Task event roles
 
 If an experiment involves a task, each event should be associated with a `Task-event-role`:
@@ -372,7 +370,6 @@ At time 104.5 seconds into the experiment a circle is presented on the computer 
 - An experimental stimulus that is the visual presentation of a circle (assumed to be on the screen) at time 104.5 seconds from the start of the experiment.
 - A participant response consisting of the experiment participant pushing the mouse button at 104.750 seconds from the start of the experiment.
 
-
 #### Task-stimulus-role qualifiers
 
 If the event type is `Experimental-stimulus`, tags from the `Task-stimulus-role` hierarchy provide important information about the task stimulus. For example, tags such as `Penalty` or `Reward` are often used to modify the `Feedback` role. If the annotation contains an `Experimental-stimulus` tag, consider whether any tags from `Task-stimulus-role` are appropriate. Common qualifiers include:
@@ -423,8 +420,8 @@ class: tip
 ---
 **Every type of event has a perspective that informs the viewpoint of the annotation.** 
 ```
-Perspective is timeline files, particular event files, because they contain markers of time points in the experiment that main influence the participants' cognition or behavior.
-The persective is set **explicitly** in annotations containing `Agent` and/or `Agent-task-role` tags.
+
+Perspective is timeline files, particular event files, because they contain markers of time points in the experiment that main influence the participants' cognition or behavior. The perspective is set **explicitly** in annotations containing `Agent` and/or `Agent-task-role` tags.
 
 If an event annotation does not include an `Agent` tag and an `Agent-task-role` tag, the annotation has an **implicit perspective or viewpoint** that depends on the type of event. See the Event table in [Rule 2: Classify events carefully](#rule-2-classify-events-carefully) for the implicit agent associated with each event type.
 
@@ -437,7 +434,7 @@ Sensory-event, Cue, Visual-presentation, (Red, Circle)
 
 In this sensory event, a participant sees a red circle on screen meant to be a cue to the participant to get ready to respond. The agent is assumed to be a human agent whose role is as the single experiment participant. The perspective is implicit because the agent and the agent's role in the task are not explicitly tagged.
 
-**Why it works:** Usually sensory events do not have `Agent` and `Agent-task-role`, and the annotation is assumed to describe the experiment from the viewpoint of a single human participant. 
+**Why it works:** Usually sensory events do not have `Agent` and `Agent-task-role`, and the annotation is assumed to describe the experiment from the viewpoint of a single human participant.
 
 #### Agent action perspective
 
@@ -504,7 +501,6 @@ The avatar is not labeled with `Experiment-participant` but with `Experiment-act
 - Be consistent throughout your dataset
 
 See [Rule 4](#rule-4-nest-agent-action-object) for the complete agent-action-object structural pattern.
-
 
 More complicated scenarios (e.g., multiple participants, agents that are not human, or agents that are not the experiment participant) are also possible to annotate unambiguously, but in these cases the `Agent` and/or `Agent-task-role` are required for unambiguous annotation. See examples in [Rule 2: Classify events carefully](#rule-2-classify-events-carefully).
 
@@ -825,6 +821,7 @@ Duration/1.5, Age/34 s, Luminance/100 watts
 ```
 
 **Key rules for value-taking tags:**
+
 1. Use the `#` placeholder in templates: `Duration/# s` becomes `Duration/2.5 s`
 2. Include required units for unit classes: `Distance/50 cm` not `Distance/50`
 3. Choose appropriate units from the allowed list in the schema
@@ -834,7 +831,7 @@ The HED schema specifies allowed units for each unit class. For example, `timeCl
 
 ### Rule 8: Extend tags carefully
 
-The HED schema vocabulary hierarchy can be extended to accommodate more specialized annotations. HED library schemas are formal extensions of HED for specialized vocabularies. Users can also extend the hierarchy by appending new tag to an existing tag that allows extension. Tags that can be extended have (or have inherited) the `extensionAllowed` attribute. Tags that can be extended include all tags EXCEPT those in the `Event` or `Agent` subtrees or that have a `#` child (value-taking nodes). You should ONLY consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation. HED validators will always give a 
+The HED schema vocabulary hierarchy can be extended to accommodate more specialized annotations. HED library schemas are formal extensions of HED for specialized vocabularies. Users can also extend the hierarchy by appending new tag to an existing tag that allows extension. Tags that can be extended have (or have inherited) the `extensionAllowed` attribute. Tags that can be extended include all tags EXCEPT those in the `Event` or `Agent` subtrees or that have a `#` child (value-taking nodes). You should ONLY consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation. HED validators will always give a
 
 When you need to use a tag that doesn't exist in the schema, EXTEND FROM THE MOST SPECIFIC applicable parent tag while preserving the is-a (taxonomic) relationship.
 
@@ -847,7 +844,7 @@ Parent-tag/Extension-tag
 ```
 
 The `Parent-tag` must be a tag in the schema.
-`````
+````
 
 **Guidelines:**
 
