@@ -581,24 +581,18 @@ The example has the following structure:
 Each `Relation` should have should be in its own grouping.
 
 ````{admonition} **Example:** Spatial relationship pattern
-
 ```
-````
 
 ((Red, Circle), (To-left-of, (Green, Square)))
+````
 
-`````
 This annotation indicates a red circle is to-left-of a green square.
 
-
 ````{admonition} **Example:** A size comparison
-
-`````
-
+```
 Sensory-event, Experimental-stimulus, Visual-presentation, ((Cross, White, Size), (Greater-than, (Circle, Red, Size)))
-
 ```
-```
+````
 
 This annotation indicates an experimental stimulus consists of a white cross and a red circle. The white cross is bigger than the red circle.
 
@@ -625,13 +619,11 @@ Common `Relation` tags include:
 
 **Important:** The order matters! `(A, (To-left-of, B))` means "A is to the left of B", which is different from `(B, (To-left-of, A))` which means "B is to the left of A".
 
-`````
-
 ### Rule 6: Assembly with curly braces
 
 The BIDS sidecars and the NWB `MeaningsTable` provide equivalent mechanisms for associating HED annotations with columns of tabular files. Without these mechanisms, you would have to provide a separate annotation for each row in the tabular file. When these mechanisms are used you can provide annotations that apply to all of the rows.
 
-**Assembly** refers to the process of looking up the applicable annotations for each row and creating a complete HED annotation for an individual row. The default assembly method is to concatenate the annotations for each column. This works for independent information but fails when multiple columns describe parts of the same entity. We assume that the annotations go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB). 
+**Assembly** refers to the process of looking up the applicable annotations for each row and creating a complete HED annotation for an individual row. The default assembly method is to concatenate the annotations for each column. This works for independent information but fails when multiple columns describe parts of the same entity. We assume that the annotations go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB).
 
 ````{admonition} **Example:** Ambiguous annotation with flat concatenation
 
@@ -640,7 +632,7 @@ The BIDS sidecars and the NWB `MeaningsTable` provide equivalent mechanisms for 
 | ----- | -------- | ---------- | ----- | ------ |
 | 4.8   | n/a      | visual     | red   | circle |
 
-The sidecar is:
+**Sidecar:**
 ```json
 {
   "event_type": {
@@ -659,32 +651,31 @@ The sidecar is:
     }
   }
 }
-`````
+
 
 **Assembled Result:**
-
 ```
 Sensory-event, Experimental-stimulus, Visual-presentation, Red, Circle
 ```
+````
 
 **Problem:** `Red` and `Circle` are separate top-level tags. Cannot definitively determine they describe the same object.
 
-`````
-
 **Use curly braces when:**
+
 - Multiple columns contribute properties of the SAME entity (e.g., color + shape = one object)
 - You need to control grouping across columns in sidecars
 - Flat concatenation would create ambiguous relationships
 
 **Don't use curly braces when:**
+
 - Each column describes independent aspects (naturally separate)
 - Annotating directly in a HED column (not a sidecar)
 - All tags naturally group correctly without templates
 
 **How they work:** Curly braces `{column_name}` in a sidecar act as placeholders that get replaced with that column's annotation during assembly, allowing you to specify a grouping template.
-```
 
-Without curly braces, annotations for each column in a row of a tabular file are simply concatenated (joined with commas) to form an assembled annotation for the row. 
+Without curly braces, annotations for each column in a row of a tabular file are simply concatenated (joined with commas) to form an assembled annotation for the row.
 
 ````{admonition} **Example:** Using a curly brace template to disambiguate
 
@@ -713,15 +704,15 @@ Without curly braces, annotations for each column in a row of a tabular file are
 ```
 Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle)
 ```
+````
 
 **Why it works:** The curly braces `{color}` and `{shape}` are replaced by their annotations within the grouping parentheses, ensuring they are grouped as properties of the same object.
-`````
 
 **Note:** NWB (Neurodata Without Borders) is an alternative data format standard to BIDS (Brain Imaging Data Structure). NWB does not use sidecars, but has an equivalent representation and the HED annotation rules apply.
 
 The alternative to using sidecars for annotations is to create a HED column in the tabular file. However this requires an individual annotation for each row, while the sidecar approach allows reuse of annotations across many rows.
 
-### Rule 7: Special syntax and restrictions
+### Rule 7: Special HED syntax
 
 #### Reserved tags
 
@@ -791,22 +782,19 @@ widths: 20 40 40
     * Represents concurrent active event processes
 ```
 
-#### Value classes and unit classes
+#### Label/, ID/, and Parameter-name/
 
-```{admonition} **Understanding Label/, ID/, and Parameter-name/**
----
-class: tip
----
 The `Label/` tag provides an identifying name or label for something. The `#` placeholder in `Label/#` gets replaced with your specific label text (e.g., `Label/Green`, `Label/Fixation-point`). The `ID` and `Parameter-name` have similar purposes, but have fewer restrictions on the type of values.
-```
 
-Use `Label/` when:
+**Use `Label/` when:**
 
 - Naming a specific stimulus or condition (e.g., `Label/Fixation-point`)
 - Identifying specific content (e.g., `Label/Green` for the word "Green")
 - Creating definitions (see [Rule 7](#rule-7-special-syntax-and-restrictions) for `Definition`)
 
 Labels must use hyphens or underscores instead of spaces (e.g., `Label/Press-left-for-red`). They have the name class attribute, meaning that their values must be alphanumeric. For identifiers that contain any printing UTF-8 character, use `ID/` or the `Parameter-name/` tags. These have the text class attribute and an take very general values.
+
+#### Value and unit classes
 
 ### Rule 8: Extend tags carefully
 
