@@ -86,7 +86,7 @@ Green, Red, Square, Triangle, Center-of, Visual-presentation, Sensory-event, Com
 
 **Why this fails reversibility:**
 
-We can determin that this is a sensory event presented visually because of the semantic rules for `Event` tags and `Sensory-presentation` tags as explained in this document. However, the remaining tags: Green, Red, Square, Triangle, Center-of, Computer-screen cannot be disambiguated:
+We can determine that this is a sensory event presented visually because of the semantic rules for `Event` tags and `Sensory-presentation` tags as explained in this document. However, the remaining tags: Green, Red, Square, Triangle, Center-of, Computer-screen cannot be disambiguated:
 
 - Cannot tell if green and red describe the triangle or the square or something else
 - Spatial information is disconnected
@@ -120,7 +120,7 @@ In this sensory event, a participant sees a red circle on screen meant to be a c
 
 **Why it works:** Usually sensory events do not have `Agent` and `Agent-task-role`, and the annotation is assumed to describe the experiment from the viewpoint of a single human participant.
 
-More complicated scenarios (e.g., multiple participants, agents that are not human, or agents that are not the experiment participant) are also possible to annotate unambigously, but in these cases the `Agent` and/or `Agent-task-role` are required for unambiguous annotation. See examples:....
+More complicated scenarios (e.g., multiple participants, agents that are not human, or agents that are not the experiment participant) are also possible to annotate unambiguously, but in these cases the `Agent` and/or `Agent-task-role` are required for unambiguous annotation. See examples in [Rule 2: Events must be classified](#rule-2-events-must-be-classified).
 
 ## File type semantics
 
@@ -631,10 +631,7 @@ Common `Relation` tags include:
 
 The BIDS sidecars and the NWB `MeaningsTable` provide equivalent mechanisms for associating HED annotations with columns of tabular files. Without these mechanisms, you would have to provide a separate annotation for each row in the tabular file. When these mechanisms are used you can provide annotations that apply to all of the rows.
 
-**Assembly** refers to the process of looking up the applicable annotations for each row and creating a complete HED annotation for an individual row. The default assembly method is to concatentate the annotations for each column. This works for independent information but fails when multiple columns describe parts of the same entity. We assume that the annotations go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB). The following examples annotate an events file of which the following is an excerpt:
-
-
-The row represents a visual presentation of a red circle at 4.8 seconds.
+**Assembly** refers to the process of looking up the applicable annotations for each row and creating a complete HED annotation for an individual row. The default assembly method is to concatenate the annotations for each column. This works for independent information but fails when multiple columns describe parts of the same entity. We assume that the annotations go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB). 
 
 ````{admonition} **Example:** Ambiguous annotation with flat concatenation
 
