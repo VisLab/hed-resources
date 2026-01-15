@@ -51,7 +51,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Overview:
 
    IntroductionToHed.md
-   HedAnnotationSemantics.md
+   Making HED meaningful <./HedAnnotationSemantics.md>
    HowCanYouUseHed.md
    HedSchemas.md
    WhatsNew.md   
