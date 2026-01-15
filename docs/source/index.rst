@@ -35,6 +35,9 @@ Where to begin?
 
 **New to HED?** Start with the `Introduction to HED <./IntroductionToHed.html>`_ for core concepts (5 min read).
 
+**To understand HED annotations** read `Making HED meaningful` <./HedAnnotationSemantics>`_ the essential 
+guide to HED annotation strategy and meaning.
+
 **Ready to get started?** Use the `How can you use HED? <./HowCanYouUseHed.html>`_ guide to find role-specific
 workflows and detailed guidance for your use case (experimenters, annotators, analysts, developers, or schema builders).
 
@@ -48,6 +51,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Overview:
 
    IntroductionToHed.md
+   HedAnnotationSemantics.md
    HowCanYouUseHed.md
    HedSchemas.md
    WhatsNew.md   
@@ -60,7 +64,6 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
 
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
-   HedAnnotationSemantics.md
    HED annotation in NWB <https://www.hedtags.org/ndx-hed>
    HedValidationGuide.md
    HedSearchGuide.md
