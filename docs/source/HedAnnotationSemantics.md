@@ -94,7 +94,7 @@ We can determine that this is a sensory event presented visually because of the 
 
 ## Timeline vs descriptor data
 
-The semantic requirements for HED annotations depend on whether they appear in **timeline data**  or **descriptor data**. 
+The semantic requirements for HED annotations depend on whether they appear in **timeline data** or **descriptor data**.
 
 ```{admonition} **HED nnotation strategy depends on data type**
 ---
@@ -105,9 +105,9 @@ class: tip
 **Descriptor annotations:** provide static descriptions or metadata about entities (e.g., participant characteristics such as age).
 ```
 
-[BIDS](https://bids.neuroimaging.io/index.html) represents timeline data in `.tsv` files with  `onset` columns that give the time in seconds relative to the start of the recording (e.g., `_events.tsv`). BIDS descriptor data is in `.tsv` files that do not have an `onset` column (e.g., `participants.tsv`). BIDS associates additional metadata for this data in similiary named `.json` files. Information from the `.tsv` file and its associated `.json` files is combined to form HED annotations. The data for an experiment is spread over multiple BIDS `.tsv` and `.json` files. 
+[BIDS](https://bids.neuroimaging.io/index.html) represents timeline data in `.tsv` files with `onset` columns that give the time in seconds relative to the start of the recording (e.g., `_events.tsv`). BIDS descriptor data is in `.tsv` files that do not have an `onset` column (e.g., `participants.tsv`). BIDS associates additional metadata for this data in similiary named `.json` files. Information from the `.tsv` file and its associated `.json` files is combined to form HED annotations. The data for an experiment is spread over multiple BIDS `.tsv` and `.json` files.
 
-An [NWB](https://nwb.org/) file is a container that holds all the data for an experiment. The timeline and descriptor data for an experiment are held in `DynamicTable` objects. The `DynamicTable` objects for timeline data have a time-stamp column of some sort. 
+An [NWB](https://nwb.org/) file is a container that holds all the data for an experiment. The timeline and descriptor data for an experiment are held in `DynamicTable` objects. The `DynamicTable` objects for timeline data have a time-stamp column of some sort.
 
 This document uses the BIDS format. See the [NWB HED extension docs](https://www.hedtags.org/ndx-hed) for examples in NWB.
 
@@ -420,8 +420,6 @@ At time 104.5 seconds into the experiment a circle is presented on the computer 
 - An experimental stimulus that is the visual presentation of a circle (assumed to be on the screen) at time 104.5 seconds from the start of the experiment.
 - A participant response consisting of the experiment participant pushing the mouse button at 104.750 seconds from the start of the experiment.
 
-
-
 ### Rule 3: Understand perspective
 
 (participant-perspective-anchor)=
@@ -632,8 +630,7 @@ Common `Relation` tags include:
 
 The BIDS sidecars and the NWB `MeaningsTable` provide equivalent mechanisms for associating HED annotations with columns of tabular data. Without these mechanisms, you would have to provide a separate annotation for each row in the table. When these mechanisms are used you can provide annotations that apply to all of the rows.
 
-One approach is to use the `HED` Column in the events table to code the annotation. An alternative is to use curly braces and use the sidecar templates. Usually the `duration column provides the anchor for the template when `Duration` is used to express ongoing events. 
-
+One approach is to use the `HED` Column in the events table to code the annotation. An alternative is to use curly braces and use the sidecar templates. Usually the `duration column provides the anchor for the template when `Duration\` is used to express ongoing events.
 
 **Assembly** refers to the process of looking up the applicable annotations for each row and creating a complete HED annotation for an individual row. The default assembly method is to concatenate the annotations for each column. This works for independent information but fails when multiple columns describe parts of the same entity. We assume that the annotations go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB).
 
@@ -808,7 +805,7 @@ Labels must use hyphens or underscores instead of spaces (e.g., `Label/Press-lef
 
 #### Values and units
 
-HED **value-taking tags** (also called placeholder tags), are indicated in the schema by a `#` symbol in the schema. 
+HED **value-taking tags** (also called placeholder tags), are indicated in the schema by a `#` symbol in the schema.
 
 Some of these tags have attributes specifying the types of values that These tags require specific values to complete them, and the schema defines the types of values and units are allowed.
 
@@ -827,7 +824,6 @@ Some of these tags have attributes specifying the types of values that These tag
 - `speedClass` - Velocity measurements: `Speed/25 m-per-s`
 - `intensityClass` - Intensity measurements: `Sound-volume/80 dB`
 
-
 ````{admonition} **Example:** Using value-taking tags correctly
 ```
 (Duration/1.5 s, (Sensory-eventLuminance/100 cd-per-m^2, Label/Fixation-cross))
@@ -845,9 +841,9 @@ The HED schema specifies allowed units for each unit class. For example, `timeCl
 
 ### Rule 8: Extend tags carefully
 
-The HED schema vocabulary hierarchy can be extended to accommodate more specialized annotations. HED library schemas are formal extensions of HED for specialized vocabularies. Users can also extend the hierarchy by appending new tag to an existing tag that allows extension (e.g., `Parent-tag/Tag-extension`). 
+The HED schema vocabulary hierarchy can be extended to accommodate more specialized annotations. HED library schemas are formal extensions of HED for specialized vocabularies. Users can also extend the hierarchy by appending new tag to an existing tag that allows extension (e.g., `Parent-tag/Tag-extension`).
 
-Tags that can be extended have (or have inherited) the `extensionAllowed` attribute. Tags that can be extended include all tags EXCEPT those in the `Event` or `Agent` subtrees or those with a `#` child (value-taking nodes). 
+Tags that can be extended have (or have inherited) the `extensionAllowed` attribute. Tags that can be extended include all tags EXCEPT those in the `Event` or `Agent` subtrees or those with a `#` child (value-taking nodes).
 
 **You should ONLY consider extending the hierarchy if it is necessary to correctly capture the meaning in the context of the annotation.** HED validators will always give a warning if you extend, but valid extensions are not considered to be errors.
 
@@ -923,6 +919,7 @@ Event/My-custom-event
 (Event, Label/My-custom-event)
 ```
 ````
+
 Tags in the `Event` and `Agent` hierarchies cannot be extended. You can qualify the `Event` tag with a label as shown above, but you should avoid this if at all possible. `Event` tags are the primary HED mechanism for event classification and extraction.
 
 Value-taking tags (have `#` children in the schema) also cannot be extended. These tags reside in the `Property` hierarchy in the standard schema. If you really need a new type of acceleration, you can use the grouping strategy illustrated in the following example.
@@ -939,16 +936,14 @@ Acceleration/#/Custom-acceleration
 (Rate-of-change/Custom-acceleration, Parameter-value/#)
 ```
 ````
+
 The `Acceleration` tag has a `#` child, so you cannot extend with `Custom-acceleration`. Instead, you can extend from `Acceleration` tag parent `Rate-of-change` and group with the general-purpose `Parameter-value` tag which takes the value.
-
-
-
 
 ## Temporal annotation strategies
 
 When events have duration or unfold over time, you can choose between two annotation strategies: using `Duration` for simple cases or using `Onset`/`Offset` for more complex temporal patterns. Both approaches are valid; choose based on your data structure and analysis needs.
 
-### Strategy 1: Duration 
+### Strategy 1: Duration
 
 Use `Duration` when you know the event's duration and want to capture it in a single annotation.
 
@@ -986,16 +981,15 @@ Use `Duration` when you know the event's duration and want to capture it in a si
 ````
 
 **Why use `Duration`:**
+
 - Captures the information of an ongoing event in a single annotation.
 - `Duration` is often of direct interest.
 - Don't need any `Definition` anchors.
-- Simpler when the event has a known duration at the start of the event.
-**Scenario:** A fixation cross appears and stays on screen for 1.5 seconds starting at 0.5 s from the start of the recording.
-
+- Simpler when the event has a known duration at the start of the event. **Scenario:** A fixation cross appears and stays on screen for 1.5 seconds starting at 0.5 s from the start of the recording.
 
 ### Strategy 2: Onset/Offset
 
-Use `Onset` and `Offset` when you have separate time markers for the start and end of an event or when you need to mark intermediate time points. 
+Use `Onset` and `Offset` when you have separate time markers for the start and end of an event or when you need to mark intermediate time points.
 
 **Scenario:** A fixation cross appears at 0.5 seconds. The duration is not necessarily known at initiation, but at 2.0 seconds, another marker is written that indicates the end of the display. This design is often used when items are presented for random amounts of time.
 
@@ -1044,6 +1038,7 @@ Use `Onset` and `Offset` when you have separate time markers for the start and e
 These annotations indicate that a fixation cross 3 cm in height starts showing at 0.5s into the recording and disppears at 2.5s. The anchor `Def/Fixation-point` allows to associate the onset and offset of this display. The grouped content under `Onset` continues for the duration of the event.
 
 **Why use `Onset`/`Offset`:**
+
 - Temporal scope is explicit (the end of the event is an event marker)
 - Can explicitly express complicated interleaving of events.
 - Can use the anchor definitions content to shorten annotations.
@@ -1055,11 +1050,13 @@ Notice that the `Fixation-point` definition doesn't have any content in this exa
 ### Duration vs Onset/Offset
 
 **Use `Duration` when:**
+
 - Event has a known, fixed duration at the time of annotation
 - Duration is recorded in your data
 - Simplicity is preferred
 
 **Use `Onset`/`Offset` when:**
+
 - Duration is not known at the time the event begins
 - You need to mark intermediate points with `Inset`
 - You need to have an explicit marker in the data for the ending time
@@ -1087,7 +1084,6 @@ Sensory-event, Visual-presentation, Red, Circle
 Sensory-event, Visual-presentation, (Red, Circle)
 ```
 ````
-
 
 ````{admonition} **Mistake 2:** Forgetting the Event tag in timeline data - [Rule 2a](#2a-event-tags-give-category)
 ---
@@ -1196,8 +1192,8 @@ Item/House
 Building/House
 ```
 ````
-Extend from the most specific applicable parent. Use short-form for your tags.
 
+Extend from the most specific applicable parent. Use short-form for your tags.
 
 ````{admonition} **Mistake 9:** Forgetting curly braces for multi-column assembly - [Rule 6](#rule-6-use-curly-brace-assembly)
 ---
