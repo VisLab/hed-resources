@@ -105,7 +105,7 @@ class: tip
 **Descriptor annotations:** provide static descriptions or metadata about entities (e.g., participant characteristics such as age).
 ```
 
-[BIDS](https://bids.neuroimaging.io/index.html) represents timeline data in `.tsv` files with `onset` columns that give the time in seconds relative to the start of the recording (e.g., `_events.tsv`). BIDS descriptor data is in `.tsv` files that do not have an `onset` column (e.g., `participants.tsv`). BIDS associates additional metadata for this data in similiary named `.json` files. Information from the `.tsv` file and its associated `.json` files is combined to form HED annotations. The data for an experiment is spread over multiple BIDS `.tsv` and `.json` files.
+[BIDS](https://bids.neuroimaging.io/index.html) represents timeline data in `.tsv` files with `onset` columns that give the time in seconds relative to the start of the recording (e.g., `_events.tsv`). BIDS descriptor data is in `.tsv` files that do not have an `onset` column (e.g., `participants.tsv`). BIDS associates additional metadata for this data in similarity named `.json` files. Information from the `.tsv` file and its associated `.json` files is combined to form HED annotations. The data for an experiment is spread over multiple BIDS `.tsv` and `.json` files.
 
 An [NWB](https://nwb.org/) file is a container that holds all the data for an experiment. The timeline and descriptor data for an experiment are held in `DynamicTable` objects. The `DynamicTable` objects for timeline data have a time-stamp column of some sort.
 
