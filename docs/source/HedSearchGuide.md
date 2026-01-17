@@ -47,13 +47,13 @@ be sure to create the `QueryParser` only once.
 
 The simplest type of query is to search for the presence of absence of a single tag. HED offers four variations on the single tag query as summarized in the following table.
 
-| Query type                                                                                                        | Example query    | Matches                                                                                                                              | Does not match                              |
-| ----------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
-| **Single-term**<br/>Match the term or any child.<br/>Don't consider values or<br/>extensions when matching.       | *Agent-trait*    | *Agent-trait*<br/>*Age*<br/>*Age/35*<br/>*Right-handed*<br/>*Agent-trait/Glasses*<br/>*Agent-property/Agent-trait*<br/>*(Age, Blue)* | *Agent-property*                            |
-| **Quoted-tag**<br/>Match the exact tag with<br/>extension or value                                                | "*Age*"          | *Age*<br/>*Agent-trait/Age*                                                                                                          | *Age/35*                                    |
-|                                                                                                                   | "*Age/34*"       | *Age/34*<br/>*Agent-trait/Age/34*                                                                                                    | *Age/35*                                    |
-| **Tag-path with slash**<br/>Match the exact tag with<br/>extension or value                                       | *Age/34*         | *Age/34*                                                                                                                             | *Age*<br/>*Age/35*<br/>*Agent-trait/Age/34* |
-| **Tag-prefix with wildcard**<br/>Match the starting portion<br/>of a tag and possibly its<br/>value or extension. | <em>Age/3\*</em> | *Age/34*<br/>*Age/3*<br/>*Agent-trait/Age/34*                                                                                        | *Age*<br/>*Age/40*                          |
+| Query type                                                                                                        | Example query | Matches                                                                                                                              | Does not match                              |
+| ----------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| **Single-term**<br/>Match the term or any child.<br/>Don't consider values or<br/>extensions when matching.       | *Agent-trait* | *Agent-trait*<br/>*Age*<br/>*Age/35*<br/>*Right-handed*<br/>*Agent-trait/Glasses*<br/>*Agent-property/Agent-trait*<br/>*(Age, Blue)* | *Agent-property*                            |
+| **Quoted-tag**<br/>Match the exact tag with<br/>extension or value                                                | "*Age*"       | *Age*<br/>*Agent-trait/Age*                                                                                                          | *Age/35*                                    |
+|                                                                                                                   | "*Age/34*"    | *Age/34*<br/>*Agent-trait/Age/34*                                                                                                    | *Age/35*                                    |
+| **Tag-path with slash**<br/>Match the exact tag with<br/>extension or value                                       | *Age/34*      | *Age/34*                                                                                                                             | *Age*<br/>*Age/35*<br/>*Agent-trait/Age/34* |
+| **Tag-prefix with wildcard**<br/>Match the starting portion<br/>of a tag and possibly its<br/>value or extension. | *Age/3\**     | *Age/34*<br/>*Age/3*<br/>*Agent-trait/Age/34*                                                                                        | *Age*<br/>*Age/40*                          |
 
 The meanings of the different queries are explained in the following subsections.
 
@@ -140,12 +140,12 @@ In addition to the HED object-based search, HED also supports a string search in
 
 HED text-based syntax is summarized in the following table:
 
-| Query type                                                                                                                                    | Example    | Matches                         | Does not match                         |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------- | -------------------------------------- |
-| **Anywhere-term**<br/>Prefix the term with *@* <br/>to match in line.                                                                         | *@A*       | *A* in string                   | No *A* in string                       |
-| **Negation-term**<br/>Prefix the term with *~* <br/>to match line with no term.                                                               | *~A*       | No *A* in string                | *A* in string                          |
-| **Nested-term**<br/>Elements in searches with parentheses <br/>match tags at the relative level.                                              | *(A), (B)* | *(A), (B, C)<br/>((A), (B, C))* | *(A, B)<br/>(A, C, B)<br/>(A, (C, B))* |
-| **Wildcard-term**<br/>Use <em>\*</em> to match remaining terms <br/>(except comma or parenthesis).<br>Can be used in combination with @ or ~. | *Long*\*   | *Long*<br/>LongX<br/>LongY      | *TagDoesNotStartWithLong*              |
+| Query type                                                                                                                             | Example    | Matches                         | Does not match                         |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------- | -------------------------------------- |
+| **Anywhere-term**<br/>Prefix the term with *@* <br/>to match in line.                                                                  | *@A*       | *A* in string                   | No *A* in string                       |
+| **Negation-term**<br/>Prefix the term with *~* <br/>to match line with no term.                                                        | *~A*       | No *A* in string                | *A* in string                          |
+| **Nested-term**<br/>Elements in searches with parentheses <br/>match tags at the relative level.                                       | *(A), (B)* | *(A), (B, C)<br/>((A), (B, C))* | *(A, B)<br/>(A, C, B)<br/>(A, (C, B))* |
+| **Wildcard-term**<br/>Use *\** to match remaining terms <br/>(except comma or parenthesis).<br>Can be used in combination with @ or ~. | *Long*\*   | *Long*<br/>LongX<br/>LongY      | *TagDoesNotStartWithLong*              |
 
 The simplest type of query is to search for the presence or absence of a single tag. Searches can be combined, but all searches are trying to match all terms. The HED text-based searches do not use the HED schema, so searches can handle invalid HED annotations.
 

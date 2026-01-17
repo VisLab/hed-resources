@@ -6,7 +6,11 @@ This tutorial explains how to create HED annotations that are meaningful, unambi
 
 A HED annotation consists of tags selected from the HED vocabulary (schema), optionally grouped using parentheses, that together describe events, stimuli, actions, and other aspects of an experiment.
 
-## Syntax versus semantics
+Read the [Introduction to HED](IntroductionToHed.md) for a basic introduction to HED before starting this tutorial.
+
+## Background
+
+### Syntax versus semantics
 
 **HED syntax errors** are structural violations that prevent an annotation from being properly parsed or validated.
 
@@ -28,7 +32,7 @@ The semantic interpretation of a HED annotation depends on:
 1. **Which tags are selected** - Each tag has a specific meaning in the HED vocabulary
 2. **How tags are grouped** - Parentheses bind tags that describe the same entity or relationship
 3. **Where tags are placed** - Top-level (not inside any parentheses) vs nested (inside parentheses) grouping affects interpretation
-4. **The context of use** - Whether the annotation appears in timeline vs descriptor data
+4. **The context of use** - Whether the annotation appears in timeline or descriptor data
 
 (tag-placement-anchor)=
 
@@ -41,7 +45,13 @@ class: tip
 **Nested tags:** appear inside parentheses. In `Sensory-event, (Red, Circle)`, the tags `Red` and `Circle` are nested within a group.
 ```
 
-Tag placement determines scope and relationships - top-level tags typically classify the entire annotation, while nested tags describe specific entities or relationships.
+Tag placement determines scope and relationships - top-level tags typically classify the entire annotation, while nested usually tags describe specific entities or relationships.
+
+### Context for the examples
+
+The main standards for storing imaging and behavioral data in neuroscience are the Brain Imaging Data Structure ([BIDS](https://bids.neuroimaging.io/index.html)) and Neurodata Without Borders ([NWB](https://nwb.org/)). This document uses the BIDS format for its examples, but NWB has equivalent representations. See the [NWB HED extension docs](https://www.hedtags.org/ndx-hed) for examples in NWB.
+
+The examples assume that you understand the mechanics of assembly of annotations and emphasize what is being assembled rather than how it is assembled. See [Rule 5: Use curly brace assembly](#rule-5-nest-relationships) for a brief description of annotation assembly and the [BIDS annotation quickstart](BidsAnnotationQuickstart.md) tutorial for a more detailed explanation of how assembly works in BIDS.
 
 ## The reversibility principle
 
@@ -85,7 +95,7 @@ Green, Red, Square, Triangle, Center-of, Visual-presentation, Sensory-event, Com
 
 **Why this fails reversibility:**
 
-We can determine that this is a sensory event presented visually because of the semantic rules for `Event` tags and `Sensory-presentation` tags as explained in this document. However, the remaining tags: Green, Red, Square, Triangle, Center-of, Computer-screen cannot be disambiguated:
+We can determine that this is a sensory event presented visually because of the semantic rules for `Event` tags and `Sensory-presentation` tags as explained in this document. However, the remaining tags: `Green`, `Red`, `Square`, `Triangle`, `Center-of`, and `Computer-screen` cannot be disambiguated:
 
 - Cannot tell if green and red describe the triangle or the square or something else
 - Spatial information is disconnected
@@ -105,11 +115,9 @@ class: tip
 **Descriptor annotations:** provide static descriptions or metadata about entities (e.g., participant characteristics such as age).
 ```
 
-[BIDS](https://bids.neuroimaging.io/index.html) represents timeline data in `.tsv` files with `onset` columns that give the time in seconds relative to the start of the recording (e.g., `_events.tsv`). BIDS descriptor data is in `.tsv` files that do not have an `onset` column (e.g., `participants.tsv`). BIDS associates additional metadata for this data in similarity named `.json` files. Information from the `.tsv` file and its associated `.json` files is combined to form HED annotations. The data for an experiment is spread over multiple BIDS `.tsv` and `.json` files.
+[BIDS](https://bids.neuroimaging.io/index.html) stores timeline data in `.tsv` files each with an`onset` column that gives the time in seconds relative to the start of the recording (e.g., `_events.tsv`). BIDS descriptor data is stored in `.tsv` files that do not have an `onset` column (e.g., `participants.tsv`). BIDS associates additional metadata for these files in similarity named JSON (e.g., `_events.json`) files. Information from a `.tsv` file and its associated `.json` files is combined to form assembled HED annotations for the data. The data for an experiment is spread over multiple BIDS `.tsv` and `.json` files.
 
 An [NWB](https://nwb.org/) file is a container that holds all the data for an experiment. The timeline and descriptor data for an experiment are held in `DynamicTable` objects. The `DynamicTable` objects for timeline data have a time-stamp column of some sort.
-
-This document uses the BIDS format. See the [NWB HED extension docs](https://www.hedtags.org/ndx-hed) for examples in NWB.
 
 ### Timeline data requires Event tags
 
@@ -141,15 +149,15 @@ Sensory-event, Experimental-stimulus, Non-target, Visual-presentation, (Red, Squ
 
 **Why it's correct:**
 
-- Includes `Event` tag (`Sensory-event`)
-- Includes `Task-event-role` (`Experimental-stimulus`)
-- It is an experimental stimulus specifying the task stimulus role (`Non-target`)
-- It is a sensory event specifying the sensory modality (`Visual-presentation`)
-- Properly groups stimulus properties
+- Includes `Event` tag: `Sensory-event`
+- Includes `Task-event-role`: `Experimental-stimulus`
+- It is an experimental stimulus specifying the task stimulus role: `Non-target`
+- It is a sensory event specifying the sensory modality: `Visual-presentation`
+- Properly groups stimulus properties: `(Red, Square)`
 
 ### Descriptor data has no Event tags
 
-Descriptor data (e.g., tables from files such as`participants.tsv` or `samples.tsv`) describe properties or characteristics, not events. `Event` tags SHOULD not appear in descriptor data.
+Descriptor data (e.g., tables from files such as`participants.tsv` or `samples.tsv`) describes properties or characteristics, not events. `Event` tags SHOULD NOT appear in descriptor data.
 
 ````{admonition} **Example:** Correct descriptor data annotation (BIDS)
 
@@ -182,9 +190,9 @@ Age/25 years, Right-handed
 
 **Why it's correct:**
 
-- Describes participant properties
+- Describes participant properties: 25 years old and right handed
 - No event classification
-- No temporal tags (`Onset`/`Offset`)
+- No temporal tags: `Onset`/`Offset`
 - Semantically appropriate for descriptor context
 
 ### Temporal scope tags
@@ -195,7 +203,7 @@ See [Temporal annotation strategies](#temporal-annotation-strategies) for detail
 
 ## Semantic rules
 
-Some rules in this section primarily apply to **timeline** data (e.g., events with timestamps). For **descriptor** data, event-related rules do not apply. See [Timeline vs descriptor data](#timeline-vs-descriptor-data) above for the distinction.
+Rules 2 and 3 in this section primarily apply to **timeline** data (e.g., events with timestamps). For **descriptor** data, event-related rules do not apply. See [Timeline vs descriptor data](#timeline-vs-descriptor-data) above for the distinction.
 
 Remember that HED vocabularies maintain a strict taxonomical or is-a relationship of child tags to parents. When we say `Event` tag, we mean `Event` or any tag that is a descendent of `Event` in the HED vocabulary hierarchy.
 
@@ -241,11 +249,11 @@ If an item has multiple properties, they should all be grouped together:
 ```
 ````
 
-The grouping indicates that this is a large green triangle. Without grouping, these three properties that may or may not apply to the same object.
+The grouping indicates that this is a large green triangle. Without grouping, these three properties may or may not apply to the same object.
 
 #### Separate unrelated concepts
 
-Tags that describe independent aspects or unrelated concepts should NOT be grouped together. Don't group tags with no semantic relationship.
+Tags that describe independent aspects or unrelated concepts SHOULD NOT be grouped together. Don't group tags with no semantic relationship.
 
 ```{admonition} **Examples:** Incorrect grouping
 
@@ -263,24 +271,24 @@ Event and other timeline data is usually stored in a tabular format where each r
 class: tip
 ---
   - Every event MUST have exactly one tag from the `Event` hierarchy
-  - If there is a task, events SHOULD have a `Task-event-role` tag
-  - Sensory events SHOULD have a `Sensory-presentation` tag
+  - If there is a task, an event annotation SHOULD have a `Task-event-role` tag
+  - A sensory event SHOULD have a `Sensory-presentation` tag
   - Each event annotation should be in a separate group if multiple events occur at the same time
 ```
 
-#### 2a. Event tags give category
+#### 2a. Event tags categorize
 
 The `Event` tags provide the primary classification or anchors for event annotations.
 
-| Event                  | Description                                                            | Implicit agent             |
-| ---------------------- | ---------------------------------------------------------------------- | -------------------------- |
-| `Sensory-event`        | A sensory presentation occurs                                          | One experiment participant |
-| `Agent-action`         | An agent performs an action                                            | One experiment participant |
-| `Data-feature`         | A computed or observed feature is marked                               | Software agent             |
-| `Experiment-control`   | Experiment structure or parameters change                              | Controller agent           |
-| `Experiment-procedure` | Experiment paused to administer something (like a quiz or saliva test) | Experimenter               |
-| `Experiment-structure` | Organizational boundary or marker (like start of a trial or block)     | Controller agent           |
-| `Measurement-event`    | A measurement is taken (which may be recorded elsewhere)               | Controller agent           |
+| Event                  | Description                                                                                          | Implicit agent             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------- |
+| `Sensory-event`        | A sensory presentation occurs                                                                        | One experiment participant |
+| `Agent-action`         | An agent performs an action                                                                          | One experiment participant |
+| `Data-feature`         | A computed or observed feature is marked                                                             | Software agent             |
+| `Experiment-control`   | Experiment structure or parameters change (e.g., stop signal presented sooner in GO-NOGO experiment) | Controller agent           |
+| `Experiment-procedure` | Experiment paused to administer something (e.g., a quiz or saliva test)                              | Experimenter               |
+| `Experiment-structure` | Organizational boundary or marker (e.g., start of a trial or block)                                  | Controller agent           |
+| `Measurement-event`    | A measurement is taken (which may be recorded elsewhere)                                             | Controller agent           |
 
 ````{admonition} **Example: Single sensory event with proper classification**
 ```
@@ -315,7 +323,7 @@ If an experiment involves a task, each event should be associated with a `Task-e
 
 #### 2c. Task-stimulus-role qualifiers
 
-If the event type is `Experimental-stimulus`, tags from the `Task-stimulus-role` hierarchy provide important information about the task stimulus. For example, tags such as `Penalty` or `Reward` are often used to modify the `Feedback` role. If the annotation contains an `Experimental-stimulus` tag, consider whether any tags from `Task-stimulus-role` are appropriate. Common qualifiers include:
+If the event task role is `Experimental-stimulus`, tags from the `Task-stimulus-role` hierarchy provide important information about the task stimulus. For example, tags such as `Penalty` or `Reward` are often used to modify the `Feedback` role. If the annotation contains an `Experimental-stimulus` tag, consider whether any tags from `Task-stimulus-role` are appropriate. Common qualifiers include:
 
 - `Target` - The thing the participant should focus on or respond to
 - `Non-target` - Something to ignore or not respond to
@@ -435,7 +443,7 @@ Perspective is generally a property of timeline data not descriptor data. Correc
 
 #### Sensory event perspective
 
-Sensory events are assumed to be from the perspective of the participant unless explicitly tagged to the contrary.
+Sensory events are assumed to be from the perspective of the single experiment participant unless explicitly tagged to the contrary.
 
 ````{admonition} **Example:** Participant perspective for sensory event (implicit)
 
@@ -444,7 +452,7 @@ Sensory-event, Cue, Visual-presentation, (Red, Circle)
 ```
 ````
 
-In this sensory event, a participant sees a red circle on screen meant to be a cue to the participant to get ready to respond. The agent is assumed to be a human agent whose role is as the single experiment participant. The perspective is implicit because the agent and the agent's role in the task are not explicitly tagged for this event.
+In this sensory event, the participant sees a red circle on screen meant to be a cue to the participant to get ready to respond. The agent is assumed to be a human agent whose role is as the single experiment participant. The perspective is implicit because the agent and the agent's role in the task are not explicitly tagged for this event.
 
 **Why it works:** Usually sensory events do not have `Agent` and `Agent-task-role`, and the annotation is assumed to describe the experiment from the viewpoint of a single human participant.
 
@@ -460,7 +468,9 @@ class: tip
 - **Agent role** (from `Agent-task-role` hierarchy):  `Experiment-actor`, `Experiment-controller`, `Experiment-participant`, `Experimenter`
 ```
 
-**When agent specification is implicit:** If an `Agent-action` appears without explicit agent or agent task role tags, a single experiment participant is assumed by default. The characteristics of the agent as defined by the `Agent` tag (e.g., `Human-agent` or `Animial-agent`) may be specified or assumed to be provided by additional data, such as the `participants.tsv` file in BIDS.
+##### Implicit agents
+
+If an `Agent-action` appears without explicit agent or agent task role tags, a single experiment participant is assumed by default. The characteristics of the agent as defined by the `Agent` tag (e.g., `Human-agent` or `Animial-agent`) may be specified or assumed to be provided by additional data, such as the `participants.tsv` file in BIDS.
 
 ````{admonition} **Example:** An implicit agent is assumed
 ```
@@ -468,9 +478,11 @@ Agent-action, Participant-response, (Press, Mouse-button)
 ```
 ````
 
-The annotation indicates that a human experiment participant presses the mouse button.
+The annotation indicates that the single human experiment participant presses the mouse button.
 
-**When to use the agent ROLE explicitly:** Use `Experiment-participant`, `Experimenter`, or other `Agent-task-role` tags when:
+##### Agent role required
+
+Use `Experiment-participant`, `Experimenter`, or other `Agent-task-role` tags when:
 
 - Multiple experiment participants are involved
 - Agents are not the experiment participant
@@ -486,7 +498,9 @@ Agent-action, Participant-response, ((Experiment-participant, ID/sub_003), (Pres
 
 In this experiment either participant could have pressed their mouse button and so their responses must be distinguished in the annotation.
 
-**When to specify agent TYPE explicitly:** Use `Animal-agent`, `Robot-agent`, or other `Agent` tags when the agent is NOT a human:
+##### Agent type required
+
+Use `Animal-agent`, `Robot-agent`, or other `Agent` tags when the agent is NOT a human:
 
 ````{admonition} **Example:** A mouse presses a lever for a reward
 ```
@@ -1085,7 +1099,7 @@ Sensory-event, Visual-presentation, (Red, Circle)
 ```
 ````
 
-````{admonition} **Mistake 2:** Forgetting the Event tag in timeline data - [Rule 2a](#2a-event-tags-give-category)
+````{admonition} **Mistake 2:** Forgetting the Event tag in timeline data - [Rule 2a](#2a-event-tags-categorize)
 ---
 class: warning
 ---
