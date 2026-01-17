@@ -37,8 +37,7 @@ Explanation of the history, development, and motivation for third generation HED
 
 > Robbins, K., Truong, D., Jones, A., Callanan, I., and S. Makeig (2022).\
 > Building FAIR functionality: Annotating events in time series data using Hierarchical Event Descriptors (HED).\
-> Neuroinformatics Special Issue Building the NeuroCommons. Neuroinformatics https://doi.org/10.1007/s12021-021-09537-4.\
-> [https://link.springer.com/article/10.1007/s12021-021-09537-4](https://link.springer.com/article/10.1007/s12021-021-09537-4).
+> Neuroinformatics Special Issue Building the NeuroCommons. Neuroinformatics https://doi.org/10.1007/s12021-021-09537-4. [https://link.springer.com/article/10.1007/s12021-021-09537-4](https://link.springer.com/article/10.1007/s12021-021-09537-4).
 
 Detailed case study in using HED for tagging:
 
@@ -99,14 +98,10 @@ widths: 20 50
   - [https://github.com/hed-standard](https://github.com/hed-standard)
 * - HED specification
   - [https://github.com/hed-standard/hed-specification](https://github.com/hed-standard/hed-specification)
-   - HED specification
-  - [https://github.com/hed-standard/hed-specification](https://github.com/hed-standard/hed-specification)
 * - HED examples and datasets
   - [https://github.com/hed-standard/hed-examples](https://github.com/hed-standard/hed-examples)
 * - HED Python tools
   - [https://github.com/hed-standard/hed-python](https://github.com/hed-standard/hed-python)
-*  - HED specification
-  - [https://github.com/hed-standard/hed-specification](https://github.com/hed-standard/hed-specification)
 * - HED Javascript code
   - [https://github.com/hed-standard/hed-javascript](https://github.com/hed-standard/hed-javascript)
 * - HED Matlab code and EEGLAB support
