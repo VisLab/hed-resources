@@ -9,6 +9,17 @@ class: tip
 If this is your first time learning about HED, start with the [**Introduction to HED**](IntroductionToHed.md) for basic concepts and quick start paths. This guide provides detailed workflows for each research role.
 ```
 
+```{admonition} **Choose your path**
+---
+class: note
+---
+- **Experimenters:** [Event logging and collection](as-an-experimenter-anchor)
+- **Data annotators:** [Annotation workflows](as-a-data-annotator-anchor)
+- **Data analysts:** [Search and analysis](as-a-data-analyst-anchor)
+- **Tool developers:** [Integration guidance](as-a-tool-developer-anchor)
+- **Schema builders:** [Library schema development](as-a-schema-builder-anchor)
+```
+
 ## Research roles and HED workflows
 
 HED serves researchers in different capacities throughout the data lifecycle. Choose your primary role to find relevant tools and guidance:
@@ -147,7 +158,7 @@ After data collection, raw logs need processing before analysis. The [**table-re
 3. **Column restructuring**: Create BIDS-compliant event files
 4. **Data validation**: Check for missing or invalid events
 
-Ideally, your experiment control software should be adjusted to produce event files in a tabular format that are suitable for BIDS (Brain Imaging Data Structure) or NWB (NeurodataWithoutBorders). The [**table-remodeler**](https://www.hedtags.org/table-remodeler) allows users to perform these operations effectively. The tools can be run over an entire BIDS dataset using the table remodeler [**command line interface (CLI)**](https://www.hedtags.org/table-remodeler/user_guide.html#using-the-cli) or on a single file using the [**HED online tools**](https://hedtools.org/hed/events) with the *Execute remodel script* action for events. The table-remodeler allows users to assemble a complex list of command to execute but specifying in JSON as illustrated by the following example:
+Ideally, your experiment control software should be adjusted to produce event files in a tabular format that are suitable for BIDS or NWB. The [**table-remodeler**](https://www.hedtags.org/table-remodeler) allows users to perform these operations effectively. The tools can be run over an entire BIDS dataset using the table remodeler [**command line interface (CLI)**](https://www.hedtags.org/table-remodeler/user_guide.html#using-the-cli) or on a single file using the [**HED online tools**](https://hedtools.org/hed/events) with the *Execute remodel script* action for events. The table-remodeler allows users to assemble a complex list of command to execute but specifying in JSON as illustrated by the following example:
 
 ````{admonition} Workflow to summarize column values
 ---
@@ -168,7 +179,7 @@ class: tip
 ````
 `````
 
-### 📋 Data scharing
+### 📋 Data sharing
 
 ```{dropdown} **Standardizing data format for sharing**
 
@@ -299,7 +310,7 @@ HED annotations come in a variety of levels and complexity. Start simple and inc
 - **Start with descriptions**: A good description clarifies what information to capture in tags
 - **Be specific**: Use the most specific tags that accurately describe events 
 - **Include context**: Capture participant actions, stimuli properties, and experimental conditions
-- **Be ware of semantics**: Follow guidelines in [**HED annotation semantics**](./HedAnnotationSemantics.md)
+- **Beware of semantics**: Follow guidelines in [**HED annotation semantics**](./HedAnnotationSemantics.md)
 
 A proper HED annotation can be translated back into a meaningful sentence.
 

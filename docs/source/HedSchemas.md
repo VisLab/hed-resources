@@ -108,7 +108,7 @@ Starting with BIDS version 1.8.0, BIDS allows the value associated with the `"HE
 
 Both `score_2.1.0` and `lang_1.1.0` are partnered with HED standard schema `8.4.0`, meaning that their partnered standard schema is automatically included. Since these library schemas do not conflict, they will be merged with `8.4.0` into a single taxonomy tree, so the annotations do not require prefixes.
 
-As library schemas are developed, every effort is made to keep them non-conflicting and to release versions partnered with the latests standard schema. For conflicting or non-partnered schemas, HED supports a prefix notation to allow namespaces for conflicting schemas.
+As library schemas are developed, every effort is made to keep them non-conflicting and to release versions partnered with the latest standard schema. For conflicting or non-partnered schemas, HED supports a prefix notation to allow namespaces for conflicting schemas.
 
 The following example specifies that the annotations in this dataset use HED standard schema version 8.4.0, along with library schema `testlib` version 1.0.2. Tags from the `testlib` schema library are to be prefixed with `la:` in annotations.
 
@@ -123,7 +123,7 @@ The following example specifies that the annotations in this dataset use HED sta
 ```
 ````
 
-More details about HED schemas can be found in: [**Library schemas**](https://www.hedtags.org/hed-specification/07_Library_schemas.html) in the [**HED specification**](https://www.hedtags.org/hed-specification).
+More details about HED schemas can be found in: [**Library schemas**](https://www.hedtags.org/hed-specification/07_Library_schemas.html) in the [**HED specification**](https://www.hedtags.org/hed-specification). Read [BIDS annotation quickstart](./BidsAnnotationQuickstart.md) for a quick practical introduction to HED annotation with BIDS.
 
 ## HED schemas in NWB
 

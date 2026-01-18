@@ -4,6 +4,12 @@
 
 **HED (Hierarchical Event Descriptors)** is a framework for annotating events in time-series data using a structured vocabulary. HED can also be used to annotate static information such as participant characteristics. If you're working with EEG, fMRI, or other neuroimaging or behavioral data, HED helps you describe *what happened* during your experiment in a way that computers can understand and process.
 
+## What you'll learn
+
+- What HED tags are and how they group into meaningful annotations
+- How short-form tags map to long-form schema paths
+- Where to start if you are new to HED or using BIDS/NWB
+
 ## Why use HED?
 
 ```{admonition} **Traditional event annotation problems**
@@ -23,7 +29,7 @@ class: tip
 - **Standardized vocabulary**: Everyone uses the same terms for the same concepts
 - **Machine-actionable**: Computers can automatically find and analyze events
 - **Reversible**: Good HED annotations can be translated to plain English and vice versa
-- **Cross-study analysis**: Allows analysts to ompare and combine data from different experiments
+- **Cross-study analysis**: Allows analysts to compare and combine data from different experiments
 - **BIDS integration**: Works seamlessly with Brain Imaging Data Structure ([BIDS](https://bids.neuroimaging.io/index.html))
 - **NWB integration**: Works seamlessly with Neurodata Without Borders ([NWB](https://nwb.org/))
 ```
@@ -41,7 +47,7 @@ Instead of cryptic event codes, HED lets you describe events in plain, structure
 
 **Interpretation:** An experimental stimulus consisting of an image of a face is presented visually [to a single experiment participant on a computer screen] at the time associated with this annotation.
 
-The portion of the interpretation in square brackets is implied because it has not been annotated to the contrary. See [Making HED meaningful](HedAnnotationSemantics.md) for more detail.
+The portion of the interpretation in square brackets is implied because it has not been annotated to the contrary. The bracketed text is explanatory only and is **not** part of a HED annotation. See [Making HED meaningful](HedAnnotationSemantics.md) for more detail.
 
 ### Meaningful across experiments
 
@@ -86,7 +92,7 @@ color: info
 ---
 color: success
 ---
-- **Basic** describes what happened: `Senory-event, Visual-presentation, (Face, Image)`
+- **Basic** describes what happened: `Sensory-event, Visual-presentation, (Face, Image)`
 - **Detailed** includes experimental context: `Experimental-stimulus, Condition-variable/Famous-face`
 - **Advanced** uses definitions and temporal scope for complex experiments
 ```
@@ -97,7 +103,7 @@ color: warning
 ---
 HED provides tools to check your annotations:
 - [Online validator](https://hedtools.org/hed): Check syntax and schema compliance
-- [Python](https:/www.hedtags.org/hed-python) and [MATLAB libraries](https://www.hedtags.org/hed-matlab) libraries: Integrate validation and analysis into your workflows
+- [Python](https://www.hedtags.org/hed-python) and [MATLAB libraries](https://www.hedtags.org/hed-matlab) libraries: Integrate validation and analysis into your workflows
 - [HED validator for BIDS](https://www.hedtags.org/hed-javascript): Automatically checks HED in BIDS datasets
 ```
 
