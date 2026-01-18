@@ -51,7 +51,9 @@ Tag placement determines scope and relationships - top-level tags typically clas
 
 The main standards for storing imaging and behavioral data in neuroscience are the Brain Imaging Data Structure ([BIDS](https://bids.neuroimaging.io/index.html)) and Neurodata Without Borders ([NWB](https://nwb.org/)). This document uses the BIDS format for its examples, but NWB has equivalent representations. See the [NWB HED extension docs](https://www.hedtags.org/ndx-hed) for examples in NWB.
 
-The examples assume that you understand the mechanics of assembly of annotations and emphasize what is being assembled rather than how it is assembled. See [Rule 5: Use curly brace assembly](#rule-5-nest-relationships) for a brief description of annotation assembly and the [BIDS annotation quickstart](BidsAnnotationQuickstart.md) tutorial for a more detailed explanation of how assembly works in BIDS.
+One approach for annotating tabular data is to use a `HED` column in the table to annotate each row individually. An alternative is to to provide a dictionaries of annotations that apply to all rows and use tools to "assemble" the actual annotation. Dictionaries save a lot of time and duplication. We assume that such annotation dictionaries go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB).
+
+The examples assume that you understand the mechanics of assembly of annotations and emphasize what is being assembled rather than how it is assembled. See [Rule 6: Use curly brace assembly](#rule-6-use-curly-brace-assembly) for a brief description of annotation assembly and the [BIDS annotation quickstart](BidsAnnotationQuickstart.md) tutorial for a more detailed explanation of how assembly works in BIDS.
 
 ## The reversibility principle
 
@@ -83,7 +85,7 @@ The sentence can be unambiguously translated as: "A sensory event that is a targ
 - `Target` indicates the task stimulus role
 - `Visual-presentation` specifies the sensory modality
 - `(Green, Triangle)` - grouped properties describe ONE object
-- `(Center-of, Computer-screen)` - spatial relationship (see [Rule 5](#rule-5-nest-relationships) for relationship patterns)
+- `(Center-of, Computer-screen)` - spatial relationship (see [Rule 5: Nest binary relationships](#rule-5-nest-binary-relationships) for relationship patterns)
 - The outer grouping `((Green, Triangle), (Center-of, Computer-screen))` connects the object to its location
 
 ````{admonition} **Example:** A non-reversible HED annotation
@@ -480,7 +482,7 @@ Agent-action, Participant-response, (Press, Mouse-button)
 
 The annotation indicates that the single human experiment participant presses the mouse button.
 
-##### Agent role required
+##### Agent role requirements
 
 Use `Experiment-participant`, `Experimenter`, or other `Agent-task-role` tags when:
 
@@ -498,7 +500,7 @@ Agent-action, Participant-response, ((Experiment-participant, ID/sub_003), (Pres
 
 In this experiment either participant could have pressed their mouse button and so their responses must be distinguished in the annotation.
 
-##### Agent type required
+##### Agent type requirements
 
 Use `Animal-agent`, `Robot-agent`, or other `Agent` tags when the agent is NOT a human:
 
@@ -508,7 +510,7 @@ Agent-action, Participant-response, ((Animal-agent, Animal/Mouse), (Press, Lever
 ```
 ````
 
-The annotation indicates that a mouse, the single participant of this experiment, presses a lever. The `Experiment-participant` is implicit in this annotation, but could be made explicit by using `(Animal-agent, Experiment-participant, Animal/Mouse)` in the example.
+The annotation indicates the participant, a mouse, presses a lever. The `Experiment-participant` is implicit in this annotation, but could be made explicit by using `(Animal-agent, Experiment-participant, Animal/Mouse)` in the example.
 
 Note that since `Mouse` is not a tag in the schema, it must be modified by its closest potential parent in the schema: `Animal/Mouse`. (See [Rule 8: Extend tags carefully](#rule-8-extend-tags-carefully) for guidance on extending tags.)
 
@@ -528,7 +530,7 @@ The avatar is not labeled with `Experiment-participant` but with `Experiment-act
 
 See [Rule 4](#rule-4-nest-agent-action-object) for the complete agent-action-object structural pattern.
 
-More complicated scenarios (e.g., multiple participants, agents that are not human, or agents that are not the experiment participant) are also possible to annotate unambiguously, but in these cases the `Agent` and/or `Agent-task-role` are required for unambiguous annotation. See examples in [Rule 2: Classify events carefully](#rule-2-classify-events-carefully).
+More complicated scenarios (e.g., multiple participants, agents that are not human, or agents that are not the experiment participant) are also possible to annotate unambiguously, but in these cases the `Agent` and/or `Agent-task-role` are required for unambiguous annotation.
 
 ### Rule 4: Nest agent-action-object
 
@@ -539,25 +541,25 @@ Agent-action-object relationships require nested grouping to show who did what t
 class: tip
 ---
 ```
-Agent-action, ((Agent-tags), (Action-tag, (Object-tags)))
+(Agent-tag, (Action-tag, Object-tag))
 ```
 ````
 
 The grouping is is meant to convey normal sentence structure: subject predicate direct-object. This annotation indicates that the agent performs the action on the object.
 
-````{admonition} **Example:** An agent action.
+````{admonition} **Example:** The human experiment participant correctly presses the left mouse button in response to the task.
 ```
 Agent-action, Participant-response, Correct-action, (Experiment-participant, (Press, (Left, Mouse-button)))
 ```
 ````
 
-The annotation indicates that experiment participant presses the left mouse button giving a correct response for the task. This example shows minimal grouping -- there could be additional grouping for clarity, but this minimal grouping should be unambiguous.
+TThis example shows minimal grouping -- there could be additional grouping for clarity, but this minimal grouping should be unambiguous.
 
 **Structure Explanation:**
 
 - `Agent-action` - `Event` top-level classification
 - `Participant-response` - `Task-event-role` modifier
-- `Correct-action` - `Task-action-type` modifier
+- `Correct-action` - `Task-action-type` explains what the action means for the task
 - Outer action group: `(Experiment-participant, (Press, (Left, Mouse-button)))` connects agent to action
 - Inner Tag (or group): `Experiment-participant` - describes WHO does the action
 - Inner group with an `Action` tag: `(Press, (Left, Mouse-button))` - describes WHAT action on WHICH object
@@ -573,11 +575,11 @@ Agent-action, Experiment-participant, Press, Mouse-button
 
 Without grouping indicates WHO did WHAT. The relationships are lost, making the annotation semantically incomplete. This annotation only indicates that the an experiment participant exists but does not capture the directional relationship. Did the mouse-button press the participant or vice versa?
 
-### Rule 5: Nest relationships
+### Rule 5: Nest binary relationships
 
-Tags from the `Relation` tag hierarchy express directional relationships and REQUIRE specific nested grouping to disambiguate.
+Most tags from the `Relation` tag hierarchy express directional binary relationships and REQUIRE specific nested grouping to disambiguate. The only exceptions are the logical relation tags `AND` and `OR`, which allow the combination of multiple binary relationships acting on the same source and target.
 
-````{admonition} **Relation tags represent binary, directional relationships**
+````{admonition} **Relation tag syntax**
 ---
 class: tip
 ---
@@ -593,13 +595,11 @@ The annotation specifically designates a direction "A → C" through the binary 
 - **C** is the target/object of the relationship
 - The relationship flows from **A** to **C** through the `Relation` tag
 
-The example has the following structure:
+Relationship grouping has the following structure:
 
 - Outer parentheses group the entire relationship
 - Inner parentheses group the relation with its target
 - The source appears in the outer group
-
-Each `Relation` should have should be in its own grouping.
 
 ````{admonition} **Example:** Spatial relationship pattern
 ```
@@ -607,7 +607,7 @@ Each `Relation` should have should be in its own grouping.
 ((Red, Circle), (To-left-of, (Green, Square)))
 ````
 
-This annotation indicates a red circle is to-left-of a green square.
+This annotation indicates a red circle is to the left of a green square.
 
 ````{admonition} **Example:** A size comparison
 ```
@@ -616,6 +616,14 @@ Sensory-event, Experimental-stimulus, Visual-presentation, ((Cross, White, Size)
 ````
 
 This annotation indicates an experimental stimulus consists of a white cross and a red circle. The white cross is bigger than the red circle.
+
+````{admonition} **Example:** Using AND to combine operations
+```
+(Cross, ((Close-to, AND To-left-of), Square))
+```
+````
+
+This annotation indicates a cross that is close to and to the left of a square. The `AND` and `OR` relation tags should only be used when the source and target are the same.
 
 Common `Relation` tags include:
 
@@ -642,11 +650,9 @@ Common `Relation` tags include:
 
 ### Rule 6: Use curly brace assembly
 
-The BIDS sidecars and the NWB `MeaningsTable` provide equivalent mechanisms for associating HED annotations with columns of tabular data. Without these mechanisms, you would have to provide a separate annotation for each row in the table. When these mechanisms are used you can provide annotations that apply to all of the rows.
+**Assembly** refers to the process of looking up the applicable annotations for each row of a table and creating a complete HED annotation for that row. HED concatenates the annotations associated with each column by default. This works for independent information but fails when multiple columns describe parts of the same entity and the result does not use parentheses properly.
 
-One approach is to use the `HED` Column in the events table to code the annotation. An alternative is to use curly braces and use the sidecar templates. Usually the `duration column provides the anchor for the template when `Duration\` is used to express ongoing events.
-
-**Assembly** refers to the process of looking up the applicable annotations for each row and creating a complete HED annotation for an individual row. The default assembly method is to concatenate the annotations for each column. This works for independent information but fails when multiple columns describe parts of the same entity. We assume that the annotations go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB).
+An alternative is to create an assembly template using the curly brace syntax.
 
 ````{admonition} **Example:** Ambiguous annotation with flat concatenation (BIDS)
 
@@ -682,23 +688,7 @@ Sensory-event, Experimental-stimulus, Visual-presentation, Red, Circle
 ```
 ````
 
-**Problem:** `Red` and `Circle` are separate top-level tags. Cannot definitively determine they describe the same object.
-
-**Use curly braces when:**
-
-- Multiple columns contribute properties of the SAME entity (e.g., color + shape = one object)
-- You need to control grouping across columns in sidecars
-- Flat concatenation would create ambiguous relationships
-
-**Don't use curly braces when:**
-
-- Each column describes independent aspects (naturally separate)
-- Annotating directly in a HED column (not a sidecar)
-- All tags naturally group correctly without templates
-
-**How they work:** Curly braces `{column_name}` in a sidecar act as placeholders that get replaced with that column's annotation during assembly, allowing you to specify a grouping template.
-
-Without curly braces, annotations for each column in a table row are simply concatenated (joined with commas) to form an assembled annotation for the row.
+**Problem:** The `Red` and `Circle` are separate top-level tags so we cannot definitively determine whether they describe the same object. We can solve this problem by using curly braces in the annotation dictionary (JSON sidecar for BIDS) to specify how the annotations for the individual columns should be assembled.
 
 ````{admonition} **Example:** Using a curly brace template to disambiguate (BIDS)
 
@@ -729,17 +719,34 @@ Sensory-event, Experimental-stimulus, Visual-presentation, (Red, Circle)
 ```
 ````
 
-**Why it works:** The curly braces `{color}` and `{shape}` are replaced by their annotations within the grouping parentheses, ensuring they are grouped as properties of the same object.
+**Why it works:** The curly braces `{color}` and `{shape}` contain column names that are replaced by their HED annotations when the annotation is assembled. This placement inside of the parentheses of the anchor annotation (the `event_type` column) assures they are grouped as properties of the same object. Without curly braces, annotations for each column in a table row are simply concatenated (joined with commas) to form an assembled annotation for the row.
 
-**Note:** NWB (Neurodata Without Borders) is an alternative data format standard to BIDS (Brain Imaging Data Structure). NWB does not use sidecars, but has an equivalent representation and the HED annotation rules apply.
+```{admonition} **Curly braces control how an annotation is assembled**
+---
+class: tip
+---
+**Use curly braces when:**
+
+- Multiple columns contribute properties of the SAME entity (e.g., color + shape = one object)
+- You need to control grouping across columns in sidecars
+- Flat concatenation would create ambiguous relationships
+
+**Don't use curly braces when:**
+
+- Each column describes independent aspects (naturally separate)
+- Annotating directly in a HED column (not using a sidecar)
+- All tags naturally group correctly without templates
+```
 
 The alternative to using sidecars for annotations is to create a HED column in the table. However this requires an individual annotation for each row, while the sidecar approach allows reuse of annotations across many rows.
 
 ### Rule 7: Heed special HED syntax
 
+HED has some special syntax rules which are encoded in the HED schema as schema attributes and properties.
+
 #### Reserved tags
 
-The reserved tags have special grouping rules and usage patterns as shown in the following table:
+Reserved tags (tags with the `reserved` schema attribute) implement HED infrastructure. These tags have special grouping rules and usage patterns as shown in the following table:
 
 ```{list-table}
 ---
@@ -751,24 +758,24 @@ widths: 20 40 40
   - Rules
 * - `Definition`
   - `(Definition/Red-triangle, (Sensory-event, Visual-presentation, (Red, Triangle)))`
-  - * Allows users to name frequently used strings
+  - * Used to name frequently used strings
     * Can only be defined in sidecars or externally
     * Defining tags are in inner group
-    * Definition group cannot contain any other reserved tags.
+    * Definition group cannot contain any other reserved tags
 * - `Def`
   - `Def/Red-triangle`
-  - * Must correspond to a `Definition`
-    * Used to anchor `Onset`, `Inset`, `Offset`
+  - * Used to anchor `Onset`, `Inset`, `Offset`
+    * Must correspond to a `Definition`
     * Cannot appear in definitions
 * - `Def-expand`
   - `(Def-expand/Red-triangle, (Red, Triangle))`
-  - * Must correspond to `Definition`
-    * Used to anchor `Onset`, `Inset`, `Offset`
+  - * Used to anchor `Onset`, `Inset`, `Offset`
+    * Must correspond to `Definition`
     * Cannot appear in definitions
     * DO NOT USE -- Tools use during processing
 * - `Onset`
   - `(Def/Red-triangle, Onset)`
-  - * Marks the start of an unfolding event
+  - * Mark the start of an unfolding event
     * Must have a `Def` anchor corresponding to a `Definition`.
     * Can include an internal tag group
     * Must be in a top-level tag group
@@ -788,15 +795,16 @@ widths: 20 40 40
     * Must be between an `Onset` and the ending time of that event process
 * - `Duration`
   - `(Duration/2 s, (Sensory-event, Auditory-presentation, Feedback Buzz))`
-  -  * Must be in a top-level tag group
-     * Cannot be used in same group with `Onset`, `Inset`, or `Offset`.
+  -  * Designates length of event that starts at that point
+     * Must be in a top-level tag group
+     * Cannot be used in group with `Onset`, `Inset`, or `Offset`.
      * May be used in both timeline and description data.
-     * Inner tag group defines the event process that starts at that point
-     * If used with `Delay`, the event process start is delayed by indicated amount
+     * Inner tag group defines the event that starts at that point
+     * If used with `Delay`, the event start is delayed by indicated amount
 * - `Delay`
   - `(Delay/0.5 ms, (Sensory-event, Auditory-presentation, Feedback Buzz))`
-  - * Must be a top-level tag group
-    * Delays the start of the event by the indicated amount
+  -  * Delays the start of the event by the indicated amount
+     * Must be a top-level tag group
 * - `Event-context`
   - `(Event-context, (Def/Task-a, (Blue, Square)), (Def/Task-b, (Red, Triangle)))`
   - * Should only be created by tools
@@ -804,18 +812,6 @@ widths: 20 40 40
     * Keeps track of ongoing events at intermediate time points
     * Represents concurrent active event processes
 ```
-
-#### Label, ID, Parameter-name
-
-The `Label/` tag provides an identifying name or label for something. The `#` placeholder in `Label/#` gets replaced with your specific label text (e.g., `Label/Green`, `Label/Fixation-point`). The `ID` and `Parameter-name` have similar purposes, but have fewer restrictions on the type of values.
-
-**Use `Label/` when:**
-
-- Naming a specific stimulus or condition (e.g., `Label/Fixation-point`)
-- Identifying specific content (e.g., `Label/Green` for the word "Green")
-- Creating definitions (see [Rule 7](#rule-7-heed-special-hed-syntax) for `Definition`)
-
-Labels must use hyphens or underscores instead of spaces (e.g., `Label/Press-left-for-red`). They have the name class attribute, meaning that their values must be alphanumeric. For identifiers that contain any printing UTF-8 character, use `ID/` or the `Parameter-name/` tags. These have the text class attribute and an take very general values.
 
 #### Values and units
 
@@ -846,12 +842,38 @@ Some of these tags have attributes specifying the types of values that These tag
 
 **Key rules for value-taking tags:**
 
-1. Use the `#` placeholder in templates: `Duration/# s` becomes `Duration/2.5 s`
-2. Include required units for unit classes: `Distance/50 cm` not `Distance/50`
+1. Use the `#` placeholder in templates: `Duration/# s` becomes `Duration/2.5 s` on assembly
+2. Include units if available in the annotation, not with the value: `Distance/# cm` NOT `Distance/#` with the units in the table as `50 cm`
 3. Choose appropriate units from the allowed list in the schema
 4. Follow value class restrictions (alphanumeric for `nameClass`, etc.)
 
-The HED schema specifies allowed units for each unit class. For example, `timeClass` allows units like `s` (seconds), `ms` (milliseconds), `minute`, `hour`. Always use the standard unit abbreviations defined in the schema.
+The HED schema specifies allowed units for each unit class. For example, `timeClass` allows units like `s` (seconds), `ms` (milliseconds), `minute`, `hour`. Always use the standard unit abbreviations defined in the schema. SI units can use all of the allowed SI unit modifiers.
+
+#### Label, ID, Parameter-name
+
+The `Label` tag provides an identifying name or label for something. Labels have the `nameClass` attribute, meaning that their values must contain only alphanumeric, hyphen, and underbar characters.
+
+**For identifiers that contain arbitrary printing UTF-8 characters**, use the `ID` or `Parameter-name` tags. These two tags have the `textClass` attribute and can take very general values.
+
+A common use these tags is to group a value with tag that does not take a value (i.e., does not have a `#` child) as illustrated in the following example:
+
+````{admonition} **Example:** The word Spanish word teléfono is displayed on the screen.
+```
+Sensory-event, Experimental-stimulus, Visual-presentation, (Word, ID/teléfono)
+```
+````
+
+The annotation is for an experiment in a language experiment, where Spanish words are displayed on the computer screen. We want to give the value of the word being displayed, but `Word` does not have a placeholder child, so we cannot write, `Word/teléfono`. Instead we modify `Word` with the ID of the word. We did not use `Label` because the value requires UTF-8 to properly display the accent.
+
+Another common use is to add non-standard units or other modifiers to tags that take values.
+
+````{admonition} **Example:** Annotate a column containing  the rate of change of temperature
+```
+(Temporal-rate/#, Label/Degrees-per-second)
+```
+````
+
+This might be an annotation for a column table that has values in degrees/second. HED does not have a unit class corresponding to rates for temperatures, so we modify the general `Temporal-rate` tag with the units. We can use `Label` tag for the units because the units only have ASCII characters and hyphens. We could also have used `ID` or `Parameter-value`.
 
 ### Rule 8: Extend tags carefully
 
@@ -863,28 +885,14 @@ Tags that can be extended have (or have inherited) the `extensionAllowed` attrib
 
 When you need to use a tag that doesn't exist in the schema, **EXTEND FROM THE MOST SPECIFIC** applicable parent tag while preserving the is-a (taxonomic) relationship.
 
-**Guidelines:**
-
+```{admonition} **Guidelines for extending HED**
+---
+class: tip
+---
 - **Extend from the closest applicable parent** - Follow the schema hierarchy as deep as possible
 - **Preserve the is-a relationship** - Your extension should be a specific type of its parent
 - **Include only the tag's direct parent** - Don't include the full path -- just immediate parent
 - **Check for extension restrictions** - Some tags cannot be extended (`Event` subtree, `Agent` subtree, or # value nodes)
-
-```{admonition} **When to extend:**
----
-class: tip
----
-**Extend when:**
-- You REALLY need a tag that doesn't exist in the schema
-- You need domain-specific terminology
-- The extension preserves clear taxonomic (is-a) relationships
-- The parent tag allows extensions
-
-**Don't extend when:**
-- An existing tag already captures your meaning
-- You're in the `Event` or `Agent` subtree
-- You're trying to extend a value-taking node (has `#` child)
-- The extension would create ambiguous taxonomy
 ```
 
 While you must include the extension's immediate schema parent in the annotation, you don't need to include the full path.
@@ -892,49 +900,27 @@ While you must include the extension's immediate schema parent in the annotation
 Suppose you want to annotate a house, but house is not a tag in the schema.
 
 ````{admonition} **Example:** Extending Item hierarchy at the wrong level
+
+**Syntactically correct, but not useful:**
 ```
 Item/House
 ```
-````
 
-The annotation is syntactically correct. The `Item/House` willThe difficulty with annotation is it the. `Item` has many levels of hierarchy that better classify "house.
+**Correctly using the most specific applicable parent (Building):**
 
-````{admonition} **Example:** Correctly adding a House tag
-
+```
 Item/Object/Man-made-object/Building/House
 ```
+
+**Better using short form:**
+
+```
+Building/House
+```
+
 ````
 
-Follow the schema hierarchy to the most specific applicable parent (`Building`). It isclear that a house is a type of building. The actual tag in the annotation is `Building/House`.
-
-````{admonition} Adding Squeeze to the Action hierarchy
-
-**Wrong:**
-```
-Action/Squeeze
-```
-**Correct:**
-```
-Move-fingers/Squeeze
-```
-````
-
-In the above example squeezing is a specific type of finger movement, so extending from `Move-fingers` preserves the proper taxonomic relationship. The full path in the hierarchy is: `Action/Move/Move-body-part/Move-fingers/Squeeze`, but always use the shortest path possible: `Move-fingers/Squeeze`.
-
-````{admonition} **Example:** Extending where extension is not allowed
-
-**Wrong:**
-```
-Event/My-custom-event
-```
-
-**Correct:**
-```
-(Event, Label/My-custom-event)
-```
-````
-
-Tags in the `Event` and `Agent` hierarchies cannot be extended. You can qualify the `Event` tag with a label as shown above, but you should avoid this if at all possible. `Event` tags are the primary HED mechanism for event classification and extraction.
+The difficulty with first annotation is that searches for the `Building` tag will not return annotations containing `House`. `Item` has many levels of hierarchy that better classify house.
 
 Value-taking tags (have `#` children in the schema) also cannot be extended. These tags reside in the `Property` hierarchy in the standard schema. If you really need a new type of acceleration, you can use the grouping strategy illustrated in the following example.
 
@@ -953,6 +939,8 @@ Acceleration/#/Custom-acceleration
 
 The `Acceleration` tag has a `#` child, so you cannot extend with `Custom-acceleration`. Instead, you can extend from `Acceleration` tag parent `Rate-of-change` and group with the general-purpose `Parameter-value` tag which takes the value.
 
+Tags in the `Event` and `Agent` hierarchies cannot be extended, but you can qualify them with labels demonstrated for `Acceleration` in the previous example. However, you should avoid this if at all possible. `Event` tags are the primary HED mechanism for event classification and extraction.
+
 ## Temporal annotation strategies
 
 When events have duration or unfold over time, you can choose between two annotation strategies: using `Duration` for simple cases or using `Onset`/`Offset` for more complex temporal patterns. Both approaches are valid; choose based on your data structure and analysis needs.
@@ -960,6 +948,8 @@ When events have duration or unfold over time, you can choose between two annota
 ### Strategy 1: Duration
 
 Use `Duration` when you know the event's duration and want to capture it in a single annotation.
+
+**Scenario:** A fixation cross appears and stays on screen for 1.5 seconds starting at 0.5 s from the start of the recording.
 
 ````{admonition} **Example:** A fixation cross 3 cm in height appears for 1.5 s starting at 0.5 s (BIDS)
 
@@ -974,38 +964,37 @@ Use `Duration` when you know the event's duration and want to capture it in a si
 ```json
 { 
   "duration": {
-    "HED": "(Duration/# s, ({eventType}, {cross-size}))"
+    "HED": "(Duration/# s, ({event_type}, {cross_size}))"
   },
   "event_type": {
     "HED": {
       "fixation": "Sensory-event, Visual-presentation, Cue"
     }
   },
-  "cross-size": {
+  "cross_size": {
     "HED": "(Cross, Height/# cm)"
   }
 }
 ```
 
 **Assembled annotation**:
-
 ```
 (Duration/1.5 s, (Sensory-event, Visual-presentation, Cue, (Cross, Height/3 cm)))
 ```
 ````
 
+The annotation is for a single time marker and assumes that the duration of 1.5 s is known at the time of onset.
+
 **Why use `Duration`:**
 
-- Captures the information of an ongoing event in a single annotation.
-- `Duration` is often of direct interest.
-- Don't need any `Definition` anchors.
-- Simpler when the event has a known duration at the start of the event. **Scenario:** A fixation cross appears and stays on screen for 1.5 seconds starting at 0.5 s from the start of the recording.
+- Captures the information of an ongoing event in a single annotation
+- `Duration` is often of direct interest
+- Don't need any `Definition` anchors
+- Simpler when the event has a known duration at the start of the event
 
 ### Strategy 2: Onset/Offset
 
 Use `Onset` and `Offset` when you have separate time markers for the start and end of an event or when you need to mark intermediate time points.
-
-**Scenario:** A fixation cross appears at 0.5 seconds. The duration is not necessarily known at initiation, but at 2.0 seconds, another marker is written that indicates the end of the display. This design is often used when items are presented for random amounts of time.
 
 ````{admonition} **Example:** Encoding ongoing events using Onset and Offset (BIDS)
 
@@ -1049,36 +1038,58 @@ Use `Onset` and `Offset` when you have separate time markers for the start and e
 ```
 ````
 
-These annotations indicate that a fixation cross 3 cm in height starts showing at 0.5s into the recording and disppears at 2.5s. The anchor `Def/Fixation-point` allows to associate the onset and offset of this display. The grouped content under `Onset` continues for the duration of the event.
+These annotations indicate that a fixation cross 3 cm in height starts showing at 0.5s into the recording and disppears at 2.0 s. The anchor `Def/Fixation-point` connects the onset marker (at time 0.5s) and offset marker (at 2.0s) for this display. The grouped content under `Onset` continues for the duration of the event.
 
 **Why use `Onset`/`Offset`:**
 
 - Temporal scope is explicit (the end of the event is an event marker)
-- Can explicitly express complicated interleaving of events.
-- Can use the anchor definitions content to shorten annotations.
-- Can use the `Inset` mechanism to mark intermediate time points and features associated with that event.
-- Better for events with variable or unpredictable durations.
+- Can explicitly express complicated interleaving of events
+- Can use the anchor definitions content to shorten annotations
+- Can use the `Inset` mechanism to mark intermediate time features associated of the event
+- Better for events with variable or unpredictable durations
 
-Notice that the `Fixation-point` definition doesn't have any content in this example. We didn't put the `Sensory-event` and related tags in the definition itself in this case because we wanted to get the correct grouping with parentheses.
-
-### Duration vs Onset/Offset
-
-**Use `Duration` when:**
-
-- Event has a known, fixed duration at the time of annotation
-- Duration is recorded in your data
-- Simplicity is preferred
-
-**Use `Onset`/`Offset` when:**
-
-- Duration is not known at the time the event begins
-- You need to mark intermediate points with `Inset`
-- You need to have an explicit marker in the data for the ending time
-- Event timing is more complex
+Notice that the `Fixation-point` definition doesn't have any content in this example. We didn't put the `Sensory-event` and related tags in the definition because we wanted to get the correct grouping with parentheses.
 
 ### Use Delay for response timing
 
 The `Delay` tag is used to indicate that the event starts at a specified delay from the time of the event marker in which the annotation appears. This mechanism is often used when the information about an entire trial (i.e., both stimulus and response) are associated with a single time marker. In this case the annotation may contain multiple events -- some of which are delayed from the event marker time.
+
+````{admonition} **Example:** Each row represents a trial in which a participant response to a circle or square (BIDS)
+
+
+**Excerpt from:** `events.tsv`
+
+| onset | duration | event_type | response_time | response_type |
+|-------|----------|------------| ------------- | ------------- |
+| 0.5   |  n/a     | square      | 200.5        | correct       |
+
+**Sidecar:** `events.json`
+```json
+{ 
+  "event_type": {
+    "HED": {
+      "square": "(Sensory-event, experimental-stimulus, Visual-presentation, Square)"
+    }
+  },
+  "response_time": {
+    "HED": "(Delay/# ms, (Agent-action, Participant-response, {response-type}, (Press, (Left, Mouse-button))))"
+  }
+  "response_type": {
+    "HED": {
+      "correct": "Correct"
+    }
+  }
+}
+```
+
+**Assembled annotation**:
+```
+ (Sensory-event, Experimental-stimulus, Visual-presentation, Square),
+ (Delay/3.5 ms, (Agent-action, Participant-response, {response-type}, (Press, (Left, Mouse-button))))"
+```
+````
+
+Two events the stimulus and the response are encoded in a single row. Property tagging with \`Delay encodes them as separate events. Tools can convert this row (the stimulus delivery at 0.5s and the participant's response at 0.7005s) to separate rows if desired.
 
 ## Common annotation mistakes
 
@@ -1145,7 +1156,7 @@ Agent-action, (Experiment-participant, (Press, Mouse-button))
 ```
 ````
 
-````{admonition} **Mistake 5:** Incorrect relationship structure - [Rule 5](#rule-5-nest-relationships)
+````{admonition} **Mistake 5:** Incorrect relationship structure - [Rule 5: Nest binary relationships](#rule-5-nest-binary-relationships)
 ---
 class: warning
 ---
@@ -1263,7 +1274,6 @@ class: tip
 **✓ Event Classification**
 - [ ] Every timeline event has `Event` tag
 - [ ] Every timeline event has `Task-event-role` tag (when applicable)
-- [ ] Proper tag order: Event, Task-event-role, Task-stimulus-role, Sensory-presentation, details
 - [ ] `Sensory-event` includes `Sensory-presentation` tag
 
 **✓ Data Type**
@@ -1285,7 +1295,7 @@ class: tip
 **✓ Definitions**
 - [ ] Repeated patterns defined once with Definition/DefName
 - [ ] Each Definition name is unique
-- [ ] Def/DefName used to reference definitions
+- [ ] Def/DefName used to reference definitions in annotations
 - [ ] Definitions defined in sidecars or externally
 
 **✓ Validation**
@@ -1321,17 +1331,17 @@ Creating semantically correct HED annotations requires understanding:
 
 By following these principles and patterns, you create annotations that are not only syntactically valid but also semantically meaningful and machine-actionable, enabling powerful downstream analysis and cross-study comparisons.
 
-For additional information, see:
+**Additional information**:
 
 - [**HED Annotation Quickstart**](./HedAnnotationQuickstart.md) - Practical annotation guide
 - [**BIDS Annotation Quickstart**](./BidsAnnotationQuickstart.md) - BIDS integration
 - [**HED Schemas**](./HedSchemas.md) - Understanding the HED vocabulary
 - [**HED Validation Guide**](./HedValidationGuide.md) - Validating your annotations
 
-Available tools:
+**Available tools:**
 
 - [**HED online tools**](https://hedtools.org/hed) - Fairly complete set of tools for a single tsv and json files.
 - [**HED browser-based validation**](https://www.hedtags.org/hed-javascript) - validate an entire BIDS dataset -- all local, no installation
 - [**HED extension for NWB**](https://github.com/hed-standard/ndx-hed) - incorporates HED into Neurodata Without Borders datasets.
-- [**HED python tools**](https://github.com/hed-standard/hed-python) - comprehensive set of tools for HED in Python.
-- [**HED matlab tools**](https://github.com/hed-standard/hed-matlab) - HED interface in MATLAB
+- [**HED Python tools**](https://github.com/hed-standard/hed-python) - comprehensive set of tools for HED in Python.
+- [**HED MATLAB tools**](https://github.com/hed-standard/hed-matlab) - HED interface in MATLAB
