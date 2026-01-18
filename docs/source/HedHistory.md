@@ -51,6 +51,6 @@ HED development has been supported by multiple funding sources across its evolut
 
 ## Community and participation
 
-HED is an open research community effort. Researchers and developers interested in contributing are invited to participate. Visit the [**HED project homepage**](https:/www.hedtags.org)for links to the latest developments.
+HED is an open research community effort. Researchers and developers interested in contributing are invited to participate. Visit the [**HED project homepage**](https://www.hedtags.org) for links to the latest developments.
 
 For questions, email: hed.maintainers@gmail.com or post an issue at [**hed-issues**](https://github.com/hed-standard/hed-schemas/issues).

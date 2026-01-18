@@ -25,7 +25,7 @@ Read the [Introduction to HED](IntroductionToHed.md) for a basic introduction to
 
 **HED validators only check for syntax errors.** This document focuses mainly on **semantic errors** - helping you create annotations that are not only syntactically valid but also meaningful, unambiguous, and correctly represent what happened in your experiment.
 
-**HED quality assessment tools are available to assess whether HED annotations are meaningful.**
+**HED quality assessment tools are available to assess whether HED annotations are meaningful.** See the [HED validation guide](HedValidationGuide.md) for validation workflows and the [HED summary guide](HedSummaryGuide.md) for summary-based quality checks.
 
 The semantic interpretation of a HED annotation depends on:
 
@@ -51,7 +51,7 @@ Tag placement determines scope and relationships - top-level tags typically clas
 
 The main standards for storing imaging and behavioral data in neuroscience are the Brain Imaging Data Structure ([BIDS](https://bids.neuroimaging.io/index.html)) and Neurodata Without Borders ([NWB](https://nwb.org/)). This document uses the BIDS format for its examples, but NWB has equivalent representations. See the [NWB HED extension docs](https://www.hedtags.org/ndx-hed) for examples in NWB.
 
-One approach for annotating tabular data is to use a `HED` column in the table to annotate each row individually. An alternative is to to provide a dictionaries of annotations that apply to all rows and use tools to "assemble" the actual annotation. Dictionaries save a lot of time and duplication. We assume that such annotation dictionaries go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB).
+One approach for annotating tabular data is to use a `HED` column in the table to annotate each row individually. An alternative is to provide dictionaries of annotations that apply to all rows and use tools to "assemble" the actual annotation. Dictionaries save a lot of time and duplication. We assume that such annotation dictionaries go in a JSON sidecar for BIDS (or a `MeaningsTable` for NWB).
 
 The examples assume that you understand the mechanics of assembly of annotations and emphasize what is being assembled rather than how it is assembled. See [Rule 6: Use curly brace assembly](#rule-6-use-curly-brace-assembly) for a brief description of annotation assembly and the [BIDS annotation quickstart](BidsAnnotationQuickstart.md) tutorial for a more detailed explanation of how assembly works in BIDS.
 
@@ -102,13 +102,13 @@ We can determine that this is a sensory event presented visually because of the 
 - Cannot tell if green and red describe the triangle or the square or something else
 - Spatial information is disconnected
 
-**A simple reversiblity test:** Randomly shuffle the order of the tags and tag groups (keeping the same nesting) and see if you interpret the annotation in the same way.
+**A simple reversibility test:** Randomly shuffle the order of the tags and tag groups (keeping the same nesting) and see if you interpret the annotation in the same way.
 
 ## Timeline vs descriptor data
 
 The semantic requirements for HED annotations depend on whether they appear in **timeline data** or **descriptor data**.
 
-```{admonition} **HED nnotation strategy depends on data type**
+```{admonition} **HED annotation strategy depends on data type**
 ---
 class: tip
 ---
@@ -120,6 +120,13 @@ class: tip
 [BIDS](https://bids.neuroimaging.io/index.html) stores timeline data in `.tsv` files each with an`onset` column that gives the time in seconds relative to the start of the recording (e.g., `_events.tsv`). BIDS descriptor data is stored in `.tsv` files that do not have an `onset` column (e.g., `participants.tsv`). BIDS associates additional metadata for these files in similarity named JSON (e.g., `_events.json`) files. Information from a `.tsv` file and its associated `.json` files is combined to form assembled HED annotations for the data. The data for an experiment is spread over multiple BIDS `.tsv` and `.json` files.
 
 An [NWB](https://nwb.org/) file is a container that holds all the data for an experiment. The timeline and descriptor data for an experiment are held in `DynamicTable` objects. The `DynamicTable` objects for timeline data have a time-stamp column of some sort.
+
+```{admonition} **Quick rule**
+---
+class: tip
+---
+Timeline annotations should include an `Event` tag; descriptor annotations should not.
+```
 
 ### Timeline data requires Event tags
 
