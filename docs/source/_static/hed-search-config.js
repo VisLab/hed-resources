@@ -64,7 +64,7 @@ const SEARCH_CONFIG = {
             color: '#d63384',  // Bootstrap pink
             exclude: []
         },
-        {
+        /* {
             name: 'HED JavaScript Tools',
             url: 'https://www.hedtags.org/hed-javascript',
             searchIndex: 'https://www.hedtags.org/hed-javascript/searchindex.js',
@@ -72,7 +72,8 @@ const SEARCH_CONFIG = {
             priority: 6,
             color: '#fd7e14',  // Bootstrap orange
             exclude: []
-        },
+        },*/
+        /* HED MCP documentation not yet available
         {
             name: 'HED MCP',
             url: 'https://www.hedtags.org/hed-mcp',
@@ -82,6 +83,7 @@ const SEARCH_CONFIG = {
             color: '#20c997',  // Bootstrap teal
             exclude: []
         },
+        */
         {
             name: 'Table Remodeler',
             url: 'https://www.hedtags.org/table-remodeler',
