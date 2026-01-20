@@ -38,7 +38,7 @@ Where to begin?
 **Ready to get started?** Use the `How can you use HED? <./HowCanYouUseHed.html>`_ guide to find role-specific
 workflows and detailed guidance for your use case (experimenters, annotators, analysts, developers, or schema builders).
 
-**To understand HED annotations** read `Making HED meaningful` <./HedAnnotationSemantics>`_ the essential 
+**To understand HED annotations** read `Making HED meaningful <./HedAnnotationSemantics.html>`_ the essential 
 guide to HED annotation strategy and meaning.
 
 **Need tools?** Browse the `HED online tools <https://hedtools.org/hed/>`_ for installation-free validation, annotation, and analysis.
