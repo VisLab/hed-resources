@@ -17,7 +17,7 @@ Read the [Introduction to HED](IntroductionToHed.md) for a basic introduction to
 **HED semantic errors** refer to annotations that are syntactically correct but fail to accurately or unambiguously convey the intended meaning.
 
 ```{admonition} **Example:** Common syntax errors
-- Mismatched parentheses: `(Red, Circle))` or `(Red, (Circle)`)
+- Mismatched parentheses: `(Red, Circle))` or `(Red, (Circle)`
 - Missing commas between tags: `Red Circle` instead of `Red, Circle`
 - Using tags that don't exist in the schema
 - Violating tag properties defined in the schema (e.g., extending a tag that doesn't allow extension, omitting required values for value-taking tags)
@@ -134,7 +134,7 @@ Timeline data has timestamps indicating when things happen. Every assembled anno
 
 ````{admonition} **Example:** Correct timeline annotation (BIDS)
 
-**File excerpt from:** `events.tsv`
+**Excerpt from:** `events.tsv`
 | onset | duration | event_type | 
 |-------| -------- | ---------- |
 | 2.5   | n/a      | square     |
@@ -398,7 +398,7 @@ It is also possible to annotate this as a single sensory event that is an experi
 
 ````{admonition} **Example:** Multiple rows have the same time.
 
-*Excerpt from:** `events.tsv`
+**Excerpt from:** `events.tsv`
 
 | onset | duration | event_type      |
 | ----- | -------- | --------------- |

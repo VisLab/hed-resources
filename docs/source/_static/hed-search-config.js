@@ -54,6 +54,42 @@ const SEARCH_CONFIG = {
             priority: 4,
             color: '#0d6efd',  // Bootstrap primary blue
             exclude: []
+        },
+        {
+            name: 'HED MATLAB Tools',
+            url: 'https://www.hedtags.org/hed-matlab',
+            searchIndex: 'https://www.hedtags.org/hed-matlab/searchindex.js',
+            description: 'MATLAB tools for HED',
+            priority: 5,
+            color: '#d63384',  // Bootstrap pink
+            exclude: []
+        },
+        {
+            name: 'HED JavaScript Tools',
+            url: 'https://www.hedtags.org/hed-javascript',
+            searchIndex: 'https://www.hedtags.org/hed-javascript/searchindex.js',
+            description: 'JavaScript tools for HED',
+            priority: 6,
+            color: '#fd7e14',  // Bootstrap orange
+            exclude: []
+        },
+        {
+            name: 'HED MCP',
+            url: 'https://www.hedtags.org/hed-mcp',
+            searchIndex: 'https://www.hedtags.org/hed-mcp/searchindex.js',
+            description: 'HED Model Context Protocol',
+            priority: 7,
+            color: '#20c997',  // Bootstrap teal
+            exclude: []
+        },
+        {
+            name: 'Table Remodeler',
+            url: 'https://www.hedtags.org/table-remodeler',
+            searchIndex: 'https://www.hedtags.org/table-remodeler/searchindex.js',
+            description: 'Table Remodeling Tools',
+            priority: 8,
+            color: '#6c757d',  // Bootstrap secondary gray
+            exclude: []
         }
     ],
     
