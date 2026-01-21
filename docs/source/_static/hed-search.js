@@ -136,7 +136,7 @@ class HEDSearch {
      */
     searchIndex(searchTerms, indexData, source) {
         const results = [];
-        const { titles, filenames, terms, titleterms } = indexData;
+        const { titles, filenames, docnames, terms, titleterms } = indexData;
 
         if (!titles || !filenames) {
             console.warn(`Invalid index structure for ${source.name}`);
@@ -177,6 +177,20 @@ class HEDSearch {
                 debugLog(`Excluded: ${filename} from ${source.name}`);
                 continue;
             }
+
+            // Construct URL - prefer docnames for correct .html links
+            let relativePath;
+            if (docnames && docnames[docIdNum]) {
+                relativePath = docnames[docIdNum] + '.html';
+            } else {
+                // Fallback to filename with extension fix
+                relativePath = filename;
+                if (relativePath.match(/\.(md|rst|txt)$/i)) {
+                    relativePath = relativePath.replace(/\.(md|rst|txt)$/i, '.html');
+                } else if (!relativePath.endsWith('.html') && !relativePath.endsWith('/')) {
+                    relativePath += '.html';
+                }
+            }
             
             // Normalize score
             const score = rawScore / (searchTerms.length * 4);
@@ -184,7 +198,7 @@ class HEDSearch {
             if (score >= this.config.options.minScore) {
                 results.push({
                     title: title,
-                    url: `${source.url}/${filename}`,
+                    url: `${source.url}/${relativePath}`,
                     source: source.name,
                     sourceColor: source.color,
                     sourceDescription: source.description,
@@ -205,11 +219,17 @@ class HEDSearch {
      * Tokenize search query into terms
      */
     tokenize(text) {
-        return text
+        const tokens = text
             .toLowerCase()
             .split(/\s+/)
             .filter(term => term.length > 1)
             .map(term => term.replace(/[^\w-]/g, ''));
+
+        // Use Sphinx Stemmer if available
+        if (typeof Stemmer !== 'undefined' && Stemmer.stemName) {
+            return tokens.map(term => Stemmer.stemName(term));
+        }
+        return tokens;
     }
 
     /**
