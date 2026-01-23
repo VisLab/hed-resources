@@ -114,37 +114,6 @@ const REDIRECT_CONFIG = {
         }
     },
     
-    // HED Python Tools documentation moved to hedtags.org/hed-python
-    // All anchors redirect to the base URL (no fragments)
-    "HedPythonTools.html": {
-        newUrl: "https://www.hedtags.org/hed-python/",
-        anchorMap: {
-            // Explicit MyST-style anchors - all redirect to base page
-            "#jupyter-notebooks-for-hed-anchor": "",
-            "#extract-json-template-anchor": "",
-            "#find-event-combinations-anchor": "",
-            "#merge-spreadsheet-into-sidecar-anchor": "",
-            "#sidecar-to-spreadsheet-anchor": "",
-            "#summarize-events-anchor": "",
-            "#validate-bids-dataset-anchor": "",
-            "#validate-bids-dataset-with-libraries-anchor": "",
-            "#validate-bids-datasets-anchor": "",
-            
-            // Auto-generated heading anchors - all redirect to base page
-            "#hed-python-tools": "",
-            "#hed-python-tool-installation": "",
-            "#jupyter-notebooks-for-hed": "",
-            "#extract-json-template": "",
-            "#find-event-combinations": "",
-            "#merge-spreadsheet-into-sidecar": "",
-            "#sidecar-to-spreadsheet": "",
-            "#summarize-events": "",
-            "#validate-bids-dataset": "",
-            "#validate-bids-dataset-with-libraries": "",
-            "#validate-bids-datasets": ""
-        }
-    },
-    
     // HED Schema Developers Guide moved to hedtags.org/hed-schemas
     "HedSchemaDevelopersGuide.html": {
         newUrl: "https://www.hedtags.org/hed-schemas/developer_guide.html"

@@ -20,7 +20,6 @@ const SEARCH_CONFIG = {
                 // Exclude redirect shim pages
                 'HedRemodelingQuickstart.html',
                 'HedRemodelingTools.html',
-                'HedPythonTools.html',
                 'HedAnnotationInNWB.html',
                 'HedOnlineTools.html',
                 'HedJavascriptTools.html',
