@@ -37,6 +37,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -e .[docs]
+          pip install -e submodules/hed-python
 
       - name: Cache Sphinx build
         uses: actions/cache@v5
