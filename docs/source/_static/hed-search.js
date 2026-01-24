@@ -226,8 +226,9 @@ class HEDSearch {
             .map(term => term.replace(/[^\w-]/g, ''));
 
         // Use Sphinx Stemmer if available
-        if (typeof Stemmer !== 'undefined' && Stemmer.stemName) {
-            return tokens.map(term => Stemmer.stemName(term));
+        const SphinxStemmer = (typeof Stemmer !== 'undefined' && Stemmer.stemName) ? Stemmer : null;
+        if (SphinxStemmer) {
+            return tokens.map(term => SphinxStemmer.stemName(term));
         }
         return tokens;
     }

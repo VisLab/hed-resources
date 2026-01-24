@@ -94,27 +94,27 @@ def copy_submodule_docs():
         print(f"  Copying {name}: {src_rel} -> {dest_rel}")
 
         # Copy specified files/directories
-        for item in config["files"]:
-            src_item = source_path / item
+        for file_or_dir in config["files"]:
+            src_item = source_path / file_or_dir
 
             if not src_item.exists():
-                print(f"    Warning: {item} not found in {name}")
+                print(f"    Warning: {file_or_dir} not found in {name}")
                 continue
 
             if src_item.is_dir():
                 # Copy entire directory
-                dest_item = dest_path / item
+                dest_item = dest_path / file_or_dir
                 shutil.copytree(src_item, dest_item, dirs_exist_ok=True)
-                print(f"    Copied directory: {item}")
+                print(f"    Copied directory: {file_or_dir}")
             else:
                 # Copy single file
-                dest_item = dest_path / item
+                dest_item = dest_path / file_or_dir
                 dest_item.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src_item, dest_item)
-                print(f"    Copied file: {item}")
+                print(f"    Copied file: {file_or_dir}")
 
                 # Post-process index.rst for python-tools to remove "Indices and tables"
-                if name == "hed-python" and item == "index.rst":
+                if name == "hed-python" and file_or_dir == "index.rst":
                     remove_indices_section(dest_item)
 
         # Copy _static directory if it exists
