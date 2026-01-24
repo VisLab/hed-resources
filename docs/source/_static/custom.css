@@ -268,7 +268,7 @@ ul.search li a::before,
 ul.search li a[href*="hed-python/"]::before,
 #search-results a[href*="hed-python/"]::before {
     content: "[hed-python] ";
-    color: #ffd43b;
+    color: #b8860b;
     font-weight: bold;
     margin-right: 4px;
     display: inline-block !important;
