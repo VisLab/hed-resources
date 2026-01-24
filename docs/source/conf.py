@@ -14,6 +14,7 @@ import os
 import sys
 from datetime import date
 from pathlib import Path
+
 from sphinx.util import logging
 
 logger = logging.getLogger(__name__)
