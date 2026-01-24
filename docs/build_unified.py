@@ -66,7 +66,7 @@ def copy_submodule_docs():
     submodules = {
         "hed-python": {
             "source": submodules_dir / "hed-python" / "docs",
-            "dest": source_dir / "python-tools",
+            "dest": source_dir / "hed-python",
             "files": ["index.rst", "introduction.md", "user_guide.md", "api/"],
         },
     }

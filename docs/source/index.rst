@@ -78,7 +78,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
 
    HED online tools <https://www.hedtags.org/hed-web>
    Schema developer guide <https://www.hedtags.org/hed-schemas>
-   Python HEDTools <python-tools/index>
+   Python HEDTools <hed-python/index>
    JavaScript HedTools <https://www.hedtags.org/hed-javascript>
    MATLAB HEDTools <https://www.hedtags.org/hed-matlab>
    Table-remodeler <https://www.hedtags.org/table-remodeler>
@@ -104,10 +104,3 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Data resources:
 
    HedTestDatasets.md
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
