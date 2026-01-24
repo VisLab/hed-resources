@@ -108,6 +108,7 @@ docs/source/python-tools/
 docs/source/matlab-tools/
 docs/source/javascript-tools/
 docs/source/schemas-docs/
+docs/source/hed-python/
 
 #machine specific files
 .vimrc
