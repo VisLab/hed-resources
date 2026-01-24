@@ -15,6 +15,10 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from sphinx.util import logging
+
+logger = logging.getLogger(__name__)
+
 sys.path.insert(0, os.path.abspath("../../"))
 sys.path.insert(0, os.path.abspath("."))
 
@@ -29,13 +33,25 @@ submodule_docs = {
     "hed-python": submodules_base / "hed-python" / "docs",
 }
 
+# Add submodule source code paths to sys.path for autodoc
+submodule_sources = {
+    "hed-python": submodules_base / "hed-python",
+}
+
+for name, src_path in submodule_sources.items():
+    if src_path.exists():
+        sys.path.insert(0, str(src_path))
+        logger.info(f"Added submodule source path: {name} -> {src_path}")
+    else:
+        logger.warning(f"Submodule source path not found: {name} -> {src_path}")
+
 # Add submodule doc source directories to path if they exist
 for name, doc_path in submodule_docs.items():
     if doc_path.exists():
         sys.path.insert(0, str(doc_path))
-        print(f"Added submodule documentation path: {name} -> {doc_path}")
+        logger.info(f"Added submodule documentation path: {name} -> {doc_path}")
     else:
-        print(f"Warning: Submodule documentation path not found: {name} -> {doc_path}")
+        logger.warning(f"Submodule documentation path not found: {name} -> {doc_path}")
 
 
 # -- Project information -----------------------------------------------------
