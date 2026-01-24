@@ -109,6 +109,10 @@ extend-exclude = '''
   docs/_build
   | \.venv
   | \.git
+  # Submodule directories - managed by their own repos
+  | submodules
+  # Generated docs from submodules
+  | docs/source/python-tools
 )/
 '''
 
@@ -128,6 +132,8 @@ exclude = [
     ".git",
     ".venv",
     "docs/_build",
+    "docs/source/python-tools",
+    "submodules",
     "status"
 ]
 

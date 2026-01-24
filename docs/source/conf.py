@@ -13,9 +13,29 @@
 import os
 import sys
 from datetime import date
+from pathlib import Path
 
 sys.path.insert(0, os.path.abspath("../../"))
 sys.path.insert(0, os.path.abspath("."))
+
+# -- Submodule documentation integration -------------------------------------
+# Add paths for submodule documentation sources
+
+# Define the base submodules directory
+submodules_base = Path(__file__).parent.parent.parent / "submodules"
+
+# List of submodules with documentation to integrate
+submodule_docs = {
+    "hed-python": submodules_base / "hed-python" / "docs",
+}
+
+# Add submodule doc source directories to path if they exist
+for name, doc_path in submodule_docs.items():
+    if doc_path.exists():
+        sys.path.insert(0, str(doc_path))
+        print(f"Added submodule documentation path: {name} -> {doc_path}")
+    else:
+        print(f"Warning: Submodule documentation path not found: {name} -> {doc_path}")
 
 
 # -- Project information -----------------------------------------------------
@@ -134,7 +154,6 @@ html_js_files = ["gh_icon_fix.js"]
 html_extra_path = [
     "HedRemodelingQuickstart.html",
     "HedRemodelingTools.html",
-    "HedPythonTools.html",
     "HedAnnotationInNWB.html",
     "HedOnlineTools.html",
     "HedJavascriptTools.html",
@@ -143,3 +162,20 @@ html_extra_path = [
     "HedMatlabTools.html",
     "hed-search.html",  # Multi-repository search page
 ]
+
+# -- Intersphinx configuration -----------------------------------------------
+# Enable cross-references to external documentation
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "hed-python": ("https://www.hedtags.org/hed-python", None),
+}
+
+# -- Submodule static files configuration ------------------------------------
+# Add static files from submodules if they exist
+
+for _name, doc_path in submodule_docs.items():
+    static_path = doc_path / "_static"
+    if static_path.exists():
+        # Use absolute path for submodule static files
+        html_static_path.append(str(static_path))

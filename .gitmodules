@@ -1,0 +1,3 @@
+[submodule "submodules/hed-python"]
+	path = submodules/hed-python
+	url = https://github.com/hed-standard/hed-python.git
