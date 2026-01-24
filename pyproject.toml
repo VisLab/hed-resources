@@ -132,6 +132,8 @@ exclude = [
     ".git",
     ".venv",
     "docs/_build",
+    "docs/source/python-tools",
+    "submodules",
     "status"
 ]
 
