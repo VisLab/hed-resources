@@ -13,35 +13,38 @@ from pathlib import Path
 
 
 def remove_indices_section(index_file):
-    """Remove 'Indices and tables' section from an index.rst file.
+    """Remove 'Indices and tables' or 'Index' section from an index.rst file.
 
     This prevents duplicate index entries in the sidebar when integrating
     submodule documentation into the unified docs.
     """
     content = index_file.read_text(encoding="utf-8")
 
-    # Find and remove the "Indices and tables" section
+    # Find and remove the "Indices and tables" or "Index" section
     lines = content.split("\n")
     filtered_lines = []
     skip_section = False
 
     for i, line in enumerate(lines):
-        if line.strip() == "Indices and tables":
+        # Check for both "Indices and tables" and "Index" headers
+        if line.strip() in ("Indices and tables", "Index"):
             # Check if next line is the RST underline
-            if i + 1 < len(lines) and set(lines[i + 1].strip()) == {"="}:
+            if i + 1 < len(lines) and set(lines[i + 1].strip()) in ({"="}, {"-"}):
                 skip_section = True
                 continue
 
         if skip_section:
-            # Skip until we hit a blank line followed by content
+            # Skip until we reach the end of file or another major section
             if line.strip() == "":
                 continue
-            elif line.strip().startswith("*"):
-                # Skip bullet list items in the indices section
+            elif line.strip().startswith("*") or line.strip().startswith(":ref:"):
+                # Skip bullet list items and ref links in the indices section
                 continue
-            else:
-                # End of section, stop skipping
+            elif i + 1 < len(lines) and set(lines[i + 1].strip()) == {"="}:
+                # Found a new major section header, stop skipping
                 skip_section = False
+            else:
+                continue
 
         if not skip_section:
             filtered_lines.append(line)
@@ -51,7 +54,7 @@ def remove_indices_section(index_file):
         filtered_lines.pop()
 
     index_file.write_text("\n".join(filtered_lines) + "\n", encoding="utf-8")
-    print(f"      Removed 'Indices and tables' section from {index_file.name}")
+    print(f"      Removed index section from {index_file.name}")
 
 
 def copy_submodule_docs():
@@ -67,7 +70,7 @@ def copy_submodule_docs():
         "hed-python": {
             "source": submodules_dir / "hed-python" / "docs",
             "dest": source_dir / "hed-python",
-            "files": ["index.rst", "introduction.md", "user_guide.md", "api/"],
+            "files": ["index.rst", "overview.md", "user_guide.md", "api/"],
         },
     }
 
