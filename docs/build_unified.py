@@ -124,7 +124,7 @@ def copy_submodule_docs():
             shutil.copytree(static_src, static_dest, dirs_exist_ok=True)
             print("    Copied _static directory")
 
-    print("✓ Submodule documentation copied successfully\n")
+    print("[OK] Submodule documentation copied successfully\n")
 
 
 def main():

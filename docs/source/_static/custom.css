@@ -273,3 +273,9 @@ ul.search li a[href*="hed-python/"]::before,
     margin-right: 4px;
     display: inline-block !important;
 }
+
+/* Hide "Hide Search Matches" link on initial page load */
+/* Only show it after search highlighting is actually applied */
+#searchbox .highlight-link {
+    display: none !important;
+}

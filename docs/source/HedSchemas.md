@@ -28,7 +28,7 @@ The strict requirement of child **is-a** type of any ancestor means that when do
 
 When you tag, you need only use the tag node name (e.g, *Square*). **HED-compliant tools** can convert between this "short-form" and the complete path or "long-form" (e.g. */Item/Object/Geometric-object/2D-shape/Rectangle/Square*) when needed for search, summarization, or other processing.
 
-Rules for the HED schema vocabulary and for HED-compliant tools can be found in the [**HED Specification**](https://www.hedtags.org/hed-specification/).
+Rules for the HED schema vocabulary and for HED-compliant tools can be found in the [HED Specification](https://www.hedtags.org/hed-specification/).
 
 ### Library schemas
 
@@ -36,7 +36,7 @@ Rules for the HED schema vocabulary and for HED-compliant tools can be found in 
 
 To use a programming analogy, when programmers write a Python module, the resulting code does not become part of the Python language or core library. Instead, the module becomes part of a library used in conjunction with core modules of the programming language. HED annotations may contain any combination of tags from the standard vocabulary and/or HED library vocabularies.
 
-Several library schemas are as described \[**below**\](#available-schemas. Each library schema has its own directory under in the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository.
+Several library schemas are as described [below](#available-schemas). Each library schema has its own directory under in the [hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository.
 
 Each library schema version is now partnered with a specific version of the standard schema. The library schema is merged with its standard schema partner to form a unified schema vocabulary as shown in:
 
@@ -52,29 +52,29 @@ In this case, both the version specification and the associated annotations must
 
 ## Viewing and accessing schemas
 
-All versions of the HED schemas are located in the GitHub [**hed-schemas**](https://github.com/hed-standard/hed-schemas) and can be best-viewed using the [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/). See the [**HED schemas documentation**](https://www.hedtags.org/hed-schemas) and the [**HED specification**](https://www.hedtags.org/hed-specification) for more detailed information about HED schema structure and development.
+All versions of the HED schemas are located in the [hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository and can be best-viewed using the [HED schema browser](https://www.hedtags.org/hed-schema-browser/). See the [HED schemas documentation](https://www.hedtags.org/hed-schemas) and the [HED specification](https://www.hedtags.org/hed-specification) for more detailed information about HED schema structure and development.
 
 ## Available schemas
 
 ### The standard schema
 
-The HED standard schema contains the basic vocabulary for annotating experiments. These are terms that are likely to be useful in all types of annotations. The HED standard schema source is located in the [**standard_schema**](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema) directory of the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository.
+The HED standard schema contains the basic vocabulary for annotating experiments. These are terms that are likely to be useful in all types of annotations. The HED standard schema source is located in the [standard_schema](https://github.com/hed-standard/hed-schemas/tree/main/standard_schema) directory of the [hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository.
 
 ### The SCORE library
 
-The HED SCORE library is an implementation of the [**SCORE**](https://www.sciencedirect.com/science/article/pii/S1388245717309069) standard for clinical annotation of EEG by neurologists. For more information and the latest references see [**HED SCORE schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/README.md).
+The HED SCORE library is an implementation of the [SCORE](https://www.sciencedirect.com/science/article/pii/S1388245717309069) standard for clinical annotation of EEG by neurologists. For more information and the latest references see [HED SCORE schema](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/score/README.md).
 
 ### The LANG library
 
-The HED LANG library represents a vocabulary for annotating linguistic stimuli in language and other types of experiments. For more information and the latest references see [**HED LANG schema**](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/lang/README.md).
+The HED LANG library represents a vocabulary for annotating linguistic stimuli in language and other types of experiments. For more information and the latest references see [HED LANG schema](https://github.com/hed-standard/hed-schemas/blob/main/library_schemas/lang/README.md).
 
 ## The HED community and resources
 
-All HED-related source and documentation repositories are housed on the HED-standard organization GitHub site, [**https://github.com/hed-standard**](https://github.com/hed-standard), which is maintained by the HED Working Group. HED development is open-source and community-based. The official HED website [**https://www.hedtags.org**](https://www.hedtags.org).
+All HED-related source and documentation repositories are housed on the HED-standard organization GitHub site, [https://github.com/hed-standard](https://github.com/hed-standard), which is maintained by the HED Working Group. HED development is open-source and community-based. The official HED website [https://www.hedtags.org](https://www.hedtags.org).
 
 The HED Working Group invites those interested in HED to contribute to the HED ecosystem and development process.
 
-HED schemas are community-driven. Users can contribute to existing schema or propose the development of new schema by posting an [**issue**](https://github.com/hed-standard/hed-schemas/issues) to the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository.
+HED schemas are community-driven. Users can contribute to existing schema or propose the development of new schema by posting an [issue](https://github.com/hed-standard/hed-schemas/issues) to the [hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository.
 
 ## HED schemas in BIDS
 
@@ -123,10 +123,10 @@ The following example specifies that the annotations in this dataset use HED sta
 ```
 ````
 
-More details about HED schemas can be found in: [**Library schemas**](https://www.hedtags.org/hed-specification/07_Library_schemas.html) in the [**HED specification**](https://www.hedtags.org/hed-specification). Read [BIDS annotation quickstart](./BidsAnnotationQuickstart.md) for a quick practical introduction to HED annotation with BIDS.
+More details about HED schemas can be found in: [Library schemas](https://www.hedtags.org/hed-specification/07_Library_schemas.html) chapter of the [HED specification](https://www.hedtags.org/hed-specification). Read [BIDS annotation quickstart](./BidsAnnotationQuickstart.md) for a quick practical introduction to HED annotation with BIDS.
 
 ## HED schemas in NWB
 
-NWB ([**Neurodata Without Borders**](https://nwb.org/)) is another HED-supported standard and software ecosystem for neurophysiology and behavioral data.
+NWB ([Neurodata Without Borders](https://nwb.org/)) is another HED-supported standard and software ecosystem for neurophysiology and behavioral data.
 
-The HED version specifications for NWB are similar to those in BIDS. HED's use in NWB is documented in the [**ndx-hed**](https://www.hedtags.org/ndx-hed/) extension documentation.
+The HED version specifications for NWB are similar to those in BIDS. HED's use in NWB is documented in the [ndx-hed](https://www.hedtags.org/ndx-hed/) extension documentation.

@@ -8,7 +8,7 @@ Other approaches find sections of the data with particular signal characteristic
 
 At a more global level, analysts may want to locate datasets whose event markers have certain properties in choosing data for initial analysis or for comparisons with their own data.
 
-Datasets whose event markers are annotated with HED (Hierarchical Event Descriptors) can be searched in a dataset independent manner. The Python [**HEDTools**](https://pypi.org/project/hedtools/) support two types of search: object-based and text-based. The object-based search can distinguish complex tag relationships as part of the search. The text-based search operates on strings rather than HED objects and is considerably faster, but less powerful. Text-based searches need the long-form of the HED strings to detect children based on a parent tag.
+Datasets whose event markers are annotated with HED (Hierarchical Event Descriptors) can be searched in a dataset independent manner. The Python [HEDTools](https://pypi.org/project/hedtools/) support two types of search: object-based and text-based. The object-based search can distinguish complex tag relationships as part of the search. The text-based search operates on strings rather than HED objects and is considerably faster, but less powerful. Text-based searches need the long-form of the HED strings to detect children based on a parent tag.
 
 ## HED object-based search
 
@@ -59,7 +59,7 @@ The meanings of the different queries are explained in the following subsections
 
 #### Single-term search
 
-In a single-term search, the query is a single term or node in the HED schema. (Use the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) to see the available tags for your search.) The query may not contain any slashes or wildcards.
+In a single-term search, the query is a single term or node in the HED schema. (Use the [HED schema browser](https://www.hedtags.org/hed-schema-browser/) to see the available tags for your search.) The query may not contain any slashes or wildcards.
 
 Single-term queries leverage the HED hierarchical structure, recognizing that schema children of the query term should also satisfy the query. This is HED's **is-a** principle.
 
@@ -173,8 +173,8 @@ The following table shows some example queries and types of matches:
 
 The HED search facility allows users to form sophisticated queries based on HED annotations in a dataset-independent manner. These queries can be used to locate data sets satisfying the specified criteria and to find the relevant event markers in that data.
 
-For example, the [**factor_hed_tags**](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-tags) operation of the [**Table remodeler**](https://www.hedtags.org/table-remodeler.html) creates factor vectors for selecting events satisfying general HED queries.
+For example, the [factor_hed_tags](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-tags) operation of the [Table remodeler](https://www.hedtags.org/table-remodeler.html) creates factor vectors for selecting events satisfying general HED queries.
 
-The HED-based epoching tools in [**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) can use HED-based search to epoch data based on HED tags.
+The HED-based epoching tools in [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) can use HED-based search to epoch data based on HED tags.
 
-Work is underway to integrate HED-based search into other tools including [**Fieldtrip**](https://www.fieldtriptoolbox.org/) and [**MNE-python**](https://mne.tools/stable/index.html) as well into the analysis platforms [**NEMAR**](https://nemar.org/) and [**EEGNET**](http://eegnet.org/)
+Work is underway to integrate HED-based search into other tools including [Fieldtrip](https://www.fieldtriptoolbox.org/) and [MNE-python](https://mne.tools/stable/index.html) as well into the analysis platforms [NEMAR](https://nemar.org/) and [EEGNET](http://eegnet.org/)

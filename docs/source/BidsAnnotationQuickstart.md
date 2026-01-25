@@ -1,8 +1,15 @@
+```{index} single: BIDS; annotation
+single: annotation; BIDS
+single: quickstart; BIDS annotation
+pair: JSON sidecar; annotation
+pair: events; BIDS
+```
+
 # BIDS annotation quickstart
 
-This tutorial provides a step-by-step guide to creating a JSON sidecar containing the annotations needed to document your BIDs dataset events. See [**HED annotation quickstart**](HedAnnotationQuickstart.md) for guidelines on what annotations to choose.
+This tutorial provides a step-by-step guide to creating a JSON sidecar containing the annotations needed to document your BIDs dataset events. See [HED annotation quickstart](HedAnnotationQuickstart.md) for guidelines on what annotations to choose.
 
-We assume that your dataset is already in the BIDS [**BIDS Brain Imaging Data Structure**](https://bids-specification.readthedocs.io/en/stable/) format and focus on the mechanics of event annotation in BIDS using HED.
+We assume that your dataset is already in the BIDS [BIDS Brain Imaging Data Structure](https://bids-specification.readthedocs.io/en/stable/) format and focus on the mechanics of event annotation in BIDS using HED.
 
 ```{admonition} General strategy for machine-actionable annotation using HED.
 **The goal is to construct a single `events.json` sidecar file with all the 
@@ -11,27 +18,27 @@ annotations needed for users to understand and analyze your data.**
 You will put the finished annotation file at the top level of your dataset.
 ```
 
-The approach that we will use is to create a template file from an `events.tsv` file in your BIDS dataset using the online tools available at [**hedtools.org/hed**](https://hedtools.org/hed).
+The approach that we will use is to create a template file from an `events.tsv` file in your BIDS dataset using the online tools available at [hedtools.org/hed](https://hedtools.org/hed).
 
 You can then edit this JSON file directly using a text editor to insert data descriptions and HED annotations.
 
-You also have the option of converting this JSON template to a spreadsheet template for editing convenience as described below in [**Spreadsheet templates**](spreadsheet-templates-anchor).
+You also have the option of converting this JSON template to a spreadsheet template for editing convenience as described below in [Spreadsheet templates](spreadsheet-templates-anchor).
 
 ```{warning}
 Although the HED web tools base the template on the information extracted from a single
 `events.tsv` file, this will be sufficient to produce a good template for most datasets.
 
 For datasets with widely-varying event files, you should use the 
-[**validate_bids_dataset.ipynb**](https://raw.githubusercontent.com/hed-standard/hed-python/refs/heads/main/examples/validate_bids_dataset.ipynb)
+[validate_bids_dataset.ipynb](https://raw.githubusercontent.com/hed-standard/hed-python/refs/heads/main/examples/validate_bids_dataset.ipynb)
 Jupyter notebook version rather than the online tools.
 The Jupyter notebook consolidates information from all of the `events.tsv` files in the dataset
 to produce a comprehensive JSON sidecar template.
 
 ```
 
-\*\*HED now also has a [**browser-based dataset HED validator**](https://www.hedtags.org/hed-javascript) which provides an fast method of validating an entire dataset without data upload.
+\*\*HED now also has a [browser-based dataset HED validator](https://www.hedtags.org/hed-javascript) which provides an fast method of validating an entire dataset without data upload.
 
-The examples in this tutorial use an [**abbreviated version**](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003645s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv) of the `events.tsv`file from subject 002 run 1 from [**ds003645**](https://openneuro.org/datasets/ds003645/):Face processing MEEG dataset with HED annotation dataset on OpenNeuro. A reduced version of this dataset [**eeg_ds003645s_hed**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) is also available.
+The examples in this tutorial use an [abbreviated version](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003645s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv) of the `events.tsv`file from subject 002 run 1 from [ds003645](https://openneuro.org/datasets/ds003645/):Face processing MEEG dataset with HED annotation dataset on OpenNeuro. A reduced version of this dataset [eeg_ds003645s_hed](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) is also available.
 
 (how-hed-works-in-bids-anchor)=
 
@@ -130,7 +137,7 @@ The `HED` sidecar fields contain descriptive tags from a controlled vocabulary, 
 
 At analysis time, tools are available to assemble the HED annotations for each event.
 
-For example the relevant HED tags for the second event in the [**excerpted event file**](events-tsv-excerpt-overview-anchor) are:
+For example the relevant HED tags for the second event in the [excerpted event file](events-tsv-excerpt-overview-anchor) are:
 
 > **show_face**: *Sensory-event, Experimental-stimulus, Visual-presentation, Image, Face*\
 > **unfamiliar_face**: *(Condition-variable/Unfamiliar-face, (Image, (Face, Unfamiliar)))*\
@@ -152,7 +159,7 @@ We recommend that when at all possible, you place your HED annotations in a sing
 
 The next section guides you through the creation of a JSON sidecar for event annotation using convenient online tools.
 
-The [**Basic HED Annotation**](./HedAnnotationQuickstart.md) tutorial walks you through the process of selecting HED tags for annotation.
+The [Basic HED Annotation](./HedAnnotationQuickstart.md) tutorial walks you through the process of selecting HED tags for annotation.
 
 (create-a-json-template-anchor)=
 
@@ -160,7 +167,7 @@ The [**Basic HED Annotation**](./HedAnnotationQuickstart.md) tutorial walks you 
 
 As described in the previous section, users provide metadata about events in a JSON sidecar. This tutorial demonstrates how to use online tools to generate a JSON sidecar template by extracting information from one of the `events.tsv` files in your BIDS dataset. Once the skeleton of the JSON sidecar is in place, and you just need to edit in your specific metadata.
 
-Working from a template is **much easier and faster** than creating a sidecar from scratch. Using the [**HED events online tools**](https://hedtools.org/hed/events), the steps to create a template are:
+Working from a template is **much easier and faster** than creating a sidecar from scratch. Using the [HED events online tools](https://hedtools.org/hed/events), the steps to create a template are:
 
 - [**Step 1: Select generate JSON.**](step-1-select-generate-json-anchor)
 - [**Step 2: Upload an event file.**](step-2-upload-events-file-for-extraction-anchor)
@@ -174,7 +181,7 @@ You can then edit your JSON sidecar directly or convert it to a spreadsheet to f
 
 ### Step 1: Select generate JSON
 
-Go to the [**Events**](https://hedtools.org/hed/events) page of the HED online tools. You will see the following menu:
+Go to the [Events](https://hedtools.org/hed/events) page of the HED online tools. You will see the following menu:
 
 ![GenerateSidecarTemplate1](./_static/images/GenerateSidecarTemplate1.png)
 
@@ -188,7 +195,7 @@ Use the **Browse** button to choose an `events.tsv` file to upload. When the upl
 
 ![GenerateSidecarTemplate2](./_static/images/GenerateSidecarTemplate2.png)
 
-In this example, we have uploaded [**sub-002_task-FacePerception_run-1_events.tsv**](./_static/data/sub-002_task-FacePerception_run-1_events.tsv). Here is a simplified excerpt from the beginning of this file:
+In this example, we have uploaded [sub-002_task-FacePerception_run-1_events.tsv](./_static/data/sub-002_task-FacePerception_run-1_events.tsv). Here is a simplified excerpt from the beginning of this file:
 
 ```{admonition} A simplified excerpt from a BIDS event file.
 | onset	| duration | sample | event_type | face_type | rep_status | trial | rep_lag | value | stim_file |
@@ -232,7 +239,7 @@ In all, we will have to provide a total of 8 + 4 + 4 + 1 + 1 + 1 + 1 = 20 HED an
 
 After you press the **Process** button, the online tools produce a JSON template file for you download. Save the file, and you are ready to begin the actual annotation. You can edit the JSON sidecar using a text editor or other appropriate tool.
 
-The [**sub-002_task-FacePerception_run-1_events.tsv**](./_static/data/sub-002_task-FacePerception_run-1_events.tsv) file generates this [**JSON sidecar template**](./_static/data/sub-002_task-FacePerception_run-1_events_generated.json). The following is a simplified excerpt of this template, which we will use to illustrate the rest of the annotation process.
+The [sub-002_task-FacePerception_run-1_events.tsv](./_static/data/sub-002_task-FacePerception_run-1_events.tsv) file generates this [JSON sidecar template](./_static/data/sub-002_task-FacePerception_run-1_events_generated.json). The following is a simplified excerpt of this template, which we will use to illustrate the rest of the annotation process.
 
 ````{admonition} JSON sidecar generated template.
 ---
@@ -304,9 +311,9 @@ class: tip
 
 If you feel comfortable working with JSON files you can edit the HED annotations and descriptions directly in the JSON file.
 
-The HED annotations in the examples are minimal to simplify the explanations. See [**Basic HED Annotation**](HedAnnotationQuickstart.md) for guidelines on how to select HED tags.
+The HED annotations in the examples are minimal to simplify the explanations. See [Basic HED Annotation](HedAnnotationQuickstart.md) for guidelines on how to select HED tags. For a better understanding of HED read [Making HED meaningful](HedAnnotationSemantics.md).
 
-Once you have finished, you should validate your JSON file to make sure that your annotations are correct. See the [**HED validation guide**](./HedValidationGuide.md) for detailed guidance. When you are satisfied with your valid JSON sidecar, simply upload it to the root directory of your BIDS dataset, and you are done.
+Once you have finished, you should validate your JSON file to make sure that your annotations are correct. See the [HED validation guide](./HedValidationGuide.md) for detailed guidance. When you are satisfied with your valid JSON sidecar, simply upload it to the root directory of your BIDS dataset, and you are done.
 
 If you would rather work with spreadsheets when doing your annotations, you can extract a spreadsheet from the JSON sidecar to edit and merge back after you are finished. This process is described in the next section, which you can skip if you are going to edit the JSON directly.
 
@@ -316,9 +323,9 @@ If you would rather work with spreadsheets when doing your annotations, you can 
 
 Many people find working with a spreadsheet of annotations easier than direct editing a JSON events sidecar file. The HED online tools provide an easy method for converting between a JSON sidecar and a spreadsheet representation.
 
-You can convert the JSON events sidecar file into a spreadsheet for easier editing and then convert back to a JSON file afterwards. This tutorial assumes that you already have a JSON events sidecar or have [**extracted a JSON sidecar template**](create-a-json-template-anchor).
+You can convert the JSON events sidecar file into a spreadsheet for easier editing and then convert back to a JSON file afterwards. This tutorial assumes that you already have a JSON events sidecar or have [extracted a JSON sidecar template](create-a-json-template-anchor).
 
-Using the [**HED sidecar online tools**](https://hedtools.org/hed/sidecars), the steps to create a template are:
+Using the [HED sidecar online tools](https://hedtools.org/hed/sidecars), the steps to create a template are:
 
 - [**Step 1: Select extract HED spreadsheet.**](step-1-select-extract-hed-spreadsheet-anchor)
 - [**Step 2: Upload a sidecar and extract.**](step-2-upload-json-sidecar-and-extract-anchor)
@@ -329,7 +336,7 @@ Using the [**HED sidecar online tools**](https://hedtools.org/hed/sidecars), the
 
 ### Step 1: Select extract HED spreadsheet
 
-Go to the [**Sidecar**](https://hedtools.org/hed/sidecars) page of the HED online tools. You will see the following menu:
+Go to the [Sidecars](https://hedtools.org/hed/sidecars) page of the HED online tools. You will see the following menu:
 
 ![SidecarToSpreadsheetTemplate1](./_static/images/SidecarToSpreadsheetTemplate1.png)
 
@@ -345,7 +352,7 @@ Use the **Browse** button to choose an `events.json` file to upload. When the up
 
 Pressing the **Process** button causes the application to generate a downloadable tab-separated-value spreadsheet for editing
 
-An excerpt from the [**spreadsheet**](./_static/data/sub-002_task-FacePerception_run-1_events_generated_flattened.tsv) generated from the [**extracted JSON file**](./_static/data/sub-002_task-FacePerception_run-1_events_generated.json) is:
+An excerpt from the [spreadsheet](./_static/data/sub-002_task-FacePerception_run-1_events_generated_flattened.tsv) generated from the [extracted JSON file](./_static/data/sub-002_task-FacePerception_run-1_events_generated.json) is:
 
 (four-column-spreadsheet-format-anchor)=
 
@@ -359,7 +366,7 @@ An excerpt from the [**spreadsheet**](./_static/data/sub-002_task-FacePerception
 | stim_file | n/a | Description for stim_file | *Label/#* |
 ```
 
-The spreadsheet has 4 columns: the **column_name** corresponds to the column name in the `events.tsv` file. The **column_value** corresponds to one of the unique values within that column. The **description** column is used to fill in the corresponding `Levels` value, while the **HED** column is used for the [**HED**](https://www.hedtags.org/hed-specification/) tags that make your annotation machine-actionable. These tags are from the corresponding `HED` entry in the sidecar.
+The spreadsheet has 4 columns: the **column_name** corresponds to the column name in the `events.tsv` file. The **column_value** corresponds to one of the unique values within that column. The **description** column is used to fill in the corresponding `Levels` value, while the **HED** column is used for the [HED](https://www.hedtags.org/hed-specification/) tags that make your annotation machine-actionable. These tags are from the corresponding `HED` entry in the sidecar.
 
 The last row of the excerpt has `stim_file` as the **column_name**. This column was not selected as a categorical column when the sidecar template was created. The **column_value** for such columns is always `n/a`. The **description** column is used for the `Description` value in the sidecar. The **HED** column tags must include a `#` placeholder in this case. During analysis the column value is substituted for the `#` when the HED annotation is assembled.
 
@@ -369,7 +376,7 @@ The last row of the excerpt has `stim_file` as the **column_name**. This column 
 
 After saving the file, you are free to edit it in a text editor or in a tool such as Excel. You may save the edited spreadsheet in either `.tsv` or `.xslx` format.
 
-The following is the extracted spreadsheet corresponding to the [**edited JSON sidecar above**](excerpted-json-file-with-tags-anchor).
+The following is the extracted spreadsheet corresponding to the [edited JSON sidecar above](excerpted-json-file-with-tags-anchor).
 
 ```{admonition} HED annotation table extracted from JSON sidecar template.
 | **column_name** | **column_value** | **description** | **HED** |
@@ -389,7 +396,7 @@ If you wish a particular table cell to be ignored, use `n/a` in the cell.
 
 Although editing metadata in a spreadsheet is convenient, BIDS stores all of its metadata in JSON files. If you choose to extract a spreadsheet for editing your annotations, you will need to merge the edited spreadsheet back into a JSON sidecar before including it in your BIDS dataset.
 
-Using the [**HED sidecar online tools**](https://hedtools.org/hed/sidecars), select merge HED spreadsheet as shown below. You may choose an existing edited sidecar, the original template, or an empty sidecar as the JSON target file for the merge.
+Using the [HED sidecar online tools](https://hedtools.org/hed/sidecars), select merge HED spreadsheet as shown below. You may choose an existing edited sidecar, the original template, or an empty sidecar as the JSON target file for the merge.
 
 ![MergeSpreadsheetTemplate1](./_static/images/MergeSpreadsheetTemplate1.png)
 

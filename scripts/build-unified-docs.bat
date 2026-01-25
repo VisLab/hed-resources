@@ -7,6 +7,9 @@ echo Building Unified HED Documentation
 echo ======================================
 echo.
 
+REM Change to repository root (parent of scripts directory)
+cd /d "%~dp0.."
+
 REM Activate virtual environment if it exists
 if exist ".venv\Scripts\activate.bat" (
     echo Activating virtual environment...
@@ -18,7 +21,7 @@ if exist ".venv\Scripts\activate.bat" (
 )
 
 REM Run the cross-platform Python build script
-python scripts\build_docs.py
+python "%~dp0build_docs.py"
 if errorlevel 1 (
     exit /b 1
 )

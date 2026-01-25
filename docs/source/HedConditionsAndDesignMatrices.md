@@ -2,18 +2,18 @@
 
 This tutorial discusses how information from neuroimaging experiments should be stored and annotated so that the underlying experimental design and experimental conditions for a dataset can be automatically extracted, summarized, and used in analysis. The mechanisms for doing this use HED (Hierarchical Event Descriptors) in conjunction with a [BIDS](https://bids.neuroimaging.io/) (Brain Imaging Data Structure) representation of the dataset.
 
-The tutorial assumes that you have a basic understanding of HED and how HED annotations are used in BIDS. Please review [**Annotating a BIDS dataset**](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html), the [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html), and the [**HED annotation quickstart**](https://www.hedtags.org/hed-resources/HedAnnotationQuickstart.html) tutorials as needed.
+The tutorial assumes that you have a basic understanding of HED and how HED annotations are used in BIDS. Please review [Annotating a BIDS dataset](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html), the [BIDS annotation quickstart](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html), and the [HED annotation quickstart](https://www.hedtags.org/hed-resources/HedAnnotationQuickstart.html) tutorials as needed.
 
-The [**Experimental design concepts**](experimental-design-concepts-anchor) section at the end of this tutorial provides a basic introduction to the ideas of factor vectors and experimental design if you are unfamiliar with these topics.
+The [Experimental design concepts](experimental-design-concepts-anchor) section at the end of this tutorial provides a basic introduction to the ideas of factor vectors and experimental design if you are unfamiliar with these topics.
 
-- [**HED annotations for conditions**](hed-annotations-for-conditions-anchor)
-  - [**Direct condition variables**](direct-condition-variables-anchor)
-  - [**Defined condition variables**](defined-condition-variables-anchor)
-  - [**Direct vs defined approaches**](direct-vs-defined-approaches-anchor)
-  - [**Column vs row annotations**](column-vs-row-annotations-anchor)
-- [**Experimental design concepts**](experimental-design-concepts-anchor)
-  - [**Design matrices and factor variables**](design-matrices-and-factor-variables-anchor)
-  - [**Types of condition encoding**](types-of-condition-encoding-anchor)
+- [HED annotations for conditions](hed-annotations-for-conditions-anchor)
+  - [Direct condition variables](direct-condition-variables-anchor)
+  - [Defined condition variables](defined-condition-variables-anchor)
+  - [Direct vs defined approaches](direct-vs-defined-approaches-anchor)
+  - [Column vs row annotations](column-vs-row-annotations-anchor)
+- [Experimental design concepts](experimental-design-concepts-anchor)
+  - [Design matrices and factor variables](design-matrices-and-factor-variables-anchor)
+  - [Types of condition encoding](types-of-condition-encoding-anchor)
 
 This tutorial introduces tools and strategies for encoding information about the experimental design as part of a dataset metadata without excessive effort on the part of the researcher. The discussion mainly focuses on categorical variables.
 
@@ -43,7 +43,7 @@ The simplest way to encode experimental conditions is to use named *Condition-va
 | 7.440 |  0.1     | show_face  | male81.png  |   
 ```
 
-As explained in [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html), the most commonly used strategy for annotating events in a BIDS dataset is to create a single JSON file located in the dataset root containing the annotations for the columns. The following shows a minimal example:
+As explained in [BIDS annotation quickstart](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html), the most commonly used strategy for annotating events in a BIDS dataset is to create a single JSON file located in the dataset root containing the annotations for the columns. The following shows a minimal example:
 
 ````{admonition} Example 2: Minimal JSON sidecar with HED annotations for Example 1.
 ---
@@ -247,7 +247,7 @@ The key assignment condition is marked by inserting an event with *event_type* e
 
 In the column strategy, an event file column represents the condition variable, and the values in that column represent the levels. With this encoding, the condition variable is only applicable at a particular level when that level name appears in the column. An n/a value in that column indicates the condition does not apply to that event.
 
-Example 9 shows the portion of the [**task-facePerception_events.json**](./_static/data/task-FacePerception_events.json) that encodes information about the *setup_right_sym* event found as the first event in the event file excerpt of Example 8. This excerpt only contains the relevant definition and the relevant annotation.
+Example 9 shows the portion of the [task-facePerception_events.json](./_static/data/task-FacePerception_events.json) that encodes information about the *setup_right_sym* event found as the first event in the event file excerpt of Example 8. This excerpt only contains the relevant definition and the relevant annotation.
 
 ````{admonition} Example 9: Excerpt of the JSON sidecar relevant to the *setup_right_sym* event.
 ---

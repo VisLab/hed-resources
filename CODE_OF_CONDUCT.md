@@ -22,4 +22,4 @@ Examples of unacceptable behavior by participants include:
 
 ## Attribution
 
-This Code of Conduct is adapted from the [**Contributor Covenant**](http://contributor-covenant.org).
+This Code of Conduct is adapted from the [Contributor Covenant](http://contributor-covenant.org).

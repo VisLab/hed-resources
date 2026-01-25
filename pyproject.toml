@@ -2,6 +2,10 @@
 requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["scripts*"]
+
 [project]
 name = "hed-resources"
 version = "1.0.0"
@@ -43,6 +47,10 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = []
+
+[project.scripts]
+hed-build-docs = "scripts.build_docs:main"
+hed-serve-docs = "scripts.serve_docs:main"
 
 [project.optional-dependencies]
 docs = [

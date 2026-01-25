@@ -1,6 +1,6 @@
 # HED test datasets
 
-The [**hed-examples**](https://github.com/hed-standard/hed-examples) repository contains a set of HED-annotated datasets in [**BIDS**](https://bids.neuroimaging.io/)-compatible format. These datasets can be useful for:
+The [hed-examples](https://github.com/hed-standard/hed-examples) repository contains a set of HED-annotated datasets in [BIDS](https://bids.neuroimaging.io/)-compatible format. These datasets can be useful for:
 
 1. Writing lightweight software tests.
 2. Serving as examples of how to incorporate HED into BIDS-structured data.
@@ -33,7 +33,7 @@ This dataset includes rapid shifts in instructed attention between visual and au
 
 ## eeg_ds003645s_hed
 
-This dataset was originally released as multi-modal dataset [**ds000117**](https://openneuro.org/datasets/ds000117) by Daniel Wakeman and Richard Henson. The dataset events in [**ds003645**](https://openneuro.org/datasets/ds003645) have been reorganized from the original and additional events added from the experimental logs. The dataset includes MEEG and behavioral data. HED tags have been added.
+This dataset was originally released as multi-modal dataset [ds000117](https://openneuro.org/datasets/ds000117) by Daniel Wakeman and Richard Henson. The dataset events in [ds003645](https://openneuro.org/datasets/ds003645) have been reorganized from the original and additional events added from the experimental logs. The dataset includes MEEG and behavioral data. HED tags have been added.
 
 The dataset is used as a HED case study in:
 
