@@ -176,7 +176,6 @@ html_extra_path = [
     "CTaggerGuide.html",
     "HedAndEEGLAB.html",
     "HedMatlabTools.html",
-    "hed-search.html",  # Multi-repository search page
 ]
 
 # -- Intersphinx configuration -----------------------------------------------

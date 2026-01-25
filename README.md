@@ -31,15 +31,29 @@ cd hed-resources
 # Install in development mode with all dependencies
 pip install -e .[dev]
 
-# Build documentation using Sphinx
-sphinx-build -b html docs/source docs/_build/html
+# Build unified documentation (copies submodule docs + builds with Sphinx)
+hed-build-docs
+# Or: python scripts/build_docs.py
+# Or: scripts/build-unified-docs.bat (Windows)
+# Or: scripts/build-unified-docs.sh (Unix/Linux/macOS)
 
-# Serve documentation locally for preview (requires Python's http.server)
-python -m http.server 8000 -d docs/_build/html
+# Serve documentation locally for preview
+hed-serve-docs
+# Or: python scripts/serve_docs.py
+# Or: scripts/serve-docs.bat (Windows)
+# Or: scripts/serve-docs.sh (Unix/Linux/macOS)
 
 # Check links
 sphinx-build -b linkcheck docs/source docs/_build/linkcheck
 ```
+
+### Available commands:
+
+After `pip install -e .`, these commands are available:
+- `hed-build-docs` - Build unified documentation
+- `hed-serve-docs` - Serve documentation locally at http://localhost:8000
+
+See [scripts/README.md](scripts/README.md) for detailed usage information.
 
 ### Available dependency groups:
 
