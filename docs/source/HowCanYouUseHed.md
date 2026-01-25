@@ -6,7 +6,7 @@ HED (Hierarchical Event Descriptors) serves different needs throughout the resea
 ---
 class: tip
 ---
-If this is your first time learning about HED, start with the [**Introduction to HED**](IntroductionToHed.md) for basic concepts and quick start paths. This guide provides detailed workflows for each research role.
+If this is your first time learning about HED, start with the [Introduction to HED](IntroductionToHed.md) for basic concepts and quick start paths. This guide provides detailed workflows for each research role.
 ```
 
 ```{admonition} **Choose your path**
@@ -150,7 +150,7 @@ gutter: 2
 
 `````{dropdown} **Post-processing and data transformation**
 
-After data collection, raw logs need processing before analysis. The [**table-remodeler**](https://www.hedtags.org/table-remodeler) tools help transform experimental logs into analysis-ready event files.
+After data collection, raw logs need processing before analysis. The [table-remodeler](https://www.hedtags.org/table-remodeler) tools help transform experimental logs into analysis-ready event files.
 
 #### Common transformations
 1. **Log summarization**: Get overview of collected events
@@ -158,7 +158,7 @@ After data collection, raw logs need processing before analysis. The [**table-re
 3. **Column restructuring**: Create BIDS-compliant event files
 4. **Data validation**: Check for missing or invalid events
 
-Ideally, your experiment control software should be adjusted to produce event files in a tabular format that are suitable for BIDS or NWB. The [**table-remodeler**](https://www.hedtags.org/table-remodeler) allows users to perform these operations effectively. The tools can be run over an entire BIDS dataset using the table remodeler [**command line interface (CLI)**](https://www.hedtags.org/table-remodeler/user_guide.html#using-the-cli) or on a single file using the [**HED online tools**](https://hedtools.org/hed/events) with the *Execute remodel script* action for events. The table-remodeler allows users to assemble a complex list of command to execute but specifying in JSON as illustrated by the following example:
+Ideally, your experiment control software should be adjusted to produce event files in a tabular format that are suitable for BIDS or NWB. The [table-remodeler](https://www.hedtags.org/table-remodeler) allows users to perform these operations effectively. The tools can be run over an entire BIDS dataset using the table remodeler [command line interface (CLI)](https://www.hedtags.org/table-remodeler/user_guide.html#using-the-cli) or on a single file using the [HED online tools](https://hedtools.org/hed/events) with the *Execute remodel script* action for events. The table-remodeler allows users to assemble a complex list of command to execute but specifying in JSON as illustrated by the following example:
 
 ````{admonition} Workflow to summarize column values
 ---
@@ -187,13 +187,13 @@ An important aspect of data collection is organizing your data in a standardized
 
 #### BIDS (Brain Imaging Data Structure)
 
-[**BIDS**](https://bids.neuroimaging.io/) is a widely used data organization standard for neuroimaging and behavioral data. BIDS focuses on file organization with appropriate experimental metadata.
+[BIDS](https://bids.neuroimaging.io/) is a widely used data organization standard for neuroimaging and behavioral data. BIDS focuses on file organization with appropriate experimental metadata.
 
-- **Learn BIDS**: The [**BIDS Starter Kit**](https://bids-standard.github.io/bids-starter-kit/index.html) provides comprehensive introductions
-- **File organization**: [**Folders and Files**](https://bids-standard.github.io/bids-starter-kit/folders_and_files/folders.html) explains BIDS directory structure
-- **Metadata**: The [**Annotating a BIDS dataset**](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html) tutorial covers required metadata
-- **Specification**: See [**BIDS specification**](https://bids-specification.readthedocs.io/en/stable/) for detailed rules
-- **Conversion tools**: [**BIDS Tools**](https://bids.neuroimaging.io/tools/index.html) lists available converters
+- **Learn BIDS**: The [BIDS Starter Kit](https://bids-standard.github.io/bids-starter-kit/index.html) provides comprehensive introductions
+- **File organization**: [Folders and Files](https://bids-standard.github.io/bids-starter-kit/folders_and_files/folders.html) explains BIDS directory structure
+- **Metadata**: The [Annotating a BIDS dataset](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html) tutorial covers required metadata
+- **Specification**: See [BIDS specification](https://bids-specification.readthedocs.io/en/stable/) for detailed rules
+- **Conversion tools**: [BIDS Tools](https://bids.neuroimaging.io/tools/index.html) lists available converters
 
 #### HED in BIDS
 
@@ -203,20 +203,20 @@ There are two strategies for incorporating HED annotations in a BIDS dataset:
 
 > **Method 2**: Annotate each line in each event file using the **HED** column
 
-Method 1 is typical for most annotations. The [**HED online tools**](https://hedtools.org/hed/) generate annotation templates. The [**BIDS annotation quickstart**](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) walks through this process.
+Method 1 is typical for most annotations. The [HED online tools](https://hedtools.org/hed/) generate annotation templates. The [BIDS annotation quickstart](https://www.hedtags.org/hed-resources/BidsAnnotationQuickstart.html) walks through this process.
 
 Method 2 is usually used for instrument-generated annotations or manual marking (bad sections, special features).
 
-When using HED in BIDS, specify HED schema versions in `dataset_description.json` in the dataset root directory. See [**HED schema versions**](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html#hed-schema-versions) for examples.
+When using HED in BIDS, specify HED schema versions in `dataset_description.json` in the dataset root directory. See [HED schema versions](https://bids-specification.readthedocs.io/en/stable/appendices/hed.html#hed-schema-versions) for examples.
 
 ### HED in NWB (Neurodata Without Borders)
 
-[**NWB**](https://www.nwb.org/) is a data standard for neurophysiology, providing specifications for storing cellular, intracellular, and extracellular physiology data, along with experimental metadata and behavior. A single NWB file holds all session data synchronized to a common timeline.
+[NWB](https://www.nwb.org/) is a data standard for neurophysiology, providing specifications for storing cellular, intracellular, and extracellular physiology data, along with experimental metadata and behavior. A single NWB file holds all session data synchronized to a common timeline.
 
-- **Learn NWB**: [**PyNWB documentation**](https://pynwb.readthedocs.io/) provides tutorials and API references
-- **HED extension**: [**ndx-hed extension**](https://www.hedtags.org/ndx-hed/) enables HED integration in NWB files
-- **Guide**: [**HED annotation in NWB**](https://www.hedtags.org/hed-resources/HedAnnotationInNWB.html) provides detailed information
-- **Examples**: [**ndx-hed examples**](https://github.com/hed-standard/ndx-hed/tree/main/examples) demonstrate real-world usage
+- **Learn NWB**: [PyNWB documentation](https://pynwb.readthedocs.io/) provides tutorials and API references
+- **HED extension**: [ndx-hed extension](https://www.hedtags.org/ndx-hed/) enables HED integration in NWB files
+- **Guide**: [HED annotation in NWB](https://www.hedtags.org/hed-resources/HedAnnotationInNWB.html) provides detailed information
+- **Examples**: [ndx-hed examples](https://github.com/hed-standard/ndx-hed/tree/main/examples) demonstrate real-world usage
 
 HED annotations in NWB use the **ndx-hed** extension with three main classes:
 
@@ -278,13 +278,13 @@ gutter: 2
 
 ```{dropdown} **Getting started resources**
 
-- **Overview**: [**Introduction to HED**](https://www.hedtags.org/hed-resources/IntroductionToHed.html) - Basic concepts and framework
-- **Quick start**: [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md) - Generate annotation templates from your data
-- **Annotation guide**: [**HED annotation quickstart**](./HedAnnotationQuickstart.md) - Step-by-step annotation process
-- **Best practices**: [**HED annotation semantics**](./HedAnnotationSemantics.md) - Guidelines for meaningful annotations
-- **Vocabulary**: [**HED schema browser**](https://www.hedtags.org/hed-schema-browser) - Explore standard and library schema tags
-- **Research paper**: [**"Capturing the nature of events..."**](https://www.sciencedirect.com/science/article/pii/S1053811921010387) - Practical examples and best practices
-- **Specification**: [**HED specification**](https://www.hedtags.org/hed-specification/) - Complete annotation rules, especially [**Chapter 4: Basic annotation**](https://www.hedtags.org/hed-specification/04_Basic_annotation.html) and [**Chapter 5: Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html)
+- **Overview**: [Introduction to HED](https://www.hedtags.org/hed-resources/IntroductionToHed.html) - Basic concepts and framework
+- **Quick start**: [BIDS annotation quickstart](./BidsAnnotationQuickstart.md) - Generate annotation templates from your data
+- **Annotation quick start**: [HED annotation quickstart](./HedAnnotationQuickstart.md) - Step-by-step annotation process
+- **Best practices**: [Making HED meaningful](./HedAnnotationSemantics.md) - Guidelines for meaningful annotations
+- **Vocabulary**: [HED schema browser](https://www.hedtags.org/hed-schema-browser) - Explore standard and library schema tags
+- **Research paper**: ["Capturing the nature of events..."](https://www.sciencedirect.com/science/article/pii/S1053811921010387) - Practical examples and best practices
+- **Specification**: [HED specification](https://www.hedtags.org/hed-specification/) - Complete annotation rules, especially [Chapter 4: Basic annotation](https://www.hedtags.org/hed-specification/04_Basic_annotation.html) and [Chapter 5: Advanced annotation](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html)
 ```
 
 (adding-hed-annotations-anchor)=
@@ -299,7 +299,7 @@ This section discusses strategies for adding HED annotations to event data. The 
 
 HED annotations come in a variety of levels and complexity. Start simple and incrementally improve annotations:
 
-1. **Generate template**: Use [**HED online tools**](https://hedtools.org/hed/) to create a JSON sidecar template from your event file
+1. **Generate template**: Use [HED online tools](https://hedtools.org/hed/) to create a JSON sidecar template from your event file
 2. **Add descriptions**: Replace the template dummy descriptions with actual descriptions.
 3. **Add core tags**: Annotate sensory presentations, agent actions, and experimental structure
 4. **Validate frequently**: Use the online tools to validate after each addition to catch errors early
@@ -310,36 +310,36 @@ HED annotations come in a variety of levels and complexity. Start simple and inc
 - **Start with descriptions**: A good description clarifies what information to capture in tags
 - **Be specific**: Use the most specific tags that accurately describe events 
 - **Include context**: Capture participant actions, stimuli properties, and experimental conditions
-- **Beware of semantics**: Follow guidelines in [**HED annotation semantics**](./HedAnnotationSemantics.md)
+- **Beware of semantics**: Follow guidelines in [Making HED meaningful](./HedAnnotationSemantics.md)
 
 A proper HED annotation can be translated back into a meaningful sentence.
 
 #### Viewing available tags
 
-The HED vocabulary is hierarchically organized. Use the [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/) to explore standard and library schema tags interactively.
+The HED vocabulary is hierarchically organized. Use the [HED schema browser](https://www.hedtags.org/hed-schema-browser/) to explore standard and library schema tags interactively.
 
 #### Cross-format workflows
 
-For NWB users, you can convert an NWB `Events` table to a BIDS `_events.tsv` file, generate templates, annotate, and transform back. See the [**BIDS to NWB conversion example**](https://github.com/hed-standard/ndx-hed/blob/main/examples/04_bids_conversion.py).
+For NWB users, you can convert an NWB `Events` table to a BIDS `_events.tsv` file, generate templates, annotate, and transform back. See the [BIDS to NWB conversion example](https://github.com/hed-standard/ndx-hed/blob/main/examples/04_bids_conversion.py).
 
 #### Advanced annotation concepts
 
 For complete experimental descriptions, HED supports several advanced features:
 
 - **Definitions**: Define complex, reusable concepts that can be referenced throughout annotations
-  - [**Creating definitions**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#creating-definitions)
-  - [**Using definitions**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#using-definitions)
+  - [Creating definitions](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#creating-definitions)
+  - [Using definitions](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#using-definitions)
 
 - **Temporal scope**: Annotate processes extending over time using `Duration`, `Delay`, `Onset`, `Offset`, and `Inset` tags
   - Enables detection of everything happening at any time point
   - Supports complex, interleaved event processes
-  - See [**Temporal scope**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope)
+  - See [Temporal scope](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope)
 
 - **Experimental design**: Express conditions, tasks, and temporal organization
-  - See [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md)
+  - See [HED conditions and design matrices](./HedConditionsAndDesignMatrices.md)
   - Enables automatic design matrix extraction
 
-The [**Advanced annotation**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html) chapter explains complete rules and usage patterns.
+The [Advanced annotation](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html) chapter explains complete rules and usage patterns.
 ```
 
 (validating-hed-annotations-anchor)=
@@ -354,9 +354,9 @@ Checking for errors is an ongoing, iterative process. Build complex annotations 
 
 #### Validation resources
 
-- **Guide**: [**HED validation guide**](./HedValidationGuide.md) - Different validator types and usage
-- **Error reference**: [**HED errors**](https://www.hedtags.org/hed-specification/Appendix_B.html) - Error types and causes
-- **Online validation**: [**HED online tools**](https://hedtools.org/hed/) - Validate strings, JSON sidecars, and tabular files easily
+- **Guide**: [HED validation guide](./HedValidationGuide.md) - Different validator types and usage
+- **Error reference**: [HED errors](https://www.hedtags.org/hed-specification/Appendix_B.html) - Error types and causes
+- **Online validation**: [HED online tools](https://hedtools.org/hed/) - Validate strings, JSON sidecars, and tabular files easily
 - **Python validation**: Use `hedtools` package for programmatic validation
 
 #### Validation strategy
@@ -387,9 +387,9 @@ Beyond syntactic validation, check that annotations are logically consistent and
 
 #### Summary-based checking
 
-- **Column value summary**: Check all unique values in event columns (see [**column value summary**](./HedSummaryGuide.md#column-value-summary))
-- **HED tag summary**: Review which event types are annotated (see [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary))
-- **Design summary**: Verify experimental conditions and structure (see [**experimental design summary**](./HedSummaryGuide.md#experimental-design-summary))
+- **Column value summary**: Check all unique values in event columns (see [column value summary](./HedSummaryGuide.md#column-value-summary))
+- **HED tag summary**: Review which event types are annotated (see [HED tag summary](./HedSummaryGuide.md#hed-tag-summary))
+- **Design summary**: Verify experimental conditions and structure (see [experimental design summary](./HedSummaryGuide.md#experimental-design-summary))
 
 These summaries help detect:
 - Missing or unexpected event codes
@@ -419,16 +419,16 @@ Annotators should mark these anomalies in the event file so downstream analysis 
 #### Checking strategies
 
 - Use summary tools to identify anomalies
-- Write custom code for experiment-specific checks (work underway to add standard checks to [**table-remodeler**](https://www.hedtags.org/table-remodeler))
+- Write custom code for experiment-specific checks (work underway to add standard checks to [table-remodeler](https://www.hedtags.org/table-remodeler))
 - Mark bad trials or unusual events explicitly
-- Consider reorganizing event files using remodeling tools (see [**Remap columns**](https://www.hedtags.org/table-remodeler/operations_reference.html#remap-columns))
+- Consider reorganizing event files using remodeling tools (see [Remap columns](https://www.hedtags.org/table-remodeler/operations_reference.html#remap-columns))
 ````
 
 ### Resources for data annotators:
 
-- **📚 Guides**: [**HED annotation quickstart**](./HedAnnotationQuickstart.md), [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md)
-- **🛠️ Tools**: [**HED online tools**](https://hedtools.org/hed/) - Validation, templates, and conversion
-- **🌐 Browser**: [**HED schema browser**](https://www.hedtags.org/hed-schema-browser) - Explore available vocabularies
+- **📚 Guides**: [HED annotation quickstart](./HedAnnotationQuickstart.md), [BIDS annotation quickstart](./BidsAnnotationQuickstart.md)
+- **🛠️ Tools**: [HED online tools](https://hedtools.org/hed/) - Validation, templates, and conversion
+- **🌐 Browser**: [HED schema browser](https://www.hedtags.org/hed-schema-browser) - Explore available vocabularies
 - **📖 Paper**: [**"Capturing the nature of events..."**](https://www.sciencedirect.com/science/article/pii/S1053811921010387) - Annotation best practices
 
 <hr style="border: 3px solid #000080;" />
@@ -478,18 +478,18 @@ Before running any analysis, you need to understand what events are actually pre
 
 #### Column value summaries
 
-The [**column value summary**](./HedSummaryGuide.md#column-value-summary) compiles a summary of the values in the various columns of the event files in a dataset.
+The [column value summary](./HedSummaryGuide.md#column-value-summary) compiles a summary of the values in the various columns of the event files in a dataset.
 
 - Does **not** require HED annotations
 - Shows all unique values and their frequencies
 - Helps identify missing or unexpected event codes
 - Useful for detecting data entry errors
 
-You can generate this summary using the [**HED online tools for debugging**](https://www.hedtags.org/table-remodeler/quickstart.html#online-tools-for-debugging-anchor) by uploading a single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar.
+You can generate this summary using the [HED online tools for debugging](https://www.hedtags.org/table-remodeler/quickstart.html#online-tools-for-debugging-anchor) by uploading a single event file (e.g., a BIDS `_events.tsv`) and its associated JSON sidecar.
 
 #### HED tag summaries
 
-The [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary) creates a summary of the HED tags used to annotate the data.
+The [HED tag summary](./HedSummaryGuide.md#hed-tag-summary) creates a summary of the HED tags used to annotate the data.
 
 - Shows what types of events are present
 - Works across different event coding schemes
@@ -498,7 +498,7 @@ The [**HED tag summary**](./HedSummaryGuide.md#hed-tag-summary) creates a summar
 
 #### Experimental design summaries
 
-The [**experimental design summary**](./HedSummaryGuide.md#experimental-design-summary) gives a summary of the condition variables or other structural tags relating to experimental design, task, or temporal layout of the experiment.
+The [Experimental design summary](./HedSummaryGuide.md#experimental-design-summary) gives a summary of the condition variables or other structural tags relating to experimental design, task, or temporal layout of the experiment.
 
 - Extracts experimental conditions automatically
 - Shows task structure and organization
@@ -507,8 +507,8 @@ The [**experimental design summary**](./HedSummaryGuide.md#experimental-design-s
 
 **Additional resources:**
 
-- The [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation gives an overview of the remodeling tools and how to use them.
-- The [**HED conditions and design matrices**](HedConditionsAndDesignMatrices.md) guide explains how information structure information is encoded in HED and how to interpret the summaries of this information.
+- The [table-remodeler](https://www.hedtags.org/table-remodeler) documentation gives an overview of the remodeling tools and how to use them.
+- The [HED design matrices](HedConditionsAndDesignMatrices.md) guide explains how information structure information is encoded in HED and how to interpret the summaries of this information.
 ```
 
 (preparing-the-data-anchor)=
@@ -537,7 +537,7 @@ Common restructuring tasks include:
 - Adding computed columns (e.g., reaction times, trial types)
 - Filtering events based on criteria
 
-See the [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation for detailed examples and operation descriptions.
+See the [table-remodeler](https://www.hedtags.org/table-remodeler) documentation for detailed examples and operation descriptions.
 ```
 
 (analyzing-the-data-anchor)=
@@ -575,11 +575,11 @@ HED search queries allow you to find events based on their semantic properties r
 - **Hierarchical matching**: Search at any level of tag hierarchy
 - **Temporal context**: Find events within ongoing processes
 
-The [**HED search guide**](./HedSearchGuide.md) explains the HED query structure and available search options in detail.
+The [HED search guide](./HedSearchGuide.md) explains the HED query structure and available search options in detail.
 
 #### HED analysis in EEGLAB
 
-[**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php), the interactive MATLAB toolbox for EEG/MEG analysis, supports HED through the [**EEGLAB HEDTools plugin**](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html).
+[EEGLAB](https://sccn.ucsd.edu/eeglab/index.php), the interactive MATLAB toolbox for EEG/MEG analysis, supports HED through the [EEGLAB HEDTools plugin](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html).
 
 **Key capabilities:**
 
@@ -605,10 +605,10 @@ If you are interested in helping with HED integration in other tools, please ema
 
 ### Resources for data analysts
 
-- **📚 Guides**: [**HED search guide**](./HedSearchGuide.md), [**HED summary guide**](./HedSummaryGuide.md), [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md)
-- **🛠️ Tools**: [**Table remodeler**](https://www.hedtags.org/table-remodeler) - Transform and analyze event files
-- **🧪 EEGLAB**: [**HED and EEGLAB**](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html) - HED integration in EEGLAB
-- **📖 Book chapter**: [**End-to-end EEG processing**](https://doi.org/10.1007/978-1-0716-4260-3_6) - Complete analysis workflow
+- **📚 Guides**: [HED search guide](./HedSearchGuide.md), [HED summary guide](./HedSummaryGuide.md), [HED design matrices](./HedConditionsAndDesignMatrices.md)
+- **🛠️ Tools**: [Table remodeler](https://www.hedtags.org/table-remodeler) - Transform and analyze event files
+- **🧪 EEGLAB**: [HED and EEGLAB](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html) - HED integration in EEGLAB
+- **📖 Book chapter**: [End-to-end EEG processing](https://doi.org/10.1007/978-1-0716-4260-3_6) - Complete analysis workflow
 
 <hr style="border: 3px solid #000080" />
 
@@ -669,7 +669,7 @@ HED schemas define the vocabulary available for annotations:
 - **Validation**: Use HED validator libraries rather than implementing your own
 - **Short vs long form**: Tags can be written in short form (single tag: e.g., `Face`) or long form (full path to the root of the schema hierarchies: e.g., `Item/Biological-item/Anatomical-item/Body-part/Head/Face`). Tools should be able to handle all forms, including intermediate partial paths. Rely on the HED tools to transform when needed. The long form is needed mostly for search -- searching for `Body-part` should also return more specific annotations such as `Face`.
 
-See [**HED schemas**](./HedSchemas.md) guide for detailed information about the HED schemas.
+See the [HED schemas](./HedSchemas.md) overview for detailed information about the HED schemas.
 
 #### Choosing your platform
 
@@ -686,7 +686,7 @@ HED provides official tools in three languages:
 - **MATLAB workflows**: Use HEDTools plugin or MATLAB wrappers
 - **Custom needs**: Consider calling REST services from any language
 
-**Note**: HED REST services are available at [**HED online tools**](https://hedtools.org/hed).
+**Note**: HED REST services are available at [HED online tools](https://hedtools.org/hed).
 ```
 
 (working-with-hed-code-bases-anchor)=
@@ -695,46 +695,46 @@ HED provides official tools in three languages:
 
 ```{dropdown} **Open-source HED implementations and tools**
 
-The GitHub [**HED standard**](https://github.com/hed-standard) organization maintains open-source code projects in Python, MATLAB, and JavaScript. All repositories welcome contributions, issue reports, and pull requests.
+The [HED standard](https://github.com/hed-standard) GitHub organization maintains open-source code projects in Python, MATLAB, and JavaScript. All repositories welcome contributions, issue reports, and pull requests.
 
 #### Core resources
 
-- **Project page**: [**https://www.hedtags.org**](https://www.hedtags.org)
-- **Documentation**: [**https://www.hedtags.org/hed-resources**](https://www.hedtags.org/hed-resources)
-- **Annotated datasets**: [**hed-examples**](https://github.com/hed-standard/hed-examples) repository
-- **Schemas**: [**hed-schemas**](https://github.com/hed-standard/hed-schemas) repository
+- **Project page**: [https://www.hedtags.org](https://www.hedtags.org)
+- **Documentation**: [https://www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources)
+- **Annotated datasets**: [hed-examples](https://github.com/hed-standard/hed-examples) repository
+- **Schema schemas**: [hed-schemas](https://github.com/hed-standard/hed-schemas) repository
 
 #### Python HEDTools
 
 **Focus**: Core HED technology including validation, analysis, and schema development
 
-- **Repository**: [**hed-python**](https://github.com/hed-standard/hed-python) - **Package installation**: `pip install hedtools`
-- **Documentation**: [**HED Python tools**](https://www.hedtags.org/hed-python)
+- **Repository**: [hed-python](https://github.com/hed-standard/hed-python) - **Package installation**: `pip install hedtools`
+- **Documentation**: [Python HEDTools](https://www.hedtags.org/hed-python)
 
 #### JavaScript HEDTools
 
 **Focus**: HED validation for web applications and BIDS validator
 
-- **Repository**: [**hed-javascript**](https://github.com/hed-standard/hed-javascript)
+- **Repository**: [hed-javascript](https://github.com/hed-standard/hed-javascript)
 - **Package installation**: `npm install hed-validator`
-- **Documentation**: [**HED JavaScript tools**](https://www.hedtags.org/hed-javascript) -- includes browser-based HED validator for BIDS
+- **Documentation**: [HED JavaScript tools](https://www.hedtags.org/hed-javascript) -- includes browser-based HED validator for BIDS
 
 #### MATLAB HEDTools
 
 **Focus**: Analysis, annotation, and validation with EEGLAB integration
 
-- **Repository**: [**hed-matlab**](https://github.com/hed-standard/hed-matlab) - **Installation**: Via EEGLAB plugin manager
-- **Documentation**: [**HED MATLAB tools**](https://wwww/hedtags.org/hed-matlab)
-- [**CTagger**](https://www.hedtags.org/CTagger) - a standalone annotation Java-based annotation tool with an EEGLAB plugin available.
+- **Repository**: [hed-matlab](https://github.com/hed-standard/hed-matlab) - **Installation**: Via EEGLAB plugin manager
+- **Documentation**: [MATLAB HEDTools](https://wwww/hedtags.org/hed-matlab)
+- **Standalone tool**: [CTagger](https://www.hedtags.org/CTagger) - a standalone annotation Java-based annotation tool with an EEGLAB plugin available.
 
 #### Online tools and REST services
 
 **Focus**: Web-based validation, debugging, and programmatic access
 
-- **Production**: [**hedtools.org/hed**](https://hedtools.org/hed/)
-- **Development**: [**hedtools.org/hed_dev**](https://hedtools.org/hed_dev)
-- **Repository**: [**hed-web**](https://github.com/hed-standard/hed-web)
-- **Documentation**: [**HED online tools**](https://www.hedtags.org/hed-web)
+- **Production**: [hedtools.org/hed](https://hedtools.org/hed/)
+- **Development**: [hedtools.org/hed_dev](https://hedtools.org/hed_dev)
+- **Repository**: [hed-web](https://github.com/hed-standard/hed-web)
+- **Documentation**: [HED online tools](https://www.hedtags.org/hed-web)
 ```
 
 (contributing-to-hed-development-anchor)=
@@ -745,15 +745,15 @@ The HED project welcomes contributions from the community. Whether you're report
 
 **Where to report:**
 
-- **General questions**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
-- **Python HEDTools**: [**hed-python/issues**](https://github.com/hed-standard/hed-python/issues)
-- **JavaScript HEDTools**: [**hed-javascript/issues**](https://github.com/hed-standard/hed-javascript/issues)
-- **MATLAB HEDTools**: [**hed-matlab/issues**](https://github.com/hed-standard/hed-matlab/issues)
-- **Schema issues**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues)
+- **General questions and ideas**: [HED organization discussions](https://github.com/orgs/hed-standard/discussions)
+- **Python HEDTools**: [hed-python/issues](https://github.com/hed-standard/hed-python/issues)
+- **JavaScript HEDTools**: [hed-javascript/issues](https://github.com/hed-standard/hed-javascript/issues)
+- **MATLAB HEDTools**: [hed-matlab/issues](https://github.com/hed-standard/hed-matlab/issues)
+- **Schema issues**: [hed-schemas/issues](https://github.com/hed-standard/hed-schemas/issues)
 
 #### Contributing code
 
-All HED repositories welcome pull requests. See the CONTRIBUTING.md file in each repository for specific guidelines. If you have ideas or want to contribute to these efforts, please post an issue or email [**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com).
+All HED repositories welcome pull requests. See the CONTRIBUTING.md file in each repository for specific guidelines. If you have ideas or want to contribute to these efforts, please post an issue or email [hed.maintainers@gmail.com](mailto:hed.maintainers@gmail.com).
 
 #### Long-term vision
 
@@ -767,11 +767,11 @@ The HED community is actively working on expanding HED's capabilities and integr
 
 ### 📚 Resources for tool developers
 
-- **🔧 Code repositories**: [**hed-python**](https://github.com/hed-standard/hed-python), [**hed-javascript**](https://github.com/hed-standard/hed-javascript), [**hed-matlab**](https://github.com/hed-standard/hed-matlab)
-- **📖 Documentation**: [**Python tools**](https://www.hedtags.org/hed-python), [**JavaScript tools**](https://www.hedtags.org/hed-javascript), [**MATLAB tools**](https://www.hedtags.org/hed-matlab)
-- **🌐 Online tools**: [**hedtools.org**](https://hedtools.org/hed) - REST services and web validation
-- **📋 Schemas**: [**hed-schemas**](https://github.com/hed-standard/hed-schemas) - Standard and library schemas
-- **💬 Support**: [**GitHub Discussions**](https://github.com/hed-standard/hed-python/discussions) or email hed.maintainers@gmail.com
+- **🔧 Code repositories**: [hed-python](https://github.com/hed-standard/hed-python), [hed-javascript](https://github.com/hed-standard/hed-javascript), [hed-matlab](https://github.com/hed-standard/hed-matlab)
+- **📖 Documentation**: [Python HEDTools](https://www.hedtags.org/hed-python), [JavaScript HEDTools](https://www.hedtags.org/hed-javascript), [MATLAB HEDTools](https://www.hedtags.org/hed-matlab)
+- **🌐 Online tools**: [hedtools.org/hed](https://hedtools.org/hed) - REST services and web validation
+- **📋 Schemas**: [hed-schemas](https://github.com/hed-standard/hed-schemas) - Standard and library schemas
+- **💬 Support**: GitHub [HED organization iscussions](https://github.com/orgs/hed-standard/discussions) or email hed.maintainers@gmail.com
 
 <hr style="border: 3px solid #000080;" />
 
@@ -820,7 +820,7 @@ Before proposing changes or creating a new schema, familiarize yourself with exi
 
 #### Viewing available schemas
 
-The [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/) provides an interactive view of the HED standard schema, showing:
+The [HED schema browser](https://www.hedtags.org/hed-schema-browser/) provides an interactive view of the HED standard schema, showing:
 
 - Hierarchical tag structure
 - Tag descriptions and attributes
@@ -857,7 +857,7 @@ The value classes and unit classes are mainly relevant for tags that take values
 - **Uniqueness**: Each term must be unique and not redundant with existing terms
 - **Self-contained**: Tag descriptions should be understandable without external context
 
-See the [**HED specification**](https://www.hedtags.org/hed-specification) for the rules that govern HED tag syntax and usage. See HED schema [**developer guide**](https://www.hedtags.org/hed-schemas/developer_guide.html) for detailed information on schema structure and design principles.
+See the [HED specification](https://www.hedtags.org/hed-specification) for the rules that govern HED tag syntax and usage. See [HED schema developer guide](https://www.hedtags.org/hed-schemas/developer_guide.html) for detailed information on schema structure and design principles.
 ```
 
 (contributing-to-existing-schemas-anchor)=
@@ -870,7 +870,7 @@ The HED community welcomes suggestions for improving existing schemas. Whether y
 
 #### Improving an existing schema
 
-If you see a need for additional terms in an existing schema, post an issue to [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) on GitHub.
+If you see a need for additional terms in an existing schema, post an issue to [hed-schemas/issues](https://github.com/hed-standard/hed-schemas/issues) on GitHub.
 
 ```{admonition} **Proposing changes to HED schemas**
 ---
@@ -916,7 +916,7 @@ Schema changes go through a community review process:
 - **Clarity**: Descriptions should be self-contained and unambiguous
 - **Backward compatibility**: Changes should minimize breaking existing annotations
 
-All suggested changes should be reported using the [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) mechanism on GitHub.
+All suggested changes should be reported using the [hed-schemas/issues](https://github.com/hed-standard/hed-schemas/issues) mechanism on GitHub.
 ````
 
 (creating-new-schemas-anchor)=
@@ -933,7 +933,7 @@ Creating a library schema is a collaborative process that requires community eng
 
 **Getting started:**
 
-Post an issue on [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) to start the discussion.
+Post an issue on [hed-schemas/issues](https://github.com/hed-standard/hed-schemas/issues) to start the discussion.
 
 ```{admonition} **Proposing a new HED library schema**
 ---
@@ -971,7 +971,7 @@ The schema development process follows these general steps:
 
 **Essential reading:**
 
-The [**HED specification**](https://www.hedtags.org/hed-specification) is the definitive source for the syntax and rules of HED. If you are interested in developing The HED schema [**developer's guide**](https://www.hedtags.org/hed-schemas/developer_guide.html) provides comprehensive information on:
+The [HED specification](https://www.hedtags.org/hed-specification) is the definitive source for the syntax and rules of HED. If you are interested in developing The [HED schema developer's guide](https://www.hedtags.org/hed-schemas/developer_guide.html) provides comprehensive information on:
 
 - Schema XML structure and syntax
 - Attribute definitions and usage
@@ -988,7 +988,7 @@ While technically possible, **private schemas are not recommended** and have lim
 
 **Why standardized schemas are preferred:**
 
-- **Tool compatibility**: Many HED tools assume standardized schemas from the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) repository
+- **Tool compatibility**: Many HED tools assume standardized schemas from the [hed-schemas](https://github.com/hed-standard/hed-schemas) repository
 - **Schema fetching**: Tools automatically fetch/cache official schemas
 - **Cross-dataset comparison**: Standardized vocabularies enable meta-analyses
 - **Community benefit**: Shared vocabularies benefit the entire research community
@@ -1005,13 +1005,14 @@ While technically possible, **private schemas are not recommended** and have lim
 
 The HED Working Group decided to prioritize standardized schemas after observing that unvetted private vocabularies would compromise HED's ability to enable standardized dataset summaries and cross-study comparisons.
 
-If you have a use case that genuinely requires a private vocabulary, please email [**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com) to discuss options.
+If you have a use case that genuinely requires a private vocabulary, please email [hed.maintainers@gmail.com](mailto:hed.maintainers@gmail.com) to discuss options.
 ````
 
 ### Resources for schema developers
 
-- **🌐 Schema browser**: [**HED schema browser**](https://www.hedtags.org/hed-schema-browser/) - Interactive schema viewer
-- **📖 Documentation**: [**HED specification**](https://www.hedtags.org/hed-specification), [**Schema developer's guide**](https://www.hedtags.org/hed-schemas/developer_guide.html)
-- **📋 Repository**: [**hed-schemas**](https://github.com/hed-standard/hed-schemas) - All official HED schemas
-- **💬 Discussions**: [**hed-schemas/issues**](https://github.com/hed-standard/hed-schemas/issues) - Propose changes or new schemas
-- **📧 Contact**: [**hed.maintainers@gmail.com**](mailto:hed.maintainers@gmail.com) - Direct schema questions
+- **🌐 Schema browser**: [HED schema browser](https://www.hedtags.org/hed-schema-browser/) - Interactive schema viewer
+- **📖 Documentation**: [HED specification](https://www.hedtags.org/hed-specification), [HED schema developer's guide](https://www.hedtags.org/hed-schemas/developer_guide.html)
+- **📋 Repository**: [hed-schemas](https://github.com/hed-standard/hed-schemas) - All official HED schemas
+- **💬 Issues code**: [hed-schemas/issues](https://github.com/hed-standard/hed-schemas/issues) - Propose changes or new schemas
+- **🏛️ General HED discussion**: [HED organization discussions](https://github.com/orgs/hed-standard/discussions)
+- **📧 Contact**: [hed.maintainers@gmail.com](mailto:hed.maintainers@gmail.com) - Direct schema questions

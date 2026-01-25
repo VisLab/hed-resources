@@ -2,19 +2,19 @@
 
 # HED summary guide
 
-The HED [**table remodeler**](https://www.hedtags.org/table-remodeler) provides a number of event summaries and event file transformations that are very useful during curation and analysis.
+The HED [table remodeler](https://www.hedtags.org/table-remodeler) provides a number of event summaries and event file transformations that are very useful during curation and analysis.
 
 The summaries described in this guide are:
 
-- [**Column value summary**](column-value-summary-anchor)
-- [**HED tag summary**](hed-tag-summary-anchor)
-- [**Experimental design summary**](experimental-design-summary-anchor)
+- [Column value summary](column-value-summary-anchor)
+- [HED tag summary](hed-tag-summary-anchor)
+- [Experimental design summary](experimental-design-summary-anchor)
 
-As described in more detail in the [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation, these tools have as input, a JSON file with a list of remodeling commands and an event file. Summaries involving HED also require a HED schema version and possibly a JSON sidecar containing HED annotations.
+As described in more detail in the [table-remodeler](https://www.hedtags.org/table-remodeler) documentation, these tools have as input, a JSON file with a list of remodeling commands and an event file. Summaries involving HED also require a HED schema version and possibly a JSON sidecar containing HED annotations.
 
 The summary tools produce text and/or JSON summaries of the tabular files (usually event files). Summaries accumulate the results for each tabular file that is input. When the results are output, the summary tools produce an overall summary of all input files that have been processed and, if requested, also include an individual summary for each input file.
 
-The examples in this tutorial use the Wakeman-Hanson Face Processing dataset as an example. A [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) containing 2 subjects and no imaging data is used to produce the summaries in the examples. The reduced dataset has 6 event files each containing 200 events. The full dataset is available on OpenNeuro as [**ds003645**](https://openneuro.org/datasets/ds003645/versions/2.0.0).
+The examples in this tutorial use the Wakeman-Hanson Face Processing dataset as an example. A [reduced version](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) containing 2 subjects and no imaging data is used to produce the summaries in the examples. The reduced dataset has 6 event files each containing 200 events. The full dataset is available on OpenNeuro as [ds003645](https://openneuro.org/datasets/ds003645/versions/2.0.0).
 
 Each example only shows the overall summary with links to the full summaries that include individual summaries. The summaries use a **[number events, number files]** display of the counts of how many events and files an item appears in.
 
@@ -79,7 +79,7 @@ Dataset: Total events=1200 Total files=6
 ```
 ````
 
-Notice that there is one *double_press* event in the *event_type* column of one of the six event files analyzed in this summary. To narrow down which file this *double_press* event occurred in, we could look at the [**full text summary**](./_static/data/FacePerception_column_values_summary.txt), which includes individual summaries for each event file.
+Notice that there is one *double_press* event in the *event_type* column of one of the six event files analyzed in this summary. To narrow down which file this *double_press* event occurred in, we could look at the [full text summary](./_static/data/FacePerception_column_values_summary.txt), which includes individual summaries for each event file.
 
 We also observe that three values *famous_face*, *unfamiliar_face* and *scrambled_face* appear roughly the same number of times in the *face_type* across the six dataset. The large number of *n/a* values in *face_type* is because the type of face is only specified for the stimulus events:
 
@@ -121,7 +121,7 @@ class: tip
 ```
 ````
 
-The following excerpt shows the dataset portion of the resulting summary in text format when running on the [**reduced version**](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) face processing dataset, which has 6 event files containing a total of 1200 events.
+The following excerpt shows the dataset portion of the resulting summary in text format when running on the [reduced version](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) face processing dataset, which has 6 event files containing a total of 1200 events.
 
 ````{admonition} Text format excerpt with dataset-level summary of hed tag counts
 ```text
@@ -154,7 +154,7 @@ Further, there were 626 cues and 316 experimental stimuli among the sensory even
 
 ## Experimental design summary
 
-The HED type summary allows users to obtain a detailed summary of a particular tag. Usually type summaries are used for *Condition-variable* tag, which encodes experimental conditions and design. The [**HED conditions and design matrices**](./HedConditionsAndDesignMatrices.md) tutorial explains how this information is encoded and can be used.
+The HED type summary allows users to obtain a detailed summary of a particular tag. Usually type summaries are used for *Condition-variable* tag, which encodes experimental conditions and design. The [HED design matrices](./HedConditionsAndDesignMatrices.md) tutorial explains how this information is encoded and can be used.
 
 Type summaries based on the *Task* tag and *Time-block* tag are also informative.
 
@@ -216,6 +216,6 @@ Dataset: 3 condition-variable types in 6 files with a total of 1200
 
 This summary has three condition variables: *key-assignment*, *face-type* and *repetition-type*. The *face-type* and *repetition-type* each have three levels encoding a 3 x 3 experimental design. The *face-type* condition variable has three levels with roughly equal numbers of occurrences (*famous-face-cond* with 108 events, *scrambled-face-cond* with 103 events, and *unfamiliar-face-cond* with 105 events).
 
-This information is similar to that obtained in the [**column value summary**](column-value-summary-anchor), but only because these condition variables were directly encoded by columns `face_type` and `repetition_type` in the events files. The HED approach allows a more general, dataset-independent extraction of design matrices and experimental conditions.
+This information is similar to that obtained in the [column value summary](column-value-summary-anchor), but only because these condition variables were directly encoded by columns `face_type` and `repetition_type` in the events files. The HED approach allows a more general, dataset-independent extraction of design matrices and experimental conditions.
 
 The final condition variable *key-assignment* only has one level and appears in all events in all the files. In reality the key assignment is designated in a single event in each file, but it appears with an *Onset* and no *Offset*, indicating that it runs until the end of the file. The *key-assignment* condition actually has two levels: *right-sym-cond* and *left-sym-cond*, but this condition is counter-balanced across subjects rather than trials. The two subjects in the sample data both were assigned the *right-sym-cond*.
