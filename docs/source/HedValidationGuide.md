@@ -22,23 +22,19 @@ Two types of errors can occur: **syntactic** and **semantic**.
 
 Current versions of the validators do not separate these phases and require that the appropriate HED schemas are available at the time of validation.
 
-See [**HED validation errors**](https://www.hedtags.org/hed-specification/Appendix_B.html#b-1-hed-validation-errors) for a list of the validation errors that are detected by validation tools.
-
-## Available validators
-
-HED currently supports native validators for Python and JavaScript. Both validators support [**HED-specification v3.0.0**](https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedspec/HEDSpecification_3_0_0.pdf).
+See [HED validation errors](https://www.hedtags.org/hed-specification/Appendix_B.html#b-1-hed-validation-errors) for a list of the validation errors that are detected by validation tools.
 
 ### Python validator
 
-The Python validator included in [**HEDTools**](https://pypi.org/project/hedtools/) on PyPI is used as the basis for most HED analysis tools. Generally, new HED features are first implemented and tested in this validator before propagating to other tools in the HED ecosystem. The source code for HEDTools is available in the [**hed-python**](https://github.com/hed-standard/hed-python) GitHub repository. The latest features appear on the `develop` branch before being propagated to `master` and then released.
+The Python validator included in [HEDTools](https://pypi.org/project/hedtools/) on PyPI is used as the basis for most HED analysis tools. Generally, new HED features are first implemented and tested in this validator before propagating to other tools in the HED ecosystem. The source code for HEDTools is available in the [hed-python](https://github.com/hed-standard/hed-python) GitHub repository.
 
 ### JavaScript validator
 
-The JavaScript [**hed-validator**](https://www.npmjs.com/package/hed-validator/v/3.7.0) on npm is the package used for validation in [**BIDS**](https://bids.neuroimaging.io/). Although the main interface is designed for BIDS integration, the underlying validation functions can be called directly. The source code is available in the [**hed-javascript**](https://github.com/hed-standard/hed-javascript) GitHub repository.
+The JavaScript [hed-validator](https://www.npmjs.com/package/hed-validator/v/3.7.0) on npm is the package used for validation in [BIDS](https://bids.neuroimaging.io/). Although the main interface is designed for BIDS integration, the underlying validation functions can be called directly. The source code is available in the [hed-javascript](https://github.com/hed-standard/hed-javascript) GitHub repository.
 
 ### MATLAB support
 
-Validation in MATLAB is supported through web-services calls and through wrappers for native HED Python tool calls. See the [\*\*HED MATLAB documentation](https://www.hedtags.org/hed-matlab) for additional information.
+Validation in MATLAB is supported through web-services calls and through wrappers for native HED Python tool calls. See the [MATLAB HEDTools](https://www.hedtags.org/hed-matlab) documentation for additional information.
 
 ## Validation strategies
 
@@ -80,15 +76,15 @@ The simplest way to validate a BIDS dataset is to use the BIDS online validator:
 
 ![BidsOnlineValidatorScreenshot](./_static/images/BidsOnlineValidator.png)
 
-The BIDS online validator is available at [**https://bids-standard.github.io/bids-validator/**](https://bids-standard.github.io/bids-validator/). The BIDS validators use the [**hed-validator**](https://www.npmjs.com/package/hed-validator) JavaScript package available at [**npm**](https://docs.npmjs.com/) to do the validation.
+The BIDS online validator is available at [https://bids-standard.github.io/bids-validator/](https://bids-standard.github.io/bids-validator/). The BIDS validators use the [hed-validator](https://www.npmjs.com/package/hed-validator) JavaScript package available on [npm](https://docs.npmjs.com/) to do the validation.
 
-See the [**bids-validator**](https://github.com/bids-standard/bids-validator) for additional details.
+See the [bids-validator](https://github.com/bids-standard/bids-validator) for additional details.
 
 (hed-online-validation-anchor)=
 
 ### HED online validation
 
-The HED online validation tools are available at [**https://hedtools.org/hed/**](https://hedtools.org/hed/). The HED web-based tools are designed to act on a single file (e.g. events, sidecar, spreadsheet, schema), but may require supporting files.
+The HED online validation tools are available at [https://hedtools.org/hed/](https://hedtools.org/hed/). The HED web-based tools are designed to act on a single file (e.g. events, sidecar, spreadsheet, schema), but may require supporting files.
 
 For example, the following screenshot shows the menu for the online event validation tools. The buttons in the banner allow you to select the type of file to operate on.
 
@@ -104,7 +100,7 @@ When you press the *Process* button, the files (event file and sidecar) are vali
 
 The online tools support many other operations and most of them automatically validate the files before applying the requested operation. For example, one of the available actions shown on the menu above is assembling all the HED tags applicable to each line in the events file.
 
-New features of the tools take a while to propagate to the released version of the online tools. Use the [**HED online development server**](https://hedtools.org/hed_dev) to access the latest versions.
+New features of the tools take a while to propagate to the released version of the online tools. Use the [HED online development server](https://hedtools.org/hed_dev) to access the latest versions.
 
 (validation-for-matlab-users-anchor)=
 
@@ -114,21 +110,21 @@ HED validation in MATLAB is currently done by accessing the HED online tools as 
 
 #### Direct access to services
 
-Users can access these services directly by calling wrapper functions or by using the HED MATLAB web services functions as explained in [**MATLAB HedTools**](https://www.hedtags.org/hed-matlab). Download the [**hed-matlab**](https://github.com/hed-standard/hed-matlab) repository from GitHub and include the `hedmat` directory and its children in your MATLAB path. The [**runAllDemos.m**](https://github.com/hed-standard/hed-matlab/blob/main/hedmat/web_services_demos/runAllDemos.m) script calls all the services on test data.
+Users can access these services directly by calling wrapper functions or by using the HED MATLAB web services functions as explained in [MATLAB HEDTools](https://www.hedtags.org/hed-matlab). Download the [hed-matlab](https://github.com/hed-standard/hed-matlab) repository from GitHub and include the `hedmat` directory and its children in your MATLAB path. The [runAllDemos.m](https://github.com/hed-standard/hed-matlab/blob/main/hedmat/web_services_demos/runAllDemos.m) script calls all the services on test data.
 
 #### Access through EEGLAB
 
-[**EEGLAB**](https://sccn.ucsd.edu/eeglab/index.php) users can access HED validation through the [**EEGLAB HEDTools plugin**](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html).
+[EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) users can access HED validation through the [EEGLAB HEDTools plugin](https://www.hedtags.org/CTagger/ctagger_in_eeglab.html).
 
-[**CTagger**](https://www.hedtags.org/CTagger) is an annotation tool that guides users through the tagging process using a graphical user interface. CTagger is available as a stand-alone program as well from EEGLAB through the HEDtools plugin.
+[CTagger](https://www.hedtags.org/CTagger) is an annotation tool that guides users through the tagging process using a graphical user interface. CTagger is available as a stand-alone program as well from EEGLAB through the HEDtools plugin.
 
 #### Access through Fieldtrip
 
-An interface for accessing HED in [**Fieldtrip**](https://www.fieldtriptoolbox.org/) has recently been added, but is not yet fully documented.
+An interface for accessing HED in [Fieldtrip](https://www.fieldtriptoolbox.org/) has recently been added, but is not yet fully documented.
 
 ### Validation for Python users
 
-The [HEDTools](https://pypi.org/project/hedtools/) for Python are available on PyPI and can be installed using the usual Python package installation mechanisms with PIP. However, new features are not immediately available in the released version. If you need the latest version you should install the `main` branch of the GitHub [**hed-python**](https://github.com/hed-standard/hed-python) repository directly using PIP.
+The [HEDTools](https://pypi.org/project/hedtools/) for Python are available on PyPI and can be installed using the usual Python package installation mechanisms with PIP. However, new features are not immediately available in the released version. If you need the latest version you should install the `main` branch of the [hed-python](https://github.com/hed-standard/hed-python) GitHub repository directly using PIP.
 
 ````{admonition} Installing the Python HedTools from the develop branch on GitHub.
 ---
@@ -142,9 +138,9 @@ class: tip
 
 #### Jupyter notebooks for validation
 
-Several \[**Jupyter notebooks**\]https://github.com/hed-standard/hed-python/tree/main/examples) are available as wrappers for calling various Python HED tools.
+Several [Jupyter notebooks](https://github.com/hed-standard/hed-python/tree/main/examples) are available as wrappers for calling various Python HED tools.
 
-For example, the [**validate_bids_datasets.ipynb**](https://raw.githubusercontent.com/hed-standard/hed-python/refs/heads/main/examples/validate_bids_dataset.ipynb) notebook shown in the following example validates an entire BIDS dataset just give the path to the root directory of the dataset.
+For example, the [validate_bids_datasets.ipynb](https://raw.githubusercontent.com/hed-standard/hed-python/refs/heads/main/examples/validate_bids_dataset.ipynb) notebook shown in the following example validates an entire BIDS dataset just give the path to the root directory of the dataset.
 
 ````{admonition} Python code to validate HED in a BIDS dataset.
 ---
@@ -177,7 +173,7 @@ Errors, if any are printed to the command line.
 
 #### Remodeling validation summaries
 
-Validation is also available through table remodeling tool interface. As explained in [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation, the table remodeler tools allow users to restructure their event files and/or summarize their contents in various ways. Users specify a list of operations in a JSON remodeling file, and the HED remodeler executes these operations in sequence.
+Validation is also available through table remodeling tool interface. As explained in [table-remodeler](https://www.hedtags.org/table-remodeler) documentation, the table remodeler tools allow users to restructure their event files and/or summarize their contents in various ways. Users specify a list of operations in a JSON remodeling file, and the HED remodeler executes these operations in sequence.
 
 Validation is a summary operation, meaning that it does not modify any event files, but rather produces a summary, in this case of HED validation errors for the dataset. An example of a remodeling operation that is not a summary operation is an operation to rename the columns in an event file.
 
@@ -226,4 +222,4 @@ The results of the validation are stored in the file name specified in the remod
 
 Both a `.json` and a `.txt` file are created. For example, the text file is: `/root_path/derivatives/remodel/summaries/validate_initial_xxx.txt` where xxx is the time of generation.
 
-For more information see [**table-remodeler**](https://www.hedtags.org/table-remodeler) documentation for detailed descriptions of the operations that are currently supported.
+For more information see [table-remodeler](https://www.hedtags.org/table-remodeler) documentation for detailed descriptions of the operations that are currently supported.

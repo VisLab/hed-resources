@@ -57,7 +57,10 @@ def main():
         print(f"[ERROR] Sphinx build failed: {e}", file=sys.stderr)
         return 1
     except FileNotFoundError:
-        print("[ERROR] sphinx-build not found. Install with: pip install -e .[docs]", file=sys.stderr)
+        print(
+            "[ERROR] sphinx-build not found. Install with: pip install -e .[docs]",
+            file=sys.stderr,
+        )
         return 1
     print()
 
@@ -65,7 +68,7 @@ def main():
     print("Build completed successfully!")
     print(f"Documentation available at: {build_dir / 'index.html'}")
     print("=" * 60)
-    
+
     return 0
 
 

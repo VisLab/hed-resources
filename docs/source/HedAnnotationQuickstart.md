@@ -1,9 +1,15 @@
+```{index} single: annotation; quickstart
+single: quickstart; annotation
+single: tutorial; annotation
+pair: HED; annotation
+```
+
 # HED annotation quickstart
 
-This tutorial takes you through the steps of annotating the events using HED (Hierarchical Event Descriptors). The tutorial focuses on how to make good choices of HED annotations to make your data usable for downstream analysis. The mechanics of putting your selected HED annotations into [BIDS (Brain Imaging Data Structure)](https://bids.neuroimaging.io/) format is covered in the [**BIDS annotation quickstart**](./BidsAnnotationQuickstart.md) guide.
+This tutorial takes you through the steps of annotating the events using HED (Hierarchical Event Descriptors). The tutorial focuses on how to make good choices of HED annotations to make your data usable for downstream analysis. The mechanics of putting your selected HED annotations into [BIDS (Brain Imaging Data Structure)](https://bids.neuroimaging.io/) format is covered in the [BIDS annotation quickstart](./BidsAnnotationQuickstart.md) guide.
 
-- [**What is HED annotation?**](what-is-hed-annotation-anchor)
-- [**A recipe for simple annotation**](a-recipe-for-simple-annotation-anchor)
+- [What is HED annotation?](what-is-hed-annotation-anchor)
+- [A recipe for simple annotation](a-recipe-for-simple-annotation-anchor)
 
 (what-is-hed-annotation-anchor)=
 
@@ -11,13 +17,13 @@ This tutorial takes you through the steps of annotating the events using HED (Hi
 
 A HED annotation consists of a comma separated list of tags selected from a HED vocabulary or schema. An important reason for using an agreed-upon vocabulary rather than free-form tagging for annotation is to avoid confusion and ambiguity and to promote data-sharing.
 
-The basic terms are organized into trees for easier access and search. The [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) allows you to explore these terms.
+The basic terms are organized into trees for easier access and search. The [HED schema browser](https://www.hedtags.org/hed-schema-browser/) allows you to explore these terms.
 
 (a-recipe-for-simple-annotation-anchor)=
 
 ## A recipe for simple annotation
 
-In thinking about how to annotate an event, you should always start by selecting a tag from the *Event* subtree to indicate the general event category. Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*, *Experiment-procedure*, *Experiment-structure*, and *Measurement-event*. See the [**HED Schema Viewer**](https://www.hedtags.org/hed-schema-browser/) to view the available tags.
+In thinking about how to annotate an event, you should always start by selecting a tag from the *Event* subtree to indicate the general event category. Possible choices are: *Sensory-event*, *Agent-action*, *Data-feature*, *Experiment-control*, *Experiment-procedure*, *Experiment-structure*, and *Measurement-event*. See the [HED schema browser](https://www.hedtags.org/hed-schema-browser/) to view the available tags.
 
 Most experiments will only have a few types of distinct events. The simplest way to create a minimal HED annotation for your events is:
 
@@ -84,9 +90,9 @@ In the Go/No-go experiment, the experimental participant is presented with a ser
 
 ```
 
-The table above shows the event category and the supporting tags as suggested in the [**Standard hed tags for minimal annotation**](standard-hed-tag-selections-anchor) table.
+The table above shows the event category and the supporting tags as suggested in the [Standard hed tags for minimal annotation](standard-hed-tag-selections-anchor) table.
 
-A better format for your annotations is the [**4-column spreadsheet format**](four-column-spreadsheet-format-anchor) described in [**BIDS annotation quickstart**](BidsAnnotationQuickstart.md), since there are online tools to convert this format into a JSON sidecar that can be deployed directly in a BIDS dataset.
+A better format for your annotations is the [4-column spreadsheet format](four-column-spreadsheet-format-anchor) described in [BIDS annotation quickstart](BidsAnnotationQuickstart.md), since there are online tools to convert this format into a JSON sidecar that can be deployed directly in a BIDS dataset.
 
 ```{admonition} 4-column spreadsheet format for the previous example.
 
@@ -116,13 +122,13 @@ HED tools assemble the annotations for each event into a single HED tag string. 
 
 In version 2, the annotations that are common to all stimuli and responses are assigned to `event_type`. We have also included the annotation for the `stim_file` column in the last row of this table.
 
-The assembled annotation for the first event (with onset 5.035) in the [**event file excerpt from go/no-go**](example-go-no-go-event-table-anchor) above is:
+The assembled annotation for the first event (with onset 5.035) in the [event file excerpt from go/no-go](example-go-no-go-event-table-anchor) above is:
 
 > *Sensory-event*, *Visual-presentation*, *Experimental-stimulus*, *Target*, (*Animal*, *Image*), (*Image*, *Pathname/105064.jpg*)
 
 Mapping annotations and column information across multiple column values often makes the annotation process simpler, especially when annotations become more complex. Multiple column representation also can make analysis easier, particularly if the columns represent information such as design variables.
 
-See [**BIDS annotation quick start**](BidsAnnotationQuickstart.md#bids-annotation-quickstart) for how to create templates to fill in with your annotations using online tools. Once you have completed the annotation and converted it to a sidecar, you simply need to place this sidecar in the root directory of your BIDS dataset.
+See [BIDS annotation quick start](BidsAnnotationQuickstart.md#bids-annotation-quickstart) for how to create templates to fill in with your annotations using online tools. Once you have completed the annotation and converted it to a sidecar, you simply need to place this sidecar in the root directory of your BIDS dataset.
 
 This quick start demonstrates the most basic HED annotations. HED is capable of much more extensive and expressive annotations as explained in a series of tutorials on this site.
 
@@ -219,4 +225,4 @@ Use curly braces when:
 
 **Tip:** Curly braces are your tool for creating properly grouped HED annotations when information comes from multiple columns!
 
-For more detailed information about assembly and advanced grouping rules, see [**HED Annotation Semantics**](./HedAnnotationSemantics.md).
+For more detailed information about assembly and advanced grouping rules, see [Making HED meaningful](./HedAnnotationSemantics.md).

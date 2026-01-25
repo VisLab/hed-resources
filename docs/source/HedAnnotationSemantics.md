@@ -1,5 +1,13 @@
 (making-hed-meaningful-anchor)=
 
+```{index} single: semantics; annotation
+single: annotation; semantics
+single: meaningful annotation
+pair: HED; semantics
+pair: annotation; best practices
+single: machine-actionable annotation
+```
+
 # Making HED meaningful
 
 This tutorial explains how to create HED annotations that are meaningful, unambiguous, and machine-actionable. Understanding HED annotation semantics is essential for creating annotations that accurately represent what happened during an experiment and can be correctly interpreted by both humans and computers.
@@ -1340,15 +1348,15 @@ By following these principles and patterns, you create annotations that are not 
 
 **Additional information**:
 
-- [**HED Annotation Quickstart**](./HedAnnotationQuickstart.md) - Practical annotation guide
-- [**BIDS Annotation Quickstart**](./BidsAnnotationQuickstart.md) - BIDS integration
-- [**HED Schemas**](./HedSchemas.md) - Understanding the HED vocabulary
-- [**HED Validation Guide**](./HedValidationGuide.md) - Validating your annotations
+- [HED Annotation Quickstart](./HedAnnotationQuickstart.md) - Practical annotation guide
+- [BIDS Annotation Quickstart](./BidsAnnotationQuickstart.md) - BIDS integration
+- [HED Schemas](./HedSchemas.md) - Understanding the HED vocabulary
+- [HED Validation Guide](./HedValidationGuide.md) - Validating your annotations
 
 **Available tools:**
 
-- [**HED online tools**](https://hedtools.org/hed) - Fairly complete set of tools for a single tsv and json files.
-- [**HED browser-based validation**](https://www.hedtags.org/hed-javascript) - validate an entire BIDS dataset -- all local, no installation
-- [**HED extension for NWB**](https://github.com/hed-standard/ndx-hed) - incorporates HED into Neurodata Without Borders datasets.
-- [**HED Python tools**](https://github.com/hed-standard/hed-python) - comprehensive set of tools for HED in Python.
-- [**HED MATLAB tools**](https://github.com/hed-standard/hed-matlab) - HED interface in MATLAB
+- [HED online tools](https://hedtools.org/hed) - Fairly complete set of tools for a single tsv and json files.
+- [HED browser-based validation](https://www.hedtags.org/hed-javascript) - validate an entire BIDS dataset -- all local, no installation
+- [HED extension for NWB](https://github.com/hed-standard/ndx-hed) - incorporates HED into Neurodata Without Borders datasets.
+- [Python HEDTools](https://github.com/hed-standard/hed-python) - comprehensive set of tools for HED in Python.
+- [MATLAB HEDTools](https://github.com/hed-standard/hed-matlab) - HED interface in MATLAB

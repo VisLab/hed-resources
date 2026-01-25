@@ -6,7 +6,7 @@ This repository contains the primary documentation and user resources for the Hi
 
 ## Repository contents
 
-The [**docs**](https://github.com/hed-standard/hed-resources/tree/main/docs) directory contains the source documentation for HED resources, tools, and tutorials.
+The [docs](https://github.com/hed-standard/hed-resources/tree/main/docs) directory contains the source documentation for HED resources, tools, and tutorials.
 
 The documentation covers:
 
@@ -17,7 +17,7 @@ The documentation covers:
 - Schema development guides
 - Quick-start tutorials and examples
 
-The [**HED GitHub organization**](https://github.com/hed-standard/) gathers all HED supporting resources, which are open source.
+The [HED GitHub organization](https://github.com/hed-standard/) gathers all HED supporting resources, which are open source.
 
 ## Development setup
 
@@ -50,6 +50,7 @@ sphinx-build -b linkcheck docs/source docs/_build/linkcheck
 ### Available commands:
 
 After `pip install -e .`, these commands are available:
+
 - `hed-build-docs` - Build unified documentation
 - `hed-serve-docs` - Serve documentation locally at http://localhost:8000
 

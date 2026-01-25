@@ -21,17 +21,20 @@ def main():
     html_dir = repo_root / "docs" / "_build" / "html"
 
     if not html_dir.exists():
-        print(f"[ERROR] Documentation not built yet!", file=sys.stderr)
+        print("[ERROR] Documentation not built yet!", file=sys.stderr)
         print(f"Expected directory: {html_dir}", file=sys.stderr)
-        print(f"Run 'hed-build-docs' or 'python scripts/build_docs.py' first.", file=sys.stderr)
+        print(
+            "Run 'hed-build-docs' or 'python scripts/build_docs.py' first.",
+            file=sys.stderr,
+        )
         return 1
 
     PORT = 8000
-    
+
     class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, directory=str(html_dir), **kwargs)
-        
+
         def log_message(self, format, *args):
             # Custom logging format
             print(f"[{self.log_date_time_string()}] {format % args}")
@@ -62,7 +65,10 @@ def main():
     except OSError as e:
         if "address already in use" in str(e).lower():
             print(f"[ERROR] Port {PORT} is already in use", file=sys.stderr)
-            print(f"Another server may be running. Try stopping it first.", file=sys.stderr)
+            print(
+                "Another server may be running. Try stopping it first.",
+                file=sys.stderr,
+            )
         else:
             print(f"[ERROR] Starting server: {e}", file=sys.stderr)
         return 1

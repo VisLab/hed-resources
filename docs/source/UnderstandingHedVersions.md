@@ -1,8 +1,8 @@
 # Understanding HED versions
 
-HED (Hierarchical Event Descriptors) schemas are standardized tree-structured vocabularies for annotating experimental data, particularly neuroimaging and behavioral data. The **HED standard schema** contains a base vocabulary of terms that are common to most experiments, while various **HED library schemas** contain discipline specific vocabularies. The [**HED schema viewer**](https://www.hedtags.org/hed-schema-browser/) allows users to view the available vocabularies.
+HED (Hierarchical Event Descriptors) schemas are standardized tree-structured vocabularies for annotating experimental data, particularly neuroimaging and behavioral data. The **HED standard schema** contains a base vocabulary of terms that are common to most experiments, while various **HED library schemas** contain discipline specific vocabularies. The [HED schema browser](https://www.hedtags.org/hed-schema-browser/) allows users to view the available vocabularies.
 
-Applications that use HED must specify which versions of the HED schemas they are using. The definitive HED vocabulary files are available in the [**hed-schemas**](https://github.com/hed-standard/hed-schemas) GitHub repository. Tools retrieve the XML files corresponding to the designated HED either from GitHub or from their internal caches to use in validation and analysis.
+Applications that use HED must specify which versions of the HED schemas they are using. The definitive HED vocabulary files are available in the [hed-schemas](https://github.com/hed-standard/hed-schemas) GitHub repository. Tools retrieve the XML files corresponding to the designated HED either from GitHub or from their internal caches to use in validation and analysis.
 
 This tutorial explains HED versioning and how to specify HED version.
 
@@ -39,6 +39,6 @@ SCORE library schema version 1.0.0 is an **unpartnered schema**. This means that
 
 ## Using HED versions
 
-In BIDS (Brain Imaging Data Structure) datasets, the HED version is specified in the `dataset_description.json` file at the top level of the dataset. See [**7.5. Library schemas in BIDS**](https://www.hedtags.org/hed-specification/07_Library_schemas.html#library-schemas-in-bids) in the HED specification for information about the rules.
+In BIDS (Brain Imaging Data Structure) datasets, the HED version is specified in the `dataset_description.json` file at the top level of the dataset. See [7.5. Library schemas in BIDS](https://www.hedtags.org/hed-specification/07_Library_schemas.html#library-schemas-in-bids) in the HED specification for information about the rules.
 
-In NWB (Neurodata Without Borders) dataset, the HED version is specified when `HedTags` objects are created. See [**HED annotation in NWB**](https://www.hedtags.org/ndx-hed) for additional information and examples.
+In NWB (Neurodata Without Borders) dataset, the HED version is specified when `HedTags` objects are created. See [HED annotation in NWB](https://www.hedtags.org/ndx-hed) for additional information and examples.
