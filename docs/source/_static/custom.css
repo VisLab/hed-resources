@@ -250,30 +250,6 @@ body[data-theme="dark"] .content-icon-container a[href*="github.com"]:not([href*
     height: auto;
 }
 
-/* Search Result Prefixes for Repository Names */
-
-/* 1. Default for ALL links inside search results */
-ul.search li a::before,
-#search-results a::before {
-    content: "[hed-resources] ";
-    font-weight: bold;
-    color: var(--color-brand-primary, #0969da);
-    margin-right: 4px;
-    display: inline-block !important; /* Ensure visibility */
-}
-
-/* 2. Specific overrides based on URL */
-
-/* hed-python */
-ul.search li a[href*="hed-python/"]::before,
-#search-results a[href*="hed-python/"]::before {
-    content: "[hed-python] ";
-    color: #b8860b;
-    font-weight: bold;
-    margin-right: 4px;
-    display: inline-block !important;
-}
-
 /* Hide "Hide Search Matches" link on initial page load */
 /* Only show it after search highlighting is actually applied */
 #searchbox .highlight-link {
