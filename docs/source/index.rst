@@ -104,3 +104,8 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Data resources:
 
    HedTestDatasets.md
+
+Index
+***********
+
+:ref:`genindex`

@@ -163,7 +163,7 @@ html_sidebars = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
-html_js_files = ["gh_icon_fix.js"]
+html_js_files = ["gh_icon_fix.js", "search_labels.js"]
 
 # Copy redirect HTML pages and custom search page directly to output (no Sphinx)
 # These files will be copied as-is to the _build/html directory
