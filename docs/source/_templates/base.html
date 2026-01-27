@@ -1,0 +1,18 @@
+{% extends "!base.html" %}
+
+{%- block scripts %}
+  {{ super() }}
+  
+  <!-- OSA Chat Widget (HED Assistant) -->
+  <script src="https://osa-demo.pages.dev/osa-chat-widget.js"
+          crossorigin="anonymous"></script>
+  <script>
+    if (window.OSAChatWidget) {
+      OSAChatWidget.setConfig({
+        communityId: 'hed',
+        allowPageContext: true,
+        pageContextDefaultEnabled: true
+      });
+    }
+  </script>
+{%- endblock scripts %}
