@@ -1,3 +1,18 @@
+```{index} single: search; HED
+single: HED; search
+pair: query; HED
+pair: epoching; HED
+pair: trial selection; HED
+```
+
+```{meta}
+---
+description: Guide to searching HED-annotated datasets using object-based and 
+  text-based queries
+keywords: HED search, query, epoching, trial selection, event markers
+---
+```
+
 # HED search guide
 
 Many analysis methods locate event markers with specified properties and extract sections of the data surrounding these markers for analysis. This extraction process is called **epoching** or **trial selection**.
@@ -9,6 +24,10 @@ Other approaches find sections of the data with particular signal characteristic
 At a more global level, analysts may want to locate datasets whose event markers have certain properties in choosing data for initial analysis or for comparisons with their own data.
 
 Datasets whose event markers are annotated with HED (Hierarchical Event Descriptors) can be searched in a dataset independent manner. The Python [HEDTools](https://pypi.org/project/hedtools/) support two types of search: object-based and text-based. The object-based search can distinguish complex tag relationships as part of the search. The text-based search operates on strings rather than HED objects and is considerably faster, but less powerful. Text-based searches need the long-form of the HED strings to detect children based on a parent tag.
+
+```{index} single: search; object-based
+pair: query; object-based
+```
 
 ## HED object-based search
 
@@ -132,6 +151,10 @@ Wildcard matching is supported, but primarily makes sense in exact matching grou
 
 **Notes**: You cannot use negation inside exact matching groups *\{X:}* or *\{X:Y}* notation. <br/> You cannot use negation in combination with wildcards ( *?*, *??*, or *???* )<br/> In exact group matching, *||* matches one or the other, not both: *{A || B:}* matches *(A)* or *(B)*, but not *(A, B)*.
 
+```{index} single: search; text-based
+pair: query; text-based
+```
+
 ## HED text-based search
 
 In addition to the HED object-based search, HED also supports a string search interface. which is notably faster than object-based search and still has the key features of searching parent tags and grouping.
@@ -168,6 +191,10 @@ The following table shows some example queries and types of matches:
 | **Tag sharing group<br/>with subgroup**                       | *(Head-part, (Item-interval/1))*<br/> *Head-part* in group with<br/>subgroup containing<br/>*Item-interval/1*                                                 | *(Head-part, (Item-interval/1))*<br/>*Head-part, (Item-interval/1)*<br/>*(Item-interval/1), Event, Head-part* | *(Head-part, Item-interval/1)*<br/>*(Item-interval/1)*                                                                     |
 | **Anywhere terms mixed with nested**                          | *@Event, Head-part, Item-interval/1*<br/> *Event* anywhere with<br/>*Head-part* and *Item-interval/1*<br/> in the same group as each other                    | *Item-interval/1, Event, Head-part*<br/> *Event, (Item-interval/1, Head-part)*<br/>                           | *Item-interval/1, Event, (Head-part)*<br/>                                                                                 |
 | **If converted to long form first**<br>Will match parent tags | *@Event, Head-part*, Item-interval/1\*<br/> *Event* anywhere with<br/>*Head-part*(or a descendant) and *Item-interval/1*<br/> in the same group as each other | *Item-interval/1, Event, Head-part*<br/> *Event, (Item-interval/1, Cheek)*<br/>                               | *Item-interval/1, Event, (Head-part)*<br/>                                                                                 |
+
+```{index} single: search; applications
+pair: HED; search usage
+```
 
 ## Where can HED search be used?
 

@@ -1,3 +1,20 @@
+```{index} single: summary; HED
+single: HED; summary
+pair: remodeling; events
+pair: table remodeler; HED
+pair: column summary; HED
+pair: tag summary; HED
+```
+
+```{meta}
+---
+description: Guide to generating summaries of HED-annotated event files 
+  including column values, HED tags, and experimental design
+keywords: HED summary, table remodeler, event summaries, column summary, tag 
+  summary, experimental design
+---
+```
+
 (hed-summary-guide-anchor)=
 
 # HED summary guide
@@ -19,6 +36,10 @@ The examples in this tutorial use the Wakeman-Hanson Face Processing dataset as 
 Each example only shows the overall summary with links to the full summaries that include individual summaries. The summaries use a **[number events, number files]** display of the counts of how many events and files an item appears in.
 
 (column-value-summary-anchor)=
+
+```{index} single: summary; column values
+pair: column values; summary
+```
 
 ## Column value summary
 
@@ -90,6 +111,10 @@ As expected, the *show_face_initial* appears exactly once in each file (e.g., [6
 
 (hed-tag-summary-anchor)=
 
+```{index} single: summary; HED tags
+pair: HED tags; summary
+```
+
 ## HED tag summary
 
 The HED tag summary gives an overall picture of the types of HED tags in the dataset along with counts and the number of files that these tags appear in. An advantage that HED tag summaries have over straight column value summaries is that the tags are comparable across experiments, while column values are experiment-specific.
@@ -151,6 +176,10 @@ The summary indicates that the event type breakdown:
 Further, there were 626 cues and 316 experimental stimuli among the sensory events.
 
 (experimental-design-summary-anchor)=
+
+```{index} single: summary; experimental design
+pair: experimental design; summary
+```
 
 ## Experimental design summary
 

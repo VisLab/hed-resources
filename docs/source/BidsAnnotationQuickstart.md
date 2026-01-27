@@ -5,6 +5,14 @@ pair: JSON sidecar; annotation
 pair: events; BIDS
 ```
 
+```{meta}
+---
+description: Step-by-step guide to creating JSON sidecars with HED annotations 
+  for BIDS datasets
+keywords: BIDS, HED annotation, JSON sidecar, events file, quickstart, tutorial
+---
+```
+
 # BIDS annotation quickstart
 
 This tutorial provides a step-by-step guide to creating a JSON sidecar containing the annotations needed to document your BIDs dataset events. See [HED annotation quickstart](HedAnnotationQuickstart.md) for guidelines on what annotations to choose.
@@ -41,6 +49,10 @@ to produce a comprehensive JSON sidecar template.
 The examples in this tutorial use an [abbreviated version](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003645s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv) of the `events.tsv`file from subject 002 run 1 from [ds003645](https://openneuro.org/datasets/ds003645/):Face processing MEEG dataset with HED annotation dataset on OpenNeuro. A reduced version of this dataset [eeg_ds003645s_hed](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) is also available.
 
 (how-hed-works-in-bids-anchor)=
+
+```{index} single: BIDS; how HED works
+pair: HED; BIDS integration
+```
 
 ## How HED works in BIDS
 
@@ -162,6 +174,10 @@ The next section guides you through the creation of a JSON sidecar for event ann
 The [Basic HED Annotation](./HedAnnotationQuickstart.md) tutorial walks you through the process of selecting HED tags for annotation.
 
 (create-a-json-template-anchor)=
+
+```{index} single: JSON; template creation
+pair: template; JSON sidecar
+```
 
 ## Create a JSON template
 
@@ -318,6 +334,10 @@ Once you have finished, you should validate your JSON file to make sure that you
 If you would rather work with spreadsheets when doing your annotations, you can extract a spreadsheet from the JSON sidecar to edit and merge back after you are finished. This process is described in the next section, which you can skip if you are going to edit the JSON directly.
 
 (spreadsheet-templates-anchor)=
+
+```{index} single: spreadsheet; templates
+pair: template; spreadsheet
+```
 
 ## Spreadsheet templates
 

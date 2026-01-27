@@ -1,4 +1,24 @@
+```{index} single: validation; HED
+single: HED; validation
+pair: errors; validation
+pair: HED; error checking
+pair: syntactic errors; HED
+pair: semantic errors; HED
+```
+
+```{meta}
+---
+description: Guide to validating HED annotations including error types and 
+  validation tools
+keywords: HED validation, error checking, syntactic errors, semantic errors, HED
+  schemas
+---
+```
+
 # HED validation guide
+
+```{index} single: validation; what is
+```
 
 ## What is HED validation?
 
@@ -7,6 +27,10 @@ HED validation is the process of checking the consistency and usage of HED annot
 You should be sure to validate your data before applying analysis tools. Most HED analysis tools, such as those used for searching, summarizing, or creating design matrices, assume that the dataset and its respective event files have already been validated and do not re-validate during analysis.
 
 This guide explains the types of errors that can occur and various ways that users can validate their HED (Hierarchical Event Descriptor) annotations.
+
+```{index} single: errors; types
+pair: validation; error types
+```
 
 ## Types of errors
 
@@ -35,6 +59,10 @@ The JavaScript [hed-validator](https://www.npmjs.com/package/hed-validator/v/3.7
 ### MATLAB support
 
 Validation in MATLAB is supported through web-services calls and through wrappers for native HED Python tool calls. See the [MATLAB HEDTools](https://www.hedtags.org/hed-matlab) documentation for additional information.
+
+```{index} single: validation; strategies
+pair: BIDS; validation
+```
 
 ## Validation strategies
 

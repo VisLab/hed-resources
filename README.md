@@ -1,3 +1,12 @@
+```{meta}
+---
+description: Primary documentation and user resources for the Hierarchical Event
+  Descriptor (HED) system
+keywords: HED, Hierarchical Event Descriptors, documentation, tutorials, guides,
+  neuroimaging, BIDS, event annotation
+---
+```
+
 [![Documentation](https://img.shields.io/badge/docs-hedtags.org-blue.svg)](https://www.hedtags.org/hed-resources)
 
 # HED Resources

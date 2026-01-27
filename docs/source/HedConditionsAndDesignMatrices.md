@@ -1,3 +1,20 @@
+```{index} single: design matrices; HED
+single: conditions; experimental
+pair: HED; experimental design
+pair: condition variables; HED
+pair: factor variables; design matrices
+pair: BIDS; experimental design
+```
+
+```{meta}
+---
+description: Tutorial on encoding experimental design and conditions using HED 
+  annotations to automatically extract design matrices
+keywords: experimental design, design matrices, condition variables, factor 
+  variables, HED annotation, BIDS
+---
+```
+
 # HED conditions and design matrices
 
 This tutorial discusses how information from neuroimaging experiments should be stored and annotated so that the underlying experimental design and experimental conditions for a dataset can be automatically extracted, summarized, and used in analysis. The mechanisms for doing this use HED (Hierarchical Event Descriptors) in conjunction with a [BIDS](https://bids.neuroimaging.io/) (Brain Imaging Data Structure) representation of the dataset.
@@ -18,6 +35,10 @@ The [Experimental design concepts](experimental-design-concepts-anchor) section 
 This tutorial introduces tools and strategies for encoding information about the experimental design as part of a dataset metadata without excessive effort on the part of the researcher. The discussion mainly focuses on categorical variables.
 
 (hed-annotations-for-conditions-anchor)=
+
+```{index} single: conditions; HED annotations
+pair: condition variables; annotation
+```
 
 ## HED annotations for conditions
 
@@ -388,6 +409,11 @@ The file has 552 events. Since the *key-assignment* condition variable with leve
 All the condition variables have *number_multiple_events* equal to 0, so any of the three possible encodings: categorical, ordinal, or one-hot can be used.
 
 (experimental-design-concepts-anchor)=
+
+```{index} single: design; concepts
+pair: experimental design; concepts
+pair: factor variables; concepts
+```
 
 ## Experimental design concepts
 
