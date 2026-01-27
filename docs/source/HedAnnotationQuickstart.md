@@ -4,6 +4,15 @@ single: tutorial; annotation
 pair: HED; annotation
 ```
 
+```{meta}
+---
+description: Tutorial on annotating events using HED (Hierarchical Event 
+  Descriptors) with best practices for choosing annotations
+keywords: HED annotation, quickstart, tutorial, event annotation, data 
+  annotation
+---
+```
+
 # HED annotation quickstart
 
 This tutorial takes you through the steps of annotating the events using HED (Hierarchical Event Descriptors). The tutorial focuses on how to make good choices of HED annotations to make your data usable for downstream analysis. The mechanics of putting your selected HED annotations into [BIDS (Brain Imaging Data Structure)](https://bids.neuroimaging.io/) format is covered in the [BIDS annotation quickstart](./BidsAnnotationQuickstart.md) guide.
@@ -13,6 +22,9 @@ This tutorial takes you through the steps of annotating the events using HED (Hi
 
 (what-is-hed-annotation-anchor)=
 
+```{index} single: annotation; what is HED
+```
+
 ## What is HED annotation?
 
 A HED annotation consists of a comma separated list of tags selected from a HED vocabulary or schema. An important reason for using an agreed-upon vocabulary rather than free-form tagging for annotation is to avoid confusion and ambiguity and to promote data-sharing.
@@ -20,6 +32,10 @@ A HED annotation consists of a comma separated list of tags selected from a HED 
 The basic terms are organized into trees for easier access and search. The [HED schema browser](https://www.hedtags.org/hed-schema-browser/) allows you to explore these terms.
 
 (a-recipe-for-simple-annotation-anchor)=
+
+```{index} single: annotation; recipe
+pair: simple annotation; recipe
+```
 
 ## A recipe for simple annotation
 
@@ -133,6 +149,10 @@ See [BIDS annotation quick start](BidsAnnotationQuickstart.md#bids-annotation-qu
 This quick start demonstrates the most basic HED annotations. HED is capable of much more extensive and expressive annotations as explained in a series of tutorials on this site.
 
 (assembly-and-curly-braces-anchor)=
+
+```{index} single: assembly; curly braces
+pair: curly braces; annotation
+```
 
 ## Assembly and curly braces
 
