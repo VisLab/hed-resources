@@ -81,7 +81,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    Python HEDTools <hed-python/index>
    JavaScript HedTools <https://www.hedtags.org/hed-javascript>
    MATLAB HEDTools <https://www.hedtags.org/hed-matlab>
-   Table-remodeler <https://www.hedtags.org/table-remodeler>
+   Table-remodeler <table-remodeler/index>
    HED VSCode extension <HedVsCode.md>
    HED MCP <https://github.com/hed-standard/hed-mcp/blob/main/README.md>
    CTagger <https://www.hedtags.org/CTagger>

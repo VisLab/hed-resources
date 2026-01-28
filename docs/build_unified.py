@@ -72,6 +72,19 @@ def copy_submodule_docs():
             "dest": source_dir / "hed-python",
             "files": ["index.rst", "overview.md", "user_guide.md", "api/"],
         },
+        "table-remodeler": {
+            "source": submodules_dir / "table-remodeler" / "docs",
+            "dest": source_dir / "table-remodeler",
+            "files": [
+                "index.rst",
+                "introduction.md",
+                "quickstart.md",
+                "user_guide.md",
+                "custom_operations.md",
+                "operations/",
+                "api/",
+            ],
+        },
     }
 
     print("Copying submodule documentation into source tree...")
@@ -116,8 +129,8 @@ def copy_submodule_docs():
                 shutil.copy2(src_item, dest_item)
                 print(f"    Copied file: {file_or_dir}")
 
-                # Post-process index.rst for python-tools to remove "Indices and tables"
-                if name == "hed-python" and file_or_dir == "index.rst":
+                # Post-process index.rst to remove "Indices and tables"
+                if file_or_dir == "index.rst":
                     remove_indices_section(dest_item)
 
         # Copy _static directory if it exists

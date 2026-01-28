@@ -31,11 +31,13 @@ submodules_base = Path(__file__).parent.parent.parent / "submodules"
 # List of submodules with documentation to integrate
 submodule_docs = {
     "hed-python": submodules_base / "hed-python" / "docs",
+    "table-remodeler": submodules_base / "table-remodeler" / "docs",
 }
 
 # Add submodule source code paths to sys.path for autodoc
 submodule_sources = {
     "hed-python": submodules_base / "hed-python",
+    "table-remodeler": submodules_base / "table-remodeler",
 }
 
 for name, src_path in submodule_sources.items():
