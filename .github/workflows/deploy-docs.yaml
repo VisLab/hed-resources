@@ -27,6 +27,10 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
+      - name: Update submodules
+        run: |
+          git submodule update --init --recursive
+
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
