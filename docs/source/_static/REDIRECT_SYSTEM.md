@@ -151,28 +151,6 @@ After pushing to GitHub:
 2. Test with the production URLs
 3. Check external links that pointed to the old location
 
-## Example: Table Remodeling Migration
-
-The table remodeling documentation was moved from `hedtags.org/hed-resources` to `hedtags.org/table-remodeler`.
-
-### Configuration Entry
-
-```javascript
-"HedRemodelingQuickstart.html": {
-    newUrl: "https://www.hedtags.org/table-remodeler/quickstart.html",
-    anchorMap: {
-        "#hed-remodeling-quickstart-anchor": "#quickstart-anchor",
-        "#what-is-remodeling-anchor": "#what-is-remodeling-anchoor",
-        // ... more mappings
-    }
-}
-```
-
-### Result
-
-- Old URL: `hedtags.org/hed-resources/HedRemodelingQuickstart.html#what-is-remodeling-anchor`
-- Redirects to: `hedtags.org/table-remodeler/quickstart.html#what-is-remodeling`
-
 ## SEO Considerations
 
 ### For Search Engines

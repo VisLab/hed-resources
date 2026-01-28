@@ -1,6 +1,9 @@
 [submodule "submodules/hed-python"]
 	path = submodules/hed-python
 	url = https://github.com/hed-standard/hed-python.git
+[submodule "submodules/hed-vis"]
+	path = submodules/hed-vis
+	url = https://github.com/hed-standard/hed-vis.git
 [submodule "submodules/table-remodeler"]
 	path = submodules/table-remodeler
 	url = https://github.com/hed-standard/table-remodeler.git

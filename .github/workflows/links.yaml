@@ -35,8 +35,8 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -e .[docs]
-          pip install -e submodules/hed-python
-          pip install -e submodules/table-remodeler
+          pip install -e submodules/hed-python[docs]
+          pip install -e submodules/hed-vis[docs]
 
       - name: Build documentation with Sphinx
         run: |

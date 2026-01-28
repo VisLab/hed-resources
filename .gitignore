@@ -110,6 +110,7 @@ docs/source/javascript-tools/
 docs/source/schemas-docs/
 docs/source/hed-python/
 docs/source/table-remodeler/
+docs/source/hed-vis/
 
 # Submodules (tracked via .gitmodules, ignore local clones)
 submodules/*/
