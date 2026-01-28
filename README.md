@@ -101,6 +101,11 @@ To integrate documentation from a new HED repository:
            "dest": source_dir / "hed-python",
            "files": ["index.rst", "overview.md", "user_guide.md", "api/"],
        },
+       "table-remodeler": {
+           "source": submodules_dir / "table-remodeler" / "docs",
+           "dest": source_dir / "table-remodeler",
+           "files": ["index.rst", "introduction.md", "quickstart.md", "user_guide.md", "custom_operations.md", "operations/", "api/"],
+       },
        "your-repo": {
            "source": submodules_dir / "your-repo" / "docs",
            "dest": source_dir / "your-repo",
@@ -116,11 +121,13 @@ To integrate documentation from a new HED repository:
    ```python
    submodule_docs = {
        "hed-python": submodules_base / "hed-python" / "docs",
+       "table-remodeler": submodules_base / "table-remodeler" / "docs",
        "your-repo": submodules_base / "your-repo" / "docs",
    }
 
    submodule_sources = {
        "hed-python": submodules_base / "hed-python",
+       "table-remodeler": submodules_base / "table-remodeler",
        "your-repo": submodules_base / "your-repo",
    }
    ```
@@ -132,17 +139,22 @@ To integrate documentation from a new HED repository:
    ```javascript
    const repoConfig = {
        'hed-python/': {
-           label: '[hed-python]',
+           label: 'HED Python',
            color: '#b8860b',  // goldenrod
            order: 2
        },
+       'table-remodeler/': {
+           label: 'Table Remodeler',
+           color: '#dc143c',  // crimson
+           order: 3
+       },
        'your-repo/': {
-           label: '[your-repo]',
+           label: 'Your Repo',
            color: '#ff6347',  // Choose a distinct color
-           order: 3  // Higher numbers appear later in search results
+           order: 4  // Higher numbers appear later in search results
        },
        'default': {
-           label: '[hed-resources]',
+           label: 'HED Resources',
            color: '#0969da',  // blue
            order: 1  // Appears first in search results
        }
@@ -161,6 +173,7 @@ To integrate documentation from a new HED repository:
       :caption: Tool Documentation:
       
       hed-python/index
+      table-remodeler/index
       your-repo/index
    ```
 

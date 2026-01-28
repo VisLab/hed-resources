@@ -13,6 +13,11 @@
             color: '#b8860b',  // goldenrod
             order: 2
         },
+        'table-remodeler/': {
+            label: 'Table Remodeler',
+            color: '#dc143c',  // crimson
+            order: 3
+        },
         // Default for all other results
         'default': {
             label: 'HED Resources',

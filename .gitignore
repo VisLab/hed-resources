@@ -109,6 +109,10 @@ docs/source/matlab-tools/
 docs/source/javascript-tools/
 docs/source/schemas-docs/
 docs/source/hed-python/
+docs/source/table-remodeler/
+
+# Submodules (tracked via .gitmodules, ignore local clones)
+submodules/*/
 
 #machine specific files
 .vimrc
