@@ -21,9 +21,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Update submodules
+      - name: Verify submodules
         run: |
-          git submodule update --init --recursive
+          ls -la submodules/
+          test -d submodules/hed-python || (echo "hed-python submodule not found" && exit 1)
+          test -d submodules/table-remodeler || (echo "table-remodeler submodule not found" && exit 1)
 
       - name: Setup Python
         uses: actions/setup-python@v6
