@@ -94,6 +94,14 @@ To integrate documentation from a new HED repository:
    git submodule update --init --recursive
    ```
 
+   **Important**: The submodule will be automatically staged (as a gitlink entry) and should be committed:
+
+   ```bash
+   git commit -m "Add REPO-NAME submodule"
+   ```
+
+   The `.gitignore` is configured to allow submodule gitlinks while ignoring their contents.
+
 2. **Configure the build script** (`docs/build_unified.py`):
 
    Add your submodule to the `submodules` dictionary with the files/directories to copy:
