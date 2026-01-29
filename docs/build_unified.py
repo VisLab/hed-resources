@@ -64,6 +64,7 @@ def copy_submodule_docs():
     repo_root = Path(__file__).parent.parent
     source_dir = repo_root / "docs" / "source"
     submodules_dir = repo_root / "submodules"
+    index_templates_dir = repo_root / "docs" / "submodule-indexes"
 
     # Define submodules to include
     submodules = {
@@ -94,6 +95,12 @@ def copy_submodule_docs():
                 "user_guide.md",
                 "api/",
             ],
+        },
+        "hed-mcp": {
+            "source": submodules_dir / "hed-mcp",
+            "dest": source_dir / "hed-mcp",
+            "files": ["README.md", "EXAMPLES.md", "API.md"],
+            "index_template": "hed-mcp-index.rst",
         },
     }
 
@@ -149,6 +156,16 @@ def copy_submodule_docs():
             static_dest = dest_path / "_static"
             shutil.copytree(static_src, static_dest, dirs_exist_ok=True)
             print("    Copied _static directory")
+
+        # Copy index template if specified (for submodules without traditional docs/)
+        if "index_template" in config:
+            template_file = index_templates_dir / config["index_template"]
+            if template_file.exists():
+                index_dest = dest_path / "index.rst"
+                shutil.copy2(template_file, index_dest)
+                print(f"    Copied index from template: {config['index_template']}")
+            else:
+                print(f"    Warning: Index template not found: {template_file}")
 
     print("[OK] Submodule documentation copied successfully\n")
 

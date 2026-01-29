@@ -7,3 +7,6 @@
 [submodule "submodules/table-remodeler"]
 	path = submodules/table-remodeler
 	url = https://github.com/hed-standard/table-remodeler.git
+[submodule "submodules/hed-mcp"]
+	path = submodules/hed-mcp
+	url = https://github.com/hed-standard/hed-mcp.git
