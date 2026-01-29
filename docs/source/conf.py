@@ -33,6 +33,7 @@ submodule_docs = {
     "hed-python": submodules_base / "hed-python" / "docs",
     "table-remodeler": submodules_base / "table-remodeler" / "docs",
     "hed-vis": submodules_base / "hed-vis" / "docs",
+    "hed-mcp": submodules_base / "hed-mcp",
 }
 
 # Add submodule source code paths to sys.path for autodoc
@@ -40,6 +41,7 @@ submodule_sources = {
     "hed-python": submodules_base / "hed-python",
     "table-remodeler": submodules_base / "table-remodeler",
     "hed-vis": submodules_base / "hed-vis",
+    "hed-mcp": submodules_base / "hed-mcp",
 }
 
 for name, src_path in submodule_sources.items():

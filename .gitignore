@@ -111,6 +111,7 @@ docs/source/schemas-docs/
 docs/source/hed-python/
 docs/source/table-remodeler/
 docs/source/hed-vis/
+docs/source/hed-mcp/
 
 # Submodules are tracked via .gitmodules
 # Don't ignore the submodule directories themselves (git needs to track the gitlinks)
