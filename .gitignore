@@ -110,9 +110,10 @@ docs/source/javascript-tools/
 docs/source/schemas-docs/
 docs/source/hed-python/
 docs/source/table-remodeler/
+docs/source/hed-vis/
 
-# Submodules (tracked via .gitmodules, ignore local clones)
-submodules/*/
+# Submodules are tracked via .gitmodules
+# Don't ignore the submodule directories themselves (git needs to track the gitlinks)
 
 #machine specific files
 .vimrc

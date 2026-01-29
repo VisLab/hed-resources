@@ -77,11 +77,21 @@ def copy_submodule_docs():
             "dest": source_dir / "table-remodeler",
             "files": [
                 "index.rst",
-                "introduction.md",
+                "overview.md",
                 "quickstart.md",
                 "user_guide.md",
                 "custom_operations.md",
                 "operations/",
+                "api/",
+            ],
+        },
+        "hed-vis": {
+            "source": submodules_dir / "hed-vis" / "docs",
+            "dest": source_dir / "hed-vis",
+            "files": [
+                "index.rst",
+                "overview.md",
+                "user_guide.md",
                 "api/",
             ],
         },

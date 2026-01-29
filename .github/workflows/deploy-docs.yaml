@@ -42,8 +42,9 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -e .[docs]
-          pip install -e submodules/hed-python
-          pip install -e submodules/table-remodeler
+          pip install -e submodules/hed-python[docs]
+          pip install -e submodules/hed-vis[docs]
+          pip install -e submodules/table-remodeler[docs]
 
       - name: Cache Sphinx build
         uses: actions/cache@v5

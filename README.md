@@ -37,8 +37,11 @@ To set up a development environment for building and contributing to the documen
 git clone https://github.com/hed-standard/hed-resources.git
 cd hed-resources
 
-# Install in development mode with all dependencies
-pip install -e .[dev]
+# Install in development mode with documentation dependencies
+pip install -e .[docs]
+
+# Or install with both documentation and quality tools
+pip install -e .[docs,quality]
 
 # Build unified documentation (copies submodule docs + builds with Sphinx)
 hed-build-docs
@@ -67,9 +70,10 @@ See [scripts/README.md](scripts/README.md) for detailed usage information.
 
 ### Available dependency groups:
 
-- `docs` - Sphinx documentation building
-- `quality` - Link checking and code quality tools
-- `dev` - All of the above for development
+- `docs` - Sphinx and documentation building tools
+- `quality` - Link checking, linting, and code quality tools
+
+Install both groups for full development setup: `pip install -e .[docs,quality]`
 
 ### Building documentation
 
@@ -90,6 +94,20 @@ To integrate documentation from a new HED repository:
    git submodule update --init --recursive
    ```
 
+   **What this does automatically**:
+
+   - Clones the repository to `submodules/REPO-NAME`
+   - Updates `.gitmodules` with the new submodule entry
+   - Stages the submodule gitlink entry in the git index
+
+   **Commit the changes**:
+
+   ```bash
+   git commit -m "Add REPO-NAME submodule"
+   ```
+
+   This commits both the updated `.gitmodules` file and the submodule gitlink.
+
 2. **Configure the build script** (`docs/build_unified.py`):
 
    Add your submodule to the `submodules` dictionary with the files/directories to copy:
@@ -104,7 +122,7 @@ To integrate documentation from a new HED repository:
        "table-remodeler": {
            "source": submodules_dir / "table-remodeler" / "docs",
            "dest": source_dir / "table-remodeler",
-           "files": ["index.rst", "introduction.md", "quickstart.md", "user_guide.md", "custom_operations.md", "operations/", "api/"],
+           "files": ["index.rst", "overview.md", "quickstart.md", "user_guide.md", "custom_operations.md", "operations/", "api/"],
        },
        "your-repo": {
            "source": submodules_dir / "your-repo" / "docs",
