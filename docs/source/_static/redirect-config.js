@@ -130,8 +130,9 @@ const REDIRECT_CONFIG = {
             "#validation": "#validation",
             "#hed-based-epoching": "#hed-based-epoching"
         }
-    },
+    }
     
+    /* Commented out - HED MATLAB Tools documentation now integrated in unified docs
     // HED MATLAB Tools documentation moved to hedtags.org/hed-matlab
     "HedMatlabTools.html": {
         newUrl: "https://www.hedtags.org/hed-matlab/",
@@ -181,6 +182,7 @@ const REDIRECT_CONFIG = {
             "#decoding-a-service-response": ""
         }
     }
+    */
     
     // Add more pages as they are migrated:
     // "OldPageName.html": {

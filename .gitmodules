@@ -10,3 +10,9 @@
 [submodule "submodules/hed-mcp"]
 	path = submodules/hed-mcp
 	url = https://github.com/hed-standard/hed-mcp.git
+[submodule "submodules/hed-matlab"]
+	path = submodules/hed-matlab
+	url = https://github.com/hed-standard/hed-matlab.git
+[submodule "submodules/ndx-hed"]
+	path = submodules/ndx-hed
+	url = https://github.com/hed-standard/ndx-hed.git

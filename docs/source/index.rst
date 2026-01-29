@@ -64,7 +64,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
 
    BidsAnnotationQuickstart.md
    HedAnnotationQuickstart.md
-   HED annotation in NWB <https://www.hedtags.org/ndx-hed>
+   NWBAnnotationQuickstart.md
    HedValidationGuide.md
    HedSearchGuide.md
    HedSummaryGuide.md
@@ -80,12 +80,13 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    Schema developer guide <https://www.hedtags.org/hed-schemas>
    Python HEDTools <hed-python/index>
    JavaScript HedTools <https://www.hedtags.org/hed-javascript>
-   MATLAB HEDTools <https://www.hedtags.org/hed-matlab>
+   MATLAB HEDTools <hed-matlab/index>
+   NWB HED extension <ndx-hed/index>
    Table-remodeler <table-remodeler/index>
-   HED VSCode extension <HedVsCode.md>
    HED MCP server <hed-mcp/index>
    HED visualization tools <hed-vis/index>
    CTagger <https://www.hedtags.org/CTagger>
+   HED VSCode extension <HedVsCode.md>
 
 
 .. toctree::

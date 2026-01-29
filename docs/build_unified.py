@@ -102,6 +102,29 @@ def copy_submodule_docs():
             "files": ["README.md", "EXAMPLES.md", "API.md"],
             "index_template": "hed-mcp-index.rst",
         },
+        "hed-matlab": {
+            "source": submodules_dir / "hed-matlab" / "docs",
+            "dest": source_dir / "hed-matlab",
+            "files": [
+                "index.rst",
+                "overview.md",
+                "user_guide.md",
+                "development.md",
+                "api2.rst",
+            ],
+        },
+        "ndx-hed": {
+            "source": submodules_dir / "ndx-hed" / "docs" / "source",
+            "dest": source_dir / "ndx-hed",
+            "files": [
+                "index.rst",
+                "description.rst",
+                "format.rst",
+                "release_notes.rst",
+                "credits.rst",
+                "api.rst",
+            ],
+        },
     }
 
     print("Copying submodule documentation into source tree...")

@@ -1,3 +1,10 @@
+.. index:: single: MCP server
+.. index:: single: Model Context Protocol
+.. index:: pair: HED; validation
+.. index:: pair: MCP; validation
+.. index:: single: validation tools
+.. index:: triple: HED; MCP; TypeScript
+
 HED MCP Server
 ==============
 
