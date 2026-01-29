@@ -1,3 +1,3 @@
 [codespell]
-skip = datasets,.git,*.pdf,*.svg,deprecated,*.xml,*.mediawiki,*.omn,datasets,./.venv,/.venv,.venv/*,./docs/_build,docs/_build/*,./docs/_build/*,docs/source/_static/*,./docs/source/_static/*,dist,dist/*,src,src/*
+skip = datasets,.git,*.pdf,*.svg,deprecated,*.xml,*.mediawiki,*.omn,.venv,.venv/*,docs/_build,docs/_build/*,docs/source/_static,docs/source/_static/*,docs/source/_templates,docs/source/_templates/*,docs/source/hed-python,docs/source/hed-python/*,docs/source/hed-matlab,docs/source/hed-matlab/*,docs/source/hed-vis,docs/source/hed-vis/*,docs/source/hed-mcp,docs/source/hed-mcp/*,docs/source/ndx-hed,docs/source/ndx-hed/*,docs/source/table-remodeler,docs/source/table-remodeler/*,dist,dist/*,src,src/*
 ignore-words-list = covert,hed,recuse,parms

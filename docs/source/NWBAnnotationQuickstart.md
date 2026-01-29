@@ -15,7 +15,7 @@ pair: Neurodata Without Borders; HED
 
 This tutorial provides a step-by-step guide to adding HED (Hierarchical Event Descriptors) annotations to NWB ([Neurodata Without Borders](https://nwb.org)) files using the **ndx-hed** extension. See [HED annotation quickstart](HedAnnotationQuickstart.md) for guidelines on what annotations to choose.
 
-We assume you have basic familiarity with creating NWB files in Python and focus on the mechanics of adding HED annotations to various NWB data structures. See the [NWB Software overview](https://nwb-overview.readthedocs.io/en/latest/) for information about setting up your NWB software environmnt.
+We assume you have basic familiarity with creating NWB files in Python and focus on the mechanics of adding HED annotations to various NWB data structures. See the [NWB Software overview](https://nwb-overview.readthedocs.io/en/latest/) for information about setting up your NWB software environment.
 
 The examples in this tutorial use the **ndx-hed** extension, which provides three main classes for HED integration in NWB files. These classes work with any NWB `DynamicTable`, making HED annotation flexible across different types of neurophysiology data.
 
