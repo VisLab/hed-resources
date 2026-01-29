@@ -42,7 +42,7 @@ Two types of errors can occur: **syntactic** and **semantic**.
 
 > **Syntactic** errors refer to format errors that aren't related to any particular HED schema, for example, missing commas or mismatched parentheses.
 
-> **Semantic** errors refer to annotations that don't comply with the rules of the particular HED vocabularies used in the annotation, for example, invalid HED tags or values that have the wrong units or type. Semantic errors also include higher-level requirements such as missing definitions or unmatched *Offset* tags when designating the [**temporal scope**](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope) of events.
+> **Semantic** errors refer to annotations that don't comply with the rules of the particular HED vocabularies used in the annotation, for example, invalid HED tags or values that have the wrong units or type. Semantic errors also include higher-level requirements such as missing definitions or unmatched *Offset* tags when designating the [temporal scope](https://www.hedtags.org/hed-specification/05_Advanced_annotation.html#temporal-scope) of events.
 
 Current versions of the validators do not separate these phases and require that the appropriate HED schemas are available at the time of validation.
 

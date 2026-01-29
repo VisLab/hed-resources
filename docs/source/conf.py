@@ -34,6 +34,8 @@ submodule_docs = {
     "table-remodeler": submodules_base / "table-remodeler" / "docs",
     "hed-vis": submodules_base / "hed-vis" / "docs",
     "hed-mcp": submodules_base / "hed-mcp",
+    "hed-matlab": submodules_base / "hed-matlab" / "docs",
+    "ndx-hed": submodules_base / "ndx-hed" / "docs" / "source",
 }
 
 # Add submodule source code paths to sys.path for autodoc
@@ -42,6 +44,8 @@ submodule_sources = {
     "table-remodeler": submodules_base / "table-remodeler",
     "hed-vis": submodules_base / "hed-vis",
     "hed-mcp": submodules_base / "hed-mcp",
+    "hed-matlab": submodules_base / "hed-matlab",
+    "ndx-hed": submodules_base / "ndx-hed" / "src",
 }
 
 for name, src_path in submodule_sources.items():
