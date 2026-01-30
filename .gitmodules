@@ -16,3 +16,6 @@
 [submodule "submodules/ndx-hed"]
 	path = submodules/ndx-hed
 	url = https://github.com/hed-standard/ndx-hed.git
+[submodule "submodules/hed-schemas"]
+	path = submodules/hed-schemas
+	url = https://github.com/hed-standard/hed-schemas.git

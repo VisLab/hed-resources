@@ -13,8 +13,9 @@ const REDIRECT_CONFIG = {
         newUrl: "https://www.hedtags.org/hed-schemas/developer_guide.html"
     },
     
-    // HED Annotation in NWB documentation moved to hedtags.org/ndx-hed
-    // All anchors redirect to the base URL (no fragments)
+    // HED Annotation in NWB documentation now integrated in unified docs via NWBAnnotationQuickstart.md
+    // Redirect disabled to avoid conflicts with local documentation
+    /*
     "HedAnnotationInNWB.html": {
         newUrl: "https://www.hedtags.org/ndx-hed/",
         anchorMap: {
@@ -30,6 +31,7 @@ const REDIRECT_CONFIG = {
             "#hed-in-nwb-files": ""
         }
     },
+    */
     
     // HED Online Tools documentation moved to hedtags.org/hed-web
     // All anchors redirect to the base URL (no fragments)

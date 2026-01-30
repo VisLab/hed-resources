@@ -77,7 +77,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Tool documentation:
 
    HED online tools <https://www.hedtags.org/hed-web>
-   Schema developer guide <https://www.hedtags.org/hed-schemas>
+   HED schemas <hed-schemas/index>
    Python HEDTools <hed-python/index>
    JavaScript HedTools <https://www.hedtags.org/hed-javascript>
    MATLAB HEDTools <hed-matlab/index>

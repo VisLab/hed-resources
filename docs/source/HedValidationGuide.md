@@ -6,13 +6,10 @@ pair: syntactic errors; HED
 pair: semantic errors; HED
 ```
 
-```{meta}
----
-description: Guide to validating HED annotations including error types and 
-  validation tools
-keywords: HED validation, error checking, syntactic errors, semantic errors, HED
-  schemas
----
+```{eval-rst}
+.. meta::
+   :description: Guide to validating HED annotations including error types and validation tools
+   :keywords: HED validation, error checking, syntactic errors, semantic errors, HED schemas
 ```
 
 # HED validation guide

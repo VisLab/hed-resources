@@ -36,6 +36,7 @@ submodule_docs = {
     "hed-mcp": submodules_base / "hed-mcp",
     "hed-matlab": submodules_base / "hed-matlab" / "docs",
     "ndx-hed": submodules_base / "ndx-hed" / "docs" / "source",
+    "hed-schemas": submodules_base / "hed-schemas" / "docs" / "source",
 }
 
 # Add submodule source code paths to sys.path for autodoc
@@ -46,6 +47,7 @@ submodule_sources = {
     "hed-mcp": submodules_base / "hed-mcp",
     "hed-matlab": submodules_base / "hed-matlab",
     "ndx-hed": submodules_base / "ndx-hed" / "src",
+    "hed-schemas": submodules_base / "hed-schemas",
 }
 
 for name, src_path in submodule_sources.items():
