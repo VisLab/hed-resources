@@ -5,9 +5,6 @@
   
   <!-- Sidebar scroll fix - MUST load before Furo's scripts -->
   <script>
-    // Store the desired scroll position (preserve it across navigation)
-    window.sidebarScrollPosition = sessionStorage.getItem('sidebarScrollPosition') || 0;
-    
     // Override scrollIntoView IMMEDIATELY before any other scripts load
     (function() {
       const originalScrollIntoView = Element.prototype.scrollIntoView;
@@ -34,7 +31,7 @@
         return originalScrollIntoView.call(this, arg);
       };
       
-      // Also restore scroll position as soon as possible
+      // Restore and persist sidebar scroll position across navigation
       document.addEventListener('DOMContentLoaded', function() {
         const sidebar = document.querySelector('.sidebar-scroll');
         if (sidebar) {

@@ -1,42 +1,13 @@
 /**
- * Fix sidebar scroll jump when clicking navigation links
+ * Additional sidebar scroll fixes for navigation clicks
  * 
- * Furo's JavaScript scrolls the active navigation item into view, causing
- * the sidebar to jump to the top. This script aggressively prevents that.
+ * This script provides additional protections against sidebar scrolling
+ * when clicking navigation links. The primary scrollIntoView override
+ * is in base.html (loaded before Furo), while this file handles
+ * click-time scroll position preservation.
  */
 
-// Override scrollIntoView IMMEDIATELY, before anything else loads
-(function() {
-    'use strict';
-    
-    const originalScrollIntoView = Element.prototype.scrollIntoView;
-    
-    Element.prototype.scrollIntoView = function(arg) {
-        // Get the sidebar container
-        const sidebar = document.querySelector('.sidebar-scroll');
-        
-        // Check if this element is inside the sidebar
-        if (sidebar && sidebar.contains(this)) {
-            // Check if it's a navigation element
-            const isInSidebarTree = this.closest('.sidebar-tree') !== null;
-            const isNavElement = this.classList.contains('reference') ||
-                               this.classList.contains('current') ||
-                               this.classList.contains('toctree-l1') ||
-                               this.classList.contains('toctree-l2') ||
-                               this.classList.contains('toctree-l3') ||
-                               this.tagName === 'LI';
-            
-            if (isInSidebarTree || isNavElement) {
-                return; // Don't scroll!
-            }
-        }
-        
-        // For non-sidebar elements, use original behavior
-        return originalScrollIntoView.call(this, arg);
-    };
-})();
-
-// Also set up additional protections after DOM loads
+// Set up click handlers to preserve scroll position
 (function() {
     'use strict';
     
