@@ -1,5 +1,54 @@
 {% extends "!base.html" %}
 
+{%- block extrahead %}
+  {{ super() }}
+  
+  <!-- Sidebar scroll fix - MUST load before Furo's scripts -->
+  <script>
+    // Override scrollIntoView IMMEDIATELY before any other scripts load
+    (function() {
+      const originalScrollIntoView = Element.prototype.scrollIntoView;
+      
+      Element.prototype.scrollIntoView = function(arg) {
+        // Check if element or any parent has sidebar-related classes
+        let elem = this;
+        while (elem) {
+          if (elem.classList && (
+            elem.classList.contains('sidebar-scroll') ||
+            elem.classList.contains('sidebar-tree') ||
+            elem.classList.contains('toctree-l1') ||
+            elem.classList.contains('toctree-l2') ||
+            elem.classList.contains('toctree-l3') ||
+            elem.classList.contains('reference') ||
+            elem.classList.contains('current')
+          )) {
+            return; // Don't scroll!
+          }
+          elem = elem.parentElement;
+        }
+        
+        // For non-sidebar elements, use original behavior
+        return originalScrollIntoView.call(this, arg);
+      };
+      
+      // Restore and persist sidebar scroll position across navigation
+      document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.querySelector('.sidebar-scroll');
+        if (sidebar) {
+          // Restore saved position
+          const savedPos = parseInt(sessionStorage.getItem('sidebarScrollPosition')) || 0;
+          sidebar.scrollTop = savedPos;
+          
+          // Save position whenever it changes
+          sidebar.addEventListener('scroll', function() {
+            sessionStorage.setItem('sidebarScrollPosition', sidebar.scrollTop);
+          }, { passive: true });
+        }
+      });
+    })();
+  </script>
+{%- endblock extrahead %}
+
 {%- block scripts %}
   {{ super() }}
   
