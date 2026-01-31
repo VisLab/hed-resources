@@ -79,7 +79,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    HED online tools <https://www.hedtags.org/hed-web>
    HED schemas <hed-schemas/index>
    Python HEDTools <hed-python/index>
-   JavaScript HedTools <https://www.hedtags.org/hed-javascript>
+   JavaScript HEDTools <hed-javascript/index>
    MATLAB HEDTools <hed-matlab/index>
    NWB HED extension <ndx-hed/index>
    Table-remodeler <table-remodeler/index>
