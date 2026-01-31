@@ -22,3 +22,9 @@
 [submodule "submodules/hed-javascript"]
 	path = submodules/hed-javascript
 	url = https://github.com/hed-standard/hed-javascript.git
+[submodule "submodules/hed-web"]
+	path = submodules/hed-web
+	url = https://github.com/hed-standard/hed-web.git
+[submodule "submodules/CTagger"]
+	path = submodules/CTagger
+	url = https://github.com/hed-standard/CTagger.git

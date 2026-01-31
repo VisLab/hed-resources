@@ -102,6 +102,12 @@ def copy_submodule_docs():
             "files": ["README.md", "EXAMPLES.md", "API.md"],
             "index_template": "hed-mcp-index.rst",
         },
+        "hed-javascript": {
+            "source": submodules_dir / "hed-javascript",
+            "dest": source_dir / "hed-javascript",
+            "files": ["README.md"],
+            "index_template": "hed-javascript-index.rst",
+        },
         "hed-matlab": {
             "source": submodules_dir / "hed-matlab" / "docs",
             "dest": source_dir / "hed-matlab",
@@ -136,6 +142,27 @@ def copy_submodule_docs():
                 "contributing.md",
                 "schemas_reference.md",
                 "api2.rst",
+            ],
+        },
+        "hed-web": {
+            "source": submodules_dir / "hed-web" / "docs",
+            "dest": source_dir / "hed-web",
+            "files": [
+                "index.rst",
+                "introduction.md",
+                "installation.md",
+                "user_guide.md",
+                "api/",
+            ],
+        },
+        "CTagger": {
+            "source": submodules_dir / "CTagger" / "docs",
+            "dest": source_dir / "CTagger",
+            "files": [
+                "index.rst",
+                "introduction.md",
+                "user_guide.md",
+                "ctagger_in_eeglab.md",
             ],
         },
     }
