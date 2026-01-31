@@ -19,3 +19,6 @@
 [submodule "submodules/hed-schemas"]
 	path = submodules/hed-schemas
 	url = https://github.com/hed-standard/hed-schemas.git
+[submodule "submodules/hed-javascript"]
+	path = submodules/hed-javascript
+	url = https://github.com/hed-standard/hed-javascript.git
