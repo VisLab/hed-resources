@@ -68,7 +68,7 @@ be done as PRs (pull requests) to the `main` branch.
 
 ### Running the browser locally
 
-```code
+```bash
 cd browser
 npm install
 npm run build
