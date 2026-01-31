@@ -274,3 +274,23 @@ body[data-theme="dark"] .content-icon-container a[href*="github.com"]:not([href*
 .sidebar-tree .toctree-l3.has-children > .reference {
     scroll-margin-top: 0 !important;
 }
+
+/* Prevent any automatic scrolling in the sidebar scroll container */
+.sidebar-scroll {
+    scroll-behavior: auto !important;
+}
+
+/* Disable focus scrolling for navigation items */
+.sidebar-tree input.toctree-checkbox:focus,
+.sidebar-tree label:focus,
+.sidebar-tree a:focus {
+    scroll-margin: 0 !important;
+    scroll-margin-top: 0 !important;
+    scroll-margin-bottom: 0 !important;
+}
+
+/* Additional specificity to override any theme defaults */
+nav.bd-links .sidebar-tree li,
+nav.bd-links .sidebar-tree ul {
+    scroll-margin: 0 !important;
+}
