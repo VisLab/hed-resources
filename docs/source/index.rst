@@ -76,7 +76,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :hidden:
    :caption: Tool documentation:
 
-   HED online tools <https://www.hedtags.org/hed-web>
+   HED online tools <hed-web/index>
    HED schemas <hed-schemas/index>
    Python HEDTools <hed-python/index>
    JavaScript HEDTools <hed-javascript/index>
@@ -85,7 +85,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    Table-remodeler <table-remodeler/index>
    HED MCP server <hed-mcp/index>
    HED visualization tools <hed-vis/index>
-   CTagger <https://www.hedtags.org/CTagger>
+   CTagger <CTagger/index>
    HED VSCode extension <HedVsCode.md>
 
 
