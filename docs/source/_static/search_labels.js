@@ -13,10 +13,50 @@
             color: '#b8860b',  // goldenrod
             order: 2
         },
+        'hed-schemas/': {
+            label: 'HED Schemas',
+            color: '#4b0082',  // indigo
+            order: 3
+        },
+        'hed-matlab/': {
+            label: 'HED MATLAB',
+            color: '#e97451',  // burnt orange
+            order: 4
+        },
+        'hed-javascript/': {
+            label: 'HED JavaScript',
+            color: '#f1e05a',  // JavaScript yellow
+            order: 5
+        },
+        'hed-mcp/': {
+            label: 'HED MCP',
+            color: '#2e8b57',  // sea green
+            order: 6
+        },
+        'hed-web/': {
+            label: 'HED Web',
+            color: '#563d7c',  // purple
+            order: 7
+        },
+        'hed-vis/': {
+            label: 'HED Vis',
+            color: '#ff6347',  // tomato
+            order: 8
+        },
+        'ndx-hed/': {
+            label: 'NWB Extension',
+            color: '#ff1493',  // deep pink
+            order: 9
+        },
         'table-remodeler/': {
             label: 'Table Remodeler',
             color: '#dc143c',  // crimson
-            order: 3
+            order: 10
+        },
+        'CTagger/': {
+            label: 'CTagger',
+            color: '#00ced1',  // dark turquoise
+            order: 11
         },
         // Default for all other results
         'default': {
