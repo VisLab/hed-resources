@@ -38,6 +38,8 @@ submodule_docs = {
     "hed-matlab": submodules_base / "hed-matlab" / "docs",
     "ndx-hed": submodules_base / "ndx-hed" / "docs" / "source",
     "hed-schemas": submodules_base / "hed-schemas" / "docs" / "source",
+    "hed-web": submodules_base / "hed-web" / "docs",
+    "CTagger": submodules_base / "CTagger" / "docs",
 }
 
 # Add submodule source code paths to sys.path for autodoc
@@ -50,6 +52,8 @@ submodule_sources = {
     "hed-matlab": submodules_base / "hed-matlab",
     "ndx-hed": submodules_base / "ndx-hed" / "src",
     "hed-schemas": submodules_base / "hed-schemas",
+    "hed-web": submodules_base / "hed-web",
+    "CTagger": submodules_base / "CTagger",
 }
 
 for name, src_path in submodule_sources.items():
@@ -178,19 +182,6 @@ html_sidebars = {
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 html_js_files = ["gh_icon_fix.js", "search_labels.js", "fix_sidebar_scroll.js"]
-
-# Copy redirect HTML pages and custom search page directly to output (no Sphinx)
-# These files will be copied as-is to the _build/html directory
-html_extra_path = [
-    "HedRemodelingQuickstart.html",
-    "HedRemodelingTools.html",
-    "HedAnnotationInNWB.html",
-    "HedOnlineTools.html",
-    "HedJavascriptTools.html",
-    "CTaggerGuide.html",
-    "HedAndEEGLAB.html",
-    "HedMatlabTools.html",
-]
 
 # -- Intersphinx configuration -----------------------------------------------
 # Enable cross-references to external documentation
