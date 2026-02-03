@@ -150,7 +150,27 @@ To integrate documentation from a new HED repository:
    }
    ```
 
-4. **Add search result labels** (`docs/source/_static/search_labels.js`):
+4. **Update GitHub icon fix script** (`docs/source/_static/gh_icon_fix.js`):
+
+   Add your repository to the `repoMap` so the GitHub icon links to the correct repository:
+
+   ```javascript
+   const repoMap = {
+       'hed-python/': 'hed-python',
+       'hed-schemas/': 'hed-schemas',
+       'hed-matlab/': 'hed-matlab',
+       'hed-javascript/': 'hed-javascript',
+       'hed-mcp/': 'hed-mcp',
+       'hed-web/': 'hed-web',
+       'hed-vis/': 'hed-vis',
+       'ndx-hed/': 'ndx-hed',
+       'table-remodeler/': 'table-remodeler',
+       'CTagger/': 'CTagger',
+       'your-repo/': 'your-repo'  // Add your repository here
+   };
+   ```
+
+5. **Add search result labels** (`docs/source/_static/search_labels.js`):
 
    Add your repository to the color configuration and set its sort order:
 
@@ -181,7 +201,7 @@ To integrate documentation from a new HED repository:
 
    The `order` field controls the grouping of search results - lower numbers appear first. Results within each repository are sorted by relevance score.
 
-5. **Add to main documentation navigation** (`docs/source/index.rst`):
+6. **Add to main documentation navigation** (`docs/source/index.rst`):
 
    Include your submodule in the table of contents:
 
@@ -195,7 +215,7 @@ To integrate documentation from a new HED repository:
       your-repo/index
    ```
 
-6. **Test the integration**:
+7. **Test the integration**:
 
    ```bash
    hed-build-docs
