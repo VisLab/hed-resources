@@ -106,6 +106,14 @@ extensions = [
 autosummary_generate = True
 autodoc_default_options = {"members": True, "inherited-members": True}
 add_module_names = False
+
+# Mock imports for packages not available in the docs build environment
+autodoc_mock_imports = [
+    "flask",
+    "werkzeug",
+    "ndx_hed",
+]
+
 myst_all_links_external = False
 myst_heading_anchors = 4
 myst_enable_extensions = [

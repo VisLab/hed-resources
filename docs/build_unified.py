@@ -78,7 +78,7 @@ def copy_submodule_docs():
             "dest": source_dir / "table-remodeler",
             "files": [
                 "index.rst",
-                "overview.md",
+                "introduction.md",
                 "quickstart.md",
                 "user_guide.md",
                 "custom_operations.md",
