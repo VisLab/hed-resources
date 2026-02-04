@@ -2,6 +2,10 @@
 
 # What's new?
 
+**Feb 1, 2026**: **HED discussions**
+
+> Organization-wide [HED discussions](https://github.com/orgs/hed-standard/discussions).
+
 **Jan 28, 2026**: **hed-vis 0.1.1 released**
 
 > Created standalone HED visualization tools repo.\
@@ -19,7 +23,7 @@
 
 **Nov 19, 2025**: **ctagger 4.0.0 released**
 
-> Update to Javas supported by MATALB.\
+> Update to Java versions supported by MATALB.\
 > Added GitHub actions.
 
 **Nov 18, 2025**: **hed-python 0.8.0 released**
