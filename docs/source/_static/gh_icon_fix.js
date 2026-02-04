@@ -48,8 +48,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     return repoName;
                 }
             }
+            return repoInHref;
         }
         
+        // For non-hed-resources repos (direct links to other repos), return the detected repo
         return repoInHref;
     }
 

@@ -1,4 +1,4 @@
-[![Documentation](https://img.shields.io/badge/docs-hedtags.org-blue.svg)](https://www.hedtags.org/hed-resources) [![PyPI Version](https://img.shields.io/pypi/v/hed-resources.svg)](https://pypi.org/project/hed-resources/) [![License](https://img.shields.io/github/license/hed-standard/hed-resources.svg)](https://github.com/hed-standard/hed-resources/blob/main/LICENSE)
+[![Documentation](https://img.shields.io/badge/docs-hedtags.org-blue.svg)](https://www.hedtags.org/hed-resources) [![License](https://img.shields.io/github/license/hed-standard/hed-resources.svg)](https://github.com/hed-standard/hed-resources/blob/main/LICENSE)
 
 # HED Resources
 
