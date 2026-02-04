@@ -2,12 +2,27 @@
 
 # What's new?
 
-**Nov 19 2025**: **ctagger 4.0.0 released**
+**Jan 28, 2026**: **hed-vis 0.1.1 released**
+
+> Created standalone HED visualization tools repo.\
+> Released on PyPI (separate from `hedtools`).
+
+**Jan 22, 2026**: **hed-python 0.9.0 released**
+
+> Unified `hedpy` CLI released.\
+> Documentatation restructuring.
+
+**Dec 30, 2025**: **table-remodeler 0.2.0 released**
+
+> Separation of table-remodeler from hed-python.\
+> Release on PyPI.
+
+**Nov 19, 2025**: **ctagger 4.0.0 released**
 
 > Update to Javas supported by MATALB.\
 > Added GitHub actions.
 
-**Nov 18 2025**: **hed-python 0.8.0 released**
+**Nov 18, 2025**: **hed-python 0.8.0 released**
 
 > JSON representation of HED schemas.\
 > Unified git-style CLI.
