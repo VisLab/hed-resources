@@ -1,32 +1,66 @@
-```{meta}
----
-description: Primary documentation and user resources for the Hierarchical Event
-  Descriptor (HED) system
-keywords: HED, Hierarchical Event Descriptors, documentation, tutorials, guides,
-  neuroimaging, BIDS, event annotation
----
-```
-
-[![Documentation](https://img.shields.io/badge/docs-hedtags.org-blue.svg)](https://www.hedtags.org/hed-resources)
+[![Documentation](https://img.shields.io/badge/docs-hedtags.org-blue.svg)](https://www.hedtags.org/hed-resources) [![PyPI Version](https://img.shields.io/pypi/v/hed-resources.svg)](https://pypi.org/project/hed-resources/) [![License](https://img.shields.io/github/license/hed-standard/hed-resources.svg)](https://github.com/hed-standard/hed-resources/blob/main/LICENSE)
 
 # HED Resources
 
-This repository contains the primary documentation and user resources for the Hierarchical Event Descriptor (HED) system for annotating, summarizing, and analyzing data.
+This repository provides the **unified documentation and user resources** for the Hierarchical Event Descriptor (HED) system — a framework for annotating, summarizing, and analyzing experimental events and metadata in neuroscience and beyond.
+
+## History and evolution
+
+Originally, HED documentation was housed in the [hed-examples](https://github.com/hed-standard/hed-examples) repository alongside example datasets. In October 2025, the documentation was separated into this dedicated repository to better organize resources as the HED ecosystem grew.
+
+With the development of the HED AI assistant and the expansion of HED tools across multiple platforms (Python, MATLAB, JavaScript), it became clear that a **unified documentation system** was essential. Previously, each HED repository maintained its own documentation independently, making it difficult for users to search across tools and understand the complete HED ecosystem.
+
+**This repository (v1.0.0, released February 2026)** represents the first unified documentation build, integrating documentation from 9 separate HED repositories into a single, searchable documentation site with cross-repository search and consistent navigation.
 
 ## Repository contents
 
-The [docs](https://github.com/hed-standard/hed-resources/tree/main/docs) directory contains the source documentation for HED resources, tools, and tutorials.
+This repository serves two primary functions:
 
-The documentation covers:
+1. **Core HED documentation**: Main guides, tutorials, and reference materials about HED concepts, schemas, and usage
+2. **Unified documentation hub**: Integration of tool-specific documentation from HED submodules
 
-- Introduction to HED and how to use it
-- Links-to-tool-specific guides (Python, MATLAB, JavaScript, Online tools)
-- Integration guides (EEGLAB, NWB, BIDS)
-- Validation and search guides
-- Schema development guides
-- Quick-start tutorials and examples
+### Main documentation
 
-The [HED GitHub organization](https://github.com/hed-standard/) gathers all HED supporting resources, which are open source.
+The [docs/source](https://github.com/hed-standard/hed-resources/tree/main/docs/source) directory contains the core HED documentation organized into the following sections:
+
+**Overview** — Start here to understand what HED is and how it can support your research. This section includes a 5-minute introduction to core HED concepts, role-specific workflows for different user types (experimenters, annotators, analysts, developers, and schema builders), an essential guide to annotation strategy and semantics, documentation on schema structure and organization, and updates on the latest developments in the HED ecosystem.
+
+**Tutorials and guides** — Practical tutorials for getting started with HED annotation in different contexts (BIDS datasets, NWB files, and general annotation), plus comprehensive guides for validation processes, searching and querying annotations, generating summaries and analyses, and extracting experimental conditions and design matrices from HED-annotated data.
+
+**Other resources** — Additional documentation including a complete index of all available documentation, guidance on understanding HED versions and compatibility, historical context about the evolution of HED, information about project governance structure, and conventions used throughout the documentation.
+
+**Data resources** — Example datasets and test cases that demonstrate HED usage patterns and provide materials for testing and validation.
+
+### Integrated submodule documentation
+
+Through git submodules, this repository integrates documentation from:
+
+- **[hed-python](https://github.com/hed-standard/hed-python)** — Python implementation and API
+- **[hed-matlab](https://github.com/hed-standard/hed-matlab)** — MATLAB/EEGLAB tools
+- **[hed-javascript](https://github.com/hed-standard/hed-javascript)** — JavaScript validator
+- **[hed-web](https://github.com/hed-standard/hed-web)** — Online tools interface
+- **[hed-schemas](https://github.com/hed-standard/hed-schemas)** — Schema development
+- **[hed-mcp](https://github.com/hed-standard/hed-mcp)** — Model Context Protocol integration
+- **[hed-vis](https://github.com/hed-standard/hed-vis)** — Visualization tools
+- **[table-remodeler](https://github.com/hed-standard/table-remodeler)** — Table remodeling operations
+- **[ndx-hed](https://github.com/hed-standard/ndx-hed)** — NWB extension
+
+The unified build system (see below) automatically copies and integrates documentation from these submodules, enabling unified search and navigation across the entire HED ecosystem.
+
+### Published documentation
+
+The complete documentation is built with Sphinx and published at: **[www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources)**
+
+Features include:
+
+- Unified search across all HED documentation
+- Cross-repository navigation and references
+- Dark mode support
+- Responsive design for mobile and desktop
+- Copy buttons for code examples
+- Comprehensive API documentation
+
+Visit the [HED GitHub organization](https://github.com/hed-standard/) to explore all HED supporting repositories, which are open source and community-driven.
 
 ## Development setup
 
@@ -46,14 +80,10 @@ pip install -e .[docs,quality]
 # Build unified documentation (copies submodule docs + builds with Sphinx)
 hed-build-docs
 # Or: python scripts/build_docs.py
-# Or: scripts/build-unified-docs.bat (Windows)
-# Or: scripts/build-unified-docs.sh (Unix/Linux/macOS)
 
 # Serve documentation locally for preview
 hed-serve-docs
 # Or: python scripts/serve_docs.py
-# Or: scripts/serve-docs.bat (Windows)
-# Or: scripts/serve-docs.sh (Unix/Linux/macOS)
 
 # Check links
 sphinx-build -b linkcheck docs/source docs/_build/linkcheck
