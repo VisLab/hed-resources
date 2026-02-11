@@ -51,17 +51,28 @@
 
 {%- block scripts %}
   {{ super() }}
-  
-  <!-- OSA Chat Widget (HED Assistant) -->
-  <script src="https://osa-demo.pages.dev/osa-chat-widget.js"
-          crossorigin="anonymous"></script>
+
+   <!-- OSA Chat Widget (HED Assistant)
+       Privacy Note: This widget sends page content to an external AI service when
+       allowPageContext is enabled. The widget provides contextual help for HEDTools documentation.
+       Data sent: Page text content, user questions
+       Service: OSA Chat Widget (osa-demo.pages.dev)
+  -->
   <script>
-    if (window.OSAChatWidget) {
-      OSAChatWidget.setConfig({
-        communityId: 'hed',
-        allowPageContext: true,
-        pageContextDefaultEnabled: true
-      });
-    }
+    // Define config before the widget script loads
+    window.osaChatConfig = {
+      communityId: 'hed',
+      title: 'HED Assistant',
+      initialMessage: 'Questions about HED? Ask me!',
+      placeholder: 'Questions about HED?',
+      widgetInstructions: 'User is on the integrated HED Tools documentation. Provide helpful answers based on the documentation content. If unsure, say you don\'t know. The individual repositories have their own doc pages which are integrated into this site. Details about using a particular tool will be found in those docs, while general questions are likely to be found in the tutorials on this page.',
+      showExperimentalBadge: true,
+      allowPageContext: true,
+      pageContextDefaultEnabled: true
+    };
   </script>
+  <script src="https://osa-demo.pages.dev/osa-chat-widget.js"
+        crossorigin="anonymous"
+        defer
+        onload="window.OSAChatWidget && window.OSAChatWidget.setConfig(window.osaChatConfig)"></script>
 {%- endblock scripts %}

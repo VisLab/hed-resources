@@ -71,7 +71,7 @@ def copy_submodule_docs():
         "hed-python": {
             "source": submodules_dir / "hed-python" / "docs",
             "dest": source_dir / "hed-python",
-            "files": ["index.rst", "overview.md", "user_guide.md", "api/"],
+            "files": ["index.rst", "user_guide.md", "api/"],
         },
         "table-remodeler": {
             "source": submodules_dir / "table-remodeler" / "docs",
@@ -149,9 +149,8 @@ def copy_submodule_docs():
             "dest": source_dir / "hed-web",
             "files": [
                 "index.rst",
-                "introduction.md",
-                "installation.md",
                 "user_guide.md",
+                "deployment.md",
                 "api/",
             ],
         },

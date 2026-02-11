@@ -37,7 +37,7 @@ submodule_docs = {
     "hed-javascript": submodules_base / "hed-javascript",
     "hed-matlab": submodules_base / "hed-matlab" / "docs",
     "ndx-hed": submodules_base / "ndx-hed" / "docs" / "source",
-    "hed-schemas": submodules_base / "hed-schemas" / "docs" / "source",
+    "hed-schemas": submodules_base / "hed-schemas" / "docs",
     "hed-web": submodules_base / "hed-web" / "docs",
     "CTagger": submodules_base / "CTagger" / "docs",
 }
