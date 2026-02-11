@@ -78,10 +78,8 @@ def copy_submodule_docs():
             "dest": source_dir / "table-remodeler",
             "files": [
                 "index.rst",
-                "introduction.md",
                 "quickstart.md",
                 "user_guide.md",
-                "custom_operations.md",
                 "operations/",
                 "api/",
             ],
@@ -136,12 +134,10 @@ def copy_submodule_docs():
             "dest": source_dir / "hed-schemas",
             "files": [
                 "index.rst",
-                "introduction.md",
                 "user_guide.md",
                 "developer_guide.md",
-                "contributing.md",
                 "schemas_reference.md",
-                "api2.rst",
+                "api.rst",
             ],
         },
         "hed-web": {
