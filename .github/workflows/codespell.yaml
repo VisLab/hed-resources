@@ -30,4 +30,4 @@ jobs:
           pip install codespell
           
       - name: Run Codespell
-        run: codespell . --skip="pyproject.toml,lychee.toml,docs/deprecated/*"
+        run: codespell . --skip="pyproject.toml,lychee.toml,./docs/deprecated/HEDSubmissionToINCF.md" --toml pyproject.toml
