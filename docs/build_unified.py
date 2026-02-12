@@ -130,7 +130,7 @@ def copy_submodule_docs():
             ],
         },
         "hed-schemas": {
-            "source": submodules_dir / "hed-schemas" / "docs" / "source",
+            "source": submodules_dir / "hed-schemas" / "docs",
             "dest": source_dir / "hed-schemas",
             "files": [
                 "index.rst",

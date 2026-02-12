@@ -53,19 +53,28 @@
   {{ super() }}
 
    <!-- OSA Chat Widget (HED Assistant)
-       Privacy Note: This widget sends page content to an external AI service when
-       allowPageContext is enabled. The widget provides contextual help for HEDTools documentation.
-       Data sent: Page text content, user questions
-       Service: OSA Chat Widget (osa-demo.pages.dev)
+      Privacy Note: This widget sends page content to an external AI service when
+      allowPageContext is enabled. The widget provides contextual help for HEDTools documentation.
+      Data sent: Page text content, user questions
+      Service: OSA Chat Widget (osa-demo.pages.dev)
   -->
   <script>
+    // Widget instructions for HED Assistant
+    const widgetInstructions = `
+User is on the integrated HED Tools documentation. 
+The individual repositories have their own doc pages which are integrated 
+into this site as submodules (hed-python, hed-matlab, hed-vis, hed-mcp, ndx-hed, table-remodeler, hed-schemas, hed-web).
+Details about using a particular tool will be found in those docs (www.hedtags.org/hed-resources/xxx/.. where xxx is the submodule name), while general questions
+are likely to be found in the tutorials on this page (www.hedtags.org/hed-resources/). 
+    `.trim().replace(/\s+$/gm, '');
+
     // Define config before the widget script loads
     window.osaChatConfig = {
       communityId: 'hed',
       title: 'HED Assistant',
       initialMessage: 'Questions about HED? Ask me!',
       placeholder: 'Questions about HED?',
-      widgetInstructions: 'User is on the integrated HED Tools documentation. Provide helpful answers based on the documentation content. If unsure, say you don\'t know. The individual repositories have their own doc pages which are integrated into this site. Details about using a particular tool will be found in those docs, while general questions are likely to be found in the tutorials on this page.',
+      widgetInstructions: widgetInstructions,
       showExperimentalBadge: true,
       allowPageContext: true,
       pageContextDefaultEnabled: true
