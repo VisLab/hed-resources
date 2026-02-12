@@ -71,17 +71,15 @@ def copy_submodule_docs():
         "hed-python": {
             "source": submodules_dir / "hed-python" / "docs",
             "dest": source_dir / "hed-python",
-            "files": ["index.rst", "overview.md", "user_guide.md", "api/"],
+            "files": ["index.rst", "user_guide.md", "api/"],
         },
         "table-remodeler": {
             "source": submodules_dir / "table-remodeler" / "docs",
             "dest": source_dir / "table-remodeler",
             "files": [
                 "index.rst",
-                "introduction.md",
                 "quickstart.md",
                 "user_guide.md",
-                "custom_operations.md",
                 "operations/",
                 "api/",
             ],
@@ -132,16 +130,14 @@ def copy_submodule_docs():
             ],
         },
         "hed-schemas": {
-            "source": submodules_dir / "hed-schemas" / "docs" / "source",
+            "source": submodules_dir / "hed-schemas" / "docs",
             "dest": source_dir / "hed-schemas",
             "files": [
                 "index.rst",
-                "introduction.md",
                 "user_guide.md",
                 "developer_guide.md",
-                "contributing.md",
                 "schemas_reference.md",
-                "api2.rst",
+                "api.rst",
             ],
         },
         "hed-web": {
@@ -149,9 +145,8 @@ def copy_submodule_docs():
             "dest": source_dir / "hed-web",
             "files": [
                 "index.rst",
-                "introduction.md",
-                "installation.md",
                 "user_guide.md",
+                "deployment.md",
                 "api/",
             ],
         },
