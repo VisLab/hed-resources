@@ -34,8 +34,10 @@ user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/1
 
 # Exclude patterns - regex patterns to exclude from checking
 # These are Sphinx theme template files with Jinja2 variables that shouldn't be checked
+# Also excludes auto-generated _modules directory which contains external library references
 exclude_path = [
     "webpack-macros\\.html$",
     "sbt-webpack-macros\\.html$",
-    ".*-macros\\.html$"
+    ".*-macros\\.html$",
+    "_modules/"
 ]
