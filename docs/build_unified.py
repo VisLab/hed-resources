@@ -160,6 +160,35 @@ def copy_submodule_docs():
                 "ctagger_in_eeglab.md",
             ],
         },
+        "hed-specification": {
+            "source": submodules_dir / "hed-specification" / "docs" / "source",
+            "dest": source_dir / "hed-specification",
+            "files": [
+                "index.rst",
+                "01_Introduction.md",
+                "02_Terminology.md",
+                "03_HED_formats.md",
+                "04_Basic_annotation.md",
+                "05_Advanced_annotation.md",
+                "06_Infrastructure_and_tools.md",
+                "07_Library_schemas.md",
+                "08_HED_ontology.md",
+                "Appendix_A.md",
+                "Appendix_B.md",
+            ],
+        },
+        "hed-tests": {
+            "source": submodules_dir / "hed-tests" / "docs",
+            "dest": source_dir / "hed-tests",
+            "files": [
+                "index.rst",
+                "introduction.md",
+                "test_index.md",
+                "test_coverage.md",
+                "test_format.md",
+                "validator_integration.md",
+            ],
+        },
     }
 
     print("Copying submodule documentation into source tree...")

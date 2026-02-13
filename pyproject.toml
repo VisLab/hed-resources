@@ -54,31 +54,28 @@ hed-serve-docs = "scripts.serve_docs:main"
 
 [project.optional-dependencies]
 docs = [
-    "sphinx>=7.1.0,<8.2.0",
+    "sphinx>=7.1.0,<10.0.0",
     "furo>=2024.1.29",
     "myst-parser>=3.0.0",
     "sphinx-design>=0.6.1",
     "sphinx-copybutton>=0.5.2",
     "linkify-it-py>=2.0.3",
-    "sphinxcontrib-bibtex>=2.6.0",
 ]
 quality = [
-    "codespell>=2.0.0",
-    "ruff>=0.0.284",
-    "black>=23.0.0",
+    "codespell>=2.2.0",
+    "ruff>=0.8.0",
+    "black>=26.0.0",
     "mdformat>=0.7.0",
     "mdformat-myst>=0.1.5",
-    "pre-commit>=3.0.0",
 ]
 
 [project.urls]
-Homepage = "https://www.hedtags.org/hed-resources"
+HED Homepage = "https://www.hedtags.org"
 Documentation = "https://www.hedtags.org/hed-resources"
 Repository = "https://github.com/hed-standard/hed-resources"
 Issues = "https://github.com/hed-standard/hed-resources/issues"
 Changelog = "https://github.com/hed-standard/hed-resources/blob/main/CHANGELOG.md"
-"HED Homepage" = "https://www.hedtags.org"
-"HED Specification" = "https://www.hedtags.org/hed-specification"
+HED Specification = "https://www.hedtags.org/hed-specification"
 
 # Tool configurations
 [tool.codespell]
@@ -121,7 +118,6 @@ exclude = [
     ".git",
     ".venv",
     "docs/_build",
-    "docs/source/python-tools",
     "submodules",
     "status"
 ]

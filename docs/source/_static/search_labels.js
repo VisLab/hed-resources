@@ -58,6 +58,16 @@
             color: '#00ced1',  // dark turquoise
             order: 11
         },
+        'hed-specification/': {
+            label: 'HED Specification',
+            color: '#6a5acd',  // slate blue
+            order: 12
+        },
+        'hed-tests/': {
+            label: 'HED Tests',
+            color: '#ff8c00',  // dark orange
+            order: 13
+        },
         // Default for all other results
         'default': {
             label: 'HED Resources',

@@ -40,6 +40,8 @@ submodule_docs = {
     "hed-schemas": submodules_base / "hed-schemas" / "docs",
     "hed-web": submodules_base / "hed-web" / "docs",
     "CTagger": submodules_base / "CTagger" / "docs",
+    "hed-specification": submodules_base / "hed-specification" / "docs" / "source",
+    "hed-tests": submodules_base / "hed-tests" / "docs",
 }
 
 # Add submodule source code paths to sys.path for autodoc
@@ -54,6 +56,8 @@ submodule_sources = {
     "hed-schemas": submodules_base / "hed-schemas",
     "hed-web": submodules_base / "hed-web",
     "CTagger": submodules_base / "CTagger",
+    "hed-specification": submodules_base / "hed-specification",
+    "hed-tests": submodules_base / "hed-tests",
 }
 
 for name, src_path in submodule_sources.items():

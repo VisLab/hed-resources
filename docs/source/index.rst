@@ -77,11 +77,11 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Tool documentation:
 
    HED online tools <hed-web/index>
-   HED schemas <hed-schemas/index>
    Python HEDTools <hed-python/index>
    JavaScript HEDTools <hed-javascript/index>
    MATLAB HEDTools <hed-matlab/index>
    NWB HED extension <ndx-hed/index>
+   HED schema development <hed-schemas/index>
    Table-remodeler <table-remodeler/index>
    HED MCP server <hed-mcp/index>
    HED visualization tools <hed-vis/index>
@@ -94,6 +94,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :hidden:
    :caption: Other resources:
 
+   HED specification <hed-specification/index>
    DocumentationSummary.md
    UnderstandingHedVersions.md
    HedHistory.md
