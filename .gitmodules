@@ -28,3 +28,9 @@
 [submodule "submodules/CTagger"]
 	path = submodules/CTagger
 	url = https://github.com/hed-standard/CTagger.git
+[submodule "submodules/hed-specification"]
+	path = submodules/hed-specification
+	url = https://github.com/hed-standard/hed-specification.git
+[submodule "submodules/hed-tests"]
+	path = submodules/hed-tests
+	url = https://github.com/hed-standard/hed-tests.git
