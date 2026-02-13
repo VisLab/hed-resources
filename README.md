@@ -245,7 +245,20 @@ To integrate documentation from a new HED repository:
       your-repo/index
    ```
 
-7. **Test the integration**:
+7. **Update .gitignore**:
+
+   Add your submodule's copied documentation directory to `.gitignore` so the build artifacts aren't committed:
+
+   ```
+   # Copied submodule documentation (generated during build)
+   docs/source/hed-python/
+   docs/source/table-remodeler/
+   docs/source/your-repo/
+   ```
+
+   This ensures that the documentation files copied by `build_unified.py` are not tracked in git — only the source files in the submodule repositories are tracked.
+
+8. **Test the integration**:
 
    ```bash
    hed-build-docs
@@ -257,26 +270,69 @@ To integrate documentation from a new HED repository:
 
 ### Updating submodules
 
-To update a submodule to the latest version from its remote repository:
+#### How submodules work in this repository
 
-```bash
-# Update specific submodule
-git submodule update --remote submodules/REPO-NAME
+**For CI/CD (automatic)**: When documentation is built and deployed by GitHub Actions, the workflow automatically updates all submodules to their latest `main` branch commits. This ensures the published documentation at [www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources) always reflects the most current content from each HED repository.
 
-# Or update all submodules
-git submodule update --remote
+**For local development (manual)**: You control when to update submodules locally. Update them whenever you want to preview the latest documentation changes, but you don't need to commit the updates — they'll show as "modified content" in `git status`, which is normal and expected.
 
-# Rebuild documentation to pick up changes
+#### Updating submodules locally
+
+**Quick update all submodules to latest:**
+
+```powershell
+# Update all submodules to their latest main branch
+git submodule update --remote --merge
+
+# Rebuild docs to pick up changes
 hed-build-docs
 ```
 
-If you have local uncommitted changes in a submodule:
+**Update a specific submodule:**
 
-```bash
-# Discard local changes and update
-cd submodules/REPO-NAME
-git restore .
-git pull
-cd ../..
+```powershell
+# Navigate into the submodule
+cd submodules/hed-schemas
+
+# Pull latest changes
+git pull origin main
+
+# Return to repository root
+cd ..\..
+
+# Rebuild docs
 hed-build-docs
 ```
+
+#### When to update locally
+
+- **Before building docs** — when you want to preview latest changes from submodules
+- **After upstream changes** — when you know a submodule has important documentation updates
+- **Starting a work session** — to stay reasonably current with other repositories
+
+#### About "modified content" in submodules
+
+After updating submodules, you'll see them listed as "modified content" in `git status`:
+
+```
+modified:   submodules/hed-schemas (new commits)
+modified:   submodules/hed-python (modified content)
+```
+
+**This is normal and expected.** You typically **don't need to commit** these updates because:
+
+1. The CI/CD workflow always pulls the latest versions when deploying
+2. Committing submodule pointers creates noise in your git history
+3. Other developers will update to whatever versions they need locally
+
+**Exception**: Only commit submodule updates if you need to lock the repository to a specific version for a particular reason (e.g., working around a breaking change in a submodule).
+
+#### Resetting submodules
+
+If you want to reset submodules to match the committed pointers (undo local updates):
+
+```powershell
+git submodule update --init --recursive
+```
+
+This resets each submodule to whatever commit is currently recorded in the parent repository.
