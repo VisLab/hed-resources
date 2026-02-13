@@ -70,12 +70,12 @@ quality = [
 ]
 
 [project.urls]
-HED Homepage = "https://www.hedtags.org"
+Homepage = "https://www.hedtags.org"
 Documentation = "https://www.hedtags.org/hed-resources"
 Repository = "https://github.com/hed-standard/hed-resources"
 Issues = "https://github.com/hed-standard/hed-resources/issues"
 Changelog = "https://github.com/hed-standard/hed-resources/blob/main/CHANGELOG.md"
-HED Specification = "https://www.hedtags.org/hed-specification"
+Specification = "https://www.hedtags.org/hed-specification"
 
 # Tool configurations
 [tool.codespell]
