@@ -26,10 +26,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Initialize submodules
+      - name: Initialize and update submodules
         run: |
-          git submodule init
-          git submodule update --recursive
+          git submodule update --init --recursive --remote --merge
           ls -la submodules/
 
       - name: Setup Python
