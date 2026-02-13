@@ -280,7 +280,7 @@ To integrate documentation from a new HED repository:
 
 **Quick update all submodules to latest:**
 
-```powershell
+```bash
 # Update all submodules to their latest main branch
 git submodule update --remote --merge
 
@@ -290,7 +290,7 @@ hed-build-docs
 
 **Update a specific submodule:**
 
-```powershell
+```bash
 # Navigate into the submodule
 cd submodules/hed-schemas
 
@@ -298,7 +298,7 @@ cd submodules/hed-schemas
 git pull origin main
 
 # Return to repository root
-cd ..\..
+cd ../..
 
 # Rebuild docs
 hed-build-docs
@@ -331,7 +331,7 @@ modified:   submodules/hed-python (modified content)
 
 If you want to reset submodules to match the committed pointers (undo local updates):
 
-```powershell
+```bash
 git submodule update --init --recursive
 ```
 
