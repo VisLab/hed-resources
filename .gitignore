@@ -118,6 +118,8 @@ docs/source/hed-schemas/
 docs/source/hed-javascript/
 docs/source/hed-web/
 docs/source/CTagger/
+docs/source/hed-specification/
+docs/source/hed-tests/
 
 # Submodules are tracked via .gitmodules
 # Don't ignore the submodule directories themselves (git needs to track the gitlinks)
