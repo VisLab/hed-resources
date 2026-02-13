@@ -272,7 +272,7 @@ To integrate documentation from a new HED repository:
 
 #### How submodules work in this repository
 
-**For CI/CD (automatic)**: When documentation is built and deployed by GitHub Actions, the workflow automatically updates all submodules to their latest `main` branch commits. This ensures the published documentation at [www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources) always reflects the most current content from each HED repository.
+**For CI/CD (automatic)**: When documentation is built and deployed by GitHub Actions, the workflow automatically updates all submodules to their latest `main` branch commits using `git submodule update --init --recursive --remote --merge`. This ensures the published documentation at [www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources) always reflects the most current content from each HED repository.
 
 **For local development (manual)**: You control when to update submodules locally. Update them whenever you want to preview the latest documentation changes, but you don't need to commit the updates — they'll show as "modified content" in `git status`, which is normal and expected.
 
