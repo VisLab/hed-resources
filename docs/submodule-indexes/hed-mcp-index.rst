@@ -17,5 +17,5 @@ A Model Context Protocol (MCP) server for validating HED (Hierarchical Event Des
    :maxdepth: 2
    :caption: Documentation:
    
-   Usage Examples <EXAMPLES>
-   API Reference <API>
+   Usage <EXAMPLES>
+   MCP API <API>

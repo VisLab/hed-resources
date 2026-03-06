@@ -89,7 +89,6 @@ def copy_submodule_docs():
             "dest": source_dir / "hed-vis",
             "files": [
                 "index.rst",
-                "overview.md",
                 "user_guide.md",
                 "api/",
             ],
@@ -111,9 +110,7 @@ def copy_submodule_docs():
             "dest": source_dir / "hed-matlab",
             "files": [
                 "index.rst",
-                "overview.md",
                 "user_guide.md",
-                "development.md",
                 "api2.rst",
             ],
         },
@@ -124,8 +121,6 @@ def copy_submodule_docs():
                 "index.rst",
                 "description.rst",
                 "format.rst",
-                "release_notes.rst",
-                "credits.rst",
                 "api.rst",
             ],
         },
@@ -134,9 +129,8 @@ def copy_submodule_docs():
             "dest": source_dir / "hed-schemas",
             "files": [
                 "index.rst",
-                "user_guide.md",
+                "schemas_overview.md",
                 "developer_guide.md",
-                "schemas_reference.md",
                 "api.rst",
             ],
         },
@@ -155,7 +149,6 @@ def copy_submodule_docs():
             "dest": source_dir / "CTagger",
             "files": [
                 "index.rst",
-                "introduction.md",
                 "user_guide.md",
                 "ctagger_in_eeglab.md",
             ],
@@ -182,11 +175,9 @@ def copy_submodule_docs():
             "dest": source_dir / "hed-tests",
             "files": [
                 "index.rst",
-                "introduction.md",
+                "user_guide.md",
                 "test_index.md",
                 "test_coverage.md",
-                "test_format.md",
-                "validator_integration.md",
             ],
         },
     }
