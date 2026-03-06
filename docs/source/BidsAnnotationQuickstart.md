@@ -5,12 +5,9 @@ pair: JSON sidecar; annotation
 pair: events; BIDS
 ```
 
-```{meta}
----
-description: Step-by-step guide to creating JSON sidecars with HED annotations 
-  for BIDS datasets
-keywords: BIDS, HED annotation, JSON sidecar, events file, quickstart, tutorial
----
+```{html_meta}
+"description": "Step-by-step guide to creating JSON sidecars with HED annotations for BIDS datasets"
+"keywords": "BIDS, HED annotation, JSON sidecar, events file, quickstart, tutorial"
 ```
 
 # BIDS annotation quickstart

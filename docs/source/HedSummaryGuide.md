@@ -6,13 +6,9 @@ pair: column summary; HED
 pair: tag summary; HED
 ```
 
-```{meta}
----
-description: Guide to generating summaries of HED-annotated event files 
-  including column values, HED tags, and experimental design
-keywords: HED summary, table remodeler, event summaries, column summary, tag 
-  summary, experimental design
----
+```{html_meta}
+"description": "Guide to generating summaries of HED-annotated event files including column values, HED tags, and experimental design"
+"keywords": "HED summary, table remodeler, event summaries, column summary, tag summary, experimental design"
 ```
 
 (hed-summary-guide-anchor)=

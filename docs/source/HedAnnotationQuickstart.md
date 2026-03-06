@@ -4,13 +4,9 @@ single: tutorial; annotation
 pair: HED; annotation
 ```
 
-```{meta}
----
-description: Tutorial on annotating events using HED (Hierarchical Event 
-  Descriptors) with best practices for choosing annotations
-keywords: HED annotation, quickstart, tutorial, event annotation, data 
-  annotation
----
+```{html_meta}
+"description": "Tutorial on annotating events using HED (Hierarchical Event Descriptors) with best practices for choosing annotations"
+"keywords": "HED annotation, quickstart, tutorial, event annotation, data annotation"
 ```
 
 # HED annotation quickstart

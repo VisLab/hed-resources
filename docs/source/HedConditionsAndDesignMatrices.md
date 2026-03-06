@@ -6,13 +6,9 @@ pair: factor variables; design matrices
 pair: BIDS; experimental design
 ```
 
-```{meta}
----
-description: Tutorial on encoding experimental design and conditions using HED 
-  annotations to automatically extract design matrices
-keywords: experimental design, design matrices, condition variables, factor 
-  variables, HED annotation, BIDS
----
+```{html_meta}
+"description": "Tutorial on encoding experimental design and conditions using HED annotations to automatically extract design matrices"
+"keywords": "experimental design, design matrices, condition variables, factor variables, HED annotation, BIDS"
 ```
 
 # HED conditions and design matrices

@@ -5,12 +5,9 @@ pair: epoching; HED
 pair: trial selection; HED
 ```
 
-```{meta}
----
-description: Guide to searching HED-annotated datasets using object-based and 
-  text-based queries
-keywords: HED search, query, epoching, trial selection, event markers
----
+```{html_meta}
+"description": "Guide to searching HED-annotated datasets using object-based and text-based queries"
+"keywords": "HED search, query, epoching, trial selection, event markers"
 ```
 
 # HED search guide
