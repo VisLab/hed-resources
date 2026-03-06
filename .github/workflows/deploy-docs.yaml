@@ -26,24 +26,35 @@ jobs:
         with:
           fetch-depth: 0
 
+      
       - name: Initialize and update submodules
         run: |
           git submodule update --init --recursive --remote --merge
           ls -la submodules/
 
-      - name: Setup Python
-        uses: actions/setup-python@v6
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
           python-version: '3.12'
-          cache: 'pip'
+          enable-cache: true
+          cache-dependency-glob: "**/pyproject.toml"
+
+      - name: Create virtual environment
+        run: |
+          uv venv --clear .venv
+          echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
-          pip install -e .[docs]
-          pip install -e submodules/hed-python[docs]
-          pip install -e submodules/hed-vis[docs]
-          pip install -e submodules/table-remodeler[docs]
+          uv pip install ".[docs]"
+          uv pip install "submodules/hed-python[docs]"
+          uv pip install "submodules/hed-vis[docs]"
+          uv pip install "submodules/table-remodeler[docs]"
+          uv pip install "submodules/hed-schemas[docs]"
+          uv pip install "submodules/hed-matlab[docs]"
+          uv pip install "submodules/hed-web[docs]"
+          uv pip install "submodules/hed-tests[docs]"
+          uv pip install "submodules/ndx-hed"
 
       - name: Cache Sphinx build
         uses: actions/cache@v5

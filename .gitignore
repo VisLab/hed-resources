@@ -61,7 +61,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-*.ruff_cache/
+.ruff_cache/
 .status/
 .github/copilot-instructions.md
 
