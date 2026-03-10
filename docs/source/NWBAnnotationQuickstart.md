@@ -464,7 +464,6 @@ nwbfile.add_trial(
 ## Additional resources
 
 - [HED Integration for NWB](https://www.hedtags.org/ndx-hed/) - Complete API reference and examples
-- [HED annotation in NWB user guide](https://www.hedtags.org/hed-resources/HedAnnotationInNWB.html) - Detailed usage guide
 - [ndx-hed GitHub repository](https://github.com/hed-standard/ndx-hed) - Source code and examples
 - [ndx-events extension](https://github.com/rly/ndx-events) - Event data structures for NWB
 - [NWB documentation](https://pynwb.readthedocs.io/) - General NWB usage

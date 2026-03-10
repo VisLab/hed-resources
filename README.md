@@ -336,3 +336,7 @@ git submodule update --init --recursive
 ```
 
 This resets each submodule to whatever commit is currently recorded in the parent repository.
+
+## Funding
+
+Partial support for this project was provided by [NIH 1R01MH126700-01A1](https://reporter.nih.gov/project-details/10480619).

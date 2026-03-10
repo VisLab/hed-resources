@@ -51,6 +51,7 @@ dependencies = []
 [project.scripts]
 hed-build-docs = "scripts.build_docs:main"
 hed-serve-docs = "scripts.serve_docs:main"
+hed-format-docs = "scripts.format_docs:main"
 
 [project.optional-dependencies]
 docs = [
