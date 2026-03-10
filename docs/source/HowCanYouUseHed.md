@@ -215,7 +215,7 @@ When using HED in BIDS, specify HED schema versions in `dataset_description.json
 
 - **Learn NWB**: [PyNWB documentation](https://pynwb.readthedocs.io/) provides tutorials and API references
 - **HED extension**: [ndx-hed extension](https://www.hedtags.org/ndx-hed/) enables HED integration in NWB files
-- **Guide**: [HED annotation in NWB](https://www.hedtags.org/hed-resources/HedAnnotationInNWB.html) provides detailed information
+- **Guide**: [NWB HED annotation quickstart](https://www.hedtags.org/hed-resources/NWBAnnotationQuickstart.html) provides detailed information
 - **Examples**: [ndx-hed examples](https://github.com/hed-standard/ndx-hed/tree/main/examples) demonstrate real-world usage
 
 HED annotations in NWB use the **ndx-hed** extension with three main classes:
@@ -421,7 +421,7 @@ Annotators should mark these anomalies in the event file so downstream analysis 
 - Use summary tools to identify anomalies
 - Write custom code for experiment-specific checks (work underway to add standard checks to [table-remodeler](https://www.hedtags.org/table-remodeler))
 - Mark bad trials or unusual events explicitly
-- Consider reorganizing event files using remodeling tools (see [Remap columns](https://www.hedtags.org/table-remodeler/operations_reference.html#remap-columns))
+- Consider reorganizing event files using remodeling tools (see [Remap columns](https://www.hedtags.org/table-remodeler/operations/transformations/remap_columns.html))
 ````
 
 ### Resources for data annotators:
@@ -556,15 +556,15 @@ HED facilitates this selection through **factor vectors**. A **factor vector** f
 
 **Types of factor operations:**
 
-- **[factor column operation](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-column)**: Creates factor vectors based on the unique values in specified columns. This operation **not** require HED annotations.
+- **[factor column operation](https://www.hedtags.org/table-remodeler/operations/transformations/factor_column.html)**: Creates factor vectors based on the unique values in specified columns. This operation **does not** require HED annotations.
 
 <p></p>
 
-- **[factor HED tags](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-tags)**: Creates factor vectors based on a HED tag query. Enables flexible, generalizable event selection.
+- **[factor HED tags](https://www.hedtags.org/table-remodeler/operations/transformations/factor_hed_tags.html)**: Creates factor vectors based on a HED tag query. Enables flexible, generalizable event selection.
 
 <p></p>
 
-- **[factor HED type](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-type)**: Creates factors based on HED tags representing structural information such as *Condition-variable*, *Task*, or *Temporal-marker*.
+- **[factor HED type](https://www.hedtags.org/table-remodeler/operations/transformations/factor_hed_type.html)**: Creates factors based on HED tags representing structural information such as *Condition-variable*, *Task*, or *Temporal-marker*.
 
 #### HED search queries
 
@@ -724,8 +724,9 @@ The [HED standard](https://github.com/hed-standard) GitHub organization maintain
 **Focus**: Analysis, annotation, and validation with EEGLAB integration
 
 - **Repository**: [hed-matlab](https://github.com/hed-standard/hed-matlab) - **Installation**: Via EEGLAB plugin manager
-- **Documentation**: [MATLAB HEDTools](https://wwww/hedtags.org/hed-matlab)
+- **Documentation**: [MATLAB HEDTools](https://www.hedtags.org/hed-matlab)
 - **Standalone tool**: [CTagger](https://www.hedtags.org/CTagger) - a standalone annotation Java-based annotation tool with an EEGLAB plugin available.
+- **HEDTools EEGLAB plugin**: [HEDTools](https://github.com/sccn/HEDTools)
 
 #### Online tools and REST services
 

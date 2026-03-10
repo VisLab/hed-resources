@@ -32,6 +32,23 @@ max_concurrency = 8
 # Some sites require a browser-like user agent to avoid blocking
 user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0"
 
+# Exclude patterns for URLs - regex patterns to skip when checking links
+# Localhost/loopback addresses are only valid in local dev environments
+exclude = [
+    '^http://127\.0\.0\.',
+    '^http://localhost',
+    '^file://',
+    
+    # Exclude Furo "View source" links (GitHub blob URLs with ?plain=true)
+    # These break when source_branch is "main" but files only exist in a feature branch
+    'https://github\.com/hed-standard/hed-schemas/blob/.*\?plain=true',
+
+    # Exclude DOI links that frequently timeout
+    'https://doi\.org/10\.5281/zenodo\.7876037',
+    'https://doi\.org/10\.5281/zenodo\.7897596',
+    'https://doi\.org/10\.5281/zenodo\.13987483',
+]
+
 # Exclude patterns - regex patterns to exclude from checking
 # These are Sphinx theme template files with Jinja2 variables that shouldn't be checked
 # Also excludes auto-generated _modules directory which contains external library references

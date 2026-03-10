@@ -1,16 +1,15 @@
+---
+myst:
+  html_meta:
+    description: Guide to searching HED-annotated datasets using object-based and text-based queries
+    keywords: HED search, query, epoching, trial selection, event markers
+---
+
 ```{index} single: search; HED
 single: HED; search
 pair: query; HED
 pair: epoching; HED
 pair: trial selection; HED
-```
-
-```{meta}
----
-description: Guide to searching HED-annotated datasets using object-based and 
-  text-based queries
-keywords: HED search, query, epoching, trial selection, event markers
----
 ```
 
 # HED search guide
@@ -200,7 +199,7 @@ pair: HED; search usage
 
 The HED search facility allows users to form sophisticated queries based on HED annotations in a dataset-independent manner. These queries can be used to locate data sets satisfying the specified criteria and to find the relevant event markers in that data.
 
-For example, the [factor_hed_tags](https://www.hedtags.org/table-remodeler/operations_reference.html#factor-hed-tags) operation of the [Table remodeler](https://www.hedtags.org/table-remodeler.html) creates factor vectors for selecting events satisfying general HED queries.
+For example, the [factor_hed_tags](https://www.hedtags.org/table-remodeler/operations/transformations/factor_hed_tags.html) operation of the [Table remodeler](https://www.hedtags.org/table-remodeler/index.html) creates factor vectors for selecting events satisfying general HED queries.
 
 The HED-based epoching tools in [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) can use HED-based search to epoch data based on HED tags.
 
