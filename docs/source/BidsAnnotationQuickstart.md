@@ -1,13 +1,15 @@
+---
+myst:
+  html_meta:
+    description: "Step-by-step guide to creating JSON sidecars with HED annotations for BIDS datasets"
+    keywords: "BIDS, HED annotation, JSON sidecar, events file, quickstart, tutorial"
+---
+
 ```{index} single: BIDS; annotation
 single: annotation; BIDS
 single: quickstart; BIDS annotation
 pair: JSON sidecar; annotation
 pair: events; BIDS
-```
-
-```{html_meta}
-"description": "Step-by-step guide to creating JSON sidecars with HED annotations for BIDS datasets"
-"keywords": "BIDS, HED annotation, JSON sidecar, events file, quickstart, tutorial"
 ```
 
 # BIDS annotation quickstart
