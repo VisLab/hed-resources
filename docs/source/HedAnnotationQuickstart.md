@@ -1,8 +1,8 @@
 ---
 myst:
   html_meta:
-    description: "Tutorial on annotating events using HED (Hierarchical Event Descriptors) with best practices for choosing annotations"
-    keywords: "HED annotation, quickstart, tutorial, event annotation, data annotation"
+    description: Tutorial on annotating events using HED (Hierarchical Event Descriptors) with best practices for choosing annotations
+    keywords: HED annotation, quickstart, tutorial, event annotation, data annotation
 ---
 
 ```{index} single: annotation; quickstart

@@ -1,8 +1,8 @@
 ---
 myst:
   html_meta:
-    description: "Tutorial on encoding experimental design and conditions using HED annotations to automatically extract design matrices"
-    keywords: "experimental design, design matrices, condition variables, factor variables, HED annotation, BIDS"
+    description: Tutorial on encoding experimental design and conditions using HED annotations to automatically extract design matrices
+    keywords: experimental design, design matrices, condition variables, factor variables, HED annotation, BIDS
 ---
 
 ```{index} single: design matrices; HED

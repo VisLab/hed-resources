@@ -556,7 +556,7 @@ HED facilitates this selection through **factor vectors**. A **factor vector** f
 
 **Types of factor operations:**
 
-- **[factor column operation](https://www.hedtags.org/table-remodeler/operations/transformations/factor_column.html)**: Creates factor vectors based on the unique values in specified columns. This operation **not** require HED annotations.
+- **[factor column operation](https://www.hedtags.org/table-remodeler/operations/transformations/factor_column.html)**: Creates factor vectors based on the unique values in specified columns. This operation **does not** require HED annotations.
 
 <p></p>
 

@@ -1,8 +1,8 @@
 ---
 myst:
   html_meta:
-    description: "Guide to searching HED-annotated datasets using object-based and text-based queries"
-    keywords: "HED search, query, epoching, trial selection, event markers"
+    description: Guide to searching HED-annotated datasets using object-based and text-based queries
+    keywords: HED search, query, epoching, trial selection, event markers
 ---
 
 ```{index} single: search; HED
