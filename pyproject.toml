@@ -63,7 +63,7 @@ docs = [
     "linkify-it-py>=2.0.3",
 ]
 quality = [
-    "codespell>=2.2.0",
+    "typos>=1.0.0",
     "ruff>=0.8.0",
     "mdformat>=0.7.0",
     "mdformat-myst>=0.1.5",
@@ -78,11 +78,34 @@ Changelog = "https://github.com/hed-standard/hed-resources/blob/main/CHANGELOG.m
 Specification = "https://www.hedtags.org/hed-specification"
 
 # Tool configurations
-[tool.codespell]
-skip = "datasets,.git,*.pdf,*.svg,*.xml,*.mediawiki,*.omn,*.json,*.html,*.js,*.css,*.png,*.jpg,pyproject.toml,lychee.toml,.venv,.venv/*,docs/_build,docs/_build/*,docs/source/_static,docs/source/_static/*,docs/source/_templates,docs/source/_templates/*,docs/source/hed-python,docs/source/hed-python/*,docs/source/hed-matlab,docs/source/hed-matlab/*,docs/source/hed-vis,docs/source/hed-vis/*,docs/source/hed-mcp,docs/source/hed-mcp/*,docs/source/ndx-hed,docs/source/ndx-hed/*,docs/source/table-remodeler,docs/source/table-remodeler/*,docs/source/hed-schemas,docs/source/hed-schemas/*,docs/source/hed-javascript,docs/source/hed-javascript/*,docs/source/hed-web,docs/source/hed-web/*,docs/source/CTagger,docs/source/CTagger/*,docs/deprecated,docs/deprecated/*,dist,dist/*,src,src/*"
-ignore-words-list = "covert,hed,recuse,parms"
-check-filenames = true
-check-hidden = true
+[tool.typos.files]
+extend-exclude = [
+    "docs/_build",
+    "docs/source/_static",
+    "docs/source/_templates",
+    "docs/source/hed-python",
+    "docs/source/hed-matlab",
+    "docs/source/hed-vis",
+    "docs/source/hed-mcp",
+    "docs/source/ndx-hed",
+    "docs/source/table-remodeler",
+    "docs/source/hed-schemas",
+    "docs/source/hed-javascript",
+    "docs/source/hed-web",
+    "docs/source/CTagger",
+    "docs/deprecated",
+    "submodules",
+    ".venv",
+]
+
+[tool.typos.default.extend-words]
+# Words that are intentional and should not be flagged
+covert = "covert"
+hed = "hed"
+HED = "HED"
+Hed = "Hed"
+recuse = "recuse"
+parms = "parms"
 
 [tool.mdformat]
 wrap = "no"  # Don't wrap lines (important for docs)
