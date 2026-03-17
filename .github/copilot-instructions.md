@@ -227,7 +227,7 @@ hed-serve-docs
 
 | Workflow | What it checks | Local replication command |
 |---|---|---|
-| `codespell.yaml` | Spelling | `uvx --with tomli codespell . --skip="pyproject.toml,lychee.toml,./docs/deprecated/HEDSubmissionToINCF.md"` |
+| `typos.yaml` | Spelling | `uvx typos` |
 | `mdformat.yaml` | Markdown formatting | `uvx --with mdformat-myst mdformat --check --wrap no --number docs/source/*.md *.md` |
 | `ruff.yaml` | Python style/lint | `uvx ruff check . && uvx ruff format --check .` |
 | `links.yaml` | External links (weekly) | `sphinx-build -b linkcheck docs/source docs/_build/linkcheck` |
@@ -237,7 +237,7 @@ hed-serve-docs
 
 **Spell Checking** (local):
 ```shell
-codespell docs/source/*.md
+typos
 ```
 
 **Markdown Formatting** (local — see `.status/local-environment.md` for platform-specific glob syntax):
@@ -251,7 +251,7 @@ mdformat --check --wrap no --number docs/source/*.md *.md
 
 **GitHub Actions** (`.github/workflows/`):
 - `deploy-docs.yaml`: Builds and publishes documentation to GitHub Pages (push to `main`)
-- `codespell.yaml`: Spell checking on push/PR to `main`
+- `typos.yaml`: Spell checking on push/PR to `main`
 - `mdformat.yaml`: Markdown format check on push/PR to `main`
 - `ruff.yaml`: Python lint/format check on push/PR to `main`
 - `links.yaml`: Lychee external link checker (weekly scheduled)
@@ -356,7 +356,6 @@ See `docs/source/_static/REDIRECT_SYSTEM.md` for detailed instructions.
   - `[project.optional-dependencies]` defines docs and quality groups
 - `docs/source/conf.py`: Sphinx configuration
   - Extensions, theme, MyST settings
-- `.codespellrc`: Spell checker configuration
 - `lychee.toml`: Link checker configuration
 - `.lycheeignore`: URLs to exclude from link checking
 
@@ -398,10 +397,8 @@ hed-resources/
 - **sphinxcontrib-bibtex**: Citations and references
 
 ### Quality Tools (quality group)
-- **linkchecker**: Validate external/internal links
-- **codespell**: Spell checking
-- **ruff**: Python linting (if needed for scripts)
-- **black**: Code formatting (if needed for scripts)
+- **typos**: Spell checking
+- **ruff**: Python linting
 - **mdformat**: Markdown formatting
 
 ### Python Version
