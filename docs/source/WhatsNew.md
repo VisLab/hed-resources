@@ -14,7 +14,7 @@
 **Jan 22, 2026**: **hed-python 0.9.0 released**
 
 > Unified `hedpy` CLI released.\
-> Documentatation restructuring.
+> Documentation restructuring.
 
 **Dec 30, 2025**: **table-remodeler 0.2.0 released**
 

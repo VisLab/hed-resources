@@ -105,17 +105,19 @@ Reference sections using: [Link text](anchor-name-anchor)
 ```
 
 **Admonitions** (notes, tips, warnings):
-```markdown
+
+````markdown
 ```{admonition} Title
 ---
 class: tip
 ---
 Content here
 ```​
-```
+````
 
 **Code Blocks with Syntax Highlighting**:
-```markdown
+````markdown
+
 ```python
 # Python code example
 from hed import HedString
@@ -126,7 +128,7 @@ from hed import HedString
   "operation": "rename_columns"
 }
 ```​
-```
+````
 
 **Tables**:
 ```markdown
@@ -357,7 +359,6 @@ See `docs/source/_static/REDIRECT_SYSTEM.md` for detailed instructions.
 - `docs/source/conf.py`: Sphinx configuration
   - Extensions, theme, MyST settings
 - `lychee.toml`: Link checker configuration
-- `.lycheeignore`: URLs to exclude from link checking
 
 ### Directory Structure
 
