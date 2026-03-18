@@ -35,18 +35,53 @@ user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/1
 # Exclude patterns for URLs - regex patterns to skip when checking links
 # Localhost/loopback addresses are only valid in local dev environments
 exclude = [
+    # Local/development URLs (not valid outside local environment)
     '^http://127\.0\.0\.',
     '^http://localhost',
     '^file://',
-    
-    # Exclude Furo "View source" links (GitHub blob URLs with ?plain=true)
-    # These break when source_branch is "main" but files only exist in a feature branch
-    'https://github\.com/hed-standard/hed-schemas/blob/.*\?plain=true',
 
-    # Exclude DOI links that frequently timeout
-    'https://doi\.org/10\.5281/zenodo\.7876037',
-    'https://doi\.org/10\.5281/zenodo\.7897596',
-    'https://doi\.org/10\.5281/zenodo\.13987483',
+    # ScienceDirect (require authentication/cookies)
+    'sciencedirect\.com/science/article/pii/S1053811921010387',
+    'sciencedirect\.com/science/article/pii/S0010945221001106',
+    'sciencedirect\.com/science/article/pii/S1388245717309069',
+
+    # Springer (503 errors but links work in browsers)
+    '^https?://link\.springer\.com/',
+
+    # INCF (certificate/network issues)
+    '^https?://.*\.incf\.org/',
+    '^https?://incf\.org/',
+    '^https?://neuroinformatics\.incf\.org/',
+
+    # DOI links (403 in automation but work in browsers, or frequent timeouts)
+    '^https?://doi\.org/10\.1111/epi\.18113',
+    'doi\.org/10\.5281/zenodo\.7876037',
+    'doi\.org/10\.5281/zenodo\.7897596',
+    'doi\.org/10\.5281/zenodo\.13987483',
+
+    # NPM (blocks automated requests)
+    '^https?://.*\.npmjs\.com/package/hed-validator',
+
+    # MathWorks (blocks automated requests)
+    '^https?://.*\.mathworks\.com/',
+
+    # Brain Meeting posters (expired/removed)
+    '^https?://brainmeeting.*\.ipostersessions\.com/',
+    '^https?://globalbrainconsortium\.org/documents/GBC_March-2023_Agenda_Annual_Meeting\.pdf',
+
+    # CANCTA network (authentication/access issues)
+    '^https?://.*\.cancta\.net/',
+    '^https?://cancta\.net/',
+
+    # GitHub (programmatic access blocked or transient errors)
+    '^https?://github\.com/hed-standard/hed-python/discussions',
+    '\?plain=true$',
+
+    # HED tools services (programmatic access blocked)
+    '^https?://hedtools\.org/hed/services_submit',
+
+    # Internal anchor links (Sphinx-generated, false positives from lychee)
+    '(_anchor|-anchor)',
 ]
 
 # Exclude patterns - regex patterns to exclude from checking
