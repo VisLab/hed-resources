@@ -122,6 +122,8 @@ def copy_submodule_docs():
                 "description.rst",
                 "format.rst",
                 "api.rst",
+                "release_notes.rst",
+                "credits.rst",
             ],
         },
         "hed-schemas": {
@@ -134,9 +136,9 @@ def copy_submodule_docs():
                 "api.rst",
             ],
         },
-        "hed-web": {
-            "source": submodules_dir / "hed-web" / "docs",
-            "dest": source_dir / "hed-web",
+        "hed-server": {
+            "source": submodules_dir / "hed-server" / "docs",
+            "dest": source_dir / "hed-server",
             "files": [
                 "index.rst",
                 "user_guide.md",

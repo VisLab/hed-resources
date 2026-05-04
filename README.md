@@ -38,7 +38,7 @@ Through git submodules, this repository integrates documentation from:
 - **[hed-python](https://github.com/hed-standard/hed-python)** — Python implementation and API
 - **[hed-matlab](https://github.com/hed-standard/hed-matlab)** — MATLAB/EEGLAB tools
 - **[hed-javascript](https://github.com/hed-standard/hed-javascript)** — JavaScript validator
-- **[hed-web](https://github.com/hed-standard/hed-web)** — Online tools interface
+- **[hed-server](https://github.com/hed-standard/hed-server)** — Online tools interface
 - **[hed-schemas](https://github.com/hed-standard/hed-schemas)** — Schema development
 - **[hed-mcp](https://github.com/hed-standard/hed-mcp)** — Model Context Protocol integration
 - **[hed-vis](https://github.com/hed-standard/hed-vis)** — Visualization tools
@@ -191,7 +191,7 @@ To integrate documentation from a new HED repository:
        'hed-matlab/': 'hed-matlab',
        'hed-javascript/': 'hed-javascript',
        'hed-mcp/': 'hed-mcp',
-       'hed-web/': 'hed-web',
+       'hed-server/': 'hed-server',
        'hed-vis/': 'hed-vis',
        'ndx-hed/': 'ndx-hed',
        'table-remodeler/': 'table-remodeler',

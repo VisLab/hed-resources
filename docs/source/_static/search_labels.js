@@ -33,8 +33,8 @@
             color: '#2e8b57',  // sea green
             order: 6
         },
-        'hed-web/': {
-            label: 'HED Web',
+        'hed-server/': {
+            label: 'HED Server',
             color: '#563d7c',  // purple
             order: 7
         },

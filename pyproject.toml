@@ -91,7 +91,7 @@ extend-exclude = [
     "docs/source/table-remodeler",
     "docs/source/hed-schemas",
     "docs/source/hed-javascript",
-    "docs/source/hed-web",
+    "docs/source/hed-server",
     "docs/source/CTagger",
     "docs/deprecated",
     "submodules",

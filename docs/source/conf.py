@@ -38,7 +38,7 @@ submodule_docs = {
     "hed-matlab": submodules_base / "hed-matlab" / "docs",
     "ndx-hed": submodules_base / "ndx-hed" / "docs" / "source",
     "hed-schemas": submodules_base / "hed-schemas" / "docs",
-    "hed-web": submodules_base / "hed-web" / "docs",
+    "hed-server": submodules_base / "hed-server" / "docs",
     "CTagger": submodules_base / "CTagger" / "docs",
     "hed-specification": submodules_base / "hed-specification" / "docs" / "source",
     "hed-tests": submodules_base / "hed-tests" / "docs",
@@ -54,7 +54,7 @@ submodule_sources = {
     "hed-matlab": submodules_base / "hed-matlab",
     "ndx-hed": submodules_base / "ndx-hed" / "src",
     "hed-schemas": submodules_base / "hed-schemas",
-    "hed-web": submodules_base / "hed-web",
+    "hed-server": submodules_base / "hed-server",
     "CTagger": submodules_base / "CTagger",
     "hed-specification": submodules_base / "hed-specification",
     "hed-tests": submodules_base / "hed-tests",
@@ -117,6 +117,8 @@ autodoc_mock_imports = [
     "werkzeug",
     "ndx_hed",
 ]
+
+autosectionlabel_prefix_document = True
 
 myst_all_links_external = False
 myst_heading_anchors = 4
