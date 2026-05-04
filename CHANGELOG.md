@@ -56,7 +56,7 @@ This is the initial release of the unified HED Resources documentation system. P
 1. **hed-python** - Python hedtools package API and user guide
 2. **hed-matlab** - MATLAB/EEGLAB integration tools
 3. **hed-javascript** - JavaScript validator and web tools
-4. **hed-web** - Online tools and web interfaces
+4. **hed-server** - Online tools and web interfaces
 5. **hed-schemas** - Schema development and standards
 6. **hed-mcp** - Model Context Protocol integration
 7. **hed-vis** - Visualization tools and widgets

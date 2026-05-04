@@ -734,8 +734,8 @@ The [HED standard](https://github.com/hed-standard) GitHub organization maintain
 
 - **Production**: [hedtools.org/hed](https://hedtools.org/hed/)
 - **Development**: [hedtools.org/hed_dev](https://hedtools.org/hed_dev)
-- **Repository**: [hed-web](https://github.com/hed-standard/hed-web)
-- **Documentation**: [HED online tools](https://www.hedtags.org/hed-web)
+- **Repository**: [hed-server](https://github.com/hed-standard/hed-server)
+- **Documentation**: [HED online tools](https://www.hedtags.org/hed-server)
 ```
 
 (contributing-to-hed-development-anchor)=

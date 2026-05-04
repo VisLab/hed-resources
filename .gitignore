@@ -116,7 +116,7 @@ docs/source/hed-matlab/
 docs/source/ndx-hed/
 docs/source/hed-schemas/
 docs/source/hed-javascript/
-docs/source/hed-web/
+docs/source/hed-server/
 docs/source/CTagger/
 docs/source/hed-specification/
 docs/source/hed-tests/
@@ -132,6 +132,9 @@ docs/source/hed-tests/
 /venv/
 .venv/
 config.py
+
+# VS Code
+.vscode/
 
 ############
 ## Windows

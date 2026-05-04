@@ -52,7 +52,7 @@ jobs:
           uv pip install "submodules/table-remodeler[docs]"
           uv pip install "submodules/hed-schemas[docs]"
           uv pip install "submodules/hed-matlab[docs]"
-          uv pip install "submodules/hed-web[docs]"
+          uv pip install "submodules/hed-server[docs]"
           uv pip install "submodules/hed-tests[docs]"
           uv pip install "submodules/ndx-hed"
 

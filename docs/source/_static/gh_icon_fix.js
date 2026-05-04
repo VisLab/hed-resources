@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         'hed-matlab/': 'hed-matlab',
         'hed-javascript/': 'hed-javascript',
         'hed-mcp/': 'hed-mcp',
-        'hed-web/': 'hed-web',
+        'hed-server/': 'hed-server',
         'hed-vis/': 'hed-vis',
         'ndx-hed/': 'ndx-hed',
         'table-remodeler/': 'table-remodeler',
