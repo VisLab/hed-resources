@@ -717,7 +717,8 @@ The [HED standard](https://github.com/hed-standard) GitHub organization maintain
 
 - **Repository**: [hed-javascript](https://github.com/hed-standard/hed-javascript)
 - **Package installation**: `npm install hed-validator`
-- **Documentation**: [HED JavaScript tools](https://www.hedtags.org/hed-javascript) -- includes browser-based HED validator for BIDS
+- **Documentation**: [HED JavaScript API](https://www.hedtags.org/hed-javascript) 
+- **Browser-based-validation**: [browser-valildator](https://www.hedtags.org/hed-web)
 
 #### MATLAB HEDTools
 
@@ -770,9 +771,10 @@ The HED community is actively working on expanding HED's capabilities and integr
 
 - **🔧 Code repositories**: [hed-python](https://github.com/hed-standard/hed-python), [hed-javascript](https://github.com/hed-standard/hed-javascript), [hed-matlab](https://github.com/hed-standard/hed-matlab)
 - **📖 Documentation**: [Python HEDTools](https://www.hedtags.org/hed-python), [JavaScript HEDTools](https://www.hedtags.org/hed-javascript), [MATLAB HEDTools](https://www.hedtags.org/hed-matlab)
-- **🌐 Online tools**: [hedtools.org/hed](https://hedtools.org/hed) - REST services and web validation
+- **🌐 Online tools**: [hedtools.org/hed](https://hedtools.org/hed) - REST services and online validation
+- **🖥️ Browser-based tools**: [hed-web](https://www.hedtags.org/hed-web) - Browser-based tools
 - **📋 Schemas**: [hed-schemas](https://github.com/hed-standard/hed-schemas) - Standard and library schemas
-- **💬 Support**: GitHub [HED organization iscussions](https://github.com/orgs/hed-standard/discussions) or email hed.maintainers@gmail.com
+- **💬 Support**: GitHub [HED organization discussions](https://github.com/orgs/hed-standard/discussions) or email hed.maintainers@gmail.com
 
 <hr style="border: 3px solid #000080;" />
 

@@ -37,7 +37,7 @@ Through git submodules, this repository integrates documentation from:
 
 - **[hed-python](https://github.com/hed-standard/hed-python)** — Python implementation and API
 - **[hed-matlab](https://github.com/hed-standard/hed-matlab)** — MATLAB/EEGLAB tools
-- **[hed-javascript](https://github.com/hed-standard/hed-javascript)** — JavaScript validator
+- **[hed-javascript](https://github.com/hed-standard/hed-javascript)** — JavaScript validator API
 - **[hed-server](https://github.com/hed-standard/hed-server)** — Online tools interface
 - **[hed-schemas](https://github.com/hed-standard/hed-schemas)** — Schema development
 - **[hed-mcp](https://github.com/hed-standard/hed-mcp)** — Model Context Protocol integration

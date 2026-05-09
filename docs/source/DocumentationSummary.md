@@ -108,6 +108,8 @@ widths: 20 50
   - [https://github.com/hed-standard/hed-matlab](https://github.com/hed-standard/hed-matlab)
 * - HED web deployment
   - [https://github.com/hed-standard/hed-server](https://github.com/hed-standard/hed-server)
+* - HED browser-based validator
+  - [https://github.com/hed-standard/hed-web](https://github.com/hed-standard/hed-web)
 * - CTagger resources
   - [https://github.com/hed-standard/CTagger](https://github.com/hed-standard/CTagger)
 * - **Online tools**
@@ -117,7 +119,7 @@ widths: 20 50
 * - HED tools (development)
   - [https://hedtools.org/hed_dev](https://hedtools.org/hed_dev)
 * - Browser-based validation
-  - [https://www.hedtags.org/hed-javascript/](https://www.hedtags.org/hed-javascript/)
+  - [https://www.hedtags.org/hed-web/](https://www.hedtags.org/hed-web/)
 ```
 
 ## HED working documents

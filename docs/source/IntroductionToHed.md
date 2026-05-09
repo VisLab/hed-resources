@@ -104,7 +104,7 @@ color: warning
 HED provides tools to check your annotations:
 - [Online validator](https://hedtools.org/hed): Check syntax and schema compliance
 - [Python](https://www.hedtags.org/hed-python) and [MATLAB libraries](https://www.hedtags.org/hed-matlab) libraries: Integrate validation and analysis into your workflows
-- [HED validator for BIDS](https://www.hedtags.org/hed-javascript): Automatically checks HED in BIDS datasets
+- [Browser validator for HED in BIDS](https://www.hedtags.org/hed-web): Automatically checks HED in BIDS datasets
 ```
 
 ## Quick start

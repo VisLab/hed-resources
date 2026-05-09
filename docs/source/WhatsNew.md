@@ -71,7 +71,7 @@
 **Jun 25, 2025**: **Browser-based HED validator**
 
 > Validates datasets and files locally. Uses the HED JavaScript validator.\
-> Available at [**https://www.hedtags.org/hed-javascript**](https://www.hedtags.org/hed-javascript).
+> Available at [**https://www.hedtags.org/hed-web**](https://www.hedtags.org/hed-web).
 
 **Jun 10, 2025**: **HED LANG v 1.1.0 released**
 
