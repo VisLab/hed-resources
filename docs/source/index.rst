@@ -10,7 +10,7 @@ HED resources
 
    * `HED online tools <https://hedtools.org/hed/>`_
 
-   * `HED browser tools <https://www.hedtags.org/hed-javascript>`_
+   * `HED browser tools <https://www.hedtags.org/hed-web>`_
 
    * `HED organization <https://github.com/hed-standard/>`_  
 
@@ -77,6 +77,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Tool documentation:
 
    HED online tools <hed-server/index>
+   HED browser tools <www.hedtags.org/hed-web/index>
    Python HEDTools <hed-python/index>
    JavaScript HEDTools <hed-javascript/index>
    MATLAB HEDTools <hed-matlab/index>

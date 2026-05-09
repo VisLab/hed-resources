@@ -43,7 +43,7 @@ to produce a comprehensive JSON sidecar template.
 
 ```
 
-\*\*HED now also has a [browser-based dataset HED validator](https://www.hedtags.org/hed-javascript) which provides an fast method of validating an entire dataset without data upload.
+HED now also has a [browser-based dataset HED validator](https://www.hedtags.org/hed-web) which provides an fast method of validating an entire dataset without data upload.
 
 The examples in this tutorial use an [abbreviated version](https://raw.githubusercontent.com/hed-standard/hed-examples/main/datasets/eeg_ds003645s_hed/sub-002/eeg/sub-002_task-FacePerception_run-1_events.tsv) of the `events.tsv`file from subject 002 run 1 from [ds003645](https://openneuro.org/datasets/ds003645/):Face processing MEEG dataset with HED annotation dataset on OpenNeuro. A reduced version of this dataset [eeg_ds003645s_hed](https://github.com/hed-standard/hed-examples/tree/main/datasets/eeg_ds003645s_hed) is also available.
 
