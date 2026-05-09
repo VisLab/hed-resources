@@ -18,5 +18,5 @@ A JavaScript validator for HED (Hierarchical Event Descriptor) annotations for t
    :maxdepth: 2
    :caption: Documentation:
    
-   Browser-based validator <https://www.hedtags.org/hed-javascript>
-   JavaScript API <https://www.hedtags.org/hed-javascript/docs>
+   Browser-based validator <https://www.hedtags.org/hed-web>
+   JavaScript API <https://www.hedtags.org/hed-javascript>
