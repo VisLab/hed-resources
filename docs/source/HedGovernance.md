@@ -145,7 +145,7 @@ This process and schema design guidelines are described
 in the [**HED schema developer's guide**](https://www.hedtags.org/hed-schemas/developer_guide.html).
 ```
 
-All HED community members are required to follow the HED [**Code of conduct**](https://github.com/hed-standard/hed-examples/blob/main/CODE_OF_CONDUCT.md). Please contact the HED maintainers at [**hed.maintainers+coc@gmail.com**](mailto:hed.maintainers+coc@gmail.com) if you have any concerns or would like to report a violation.
+All HED community members are required to follow the Contributor Covenant [**Code of conduct**](https://www.contributor-covenant.org/version/3/0/code_of_conduct/). Please contact the HED maintainers at [**hed.maintainers+coc@gmail.com**](mailto:hed.maintainers+coc@gmail.com) if you have any concerns or would like to report a violation.
 
 ## 6. License
 
