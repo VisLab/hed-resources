@@ -57,7 +57,7 @@ jobs:
           uv pip install "submodules/ndx-hed"
 
       - name: Cache Sphinx build
-        uses: actions/cache@d6b77c542957a78af54b3649038f87c638d5f663 # v5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: docs/_build
           key: sphinx-${{ runner.os }}-${{ hashFiles('docs/source/**/*', 'pyproject.toml') }}
