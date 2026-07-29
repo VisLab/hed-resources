@@ -95,7 +95,7 @@ from datetime import datetime
 nwbfile = NWBFile(
     session_description="Example session with HED annotations",
     identifier="example_session_001",
-    session_start_time=datetime.now()
+    session_start_time=datetime.now(),
 )
 
 # Add HED schema metadata (required)
@@ -130,25 +130,14 @@ Here's a complete example of adding HED annotations to the trials table:
 from ndx_hed import HedTags
 
 # Add HED column to trials table
-nwbfile.add_trial_column(
-    name="HED",
-    col_cls=HedTags,
-    data=[],
-    description="HED annotations for trials"
-)
+nwbfile.add_trial_column(name="HED", col_cls=HedTags, data=[], description="HED annotations for trials")
 
 # Add trials with HED annotations
 nwbfile.add_trial(
-    start_time=0.0,
-    stop_time=1.0,
-    HED="Sensory-event, Visual-presentation, (Experimental-stimulus, Target)"
+    start_time=0.0, stop_time=1.0, HED="Sensory-event, Visual-presentation, (Experimental-stimulus, Target)"
 )
 
-nwbfile.add_trial(
-    start_time=1.5,
-    stop_time=2.5,
-    HED="Agent-action, (Press, Mouse-button), Correct-action"
-)
+nwbfile.add_trial(start_time=1.5, stop_time=2.5, HED="Agent-action, (Press, Mouse-button), Correct-action")
 ```
 
 Each trial now has a HED annotation describing what happened during that time period. The annotations are validated when the trial is added.
@@ -167,12 +156,12 @@ from ndx_hed import HedTags
 
 # Create a HedTags vector with 3 annotations
 tags = HedTags(
-    hed_version='8.4.0',
+    hed_version="8.4.0",
     data=[
         "Sensory-event, Visual-presentation",
         "Agent-action, Press, Correct-action",
-        "Sensory-event, Auditory-presentation"
-    ]
+        "Sensory-event, Auditory-presentation",
+    ],
 )
 
 # Add another annotation
@@ -211,12 +200,7 @@ Here's how you might annotate a simple visual discrimination experiment:
 
 ```python
 # Add HED column
-nwbfile.add_trial_column(
-    name="HED",
-    col_cls=HedTags,
-    data=[],
-    description="HED annotations for trial events"
-)
+nwbfile.add_trial_column(name="HED", col_cls=HedTags, data=[], description="HED annotations for trial events")
 
 # Trial with target stimulus
 nwbfile.add_trial(
@@ -224,8 +208,7 @@ nwbfile.add_trial(
     stop_time=1.0,
     stimulus="face",
     response="correct",
-    HED="Sensory-event, Visual-presentation, "
-        "(Experimental-stimulus, Target, (Face, Image))"
+    HED="Sensory-event, Visual-presentation, (Experimental-stimulus, Target, (Face, Image))",
 )
 
 # Trial with distractor
@@ -234,8 +217,7 @@ nwbfile.add_trial(
     stop_time=3.0,
     stimulus="house",
     response="correct_rejection",
-    HED="Sensory-event, Visual-presentation, "
-        "(Experimental-stimulus, Non-target, Distractor, (Building, Image))"
+    HED="Sensory-event, Visual-presentation, (Experimental-stimulus, Non-target, Distractor, (Building, Image))",
 )
 ```
 
@@ -278,30 +260,15 @@ from ndx_events import EventsTable
 from ndx_hed import HedTags
 
 # Create events table with HED column
-events_table = EventsTable(
-    name="task_events",
-    description="Task events with HED annotations"
-)
+events_table = EventsTable(name="task_events", description="Task events with HED annotations")
 
 # Add HED column
-events_table.add_column(
-    name="HED",
-    col_cls=HedTags,
-    description="HED annotations for events"
-)
+events_table.add_column(name="HED", col_cls=HedTags, description="HED annotations for events")
 
 # Add events
-events_table.add_row(
-    timestamp=0.5,
-    label="stimulus_onset",
-    HED="Sensory-event, Visual-presentation"
-)
+events_table.add_row(timestamp=0.5, label="stimulus_onset", HED="Sensory-event, Visual-presentation")
 
-events_table.add_row(
-    timestamp=1.2,
-    label="button_press",
-    HED="Agent-action, Press, Correct-action"
-)
+events_table.add_row(timestamp=1.2, label="button_press", HED="Agent-action, Press, Correct-action")
 
 # Add to NWB file
 nwbfile.add_acquisition(events_table)
@@ -365,12 +332,7 @@ with open("task-faces_events.json") as f:
 meanings = extract_meanings(sidecar_dict)
 
 # Create NWB EventsTable
-events_table = get_events_table(
-    "task_events",
-    "Face processing task events",
-    events_df,
-    meanings
-)
+events_table = get_events_table("task_events", "Face processing task events", events_df, meanings)
 
 # Add to NWB file
 nwbfile.add_acquisition(events_table)
@@ -423,12 +385,9 @@ from ndx_hed import HedValueVector
 
 # Create template with placeholder
 response_template = HedValueVector(
-    hed_version='8.4.0',
-    data=[
-        "Agent-action, Press, (Reaction-time/#, Duration/#)",
-        "Agent-action, Press, (Reaction-time/#, Duration/#)"
-    ],
-    description="Response events with reaction time"
+    hed_version="8.4.0",
+    data=["Agent-action, Press, (Reaction-time/#, Duration/#)", "Agent-action, Press, (Reaction-time/#, Duration/#)"],
+    description="Response events with reaction time",
 )
 ```
 
@@ -440,8 +399,7 @@ For lab-specific terms, you can add definitions to `HedLabMetaData`:
 
 ```python
 hed_metadata = HedLabMetaData(
-    hed_schema_version="8.4.0",
-    hed_definition="(Definition/MyCondition, (Condition-variable/A, Condition-variable/B))"
+    hed_schema_version="8.4.0", hed_definition="(Definition/MyCondition, (Condition-variable/A, Condition-variable/B))"
 )
 nwbfile.add_lab_meta_data(hed_metadata)
 ```
@@ -449,11 +407,7 @@ nwbfile.add_lab_meta_data(hed_metadata)
 Then reference the definition in your annotations:
 
 ```python
-nwbfile.add_trial(
-    start_time=0.0,
-    stop_time=1.0,
-    HED="Def/MyCondition"
-)
+nwbfile.add_trial(start_time=0.0, stop_time=1.0, HED="Def/MyCondition")
 ```
 
 (additional-resources-anchor)=
