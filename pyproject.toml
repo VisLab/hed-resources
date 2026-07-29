@@ -62,7 +62,7 @@ docs = [
     "sphinx-copybutton>=0.5.2",
     "linkify-it-py>=2.0.3",
 ]
-quality = [
+dev = [
     "typos>=1.29.0",
     "ruff>=0.16.0",
     "mdformat>=0.7.0",

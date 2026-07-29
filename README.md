@@ -75,7 +75,7 @@ cd hed-resources
 pip install -e .[docs]
 
 # Or install with both documentation and quality tools
-pip install -e .[docs,quality]
+pip install -e .[docs,dev]
 
 # Build unified documentation (copies submodule docs + builds with Sphinx)
 hed-build-docs
@@ -152,7 +152,15 @@ To integrate documentation from a new HED repository:
        "table-remodeler": {
            "source": submodules_dir / "table-remodeler" / "docs",
            "dest": source_dir / "table-remodeler",
-           "files": ["index.rst", "overview.md", "quickstart.md", "user_guide.md", "custom_operations.md", "operations/", "api/"],
+           "files": [
+               "index.rst",
+               "overview.md",
+               "quickstart.md",
+               "user_guide.md",
+               "custom_operations.md",
+               "operations/",
+               "api/",
+           ],
        },
        "your-repo": {
            "source": submodules_dir / "your-repo" / "docs",
