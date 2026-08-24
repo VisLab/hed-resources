@@ -8,7 +8,7 @@ This repository provides the **unified documentation and user resources** for th
 
 Originally, HED documentation was housed in the [hed-examples](https://github.com/hed-standard/hed-examples) repository alongside example datasets. In October 2025, the documentation was separated into this dedicated repository to better organize resources as the HED ecosystem grew.
 
-With the development of the HED AI assistant and the expansion of HED tools across multiple platforms (Python, MATLAB, JavaScript), it became clear that a **unified documentation system** was essential. Previously, each HED repository maintained its own documentation independently, making it difficult for users to search across tools and understand the complete HED ecosystem.
+The HED ecosystem spans multiple platforms (Python, MATLAB, JavaScript) and an AI assistant. A **unified documentation system** lets users search across all of the tools and understand the complete HED ecosystem from a single site instead of consulting each repository's documentation separately.
 
 **This repository (v1.0.0, released February 2026)** represents the first unified documentation build, integrating documentation from 9 separate HED repositories into a single, searchable documentation site with cross-repository search and consistent navigation.
 
