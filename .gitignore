@@ -133,8 +133,9 @@ docs/source/hed-tests/
 .venv/
 config.py
 
-# VS Code
-.vscode/
+# VS Code (personal files ignored; the shared settings file is committed)
+.vscode/*
+!.vscode/settings.json
 
 ############
 ## Windows
@@ -150,3 +151,12 @@ Desktop.ini
 schema_cache_test/
 hed_cache/
 **/remodel/summaries/*
+
+# Personal per-repo Claude Code notes (imports .status/local-environment.md)
+CLAUDE.local.md
+
+# Personal per-repo settings (absolute paths, claudeMdExcludes)
+.claude/settings.local.json
+
+# Real tokens and machine values; .env.example is the committed documentation
+.env

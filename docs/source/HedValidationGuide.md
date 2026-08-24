@@ -178,7 +178,7 @@ from hed.tools import BidsDataset
 
 ## Set the dataset location and the check_for_warnings flag
 check_for_warnings = False
-bids_root_path = 'Q:/PerceptionalON'
+bids_root_path = '/path/to/bids_dataset'
 
 ## Validate the dataset
 bids = BidsDataset(bids_root_path)
