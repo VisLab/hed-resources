@@ -34,3 +34,6 @@
 [submodule "submodules/hed-tests"]
 	path = submodules/hed-tests
 	url = https://github.com/hed-standard/hed-tests.git
+[submodule "submodules/hed-task"]
+	path = submodules/hed-task
+	url = https://github.com/hed-standard/hed-task.git

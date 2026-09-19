@@ -96,6 +96,7 @@ You can also explore the `Python HEDTools <https://www.hedtags.org/hed-python>`_
    :caption: Other resources:
 
    HED specification <hed-specification/index>
+   HED task catalog <hed-task/index>
    DocumentationSummary.md
    UnderstandingHedVersions.md
    HedHistory.md

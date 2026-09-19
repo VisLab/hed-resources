@@ -120,6 +120,7 @@ docs/source/hed-server/
 docs/source/CTagger/
 docs/source/hed-specification/
 docs/source/hed-tests/
+docs/source/hed-task/
 
 # Submodules are tracked via .gitmodules
 # Don't ignore the submodule directories themselves (git needs to track the gitlinks)
