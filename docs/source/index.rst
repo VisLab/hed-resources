@@ -2,6 +2,22 @@ HED resources
 ===========================
 
 
+.. sidebar:: **Links**
+   
+   * `HED homepage <https://www.hedtags.org/>`_ 
+
+   * `HED schema browser <https://www.hedtags.org/hed-schema-browser>`_
+
+   * `HED online tools <https://hedtools.org/hed/>`_
+
+   * `HED browser tools <https://www.hedtags.org/hed-web>`_
+
+   * `HED organization <https://github.com/hed-standard/>`_  
+
+   * `HED specification <https://www.hedtags.org/hed-specification>`_ 
+
+   * `HED task catalog <https://www.hedtags.org/hed-task>`_
+
 What is HED?
 ************
 
