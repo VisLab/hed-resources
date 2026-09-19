@@ -10,6 +10,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import importlib.util
+import logging as std_logging
 import os
 import sys
 from datetime import date
@@ -130,8 +132,48 @@ myst_enable_extensions = [
     "linkify",
     "replacements",
     "smartquotes",
+    # hed-task's index.md writes {{ n_tasks }} and friends; see
+    # _hed_task_counts() below for where the values come from.
+    "substitution",
     "tasklist",
 ]
+
+
+# -- Live counts for the hed-task catalog pages -------------------------------
+#
+# hed-task's narrative pages write {{ n_tasks }} and friends, and hed-task's own
+# conf.py defines them in myst_substitutions, computed from its data/ files. We
+# execute that conf.py and reuse its result rather than recomputing the counts.
+#
+# Recomputing was tried first and drifted on the very next upstream update:
+# hed-task added n_pseudo_tasks and redefined n_tasks to exclude pseudo tasks,
+# which would have silently published 106 where the catalog says 103. Its conf.py
+# is plain data loading - stdlib imports and module-level assignments, no side
+# effects - so executing it is cheap and keeps one definition of the numbers.
+#
+# The submodule may not be checked out (build_unified.py warns and skips in that
+# case), so any failure leaves the substitutions unset rather than breaking the
+# build. Pages then warn once per unresolved substitution, which is the visible
+# symptom we want.
+
+
+def _hed_task_counts() -> dict[str, str]:
+    conf_path = submodules_base / "hed-task" / "docs" / "source" / "conf.py"
+    try:
+        spec = importlib.util.spec_from_file_location("hed_task_conf", conf_path)
+        if spec is None or spec.loader is None:
+            raise ImportError(f"cannot load {conf_path}")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        substitutions = module.myst_substitutions
+    except Exception as err:  # noqa: BLE001 - never fail the whole docs build
+        logger.warning("hed-task counts unavailable, substitutions left unset: %s", err)
+        return {}
+
+    return {str(key): str(value) for key, value in substitutions.items()}
+
+
+myst_substitutions = _hed_task_counts()
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -147,6 +189,8 @@ exclude_patterns = [
     "Thumbs.db",
     ".DS_Store",
     "*.md.backup",
+    # Copied from hed-task; include fragments, not documents of their own.
+    "hed-task/_generated",
 ]
 
 
@@ -213,3 +257,40 @@ for _name, doc_path in submodule_docs.items():
     if static_path.exists():
         # Use absolute path for submodule static files
         html_static_path.append(str(static_path))
+
+
+# -- Quieten hed-task's false-positive cross-reference warnings ---------------
+#
+# hed-task's process pages use MyST labels -- (hed-xxx)= -- as anchor targets for
+# deep links from the task and atlas pages. They render correctly (the built page
+# carries <span id="hed-xxx">, and the links resolve in a browser), but MyST's link
+# validator only recognises myst_heading_anchors slugs as local ids, so it reports
+# myst.xref_missing for every one of them: about 1450 warnings out of a 1700-warning
+# build. hed-task's own conf.py drops them wholesale with
+# suppress_warnings = ["myst.xref_missing"] (submodules/hed-task/docs/source/conf.py).
+# We cannot do that here, because the rest of this site raises ~64 xref_missing
+# warnings of its own that are worth seeing. So this filter drops only the ones
+# whose location is inside hed-task/.
+
+
+class _HedTaskXrefFilter(std_logging.Filter):
+    """Drop myst.xref_missing warnings originating in the hed-task submodule docs."""
+
+    def filter(self, record: std_logging.LogRecord) -> bool:
+        if getattr(record, "type", None) != "myst":
+            return True
+        if getattr(record, "subtype", None) != "xref_missing":
+            return True
+        location = getattr(record, "location", None)
+        where = str(location) if location else record.getMessage()
+        return "hed-task" not in where.replace("\\", "/")
+
+
+def setup(app):
+    """Attach the hed-task warning filter to Sphinx's log handlers."""
+    log_filter = _HedTaskXrefFilter()
+    sphinx_logger = std_logging.getLogger("sphinx")
+    sphinx_logger.addFilter(log_filter)
+    for handler in sphinx_logger.handlers:
+        handler.addFilter(log_filter)
+    return {"parallel_read_safe": True, "parallel_write_safe": True}

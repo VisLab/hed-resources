@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
         'hed-vis/': 'hed-vis',
         'ndx-hed/': 'ndx-hed',
         'table-remodeler/': 'table-remodeler',
-        'CTagger/': 'CTagger'
+        'CTagger/': 'CTagger',
+        'hed-task/': 'hed-task'
     };
 
     // Function to determine which repository we're currently viewing

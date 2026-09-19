@@ -172,6 +172,23 @@ def copy_submodule_docs():
                 "Appendix_B.md",
             ],
         },
+        "hed-task": {
+            "source": submodules_dir / "hed-task" / "docs" / "source",
+            "dest": source_dir / "hed-task",
+            "files": [
+                "index.md",
+                "introduction.md",
+                "how_to_use.md",
+                "crossref.md",
+                "tasks/",
+                "processes/",
+                "methods/",
+                "atlas/",
+                # Table fragments that the narrative pages pull in with an
+                # include directive; conf.py excludes them as documents.
+                "_generated/",
+            ],
+        },
         "hed-tests": {
             "source": submodules_dir / "hed-tests" / "docs",
             "dest": source_dir / "hed-tests",

@@ -41,6 +41,8 @@ CI (`.github/workflows/`) runs the same checks via `uvx` on push and PR to `main
 - When a page moves or is renamed, old URLs must keep working: add the page to `docs/source/_static/redirect-config.js` and create a shim from `docs/source/_templates/redirect-page-template.html`. The procedure is `docs/source/_static/REDIRECT_SYSTEM.md`.
 - `docs/_build/` is generated and gitignored - never commit build output.
 - New pages must be added to `docs/source/index.rst` or they build as orphans.
+- The submodule update command above combines `--recursive` and `--remote`, so it advances *nested* submodules to their own remote HEAD instead of the commit their parent pins. `hed-python/spec_tests/hed-schemas` and `ndx-hed/spec_tests/hed-tests` drift this way and then show as dirty. It is working-tree state only - it cannot enter a commit here, because this repo records each submodule as a single commit SHA, not as file contents. To put them back: `git submodule update --init --recursive` (no `--remote`).
+- `submodules/CTagger` tracks its Gradle build cache (`.gradle/*.bin`, `.gradle/*.lock`) in git, so any local CTagger build leaves it permanently dirty. Expected, harmless, and not something to clean up or commit around.
 
 ## Related repositories
 
