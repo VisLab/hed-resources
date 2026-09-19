@@ -68,6 +68,11 @@
             color: '#ff8c00',  // dark orange
             order: 13
         },
+        'hed-task/': {
+            label: 'HED Task Catalog',
+            color: '#2e8b57',  // sea green
+            order: 14
+        },
         // Default for all other results
         'default': {
             label: 'HED Resources',
