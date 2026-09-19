@@ -10,8 +10,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import csv
-import json
+import importlib.util
 import logging as std_logging
 import os
 import sys
@@ -142,37 +141,36 @@ myst_enable_extensions = [
 
 # -- Live counts for the hed-task catalog pages -------------------------------
 #
-# hed-task's own conf.py builds these from its data files
-# (submodules/hed-task/docs/source/conf.py). We read the same three files here so
-# the published numbers cannot drift from the catalog pages. The submodule may not
-# be checked out - build_unified.py warns and skips in that case - so a missing or
-# malformed data file leaves the substitutions undefined rather than failing the
-# whole build.
+# hed-task's narrative pages write {{ n_tasks }} and friends, and hed-task's own
+# conf.py defines them in myst_substitutions, computed from its data/ files. We
+# execute that conf.py and reuse its result rather than recomputing the counts.
+#
+# Recomputing was tried first and drifted on the very next upstream update:
+# hed-task added n_pseudo_tasks and redefined n_tasks to exclude pseudo tasks,
+# which would have silently published 106 where the catalog says 103. Its conf.py
+# is plain data loading - stdlib imports and module-level assignments, no side
+# effects - so executing it is cheap and keeps one definition of the numbers.
+#
+# The submodule may not be checked out (build_unified.py warns and skips in that
+# case), so any failure leaves the substitutions unset rather than breaking the
+# build. Pages then warn once per unresolved substitution, which is the visible
+# symptom we want.
 
 
 def _hed_task_counts() -> dict[str, str]:
-    data = submodules_base / "hed-task" / "data"
+    conf_path = submodules_base / "hed-task" / "docs" / "source" / "conf.py"
     try:
-        tasks = json.loads((data / "task_details.json").read_text(encoding="utf-8"))
-        proc_data = json.loads((data / "process_details.json").read_text(encoding="utf-8"))
-        with (data / "task_family_defs.tsv").open(encoding="utf-8", newline="") as handle:
-            families = list(csv.DictReader(handle, delimiter="	"))
-    except (OSError, ValueError, KeyError) as err:
+        spec = importlib.util.spec_from_file_location("hed_task_conf", conf_path)
+        if spec is None or spec.loader is None:
+            raise ImportError(f"cannot load {conf_path}")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        substitutions = module.myst_substitutions
+    except Exception as err:  # noqa: BLE001 - never fail the whole docs build
         logger.warning("hed-task counts unavailable, substitutions left unset: %s", err)
         return {}
 
-    processes = proc_data["processes"]
-    linked = {pid for t in tasks for pid in t.get("hed_process_ids", [])}
-    counts = {
-        "n_tasks": len(tasks),
-        "n_processes": len(processes),
-        "n_categories": len(proc_data["categories"]),
-        "n_families": len(families),
-        "n_variations": sum(len(t.get("variations", [])) for t in tasks),
-        "n_links": sum(len(t.get("hed_process_ids", [])) for t in tasks),
-        "n_linked": sum(1 for p in processes if p["process_id"] in linked),
-    }
-    return {key: str(value) for key, value in counts.items()}
+    return {str(key): str(value) for key, value in substitutions.items()}
 
 
 myst_substitutions = _hed_task_counts()
