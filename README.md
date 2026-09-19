@@ -44,6 +44,7 @@ Through git submodules, this repository integrates documentation from:
 - **[hed-vis](https://github.com/hed-standard/hed-vis)** — Visualization tools
 - **[table-remodeler](https://github.com/hed-standard/table-remodeler)** — Table remodeling operations
 - **[ndx-hed](https://github.com/hed-standard/ndx-hed)** — NWB extension
+- **[hed-task](https://github.com/hed-standard/hed-task)** — HED task catalog
 
 The unified build system (see below) automatically copies and integrates documentation from these submodules, enabling unified search and navigation across the entire HED ecosystem.
 
@@ -247,7 +248,7 @@ To integrate documentation from a new HED repository:
    .. toctree::
       :maxdepth: 2
       :caption: Tool Documentation:
-      
+
       hed-python/index
       table-remodeler/index
       your-repo/index
