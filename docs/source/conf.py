@@ -246,6 +246,38 @@ html_static_path = []
 html_css_files = ["custom.css"]
 html_js_files = ["gh_icon_fix.js", "search_labels.js", "fix_sidebar_scroll.js"]
 
+# -- Redirect shims for pages that moved to other sites ----------------------
+#
+# These are standalone HTML pages copied verbatim into the build, each one a
+# meta-refresh bounce to wherever the page now lives. They keep old published
+# URLs working: without them https://www.hedtags.org/hed-resources/<name>.html
+# is a hard 404.
+#
+# They were lost on 2026-02-01 in 455e464 ("Updated the submodules"), which also
+# deleted this block, and all seven URLs 404ed until restored on 2026-09-20.
+#
+# Each shim redirects in two layers. A <meta http-equiv="refresh"> fires at 3s
+# and needs no JavaScript, so the page is never wholly broken. Before that,
+# _static/redirect-config.js and _static/redirect.js redirect at 100ms and
+# translate the URL fragment through that page's anchorMap, so a deep bookmark
+# lands on the matching section of the new page instead of its top. Do not drop
+# the script tags: the fragment handling is the reason they are there.
+#
+# To add one: copy docs/source/_templates/redirect-page-template.html to
+# docs/source/<OldPageName>.html, work through its TODO comments, add an entry
+# to _static/redirect-config.js, and add the filename below. Every entry here
+# must name a file that exists, or the build fails.
+
+html_extra_path = [
+    "CTaggerGuide.html",
+    "HedAndEEGLAB.html",
+    "HedAnnotationInNWB.html",
+    "HedJavascriptTools.html",
+    "HedMatlabTools.html",
+    "HedOnlineTools.html",
+    "HedSchemaDevelopersGuide.html",
+]
+
 # -- Intersphinx configuration -----------------------------------------------
 # Enable cross-references to external documentation
 
