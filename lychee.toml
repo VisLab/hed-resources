@@ -12,12 +12,19 @@
 
 # Accept these HTTP status codes as valid
 # 200: OK (standard success)
+# 203: Non-Authoritative Information (a proxy rewrote the response; the resource
+#      still exists, so the link is not broken). Without this, running the check
+#      from behind an intercepting proxy reports every proxied host as an error -
+#      on one such network all 615 pubmed.ncbi.nlm.nih.gov links failed this way,
+#      answering with "Server: Microsoft-IIS/10.0, Via: 1.1 google", which PubMed
+#      plainly is not. CI sees 200 for these. Accepting 203 cannot hide a dead
+#      link: 404, 410 and 5xx (bar 503) are still errors.
 # 204: No Content (valid response with no body)
 # 206: Partial Content (valid for range requests)
 # 403: Forbidden (some sites block automated requests but links work in browsers)
 # 429: Too Many Requests (rate limiting, link may be valid)
 # 503: Service Unavailable (transient GitHub errors, links work in browsers)
-accept = [200, 204, 206, 403, 429, 503]
+accept = [200, 203, 204, 206, 403, 429, 503]
 
 # Timeout for requests (in seconds)
 timeout = 30
