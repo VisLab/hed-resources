@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
         'ndx-hed/': 'ndx-hed',
         'table-remodeler/': 'table-remodeler',
         'CTagger/': 'CTagger',
+        'hed-specification/': 'hed-specification',
+        'hed-tests/': 'hed-tests',
         'hed-task/': 'hed-task'
     };
 
