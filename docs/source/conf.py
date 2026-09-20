@@ -237,7 +237,12 @@ html_sidebars = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+#
+# This repo's own "_static" is deliberately not listed here. Submodule static
+# directories are appended below and then "_static" last, because Sphinx copies
+# html_static_path entries in order and later ones overwrite earlier ones by
+# filename. See the comment on that loop.
+html_static_path = []
 html_css_files = ["custom.css"]
 html_js_files = ["gh_icon_fix.js", "search_labels.js", "fix_sidebar_scroll.js"]
 
@@ -250,13 +255,28 @@ intersphinx_mapping = {
 }
 
 # -- Submodule static files configuration ------------------------------------
-# Add static files from submodules if they exist
+#
+# Submodule static directories are copied first, then this repo's own "_static"
+# last. Order matters: Sphinx flattens every html_static_path entry into a
+# single output _static/ directory, and a later entry silently overwrites an
+# earlier file of the same name.
+#
+# Nearly every submodule ships its own custom.css and gh_icon_fix.js under those
+# exact names. With "_static" listed first, the site's own stylesheet lost to
+# whichever submodule happened to be last in submodule_docs (hed-tests), so the
+# published custom.css was hed-tests' 10035-byte copy rather than this repo's
+# 11096-byte one - dropping, among other things, the quicklinks and RST sidebar
+# styling and the html[data-theme="dark"] rules. Keeping "_static" last means
+# submodules still contribute files this repo does not have (images, ndx-hed's
+# theme_overrides.css) while the site's own versions win every collision.
 
 for _name, doc_path in submodule_docs.items():
     static_path = doc_path / "_static"
     if static_path.exists():
         # Use absolute path for submodule static files
         html_static_path.append(str(static_path))
+
+html_static_path.append("_static")
 
 
 # -- Quieten hed-task's false-positive cross-reference warnings ---------------
