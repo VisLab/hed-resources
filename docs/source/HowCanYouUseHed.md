@@ -189,8 +189,8 @@ An important aspect of data collection is organizing your data in a standardized
 
 [BIDS](https://bids.neuroimaging.io/) is a widely used data organization standard for neuroimaging and behavioral data. BIDS focuses on file organization with appropriate experimental metadata.
 
-- **Learn BIDS**: The [BIDS Starter Kit](https://bids-standard.github.io/bids-starter-kit/index.html) provides comprehensive introductions
-- **File organization**: [Folders and Files](https://bids-standard.github.io/bids-starter-kit/folders_and_files/folders.html) explains BIDS directory structure
+- **Learn BIDS**: The [BIDS Starter Kit](https://bids.neuroimaging.io/getting_started/index.html) provides comprehensive introductions
+- **File organization**: [Folders and Files](https://bids.neuroimaging.io/getting_started/folders_and_files/folders.html) explains BIDS directory structure
 - **Metadata**: The [Annotating a BIDS dataset](https://bids.neuroimaging.io/getting_started/tutorials/annotation.html) tutorial covers required metadata
 - **Specification**: See [BIDS specification](https://bids-specification.readthedocs.io/en/stable/) for detailed rules
 - **Conversion tools**: [BIDS Tools](https://bids.neuroimaging.io/tools/index.html) lists available converters
