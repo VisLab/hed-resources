@@ -72,9 +72,12 @@ exclude = [
     # MathWorks (blocks automated requests)
     '^https?://.*\.mathworks\.com/',
 
-    # PubMed (blocks automated link checking). The hed-task catalog cites ~615
-    # PubMed records, so when NCBI refuses the checker every one of them is
-    # reported and the real failures are buried.
+    # PubMed (blocks automated link checking, from GitHub's runners as well as
+    # from a workstation). Only two of this repo's own pages cite PubMed -
+    # HedTestDatasets.md and WhatsNew.md - but both would fail every run. The
+    # hed-task catalog's ~615 PubMed citations are not covered here; submodule
+    # pages are out of scope for this check (see links.yaml) and each submodule
+    # checks its own links.
     '^https?://pubmed\.ncbi\.nlm\.nih\.gov/',
 
     # Brain Meeting posters (expired/removed)
