@@ -72,6 +72,11 @@ exclude = [
     # MathWorks (blocks automated requests)
     '^https?://.*\.mathworks\.com/',
 
+    # PubMed (blocks automated link checking). The hed-task catalog cites ~615
+    # PubMed records, so when NCBI refuses the checker every one of them is
+    # reported and the real failures are buried.
+    '^https?://pubmed\.ncbi\.nlm\.nih\.gov/',
+
     # Brain Meeting posters (expired/removed)
     '^https?://brainmeeting.*\.ipostersessions\.com/',
     '^https?://globalbrainconsortium\.org/documents/GBC_March-2023_Agenda_Annual_Meeting\.pdf',
