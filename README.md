@@ -75,8 +75,16 @@ cd hed-resources
 # Install in development mode with documentation dependencies
 pip install -e .[docs]
 
-# Or install with both documentation and quality tools
+# Or install with both documentation and development tools
 pip install -e .[docs,dev]
+
+# Fetch the submodules the docs are copied from
+git submodule update --init --recursive
+
+# Install the packages whose API pages are generated with autodoc
+# (the same four the deploy workflow installs)
+pip install "submodules/hed-python[docs]" "submodules/hed-vis[docs]" \
+            "submodules/table-remodeler[docs]" "submodules/hed-schemas[docs]"
 
 # Build unified documentation (copies submodule docs + builds with Sphinx)
 hed-build-docs
@@ -102,9 +110,9 @@ See [scripts/README.md](scripts/README.md) for detailed usage information.
 ### Available dependency groups:
 
 - `docs` - Sphinx and documentation building tools
-- `quality` - Link checking, linting, and code quality tools
+- `dev` - Linting, formatting, and spell-checking tools
 
-Install both groups for full development setup: `pip install -e .[docs,quality]`
+Install both groups for full development setup: `pip install -e .[docs,dev]`
 
 ### Building documentation
 
@@ -283,7 +291,7 @@ To integrate documentation from a new HED repository:
 
 **For CI/CD (automatic)**: When documentation is built and deployed by GitHub Actions, the workflow automatically updates all submodules to their latest `main` branch commits using `git submodule update --init --recursive --remote --merge`. This ensures the published documentation at [www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources) always reflects the most current content from each HED repository.
 
-**For local development (manual)**: You control when to update submodules locally. Update them whenever you want to preview the latest documentation changes, but you don't need to commit the updates — they'll show as "modified content" in `git status`, which is normal and expected.
+**For local development (manual)**: You control when to update submodules locally. Update them whenever you want to preview the latest documentation changes. A local build uses the committed pointers, so after a submodule renames or adds pages, bump the pointers in a pull request together with any change `docs/build_unified.py` needs (its per-repository copy lists name files explicitly); that is the only way the mismatch is seen before deployment.
 
 #### Updating submodules locally
 
@@ -296,6 +304,8 @@ git submodule update --remote --merge
 # Rebuild docs to pick up changes
 hed-build-docs
 ```
+
+Do not add `--recursive` to the `--remote` form: it also advances the submodules nested inside the submodules (for example `hed-python/spec_tests/hed-schemas`) past the commit their parent pins, and they then show as modified. If that happens, `git submodule update --init --recursive` (without `--remote`) puts the nested ones back; run it inside the affected submodule so the top-level pointers you just advanced are kept.
 
 **Update a specific submodule:**
 
@@ -328,13 +338,13 @@ modified:   submodules/hed-schemas (new commits)
 modified:   submodules/hed-python (modified content)
 ```
 
-**This is normal and expected.** You typically **don't need to commit** these updates because:
+**This is normal and expected** for a preview build. The deployed site does not depend on the committed pointers, because the deploy workflow pulls every submodule's latest `main` before building. Commit a pointer bump (one pull request, all submodules at once) when:
 
-1. The CI/CD workflow always pulls the latest versions when deploying
-2. Committing submodule pointers creates noise in your git history
-3. Other developers will update to whatever versions they need locally
+1. A submodule has renamed, added or removed documentation pages, so `docs/build_unified.py` must change with it and the pull request's build shows the two in step
+2. You want local builds and the deployed site to agree, for example before editing `docs/source/conf.py`
+3. You need to lock a submodule to a specific version to work around a breaking change
 
-**Exception**: Only commit submodule updates if you need to lock the repository to a specific version for a particular reason (e.g., working around a breaking change in a submodule).
+Otherwise leave the pointers alone; routine bumps with no build change are noise.
 
 #### Resetting submodules
 

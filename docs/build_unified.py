@@ -71,7 +71,7 @@ def copy_submodule_docs():
         "hed-python": {
             "source": submodules_dir / "hed-python" / "docs",
             "dest": source_dir / "hed-python",
-            "files": ["index.rst", "user_guide.md", "api/"],
+            "files": ["index.rst", "user_guide.md", "search_details.md", "api/"],
         },
         "table-remodeler": {
             "source": submodules_dir / "table-remodeler" / "docs",
@@ -124,6 +124,7 @@ def copy_submodule_docs():
                 "api.rst",
                 "release_notes.rst",
                 "credits.rst",
+                "hed_validation.md",
             ],
         },
         "hed-schemas": {
@@ -178,12 +179,13 @@ def copy_submodule_docs():
             "files": [
                 "index.md",
                 "introduction.md",
-                "how_to_use.md",
-                "crossref.md",
+                "how_to_use_the_catalog.md",
+                "task_process_links.md",
                 "tasks/",
                 "processes/",
                 "methods/",
                 "atlas/",
+                "cogpo/",
                 # Table fragments that the narrative pages pull in with an
                 # include directive; conf.py excludes them as documents.
                 "_generated/",
